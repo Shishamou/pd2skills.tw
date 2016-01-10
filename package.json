@@ -1,0 +1,29 @@
+{
+  "name": "pd2skills",
+  "main": "server.js",
+  "version": "0.0.0",
+  "description": "Payday 2 Skill Tree Simulator",
+  "dependencies": {
+    "director": "^1.2.8",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "isomorphic-fetch": "^2.2.0",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "react-redux": "^4.0.6",
+    "redux": "^3.0.5",
+    "redux-logger": "^2.3.1",
+    "redux-thunk": "^1.0.3",
+    "webpack": "^1.12.10"
+  },
+  "devDependencies": {
+    "babel-core": "^6.3.26",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "css-loader": "^0.23.1",
+    "image-webpack-loader": "^1.6.2",
+    "less-loader": "^2.2.2",
+    "style-loader": "^0.13.0"
+  }
+}

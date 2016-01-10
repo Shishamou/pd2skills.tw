@@ -1,0 +1,89 @@
+/* Less */
+@skill-block-width: 180px;
+@skill-icon-size: 60px;
+@skill-font-size: 14px;
+
+.skill {
+	float: left;
+	width: 180px;
+	height: @skill-icon-size;
+	border:2px solid transparent;
+
+	&:hover {
+		border-color: @normal;
+	}
+
+	.skill-icon {
+		position: relative;
+		float: left;
+		width: @skill-icon-size;
+		height: @skill-icon-size;
+		background: @dark;
+	}
+
+	&[data-status='locked'] .skill-icon {
+		background: @dark;
+	}
+
+	&[data-status='unlocked'] .skill-icon {
+		background: @gray;
+	}
+
+	&[data-status='owned'] .skill-icon {
+		background: @normal;
+	}
+
+	&[data-status='aced'] .skill-icon {
+		background: @normal;
+
+		@skill-icon-bk-size: 128px;
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: -((@skill-icon-bk-size - @skill-icon-size) / 2);
+			left: -((@skill-icon-bk-size - @skill-icon-size) / 2);
+			z-index: -1;
+			width: @skill-icon-bk-size;
+			height: @skill-icon-bk-size;
+			background-image: url('./aced.png');
+		}
+	}
+
+	.skill-text {
+		box-sizing: border-box;
+		display: block;
+		width: auto;
+		height: 100%;
+		margin-left: @skill-icon-size;
+
+		p {
+			line-height: @skill-font-size;
+			padding-top: (@skill-icon-size - @skill-font-size) / 2;
+			padding-right: 10px;
+			padding-left: 10px;
+			font-size: @skill-font-size;
+		}
+
+	}
+
+	& .text-group {
+		p {
+			display: block;
+		}
+
+		p.text-hide {
+			display: none;
+		}
+	}
+
+	&:hover .text-group {
+		p {
+			display: none;
+		}
+
+		p.text-hide {
+			display: block;
+		}
+	}
+}

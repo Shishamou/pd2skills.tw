@@ -1,0 +1,65 @@
+{
+
+    "skill_trees": [
+        {
+            "name": "mastermind",
+            "skills": [
+                [
+                    {
+                        "name": "unlocking_the_mastermind"
+                    }
+                ],
+                [
+                    {
+                        "name": "cable_guy"
+                    },
+                    {
+                        "name": "combat_medic"
+                    },
+                    {
+                        "name": "endurance"
+                    }
+                ],
+                [
+                    {
+                        "name": "control_freak"
+                    },
+                    {
+                        "name": "painkillers"
+                    },
+                    {
+                        "name": "leadership",
+                        "required": "endurance"
+                    }
+                ]
+            ]
+        }
+    ],
+    "tier_setting": [
+        {
+            "tier" : 0,
+            "tier_unlock_rquire"         : 0,
+            "tier_unlock_rquire_reduced" : 0,
+            "skill_point_basic"          : 1,
+            "skill_cost_basic"           : 500
+        },
+        {
+            "tier" : 1,
+            "tier_unlock_rquire"         : 1,
+            "tier_unlock_rquire_reduced" : 1,
+            "skill_point_basic"          : 1,
+            "skill_point_ace"            : 3,
+            "skill_cost_basic"           : 4500,
+            "skill_cost_ace"             : 12500
+        },
+        {
+            "tier" : 2,
+            "tier_unlock_rquire"         : 5,
+            "tier_unlock_rquire_reduced" : 5,
+            "skill_point_basic"          : 1,
+            "skill_point_ace"            : 3,
+            "skill_cost_basic"           : 23500,
+            "skill_cost_ace"             : 69500
+        }
+    ]
+}

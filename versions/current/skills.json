@@ -1,0 +1,87 @@
+{
+	"gameverson" : "46.1",
+	"files" : [
+		"skills/mastermind.json",
+		"skills/enforcer.json",
+		"skills/technician.json",
+		"skills/ghost.json",
+		"skills/fugitive.json"
+	],
+	"property" : [
+		{
+			"tier" : 0,
+			"unlockRquire"        : 0,
+			"unlockRquireReduced" : 0,
+			
+			"skillPointBasic" : 1,
+			
+			"skillCostBasic"  : 500
+		},
+		{
+			"tier" : 1,
+			"unlockRquire"        : 1,
+			"unlockRquireReduced" : 1,
+			
+			"skillPointBasic" : 1,
+			"skillPointAce"   : 3,
+			
+			"skillCostBasic"  : 4500,
+			"skillCostAce"    : 12500
+		},
+		{
+			"tier" : 2,
+			"unlockRquire"        : 5,
+			"unlockRquireReduced" : 5,
+			
+			"skillPointBasic" : 1,
+			"skillPointAce"   : 3,
+			
+			"skillCostBasic"  : 23500,
+			"skillCostAce"    : 69500
+		},
+		{
+			"tier" : 3,
+			"unlockRquire"        : 10,
+			"unlockRquireReduced" : 9,
+			
+			"skillPointBasic" : 1,
+			"skillPointAce"   : 3,
+			
+			"skillCostBasic"  : 44500,
+			"skillCostAce"    : 132500
+		},
+		{
+			"tier" : 4,
+			"unlockRquire"        : 20,
+			"unlockRquireReduced" : 18,
+			
+			"skillPointBasic" : 4,
+			"skillPointAce"   : 8,
+			
+			"skillCostBasic"  : 264500,
+			"skillCostAce"    : 528500
+		},
+		{
+			"tier" : 5,
+			"unlockRquire"        : 30,
+			"unlockRquireReduced" : 27,
+			
+			"skillPointBasic" : 4,
+			"skillPointAce"   : 8,
+			
+			"skillCostBasic"  : 356500,
+			"skillCostAce"    : 712500
+		},
+		{
+			"tier" : 6,
+			"unlockRquire"        : 40,
+			"unlockRquireReduced" : 36,
+			
+			"skillPointBasic" : 4,
+			"skillPointAce"   : 8,
+			
+			"skillCostBasic"  : 452500,
+			"skillCostAce"    : 904500
+		}
+	]
+}
