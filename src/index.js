@@ -21,7 +21,7 @@ const createStoreWithMiddleware = applyMiddleware(
 
 const store = createStoreWithMiddleware(skillApp);
 
-store.dispatch(fetchSkills('config.json'));
+store.dispatch(fetchSkills('public/skills.json'));
 
 render(
     <Provider store={store}>
