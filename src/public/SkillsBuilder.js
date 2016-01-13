@@ -12,47 +12,94 @@ export default class SkillsBuilder {
         store.skills = [];
     }
 
+    /**
+     * 建立技能樹資料模型
+     *
+     * @param Object 資料模型
+     */
     build(skillsModel) {
-        var trees = skillsModel['skill_trees'];
-        var tierSettings = skillsModel['tier_setting'];
-
         this.initialStore();
+        skillsModel = this.modelAttributeToCamelCase(skillsModel);
+
+        var trees = skillsModel.skillTrees;
+        var tierSettings = skillsModel.tierSetting;
+
         trees.forEach((tree) => this.buildTree(tree, tierSettings));
     }
 
+    /**
+     * 建立樹模型
+     *
+     * @param Object 資料模型
+     * @param Object 階層設定值
+     */
     buildTree(treeModel, tierSettings) {
-        console.log(['treeModel', treeModel]);
         var tree = this.parseTreeModel(treeModel);
         var treeId = this.registerTree(tree);
-        var tierSetting
-        tree.tiers = treeModel['skills'].map((skills, tierIndex) => this.buildTier(
-            Object.assign({
-                tree_id: treeId,
-                skills,
-            }, tierSettings[tierIndex])
-        ), this);
+
+        tree.tiers = treeModel['skills'].map((skills, tierIndex) =>
+            this.buildTier(
+                Object.assign({ treeId, skills }, tierSettings[tierIndex])
+            ), this
+        );
     }
 
+    /**
+     * 建立階層模型
+     *
+     * @param Object 資料模型
+     */
     buildTier(tierModel) {
         var tier = this.parseTierModel(tierModel);
         var tierId = this.registerTier(tier);
+        var treeId = tierModel.treeId;
 
-        tier.skills = tierModel.skills.map((skill) => this.buildSkill(
-            Object.assign({
-                tree_id: tierModel.tree_id,
-                tier_id: tierId,
-            }, skill)
-        ), this);
+        tier.skills = tierModel.skills.map((skill) =>
+            this.buildSkill(
+                Object.assign({ treeId , tierId }, skill)
+            ), this
+        );
 
         return tierId;
     }
 
+    /**
+     * 建立技能模型
+     *
+     * @param Object 資料模型
+     */
     buildSkill(skillModel) {
         var skill = this.parseSkillModel(skillModel);
+
         return this.registerSkill(skill);
     }
 
+    // =========================================================================
+    // = Other.
+    // =========================================================================
 
+    modelAttributeToCamelCase(model) {
+        if (Array.isArray(model) || ( ! (model instanceof Object)))
+            return model;
+
+        var handled = {};
+        Object.keys(model).forEach((key) => {
+            var value = model[key];
+            value = this.modelAttributeToCamelCase(value);
+
+            key = this.toCamelCase(key);
+            handled[key] = value;
+        }, this);
+
+        return handled;
+    }
+
+    toCamelCase(string) {
+        return string.replace(
+    	    /((?!_)\w)_\w/g,
+    	    (match) => match.charAt(0) + match.substr(-1).toUpperCase()
+        )
+    }
 
     // =========================================================================
     // = Register data.
@@ -77,49 +124,49 @@ export default class SkillsBuilder {
     parseTreeModel(model) {
         var name = model.name;
         return {
-            name          : model.name,
-            text_title    : `${name}_title`,
-            text_subtitle : `${name}_subtitle`,
-            text_notes    : `${name}_notes`,
-            spend_points  : 0,
-            spend_costs   : 0,
-            reduced       : false
+            name         : model.name,
+            textTitle    : `${name}_title`,
+            textSubtitle : `${name}_subtitle`,
+            textNotes    : `${name}_notes`,
+            spendPoints  : 0,
+            spendCosts   : 0,
+            reduced      : false
         }
     }
 
     parseTierModel(model) {
         return {
-            tree_id                     : model.tree_id || -1,
-            tier_unlock_require         : model.tier_unlock_require,
-            tier_unlock_require_reduced : model.tier_unlock_require_reduced,
-            skill_point_basic           : model.skill_point_basic,
-            skill_point_ace             : model.skill_point_ace,
-            skill_cost_basic            : model.skill_cost_basic,
-            skill_cost_ace              : model.skill_cost_ace,
-            currect_unlock_require      : 0,
-            currect_unlock_needed       : 0,
-            unlock_status               : 0
+            treeId                   : model.treeId || -1,
+            tierUnlockRequire        : model.tierUnlockRequire,
+            tierUnlockRequireReduced : model.tierUnlockRequireReduced,
+            skillPointBasic          : model.skillPointBasic,
+            skillPointAce            : model.skillPointAce,
+            skillCostBasic           : model.skillCostBasic,
+            skillCostAce             : model.skillCostAce,
+            currectUnlockRequire     : 0,
+            currectUnlockNeeded      : 0,
+            unlockStatus             : 0
         }
     }
 
     parseSkillModel(model) {
         var name = model.name;
         return {
-            tree_id        : model.tree_id,
-            tier_id        : model.tier_id,
-            name           : model.name,
-            required_skill : model.required || null,
-            text_title     : `${name}_title`,
-            text_subtitle  : `${name}_subtitle`,
-            text_basic     : `${name}_basic`,
-            text_ace       : `${name}_ace`,
-            text_notes     : `${name}_notes`,
-            owned_basic    : false,
-            owned_ace      : false,
-            unlocked_basic : false,
-            unlocked_ace   : false,
-            alerted        : false,
-            status         : statuses.STATUS_LOCKED
+            treeId        : model.treeId,
+            tierId        : model.tierId,
+            name          : model.name,
+            requiredSkill : model.required || null,
+            textTitle     : `${name}_title`,
+            textSubtitle  : `${name}_subtitle`,
+            textBasic     : `${name}_basic`,
+            textAce       : `${name}_ace`,
+            textNotes     : `${name}_notes`,
+            ownedBasic    : false,
+            ownedAce      : false,
+            unlockedBasic : false,
+            unlockedAce   : false,
+            alerted       : false,
+            status        : statuses.STATUS_LOCKED
         };
     }
 }
