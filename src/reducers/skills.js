@@ -80,5 +80,7 @@ class Skills
 }
 
 export default buildReducer(Skills, {
+    trees: [],
+    tiers: [],
     skills: []
 });

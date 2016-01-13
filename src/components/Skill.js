@@ -4,10 +4,16 @@ import * as events from '../constants/Events';
 
 class Skill extends Component
 {
-	constructor() {
-		super();
+	handleClick(e) {
+		this.props.handleEvent(this.props.id, events.CLICK);
+	}
 
-		this.contents = {
+	render() {
+		const { id, getSkill } = this.props;
+		var skill = getSkill(id);
+
+		var dataset = skill.status.split('_').slice(-1).pop().toLowerCase();
+		var content = {
 			[statuses.STATUS_ACED]: (
 				<p>王牌</p>
 			),
@@ -26,25 +32,14 @@ class Skill extends Component
 				<div className="text-group">
 					<p className="text-hide">未解鎖</p>
 				</div>
-			),
-		};
-	}
-
-	handleClick(e) {
-		this.props.handleEvent(this.props.id, events.CLICK);
-	}
-
-	render() {
-		const status = this.props.status;
-
-		var dataset = status.split('_').slice(-1).pop().toLowerCase();
-		var content = this.contents[status];
+			)
+		}[skill.status];
 
 		return (
 			<div
 				className="skill"
-				onClick={e => this.handleClick(e)}
 				data-status={dataset}
+				onClick={e => this.handleClick(e)}
 			>
 				<div className="skill-icon"></div>
 				<div className="skill-text">{content}</div>
@@ -56,8 +51,8 @@ class Skill extends Component
 
 Skill.propTypes = {
 	id: PropTypes.number.isRequired,
-	name: PropTypes.string.isRequired,
-	status: PropTypes.string.isRequired,
+	getTier: PropTypes.func.isRequired,
+	getSkill: PropTypes.func.isRequired,
 	handleEvent: PropTypes.func.isRequired,
 };
 
