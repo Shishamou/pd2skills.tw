@@ -9,13 +9,19 @@ class Tier extends Component
 
 		return (
 			<div className="tier">
-				{tier.skills.map((skillId, index) =>
-					<Skill
-						{...this.props}
-                        key={index}
-                        id={skillId}
-                    />
-				)}
+				<div className="tier-skills">
+					{tier.skills.map((skillId, index) =>
+						<Skill
+							{...this.props}
+	                        key={index}
+	                        id={skillId}
+	                    />
+					)}
+				</div>
+				<div className="tier-aside">
+					<p>{tier.currectUnlockNeeded}</p>
+					<p>{tier.currectUnlockRequire}</p>
+				</div>
 			</div>
 		);
 	}

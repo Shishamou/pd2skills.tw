@@ -8,6 +8,10 @@ class Skill extends Component
 		this.props.handleEvent(this.props.id, events.CLICK);
 	}
 
+	handleRemove(e) {
+		this.props.handleEvent(this.props.id, events.REMOVE);
+	}
+
 	render() {
 		const { id, getSkill } = this.props;
 		var skill = getSkill(id);
@@ -43,7 +47,10 @@ class Skill extends Component
 			>
 				<div className="skill-icon"></div>
 				<div className="skill-text">{content}</div>
-				<div className="skill-remove"></div>
+				<div
+					className="skill-remove"
+					onClick={e => this.handleRemove(e)}
+				></div>
 			</div>
 		);
 	}

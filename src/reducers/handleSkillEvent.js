@@ -5,27 +5,28 @@ class SkillEvents {
     switcher() {
         return {
             [events.CLICK]: this.onClick,
+            [events.MOUSE_ENTER]: this.onClick,
+            [events.MOUSE_LEAVE]: this.onClick,
+            [events.REMOVE]: this.onRemove,
         };
     }
 
     onClick(skill) {
-        if ( ! skill.own_basic) {
-            // if (skill.unlock_basic)
-                skill.own_basic = true;
-        } else if ( ! skill.own_ace) {
-            // if (skill.unlock_ace)
-                skill.own_ace = true;
+        if ( ! skill.ownedBasic) {
+            // if (skill.unlockBasic)
+                skill.ownedBasic = true;
+        } else if ( ! skill.ownedAce) {
+            // if (skill.unlockAce)
+                skill.ownedAce = true;
         }
     }
 
+    onRemove(skill) {
+        skill.ownedBasic = false;
+        skill.ownedAce = false;
+    }
+
     default() {
-        if ( ! skill.own_basic) {
-            // if (skill.unlock_basic)
-                skill.own_basic = true;
-        } else if ( ! skill.own_ace) {
-            // if (skill.unlock_ace)
-                skill.own_ace = true;
-        }
     }
 }
 

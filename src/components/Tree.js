@@ -5,11 +5,11 @@ class Tree extends Component
 {
 	render() {
 		const { id, tree, getTier } = this.props;
-		tree.tiers.slice().reverse();
+		var tiers = tree.tiers.slice().reverse();
 
 		return (
 			<div className="tree">
-				{tree.tiers.map((tierId, index) =>
+				{tiers.map((tierId, index) =>
 					<Tier
 						{...this.props}
                         key={index}
