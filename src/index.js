@@ -8,8 +8,8 @@ import { Provider } from 'react-redux';
 
 import App from './containers/App';
 import skillApp from './reducers/skills';
-import '../assets/layout.less';
 import { addSkill, fetchSkills } from './actions/skills';
+import '../assets/style.less';
 
 
 const loggerMiddleware = createLogger();

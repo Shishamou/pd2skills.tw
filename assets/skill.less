@@ -1,7 +1,5 @@
 /* Less */
-@skill-block-width: 180px;
-@skill-icon-size: 60px;
-@skill-font-size: 14px;
+
 
 .skill {
 	float: left;
@@ -12,6 +10,15 @@
 	&:hover {
 		border-color: @normal;
 	}
+
+	&:only-child {
+		float: none;
+		margin: 0 auto;
+	}
+
+	/* =========================================================================
+	 * = Skill Icon
+	 * =======================================================================*/
 
 	.skill-icon {
 		position: relative;
@@ -49,6 +56,10 @@
 			background-image: url('./aced.png');
 		}
 	}
+
+	/* =========================================================================
+	 * = Skill Text
+	 * =======================================================================*/
 
 	.skill-text {
 		box-sizing: border-box;
