@@ -9,6 +9,7 @@ class Skill extends Component
 	}
 
 	handleRemove(e) {
+		e.stopPropagation();
 		this.props.handleEvent(this.props.id, events.REMOVE);
 	}
 

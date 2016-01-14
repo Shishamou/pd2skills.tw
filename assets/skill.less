@@ -2,6 +2,7 @@
 
 
 .skill {
+	position: relative;
 	float: left;
 	width: 180px;
 	height: @skill-icon-size;
@@ -94,6 +95,30 @@
 		}
 
 		p.text-hide {
+			display: block;
+		}
+	}
+
+	/* =========================================================================
+	 * = Skill Remove
+	 * =======================================================================*/
+
+	.skill-remove {
+		display: none;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 20px;
+		height: 20px;
+		background: @strong;
+
+		&:hover {
+			background: @normal;
+		}
+	}
+
+	&[data-status='owned']:hover, &[data-status='aced']:hover {
+		.skill-remove {
 			display: block;
 		}
 	}
