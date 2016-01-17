@@ -79,8 +79,12 @@ export default class SkillsBuilder {
     // =========================================================================
 
     modelAttributeToCamelCase(model) {
-        if (Array.isArray(model) || ( ! (model instanceof Object)))
+        if ( ! (model instanceof Object))
             return model;
+
+        if (Array.isArray(model)) {
+            return model.map((value) => this.modelAttributeToCamelCase(value), this);
+        }
 
         var handled = {};
         Object.keys(model).forEach((key) => {
@@ -124,19 +128,20 @@ export default class SkillsBuilder {
     parseTreeModel(model) {
         var name = model.name;
         return {
-            name         : model.name,
-            textTitle    : `${name}_title`,
-            textSubtitle : `${name}_subtitle`,
-            textNotes    : `${name}_notes`,
-            spendPoints  : 0,
-            spendCosts   : 0,
-            reduced      : false
+            name           : model.name,
+            textTitle      : `${name}_title`,
+            textSubtitle   : `${name}_subtitle`,
+            textNotes      : `${name}_notes`,
+            spendPoints    : 0,
+            spendCosts     : 0,
+            availablePoint : 120,
+            reduced        : false
         }
     }
 
     parseTierModel(model) {
         return {
-            treeId                   : model.treeId || -1,
+            treeId                   : model.treeId,
             tierUnlockRequire        : model.tierUnlockRequire,
             tierUnlockRequireReduced : model.tierUnlockRequireReduced,
             skillPointBasic          : model.skillPointBasic,
@@ -145,7 +150,7 @@ export default class SkillsBuilder {
             skillCostAce             : model.skillCostAce,
             currectUnlockRequire     : 0,
             currectUnlockNeeded      : 0,
-            unlockStatus             : 0
+            unlocked                 : false
         }
     }
 
