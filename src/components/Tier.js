@@ -8,7 +8,7 @@ class Tier extends Component
 		var tier = getTier(id);
 
 		return (
-			<div className="tier">
+			<div className="tier" data-unlock={tier.unlocked}>
 				<div className="tier-skills">
 					{tier.skills.map((skillId, index) =>
 						<Skill

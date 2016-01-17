@@ -166,10 +166,12 @@ export default class SkillsBuilder {
             textBasic     : `${name}_basic`,
             textAce       : `${name}_ace`,
             textNotes     : `${name}_notes`,
-            ownedBasic    : false,
-            ownedAce      : false,
-            unlockedBasic : false,
-            unlockedAce   : false,
+            ownedBasic       : false,
+            ownedAce         : false,
+            unlockedBasic    : false,
+            unlockedAce      : false,
+            tierUnlocked     : false,
+            requiredUnlocked : false,
             alerted       : false,
             status        : statuses.STATUS_LOCKED
         };

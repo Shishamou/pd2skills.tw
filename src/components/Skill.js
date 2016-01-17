@@ -8,6 +8,14 @@ class Skill extends Component
 		this.props.handleEvent(this.props.id, events.CLICK);
 	}
 
+	handleMouseEnter(e) {
+		this.props.handleEvent(this.props.id, events.MOUSE_ENTER);
+	}
+
+	handleMouseLeave(e) {
+		this.props.handleEvent(this.props.id, events.MOUSE_LEAVE);
+	}
+
 	handleRemove(e) {
 		e.stopPropagation();
 		this.props.handleEvent(this.props.id, events.REMOVE);
@@ -19,6 +27,9 @@ class Skill extends Component
 
 		var dataset = skill.status.split('_').slice(-1).pop().toLowerCase();
 		var content = {
+			[statuses.STATUS_ALERTED]: (
+				<p>必要</p>
+			),
 			[statuses.STATUS_ACED]: (
 				<p>王牌</p>
 			),
@@ -44,13 +55,15 @@ class Skill extends Component
 			<div
 				className="skill"
 				data-status={dataset}
-				onClick={e => this.handleClick(e)}
+				onClick={(e) => this.handleClick(e)}
+				onMouseEnter={(e) => this.handleMouseEnter(e)}
+				onMouseLeave={(e) => this.handleMouseLeave(e)}
 			>
 				<div className="skill-icon"></div>
 				<div className="skill-text">{content}</div>
 				<div
 					className="skill-remove"
-					onClick={e => this.handleRemove(e)}
+					onClick={(e) => this.handleRemove(e)}
 				></div>
 			</div>
 		);
