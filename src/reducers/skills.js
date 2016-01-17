@@ -8,25 +8,9 @@ class Skills
     switcher() {
         return {
             [types.ADD_SKILL]: this.addSkill,
-            [types.HANDLE_SKILL_EVENT]: this.handleSkillEvent,
+            [types.HANDLE_SKILL_EVENT]: (state, action) => handleSkillEvent(action.event)(state, action),
             [types.FETCH_SKILLS]: (state, action) => fetchSkills(action.status)(state, action),
         };
-    }
-
-    // =========================================================================
-    // =
-    // =========================================================================
-
-    handleSkillEvent(state, action) {
-        var self = this;
-        state.skills = state.skills.map((skill, index) => {
-            if (index !== action.id) return skill;
-
-            handleSkillEvent(action.event)(skill);
-            return skill;
-        });
-
-        return state;
     }
 }
 

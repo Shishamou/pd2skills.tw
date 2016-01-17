@@ -1,6 +1,7 @@
 module.exports = {
     entry:[
         './src/index.js'
+        // './tests/redux-reducer-switcher.js'
     ],
     output: {
         path: __dirname + '/build/',

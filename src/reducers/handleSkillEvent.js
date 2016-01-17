@@ -3,16 +3,29 @@ import * as events from '../constants/Events';
 import * as statuses from '../constants/SkillStatuses';
 
 class SkillEvents {
+    constructor(hooks) {
+        hooks.addHookBefore((state, action) => {
+            state.skills = state.skills.slice();
+            this.state = state;
+            return this.currectSkill = state.skills[action.id];
+        });
+
+        hooks.addHookAfter((skill) => {
+            this.updateSkillStatus(this.currectSkill);
+            return this.state;
+        })
+    }
+
     switcher() {
         return {
-            [events.CLICK]: this.onClick,
-            [events.MOUSE_ENTER]: this.onClick,
-            [events.MOUSE_LEAVE]: this.onClick,
-            [events.REMOVE]: this.onRemove,
+            [events.CLICK]: this.handleClick,
+            [events.MOUSE_ENTER]: this.handleClick,
+            [events.MOUSE_LEAVE]: this.handleClick,
+            [events.REMOVE]: this.handleRemove,
         };
     }
 
-    onClick(skill) {
+    handleClick(skill) {
         if ( ! skill.ownedBasic) {
             // if (skill.unlockBasic)
                 skill.ownedBasic = true;
@@ -20,14 +33,11 @@ class SkillEvents {
             // if (skill.unlockAce)
                 skill.ownedAce = true;
         }
-
-        this.updateSkillStatus(skill);
     }
 
-    onRemove(skill) {
+    handleRemove(skill) {
         skill.ownedBasic = false;
         skill.ownedAce = false;
-        this.updateSkillStatus(skill);
     }
 
     default() {
