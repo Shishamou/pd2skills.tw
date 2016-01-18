@@ -22,7 +22,7 @@ class Skill extends Component
 	}
 
 	render() {
-		const { id, getSkill } = this.props;
+		const { id, getSkill, skillPointBasic, skillPointAce } = this.props;
 		var skill = getSkill(id);
 
 		var dataset = skill.status.split('_').slice(-1).pop().toLowerCase();
@@ -36,12 +36,12 @@ class Skill extends Component
 			[statuses.STATUS_OWNED]: (
 				<div className="text-group">
 					<p>擁有</p>
-					<p className="text-hide">購買 王牌<br/>花費 3 點</p>
+					<p className="text-hide">購買 王牌<br/>花費 {skillPointAce} 點</p>
 				</div>
 			),
 			[statuses.STATUS_UNLOCKED]: (
 				<div className="text-group">
-					<p className="text-hide">購買 基本<br/>花費 1 點</p>
+					<p className="text-hide">購買 基本<br/>花費 {skillPointBasic} 點</p>
 				</div>
 			),
 			[statuses.STATUS_LOCKED]: (
@@ -74,6 +74,8 @@ Skill.propTypes = {
 	id: PropTypes.number.isRequired,
 	getTier: PropTypes.func.isRequired,
 	getSkill: PropTypes.func.isRequired,
+	skillPointBasic: PropTypes.number.isRequired,
+	skillPointAce: PropTypes.number.isRequired,
 	handleEvent: PropTypes.func.isRequired,
 };
 

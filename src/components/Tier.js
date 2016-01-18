@@ -15,6 +15,8 @@ class Tier extends Component
 							{...this.props}
 	                        key={index}
 	                        id={skillId}
+							skillPointBasic={tier.skillPointBasic}
+							skillPointAce={tier.skillPointAce}
 	                    />
 					)}
 				</div>
