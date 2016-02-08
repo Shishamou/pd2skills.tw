@@ -8,7 +8,7 @@ module.exports = {
         assets: './src/assets.js'
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dev'),
         filename: '[name].js'
     },
     resolve: {
@@ -36,12 +36,5 @@ module.exports = {
                 ]
             }
         ]
-    },
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-        }),
-    ]
+    }
 };

@@ -75,7 +75,7 @@ Skill.propTypes = {
 	getTier: PropTypes.func.isRequired,
 	getSkill: PropTypes.func.isRequired,
 	skillPointBasic: PropTypes.number.isRequired,
-	skillPointAce: PropTypes.number.isRequired,
+	skillPointAce: PropTypes.number,
 	handleEvent: PropTypes.func.isRequired,
 };
 

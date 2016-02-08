@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { handleSkillEvent } from '../actions/skills';
-import Tree from '../components/Tree';
+import Trees from '../components/Trees';
 
 class App extends Component
 {
@@ -9,18 +9,12 @@ class App extends Component
         const { dispatch, trees, tiers, skills } = this.props;
 
         return (
-            <div className="trees">
-                {trees.map((tree, index) =>
-                    <Tree
-                        key={index}
-                        id={index}
-                        tree={tree}
-                        getTier={(id) => tiers[id]}
-                        getSkill={(id) => skills[id]}
-                        handleEvent={(id, event) => dispatch(handleSkillEvent(id, event))}
-                    />
-                )}
-            </div>
+            <Trees
+                trees={trees}
+                getTier={(id) => tiers[id]}
+                getSkill={(id) => skills[id]}
+                handleEvent={(id, event) => dispatch(handleSkillEvent(id, event))}
+            />
         )
     }
 }
@@ -29,7 +23,7 @@ function select(state) {
     return {
         trees: state.trees,
         tiers: state.tiers,
-        skills: state.skills,
+        skills: state.skills
     };
 }
 

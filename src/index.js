@@ -9,7 +9,6 @@ import { Provider } from 'react-redux';
 import App from './containers/App';
 import skillApp from './reducers/skills';
 import { addSkill, fetchSkills } from './actions/skills';
-import '../assets/style.less';
 
 
 const loggerMiddleware = createLogger();
@@ -21,7 +20,7 @@ const createStoreWithMiddleware = applyMiddleware(
 
 const store = createStoreWithMiddleware(skillApp);
 
-store.dispatch(fetchSkills('public/skills.json'));
+store.dispatch(fetchSkills('skills.json'));
 
 render(
     <Provider store={store}>
