@@ -12,7 +12,6 @@ class Trees extends Component
                     <Tree
 						{...this.props}
                         key={index}
-                        id={index}
                         tree={tree}
                     />
                 )}

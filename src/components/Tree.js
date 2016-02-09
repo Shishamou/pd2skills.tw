@@ -4,7 +4,7 @@ import Tier from './Tier';
 class Tree extends Component
 {
 	render() {
-		const { id, tree, getTier } = this.props;
+		const { tree, getTier } = this.props;
 		var tiers = tree.tiers.slice().reverse();
 
 		return (
@@ -22,7 +22,6 @@ class Tree extends Component
 }
 
 Tree.propTypes = {
-	id: PropTypes.number.isRequired,
 	tree: PropTypes.object.isRequired,
 	getTier: PropTypes.func.isRequired,
 	getSkill: PropTypes.func.isRequired,

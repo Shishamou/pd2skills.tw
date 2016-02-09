@@ -31,3 +31,7 @@ export function fetchSkillsSuccess(response) {
 export function fetchSkillsError(error) {
     return {type: types.FETCH_SKILLS, status: 'error', error};
 }
+
+export function activeSkillTree(id) {
+    return {type: types.ACTIVE_SKILL_TREE, id};
+}

@@ -1,3 +1,3 @@
-export const ADD_SKILL = 'ADD_SKILL';
 export const HANDLE_SKILL_EVENT = 'HANDLE_SKILL_EVENT';
 export const FETCH_SKILLS = 'FETCH_SKILLS';
+export const ACTIVE_SKILL_TREE = 'ACTIVE_SKILL_TREE';
