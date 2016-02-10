@@ -10,7 +10,7 @@ class Skills
         return {
             [types.HANDLE_SKILL_EVENT]: (state, action) => handleSkillEvent(action.event)(state, action),
             [types.FETCH_SKILLS]: (state, action) => fetchSkills(action.status)(state, action),
-            [types.ACTIVE_SKILL_TREE]: (state, action) => state.activedTree = action.id
+            [types.ACTIVE_SKILL_TREE]: (state, action) => {state.activedTree = action.id}
         };
     }
 }

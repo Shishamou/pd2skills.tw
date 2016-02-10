@@ -5,7 +5,8 @@ export function buildReducer(scaffolding, initialState = {}) {
         state = (typeof state === 'undefined')
             ? initialState
             : Object.assign({},  state);
-        return switcher.resolve(action.type)(state, action);
+        var resolved = switcher.resolve(action.type)(state, action);
+        return (typeof resolved === 'undefined')? state : resolved;
     }
 }
 

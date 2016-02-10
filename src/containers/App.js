@@ -16,7 +16,7 @@ class App extends Component
                     <ul className="simulator-tabs">
                         {trees.map((tree, index) => (
                             <li key={index} onClick={(e) => dispatch(activeSkillTree(index))}>
-                                {(activedTree === index)
+                                {(activedTree !== index)
                                     ? <span>{tree.name}</span>
                                     : <strong>{tree.name}</strong>
                                 }
