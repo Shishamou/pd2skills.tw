@@ -1,5 +1,4 @@
 {
-
     "skill_trees": [
         {
             "name": "mastermind",
@@ -30,7 +29,7 @@
                 [
                     { "name": "kilmer" },
                     { "name": "gunslinger" },
-                    { "name": "partner_in_crime", "required" : "joker" }
+                    { "name": "partner_in_crime", "required": "joker" }
                 ],
                 [
                     { "name": "hostage_taker" },
@@ -40,40 +39,40 @@
             ]
         },
         {
-            "name": "mastermind2",
+            "name": "enforcer",
             "skills": [
                 [
-                    { "name": "unlocking_the_mastermind" }
+                    { "name": "unlocking_the_enforcer" }
                 ],
                 [
-                    { "name": "cable_guy" },
-                    { "name": "combat_medic" },
-                    { "name": "endurance" }
+                    { "name": "oppressor" },
+                    { "name": "bullet_storm" },
+                    { "name": "transporter" }
                 ],
                 [
-                    { "name": "control_freak" },
-                    { "name": "painkillers" },
-                    { "name": "leadership" }
+                    { "name": "die_hard" },
+                    { "name": "underdog" },
+                    { "name": "pumping_iron" }
                 ],
                 [
-                    { "name": "spotter" },
+                    { "name": "shotgun_impact" },
                     { "name": "equilibrium" },
-                    { "name": "dominator" }
+                    { "name": "tough_guy" }
                 ],
                 [
-                    { "name": "stockholm_syndrome" },
-                    { "name": "combat_doctor" },
-                    { "name": "joker", "required" : "dominator" }
+                    { "name": "shotgun_cqb" },
+                    { "name": "ammunition_specialist" },
+                    { "name": "berserker" }
                 ],
                 [
-                    { "name": "kilmer" },
-                    { "name": "gunslinger" },
-                    { "name": "partner_in_crime", "required" : "joker" }
+                    { "name": "hard_boiled" },
+                    { "name": "fully_loaded" },
+                    { "name": "portable_saw" }
                 ],
                 [
-                    { "name": "hostage_taker" },
-                    { "name": "pistol_messiah" },
-                    { "name": "inspire" }
+                    { "name": "overkill" },
+                    { "name": "iron_man" },
+                    { "name": "carbon_blade", "required": "portable_saw" }
                 ]
             ]
         }
