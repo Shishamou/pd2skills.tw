@@ -1,0 +1,258 @@
+.skills() {
+	/* =========================================================================
+ 	* = Initial
+ 	* =======================================================================*/
+
+	@tier-column-width  : @skill-block-width + @skill-border-width * 2;
+	@tier-width         : @tier-column-width * 3;
+	@tier-height        : @skill-icon-size + @skill-border-width * 2;
+
+	@tree-width         : @tier-width + @tier-aside-width;
+	@tree-heigth        : @tier-height * 7;
+
+	/* =========================================================================
+	 * = Section
+	 * =======================================================================*/
+
+	.section.sections-skill {
+		@section-main-width: @tree-width;
+		@section-content-height: @tier-height * 7;
+
+		@section-box-width: @tier-width;
+		@section-box-height: @tier-height * 6;
+
+		.section-content {
+			width: @section-main-width;
+			height: @section-content-height;
+
+			&:before {
+				width: @section-box-width;
+				height: @section-box-height;
+			}
+
+			&:after {
+				width: @section-box-width;
+			}
+		}
+
+		.section-aside {
+			width: ~"calc(100% - @{section-main-width})";
+			height: @section-box-height;
+		}
+	}
+
+	/* =========================================================================
+	 * = Tree
+	 * =======================================================================*/
+
+	.tree {
+		position: relative;
+
+		.progressbar {
+			position: absolute;
+			top: @tier-height;
+			right: (@tier-aside-width - @progressbar-width) / 2;
+			width: @progressbar-width;
+			height: @tier-height * 5;
+
+			&:before {
+				content: ' ';
+				display: block;
+				position: absolute;
+				bottom: 0;
+				width: @progressbar-width;
+				height: 0;
+				background: @color-normal;
+			}
+
+			.loop(@percent) when (@percent <= 100) {
+				&[data-percent='@{percent}']:before {
+					height: 1% * @percent;
+				}
+				.loop(@percent + 1);
+			}
+
+			.loop(1);
+		}
+
+	}
+
+	/* =========================================================================
+	 * = Tier
+	 * =======================================================================*/
+
+	.tier {
+	    position: relative;
+		width: @tier-width;
+	    height: @tier-height;
+	    padding-right: @tier-aside-width;
+
+		.tier-skills {
+			width: @tier-width;
+		}
+
+	    .tier-aside {
+			@width: @tier-aside-font * 3;
+	        box-sizing: border-box;
+			position: absolute;
+			right: (@tier-aside-width - @width) / 2;
+			bottom: 0;
+	        width: @width;
+			color: @color-dark;
+			text-align: center;
+
+	        p {
+		        font-size: @tier-aside-font;
+	            width: @tier-aside-font;
+	        }
+
+	        p:first-child {
+	            float: left;
+	        }
+
+	        p:last-child {
+	            float: right;
+	            text-align: right;
+	        }
+	    }
+
+	    &[data-unlocked='true'] .tier-aside {
+	        color: @color-normal;
+	    }
+
+	    &:last-child .tier-aside {
+	        display: none;
+	    }
+	}
+
+	/* =========================================================================
+	 * = Skill
+	 * =======================================================================*/
+
+	.skill {
+		position: relative;
+		float: left;
+		width: @skill-block-width;
+		height: @skill-icon-size;
+		border:2px solid transparent;
+
+		&:hover {
+			border-color: @color-normal;
+		}
+
+		&:only-child {
+			float: none;
+			margin: 0 auto;
+		}
+
+		/* =====================================================================
+		 * = Skill Icon
+		 * ===================================================================*/
+
+		.skill-icon {
+			position: relative;
+			opacity: 0.8;
+			float: left;
+			width: @skill-icon-size;
+			height: @skill-icon-size;
+			background: @color-dark;
+		}
+
+		&[data-status='alerted'] .skill-icon {
+			background: @color-alert;
+		}
+
+		&[data-status='locked'] .skill-icon {
+			background: @color-dark;
+		}
+
+		&[data-status='unlocked'] .skill-icon {
+			background: @color-gray;
+		}
+
+		&[data-status='owned'] .skill-icon {
+			background: @color-normal;
+		}
+
+		&[data-status='aced'] .skill-icon {
+			background: @color-normal;
+
+			@skill-aced-icon: './aced.png';
+			@skill-aced-icon-size: @skill-icon-size * 2;
+			&:before {
+				content: '';
+				display: block;
+				position: absolute;
+				top: -(@skill-icon-size / 2);
+				left: -(@skill-icon-size / 2);
+				z-index: -1;
+				width: @skill-aced-icon-size;
+				height: @skill-aced-icon-size;
+				background: url(@skill-aced-icon) no-repeat;
+				background-size: @skill-aced-icon-size;
+			}
+		}
+
+		/* =====================================================================
+		 * = Skill Text
+		 * ===================================================================*/
+
+		.skill-text {
+			box-sizing: border-box;
+			display: block;
+			width: auto;
+			height: 100%;
+			margin-left: @skill-icon-size;
+
+			p {
+				line-height: @skill-font-size;
+				padding-top: (@skill-icon-size - @skill-font-size) / 2;
+				padding-right: 10px;
+				padding-left: 10px;
+				font-size: @skill-font-size;
+			}
+
+		}
+
+		.skill-text-hold {
+			display: block;
+		}
+		.skill-text-hide {
+			display: none;
+		}
+
+		&:hover {
+			.skill-text-hold {
+				display: none;
+			}
+
+			.skill-text-hide {
+				display: block;
+			}
+		}
+
+		/* =====================================================================
+		 * = Skill Remove
+		 * ===================================================================*/
+
+		.skill-remove {
+			display: none;
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: @skill-font-size;
+			height: @skill-font-size;
+			background: @color-strong;
+
+			&:hover {
+				background: @color-normal;
+			}
+		}
+
+		&[data-status='owned']:hover, &[data-status='aced']:hover {
+			.skill-remove {
+				display: block;
+			}
+		}
+	}
+}

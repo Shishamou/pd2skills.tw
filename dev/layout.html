@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layout</title>
+    <script src="assets.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<!-- <div class="bk" style="background-image: url('skills1280.jpg')"></div> -->
+<div class="wrapper">
+    <div class="header">
+        <ul class="header-nav">
+            <li class="actived">skills</li>
+            <li>perk decks</li>
+        </ul>
+    </div>
+
+    <div class="section sections-skill">
+        <div class="section-main">
+            <ul class="section-tabs">
+                <li class="actived">mastermind</li>
+                <li>enforcer</li>
+                <li>technician</li>
+                <li>ghost</li>
+                <li>fugitive</li>
+            </ul>
+            <div class="section-content">
+                <div class="tree">
+                    <div class="progressbar" data-percent="50"></div>
+                    <div class="tier">
+                        <div class="tier-skills">
+                            <div class="skill"> <div class="skill-icon"></div> <div class="skill-text"> <p class="skill-text-hide">未解鎖</p> </div> <div class="skill-remove"></div> </div>
+                            <div class="skill"> <div class="skill-icon"></div> <div class="skill-text"> <p class="skill-text-hide">未解鎖</p> </div> <div class="skill-remove"></div> </div>
+                            <div class="skill"> <div class="skill-icon"></div> <div class="skill-text"> <p class="skill-text-hide">未解鎖</p> </div> <div class="skill-remove"></div> </div>
+                        </div>
+                        <div class="tier-aside"> <p>6</p> <p>40</p> </div>
+                    </div>
+                    <div class="tier">
+                        <div class="tier-skills">
+                            <div class="skill"> <div class="skill-icon"></div> <div class="skill-text"> <p class="skill-text-hide">未解鎖</p> </div> <div class="skill-remove"></div> </div>
+                            <div class="skill"> <div class="skill-icon"></div> <div class="skill-text"> <p class="skill-text-hide">未解鎖</p> </div> <div class="skill-remove"></div> </div>
+                            <div class="skill"> <div class="skill-icon"></div> <div class="skill-text"> <p class="skill-text-hide">未解鎖</p> </div> <div class="skill-remove"></div> </div>
+                        </div>
+                        <div class="tier-aside"> <p>5</p> <p>30</p> </div>
+                    </div>
+                    <div class="tier">
+                        <div class="tier-skills">
+                            <div class="skill"> <div class="skill-icon"></div> <div class="skill-text"> <p class="skill-text-hide">未解鎖</p> </div> <div class="skill-remove"></div> </div>
+                            <div class="skill"> <div class="skill-icon"></div> <div class="skill-text"> <p class="skill-text-hide">未解鎖</p> </div> <div class="skill-remove"></div> </div>
+                            <div class="skill"> <div class="skill-icon"></div> <div class="skill-text"> <p class="skill-text-hide">未解鎖</p> </div> <div class="skill-remove"></div> </div>
+                        </div>
+                        <div class="tier-aside"> <p>4</p> <p>20</p> </div>
+                    </div>
+                    <div class="tier" data-unlocked="true">
+        				<div class="tier-skills">
+                            <div class="skill"> <div class="skill-icon"></div> <div class="skill-text"> <p class="skill-text-hide">未解鎖</p> </div> <div class="skill-remove"></div> </div>
+                            <div class="skill"> <div class="skill-icon"></div> <div class="skill-text"> <p class="skill-text-hide">未解鎖</p> </div> <div class="skill-remove"></div> </div>
+                            <div class="skill"> <div class="skill-icon"></div> <div class="skill-text"> <p class="skill-text-hide">未解鎖</p> </div> <div class="skill-remove"></div> </div>
+        				</div>
+        				<div class="tier-aside"> <p>3</p> <p>10</p> </div>
+        			</div>
+                    <div class="tier" data-unlocked="true">
+                        <div class="tier-skills">
+                            <div class="skill"> <div class="skill-icon"></div> <div class="skill-text"> <p class="skill-text-hide">未解鎖</p> </div> <div class="skill-remove"></div> </div>
+                            <div class="skill" data-status="alerted">
+                                <div class="skill-icon"></div>
+                                <div class="skill-text">
+                                    <p>必要</p>
+                                </div>
+                                <div class="skill-remove"></div>
+                            </div>
+                            <div class="skill"> <div class="skill-icon"></div> <div class="skill-text"> <p class="skill-text-hide">未解鎖</p> </div> <div class="skill-remove"></div> </div>
+                        </div>
+                        <div class="tier-aside"> <p>2</p> <p>5</p> </div>
+                    </div>
+                    <div class="tier" data-unlocked="true">
+                        <div class="tier-skills">
+                            <div class="skill" data-status='unlocked'>
+                                <div class="skill-icon"></div>
+                                <div class="skill-text">
+                                    <p class="skill-text-hide">購買 基本<br/>花費 1 點</p>
+                                </div>
+                                <div class="skill-remove"></div>
+                            </div>
+                            <div class="skill" data-status='owned'>
+                                <div class="skill-icon"></div>
+                                <div class="skill-text">
+                					<p class="skill-text-hold">擁有</p>
+                					<p class="skill-text-hide">購買 王牌<br/>花費 3 點</p>
+                                </div>
+                                <div class="skill-remove"></div>
+                            </div>
+                            <div class="skill" data-status='aced'>
+                                <div class="skill-icon"></div>
+                                <div class="skill-text">
+                                    <p>王牌</p>
+                                </div>
+                                <div class="skill-remove"></div>
+                            </div>
+                        </div>
+                        <div class="tier-aside"> <p>1</p> <p>1</p> </div>
+                    </div>
+                    <div class="tier" data-unlocked="true">
+                        <div class="tier-skills">
+                            <div class="skill" data-status='unlocked'>
+                                <div class="skill-icon"></div>
+                                <div class="skill-text">
+                                    <p class="skill-text-hide">購買 基本<br/>花費 1 點</p>
+                                </div>
+                                <div class="skill-remove"></div>
+                            </div>
+                        </div>
+                        <div class="tier-aside"> <p>0</p> <p>0</p> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-aside">
+            <div class="infobox">
+                <div class="infobox-header">
+                    <h1 class="infobox-title">解鎖技能樹</h1>
+                    <h2 class="infobox-subtitle">Unlocking The Mastermind</h2>
+                </div>
+                <div class="infobox-block">
+                    <p class="alerted">你必須再花費 {point} 點來解鎖第 {tier} 階技能</p>
+                </div>
+                <div class="infobox-block">
+                    <p>基本: <span class="strong">{point} 點 / {cost}</span></p>
+                    <p>你跑步的耐力增加<strong>100%</strong></p>
+                </div>
+                <div class="infobox-block">
+                    <p>王牌: <span class="alerted">{point} 點 / {cost}</span></p>
+                    <p>你和隊友的耐力增加<strong>50%</strong>。（你自己增加共<strong>150%</strong>）</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
