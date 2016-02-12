@@ -9,11 +9,13 @@ class Tree extends Component
 
 		return (
 			<div className="tree">
+				<div className="progressbar" data-percent="50"></div>
 				{tiers.map((tierId, index) =>
 					<Tier
 						{...this.props}
-                        key={index}
+						key={index}
                         id={tierId}
+						tierRank={6 - index}
                     />
 				)}
 			</div>

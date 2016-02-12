@@ -28,25 +28,29 @@ class Skill extends Component
 		var dataset = skill.status.split('_').slice(-1).pop().toLowerCase();
 		var content = {
 			[statuses.STATUS_ALERTED]: (
-				<p>必要</p>
+				<div className="skill-text">
+					<p>必要</p>
+				</div>
 			),
 			[statuses.STATUS_ACED]: (
-				<p>王牌</p>
+				<div className="skill-text">
+					<p>王牌</p>
+				</div>
 			),
 			[statuses.STATUS_OWNED]: (
-				<div className="text-group">
-					<p>擁有</p>
-					<p className="text-hide">購買 王牌<br/>花費 {skillPointAce} 點</p>
+				<div className="skill-text">
+					<p className="skill-text-hold">擁有</p>
+					<p className="skill-text-hide">購買 王牌<br/>花費 {skillPointAce} 點</p>
 				</div>
 			),
 			[statuses.STATUS_UNLOCKED]: (
-				<div className="text-group">
-					<p className="text-hide">購買 基本<br/>花費 {skillPointBasic} 點</p>
+				<div className="skill-text">
+					<p className="skill-text-hide">購買 基本<br/>花費 {skillPointBasic} 點</p>
 				</div>
 			),
 			[statuses.STATUS_LOCKED]: (
-				<div className="text-group">
-					<p className="text-hide">未解鎖</p>
+				<div className="skill-text">
+					<p className="skill-text-hide">未解鎖</p>
 				</div>
 			)
 		}[skill.status];
@@ -60,7 +64,7 @@ class Skill extends Component
 				onMouseLeave={(e) => this.handleMouseLeave(e)}
 			>
 				<div className="skill-icon"></div>
-				<div className="skill-text">{content}</div>
+				{content}
 				<div
 					className="skill-remove"
 					onClick={(e) => this.handleRemove(e)}
