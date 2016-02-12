@@ -26,34 +26,45 @@ class Skill extends Component
 		var skill = getSkill(id);
 
 		var dataset = skill.status.split('_').slice(-1).pop().toLowerCase();
-		var content = {
-			[statuses.STATUS_ALERTED]: (
-				<div className="skill-text">
-					<p>必要</p>
-				</div>
-			),
-			[statuses.STATUS_ACED]: (
-				<div className="skill-text">
-					<p>王牌</p>
-				</div>
-			),
-			[statuses.STATUS_OWNED]: (
-				<div className="skill-text">
-					<p className="skill-text-hold">擁有</p>
-					<p className="skill-text-hide">購買 王牌<br/>花費 {skillPointAce} 點</p>
-				</div>
-			),
-			[statuses.STATUS_UNLOCKED]: (
-				<div className="skill-text">
-					<p className="skill-text-hide">購買 基本<br/>花費 {skillPointBasic} 點</p>
-				</div>
-			),
-			[statuses.STATUS_LOCKED]: (
-				<div className="skill-text">
-					<p className="skill-text-hide">未解鎖</p>
-				</div>
-			)
-		}[skill.status];
+		var content = (function(status) {
+			switch (status) {
+				case statuses.STATUS_ALERTED:
+					return (
+						<div className="skill-text">
+							<p>必要</p>
+						</div>
+					);
+				case statuses.STATUS_ACED:
+					return (
+						<div className="skill-text">
+							<p>王牌</p>
+						</div>
+					);
+				case statuses.STATUS_OWNED:
+					return (skillPointAce > 0)? (
+						<div className="skill-text">
+							<p className="skill-text-hold">擁有</p>
+							<p className="skill-text-hide">購買 王牌<br/>花費 {skillPointAce} 點</p>
+						</div>
+					) : (
+						<div className="skill-text">
+							<p>擁有</p>
+						</div>
+					);
+				case statuses.STATUS_UNLOCKED:
+					return (
+						<div className="skill-text">
+							<p className="skill-text-hide">購買 基本<br/>花費 {skillPointBasic} 點</p>
+						</div>
+					);
+				case statuses.STATUS_LOCKED:
+					return (
+						<div className="skill-text">
+							<p className="skill-text-hide">未解鎖</p>
+						</div>
+					);
+			}
+		})(skill.status);
 
 		return (
 			<div
@@ -63,7 +74,6 @@ class Skill extends Component
 				onMouseEnter={(e) => this.handleMouseEnter(e)}
 				onMouseLeave={(e) => this.handleMouseLeave(e)}
 			>
-				<div className="skill-icon"></div>
 				{content}
 				<div
 					className="skill-remove"
