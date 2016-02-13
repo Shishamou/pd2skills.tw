@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 
 import App from './containers/App';
 import skillApp from './reducers/skills';
-import { addSkill, fetchSkills } from './actions/skills';
+import { fetchLangs, fetchSkills } from './actions/initial';
 
 
 const loggerMiddleware = createLogger();
@@ -20,6 +20,7 @@ const createStoreWithMiddleware = applyMiddleware(
 
 const store = createStoreWithMiddleware(skillApp);
 
+store.dispatch(fetchLangs('local.json'));
 store.dispatch(fetchSkills('skills.json'));
 
 render(

@@ -14,9 +14,10 @@ class App extends Component
     }
 
     render() {
-        const { dispatch, trees, tiers, skills, activedTree } = this.props;
+        const { dispatch, trees, tiers, skills } = this.props;
 
-        const tree = trees[activedTree];
+        const activedTree = this.props.activedTree || 0;
+        const tree = trees[activedTree] || trees.slice().shift();
         const locale = (e) => (e);
 
         return (

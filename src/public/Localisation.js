@@ -1,5 +1,5 @@
 
-export default class Localisation {
+class Localisation {
     constructor() {
         this.locale = '';
         this.langs = {};
@@ -27,8 +27,6 @@ export default class Localisation {
                 Object.assign(this.langs[locale], langs[locale]);
             }
         });
-
-        console.log(this.langs);
     }
 
     setLocale(locale) {
@@ -43,3 +41,5 @@ export default class Localisation {
         return '';
     }
 }
+
+export default new Localisation;

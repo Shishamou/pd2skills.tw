@@ -1,8 +1,7 @@
 import { buildSwitcher } from '../redux-reducer-switcher';
-import SkillsBuilder from '../public/SkillsBuilder';
-import * as statuses from '../constants/SkillStatuses';
+import Localisation from '../public/Localisation';
 
-class FetchSkills {
+class FetchLangs {
     switcher() {
         return {
             success: this.onSuccess,
@@ -12,21 +11,20 @@ class FetchSkills {
     }
 
     onSuccess(state, action) {
-        (new SkillsBuilder(state)).build(action.response);
+        Localisation.addLangs(action.response);
+        state.langs = Localisation.langs;
         return state;
     }
 
     onError(state, action) {
-        throw '讀取技能檔案失敗: ' + action.error;
+        throw '讀取語言檔失敗: ' + action.error;
         return state;
     }
 
     default(state, action) {
-        state.trees = [];
-        state.tiers = [];
-        state.skills = [];
+        state.langs = {};
         return state;
     }
 }
 
-export default buildSwitcher(FetchSkills).resolve;
+export default buildSwitcher(FetchLangs).resolve;

@@ -1,6 +1,6 @@
 import Localisation from './public/Localisation';
 
-var local = new Localisation;
+var local = Localisation;
 
 local.loadLang('local.json');
 local.setLocale('tc');
