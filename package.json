@@ -5,7 +5,8 @@
   "description": "Payday 2 Skill Tree Simulator",
   "scripts": {
     "dev": "webpack -w",
-    "dev-server": "webpack-dev-server --devtool eval --progress --colors --inline --hot --content-base dev --config webpack.dev.config.js --port 8088",
+    "dev-server": "webpack-dev-server --devtool eval --progress --colors --inline --hot --content-base dev --config webpack.dev.config.js --port 8000",
+    "testing": "webpack-dev-server --devtool eval --progress --colors --inline --hot --content-base dev --config webpack.testing.config.js --port 8000",
     "server": "node server.js",
     "deploy": "NODE_ENV=production webpack -p"
   },
