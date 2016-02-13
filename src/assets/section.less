@@ -15,13 +15,13 @@
 
 			&:before {
 				.pseudo-block;
-				.frame-border;
+				.frame-border(@border-width);
 			}
 
 			&:after {
 				.pseudo-block;
-				height: 2px;
-				border-top: 2px solid @color-normal;
+				height: @border-width;
+				border-top: @border-width solid @color-normal;
 			}
 		}
 
@@ -34,7 +34,7 @@
 
 			&:before {
 				.pseudo-block;
-				.frame-border;
+				.frame-border(@border-width);
 			}
 		}
 	}

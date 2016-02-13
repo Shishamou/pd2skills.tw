@@ -12,9 +12,10 @@
 	clear: both;
 }
 
-.frame-border() {
-	opacity: .2;
-	border: 2px solid @color-normal;
+.frame-border(@border: 2px) {
+	@border-image-slice: 10;
+	border: @border * 5px solid transparent;
+    border-image: url('frame-border.gif') @border-image-slice @border-image-slice repeat;
 }
 
 .pseudo-block() {
