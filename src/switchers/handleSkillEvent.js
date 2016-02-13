@@ -15,7 +15,7 @@ class SkillEvents {
 
         // 更新技能樹
         hooks.addHookAfter(() => {
-            this.updateTreeState(this.currectSkill.treeId);
+            this.updateTreeState(this.getTree(this.currectSkill.treeId));
             this.refreshSkillsStatus();
             return this.state;
         });
@@ -48,21 +48,22 @@ class SkillEvents {
         }
     }
 
-    handleMouse(skill, hover = true) {
-        if ( ! skill.requiredSkill) return;
-
-        var requiredSkill = this.getSkillByName(skill.requiredSkill, true);
-        requiredSkill.alerted = (requiredSkill.ownedBasic || ( ! hover))
-            ? false
-            : hover;
-    }
-
     handleMouseEnter(skill) {
-        this.handleMouse(skill, true);
+        this._handleMouse(skill, true);
     }
 
     handleMouseLeave(skill) {
-        this.handleMouse(skill, false);
+        this._handleMouse(skill, false);
+    }
+
+    _handleMouse(skill, hover = true) {
+        // 更新前置技能
+        if (skill.requiredSkill) {
+            var requiredSkill = this.getSkillByName(skill.requiredSkill, true);
+            requiredSkill.alerted = (requiredSkill.ownedBasic || ( ! hover))
+                ? false
+                : hover;
+        }
     }
 
     handleRemove(skill) {
@@ -77,8 +78,10 @@ class SkillEvents {
     // = Commands
     // =========================================================================
 
+    /**
+     * 更新技能樹
+     */
     updateTreeState(tree) {
-        tree = this.getTree(tree);
         tree.spendPoints = 0;
         tree.spendCosts = 0;
 
@@ -88,20 +91,29 @@ class SkillEvents {
         }, this);
     }
 
+    /**
+     * 更新技能樹階層
+     */
     updateTreeStateHandleTier(tier, tree) {
+        // 判斷是否有惡名減免
         tier.currectUnlockRequire = (tree.reduced)
             ? tier.tierUnlockRequireReduced
             : tier.tierUnlockRequire;
 
+        // 計算解鎖需求與更新解鎖狀態
         tier.currectUnlockNeeded = tree.spendPoints - tier.currectUnlockRequire;
         tier.unlocked = (tier.currectUnlockNeeded >= 0);
 
+        // 迭代處理階層技能
         tier.skills.forEach((skill) => {
             skill = this.getSkill(skill);
             this.updateTreeStateHandleSkill(skill, tier, tree);
         }, this);
     }
 
+    /**
+     * 更新技能樹技能
+     */
     updateTreeStateHandleSkill(skill, tier, tree) {
         var clearSkill = this.updateTreeStateHandleSkillUpdate(skill, tier, tree);
         if (clearSkill) {
@@ -123,6 +135,9 @@ class SkillEvents {
         }
     }
 
+    /**
+     * 更新技能樹技能狀態
+     */
     updateTreeStateHandleSkillUpdate(skill, tier, tree) {
         // 檢查階層解鎖
         skill.tierUnlocked = tier.unlocked;
@@ -150,6 +165,9 @@ class SkillEvents {
             : false;
     }
 
+    /**
+     * 刷新所有技能狀態
+     */
     refreshSkillsStatus() {
         this.state.skills.forEach((skill) => {
             skill.status = (function(skill) {

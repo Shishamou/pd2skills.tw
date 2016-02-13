@@ -14,8 +14,8 @@ import { addSkill, fetchSkills } from './actions/skills';
 const loggerMiddleware = createLogger();
 
 const createStoreWithMiddleware = applyMiddleware(
-    thunkMiddleware,
-    loggerMiddleware
+    thunkMiddleware
+    // loggerMiddleware
 )(createStore)
 
 const store = createStoreWithMiddleware(skillApp);
