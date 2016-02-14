@@ -66,16 +66,13 @@ class App extends Component
                 </div>
                 <div className="section-aside">
                     <div className="infobox">
-                        <div className="infobox-header">
-                            <h1 className="infobox-title">{localeText('menu_mastermind')}</h1>
-                            <h2 className="infobox-subtitle">Unlocking The Mastermind</h2>
-                        </div>
-                        <p className="infobox-block">
-                            <span className="alerted" dangerouslySetInnerHTML={{
-                                __html: localeText('st_menu_points_to_unlock_tier_singular', {points: 1, tier: 3})
-                            }} />
-                        </p>
-                        <p className="infobox-block"  dangerouslySetInnerHTML={{
+                        <h1 className="infobox-header" dangerouslySetInnerHTML={{
+                            __html: localeText('menu_combat_medic')
+                        }} />
+                        <p className="infobox-block alerted" dangerouslySetInnerHTML={{
+                            __html: localeText('st_menu_points_to_unlock_tier_singular', {points: 1, tier: 3})
+                        }} />
+                        <p className="infobox-block" dangerouslySetInnerHTML={{
                             __html: localeText('menu_mastermind_desc', {basic: 500, multibasic: 3})
                         }} />
                     </div>
