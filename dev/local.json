@@ -44,7 +44,7 @@
 "st_menu_prerequisite_following_skill_plural" : "需用相對應的技能以解鎖此技能：\n",
 "st_menu_profession_unlocked" : "$profession;已解鎖",
 
-"menu_mastermind" : "解鎖黑手技能樹",
+"menu_mastermind" : "解鎖{{st_menu_mastermind}}技能樹",
 "menu_mastermind_desc" : "價格：##$basic;## \n就是那些凱子，負責購買任務支援的傢伙。\n就是那些喜歡玩手槍，射得又快又準的傢伙。\n就是那些只要給他一把手槍，他就會自己站起來的傢伙。\n就是那些同伴倒地就喊起來，送隊友進監獄的傢伙。\n就是那些不准同伴倒在地上偷懶的傢伙。\n就是那些夢想成為神奇寶貝大師，專收服神奇寶貝的傢伙。\n\n可以攜帶並設置醫療包，醫療包可以回復倒下次數，\n\n醫療包可使用##$multibasic;##次。",
 "menu_cable_guy" : "捆工\nCable Guy",
 "menu_cable_guy_desc" : "基礎：##$basic;##\n捆綁人質快##$multibasic;##。\n\n精通：##$pro;##\n攜帶的綁繩增加##$multipro;##條。",

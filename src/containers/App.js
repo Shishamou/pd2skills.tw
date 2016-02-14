@@ -1,7 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+
+import Localisation from '../public/Localisation';
 import { handleSkillEvent, activeSkillTree } from '../actions/skills';
+
 import Tree from '../components/Tree';
+
+Localisation.setLocale('tc');
 
 class App extends Component
 {
@@ -13,12 +18,29 @@ class App extends Component
         this.props.dispatch(activeSkillTree(index));
     }
 
+    locale(key) {
+        return Localisation.localize(key);
+    }
+
+    localeText(key, injects = {}) {
+        var text = this.locale(key);
+        if (text == '') return text;
+
+        text = text.replace(/{{(\w+)}}/g, (match, key)=>(this.locale(key) || match));
+        text = text.replace(/\$(\w+);?/g, (match, key)=>(injects[key] || match));
+        text = text.replace(/##(.+)##/g, (match, key)=>(`<strong>${key}</strong>`));
+        text = text.replace(/\n/g, '<br />');
+        return text;
+    }
+
     render() {
         const { dispatch, trees, tiers, skills } = this.props;
 
         const activedTree = this.props.activedTree || 0;
         const tree = trees[activedTree] || trees.slice().shift();
-        const locale = (e) => (e);
+
+        const locale = this.locale;
+        const localeText = this.localeText.bind(this);
 
         return (
             <div className="section sections-skill">
@@ -28,12 +50,13 @@ class App extends Component
                             <li key={index}
                                 className={(activedTree === index)? 'actived' : ''}
                                 onClick={(e)=>{this.clickTab(index)}}
-                            >{locale(tree.name)}</li>
+                            >{locale(`st_menu_${tree.name}`)}</li>
                         ))}
                     </ul>
                     <div className="section-content">
                         {(tree)? (
                             <Tree tree={tree}
+                                locale={locale}
                                 getTier={(id) => tiers[id]}
                                 getSkill={(id) => skills[id]}
                                 handleEvent={(id, event) => dispatch(handleSkillEvent(id, event))}
@@ -44,20 +67,17 @@ class App extends Component
                 <div className="section-aside">
                     <div className="infobox">
                         <div className="infobox-header">
-                            <h1 className="infobox-title">解鎖技能樹</h1>
+                            <h1 className="infobox-title">{localeText('menu_mastermind')}</h1>
                             <h2 className="infobox-subtitle">Unlocking The Mastermind</h2>
                         </div>
-                        <div className="infobox-block">
-                            <p className="alerted">你必須再花費 [point] 點來解鎖第 [tier] 階技能</p>
-                        </div>
-                        <div className="infobox-block">
-                            <p>基本: <span className="strong">[point] 點 / [cost]</span></p>
-                            <p>你跑步的耐力增加<strong>100%</strong></p>
-                        </div>
-                        <div className="infobox-block">
-                            <p>王牌: <span className="alerted">[point] 點 / [cost]</span></p>
-                            <p>你和隊友的耐力增加<strong>50%</strong>。（你自己增加共<strong>150%</strong>）</p>
-                        </div>
+                        <p className="infobox-block">
+                            <span className="alerted" dangerouslySetInnerHTML={{
+                                __html: localeText('st_menu_points_to_unlock_tier_singular', {points: 1, tier: 3})
+                            }} />
+                        </p>
+                        <p className="infobox-block"  dangerouslySetInnerHTML={{
+                            __html: localeText('menu_mastermind_desc', {basic: 500, multibasic: 3})
+                        }} />
                     </div>
                 </div>
             </div>
