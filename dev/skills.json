@@ -23,6 +23,102 @@
                 { "name": "pistol_messiah" },
                 { "name": "inspire" }
             ]
+        },
+        {
+            "name": "enforcer",
+            "skills": [
+                { "name": "enforcer" },
+                { "name": "oppressor" },
+                { "name": "ammo_reservoir" },
+                { "name": "pack_mule" },
+                { "name": "show_of_force" },
+                { "name": "underdog" },
+                { "name": "steroids" },
+                { "name": "shotgun_impact" },
+                { "name": "shades" },
+                { "name": "tough_guy" },
+                { "name": "shotgun_cqb" },
+                { "name": "ammo_2x" },
+                { "name": "wolverine" },
+                { "name": "from_the_hip" },
+                { "name": "bandoliers" },
+                { "name": "portable_saw" },
+                { "name": "overkill" },
+                { "name": "juggernaut" },
+                { "name": "carbon_blade", "required" : "portable_saw" }
+            ]
+        },
+        {
+            "name": "technician",
+            "skills": [
+                { "name": "technician" },
+                { "name": "rifleman" },
+                { "name": "trip_miner" },
+                { "name": "discipline" },
+                { "name": "sharpshooter" },
+                { "name": "trip_mine_expert" },
+                { "name": "hardware_expert" },
+                { "name": "sentry_gun" },
+                { "name": "master_craftsman" },
+                { "name": "drill_expert" },
+                { "name": "sentry_targeting_package" },
+                { "name": "blast_radius" },
+                { "name": "silent_drilling" },
+                { "name": "sentry_2_0" },
+                { "name": "shaped_charge" },
+                { "name": "insulation" },
+                { "name": "sentry_gun_2x" },
+                { "name": "mag_plus" },
+                { "name": "iron_man" }
+            ]
+        },
+        {
+            "name": "ghost",
+            "skills": [
+                { "name": "ghost" },
+                { "name": "scavenger" },
+                { "name": "sprinter" },
+                { "name": "cat_burglar" },
+                { "name": "transporter" },
+                { "name": "chameleon" },
+                { "name": "cleaner" },
+                { "name": "assassin" },
+                { "name": "martial_arts" },
+                { "name": "smg_master" },
+                { "name": "nine_lives" },
+                { "name": "ecm_2x" },
+                { "name": "hitman" },
+                { "name": "magic_touch" },
+                { "name": "ecm_booster" },
+                { "name": "silence_expert" },
+                { "name": "good_luck_charm" },
+                { "name": "ecm_feedback" },
+                { "name": "moving_target" }
+            ]
+        },
+        {
+            "name": "hoxton_pack",
+            "skills": [
+                { "name": "hoxton_pack" },
+                { "name": "freedom_call" },
+                { "name": "hidden_blade" },
+                { "name": "thick_skin" },
+                { "name": "awareness" },
+                { "name": "jail_workout" },
+                { "name": "alpha_dog" },
+                { "name": "cell_mates" },
+                { "name": "thug_life" },
+                { "name": "tea_time" },
+                { "name": "perseverance" },
+                { "name": "second_chances" },
+                { "name": "tea_cookies" },
+                { "name": "trigger_happy" },
+                { "name": "backstab" },
+                { "name": "drop_soap" },
+                { "name": "prison_wife" },
+                { "name": "jail_diet" },
+                { "name": "akimbo_skill" }
+            ]
         }
     ],
     "tier_setting": [

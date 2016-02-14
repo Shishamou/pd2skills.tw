@@ -6,7 +6,7 @@ class Infobox extends Component
 		const { display } = this.props;
 		this.app = this.props.app;
 
-		if (display.skill) {
+		if (typeof display.skill !== 'undefined') {
 			return this.renderSkill(display.skill);
 		}
 
