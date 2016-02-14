@@ -57,6 +57,10 @@ class SkillEvents {
     }
 
     _handleMouse(skill, hover = true) {
+        if (hover) {
+            this.state.displayInformation = { skill: skill.id };
+        }
+
         // 更新前置技能
         if (skill.requiredSkill) {
             var requiredSkill = this.getSkillByName(skill.requiredSkill, true);

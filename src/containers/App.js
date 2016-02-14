@@ -5,6 +5,7 @@ import Localisation from '../public/Localisation';
 import { handleSkillEvent, activeSkillTree } from '../actions/skills';
 
 import Tree from '../components/Tree';
+import Infobox from '../components/Infobox';
 
 Localisation.setLocale('tc');
 
@@ -28,7 +29,7 @@ class App extends Component
 
         text = text.replace(/{{(\w+)}}/g, (match, key)=>(this.locale(key) || match));
         text = text.replace(/\$(\w+);?/g, (match, key)=>(injects[key] || match));
-        text = text.replace(/##(.+)##/g, (match, key)=>(`<strong>${key}</strong>`));
+        text = text.replace(/##(.+?)##/g, (match, key)=>(`<strong>${key}</strong>`));
         text = text.replace(/\n/g, '<br />');
         return text;
     }
@@ -41,6 +42,14 @@ class App extends Component
 
         const locale = this.locale;
         const localeText = this.localeText.bind(this);
+
+        const app = {
+            getTree: (id) => trees[id],
+            getTier: (id) => tiers[id],
+            getSkill: (id) => skills[id],
+            locale: this.locale.bind(this),
+            localeText: this.localeText.bind(this)
+        }
 
         return (
             <div className="section sections-skill">
@@ -65,17 +74,7 @@ class App extends Component
                     </div>
                 </div>
                 <div className="section-aside">
-                    <div className="infobox">
-                        <h1 className="infobox-header" dangerouslySetInnerHTML={{
-                            __html: localeText('menu_combat_medic')
-                        }} />
-                        <p className="infobox-block alerted" dangerouslySetInnerHTML={{
-                            __html: localeText('st_menu_points_to_unlock_tier_singular', {points: 1, tier: 3})
-                        }} />
-                        <p className="infobox-block" dangerouslySetInnerHTML={{
-                            __html: localeText('menu_mastermind_desc', {basic: 500, multibasic: 3})
-                        }} />
-                    </div>
+                    <Infobox app={app} display={this.props.displayInformation} />
                 </div>
             </div>
         )
@@ -84,10 +83,11 @@ class App extends Component
 
 function select(state) {
     return {
+        displayInformation: state.displayInformation,
         activedTree: state.activedTree,
         trees: state.trees,
         tiers: state.tiers,
-        skills: state.skills
+        skills: state.skills,
     };
 }
 

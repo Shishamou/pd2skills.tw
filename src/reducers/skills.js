@@ -18,4 +18,5 @@ class Skills
 }
 
 export default buildReducer(Skills, {
+    displayInformation: {}
 });

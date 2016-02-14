@@ -3,77 +3,25 @@
         {
             "name": "mastermind",
             "skills": [
-                [
-                    { "name": "unlocking_the_mastermind" }
-                ],
-                [
-                    { "name": "cable_guy" },
-                    { "name": "combat_medic" },
-                    { "name": "endurance" }
-                ],
-                [
-                    { "name": "control_freak" },
-                    { "name": "painkillers" },
-                    { "name": "leadership" }
-                ],
-                [
-                    { "name": "spotter" },
-                    { "name": "equilibrium" },
-                    { "name": "dominator" }
-                ],
-                [
-                    { "name": "stockholm_syndrome" },
-                    { "name": "combat_doctor" },
-                    { "name": "joker", "required" : "dominator" }
-                ],
-                [
-                    { "name": "kilmer" },
-                    { "name": "gunslinger" },
-                    { "name": "partner_in_crime", "required": "joker" }
-                ],
-                [
-                    { "name": "hostage_taker" },
-                    { "name": "pistol_messiah" },
-                    { "name": "inspire" }
-                ]
-            ]
-        },
-        {
-            "name": "enforcer",
-            "skills": [
-                [
-                    { "name": "unlocking_the_enforcer" }
-                ],
-                [
-                    { "name": "oppressor" },
-                    { "name": "bullet_storm" },
-                    { "name": "transporter" }
-                ],
-                [
-                    { "name": "die_hard" },
-                    { "name": "underdog" },
-                    { "name": "pumping_iron" }
-                ],
-                [
-                    { "name": "shotgun_impact" },
-                    { "name": "equilibrium" },
-                    { "name": "tough_guy" }
-                ],
-                [
-                    { "name": "shotgun_cqb" },
-                    { "name": "ammunition_specialist" },
-                    { "name": "berserker" }
-                ],
-                [
-                    { "name": "hard_boiled" },
-                    { "name": "fully_loaded" },
-                    { "name": "portable_saw" }
-                ],
-                [
-                    { "name": "overkill" },
-                    { "name": "iron_man" },
-                    { "name": "carbon_blade", "required": "portable_saw" }
-                ]
+                { "name": "mastermind" },
+                { "name": "cable_guy" },
+                { "name": "combat_medic" },
+                { "name": "triathlete" },
+                { "name": "inside_man" },
+                { "name": "fast_learner" },
+                { "name": "leadership" },
+                { "name": "tactician" },
+                { "name": "equilibrium" },
+                { "name": "dominator" },
+                { "name": "stockholm_syndrome" },
+                { "name": "medic_2x" },
+                { "name": "joker", "required" : "dominator" },
+                { "name": "kilmer" },
+                { "name": "gun_fighter" },
+                { "name": "control_freak", "required": "joker" },
+                { "name": "black_marketeer" },
+                { "name": "pistol_messiah" },
+                { "name": "inspire" }
             ]
         }
     ],

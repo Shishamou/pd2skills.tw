@@ -37,11 +37,25 @@ export default class SkillsBuilder {
         var tree = this.parseTreeModel(treeModel);
         var treeId = this.registerTree(tree);
 
-        tree.tiers = treeModel['skills'].map((skills, tierIndex) =>
-            this.buildTier(
-                Object.assign({ treeId, skills }, tierSettings[tierIndex])
-            ), this
-        );
+        if (1) {
+            tree.tiers = [];
+            for (var tier = 0; tier <= 6; tier++) {
+                var start = 3 * (tier - 1) + 1;
+                var skills = (tier === 0)
+                    ? treeModel['skills'].slice(0, 1)
+                    : treeModel['skills'].slice(start, start + 3);
+
+                tree.tiers.push(this.buildTier(
+                    Object.assign({ treeId, skills, tier }, tierSettings[tier])
+                ));
+            }
+        } else {
+            tree.tiers = treeModel['skills'].map((skills, tierIndex) =>
+                this.buildTier(
+                    Object.assign({ treeId, skills, tier: tierIndex }, tierSettings[tierIndex])
+                ), this
+            );
+        }
     }
 
     /**
@@ -110,15 +124,15 @@ export default class SkillsBuilder {
     // =========================================================================
 
     registerTree(tree) {
-        return this.store.trees.push(tree) - 1;
+        return tree.id = this.store.trees.push(tree) - 1;
     }
 
     registerTier(tier) {
-        return this.store.tiers.push(tier) - 1;
+        return tier.id = this.store.tiers.push(tier) - 1;
     }
 
     registerSkill(skill) {
-        return this.store.skills.push(skill) - 1;
+        return skill.id = this.store.skills.push(skill) - 1;
     }
 
     // =========================================================================
@@ -126,12 +140,9 @@ export default class SkillsBuilder {
     // =========================================================================
 
     parseTreeModel(model) {
-        var name = model.name;
         return {
+            id             : null,
             name           : model.name,
-            textTitle      : `${name}_title`,
-            textSubtitle   : `${name}_subtitle`,
-            textNotes      : `${name}_notes`,
             spendPoints    : 0,
             spendCosts     : 0,
             availablePoint : 120,
@@ -141,6 +152,8 @@ export default class SkillsBuilder {
 
     parseTierModel(model) {
         return {
+            id                       : null,
+            tier                     : model.tier,
             treeId                   : model.treeId,
             tierUnlockRequire        : model.tierUnlockRequire,
             tierUnlockRequireReduced : model.tierUnlockRequireReduced,
@@ -155,25 +168,20 @@ export default class SkillsBuilder {
     }
 
     parseSkillModel(model) {
-        var name = model.name;
         return {
-            treeId        : model.treeId,
-            tierId        : model.tierId,
-            name          : model.name,
-            requiredSkill : model.required || null,
-            textTitle     : `${name}_title`,
-            textSubtitle  : `${name}_subtitle`,
-            textBasic     : `${name}_basic`,
-            textAce       : `${name}_ace`,
-            textNotes     : `${name}_notes`,
+            id               : null,
+            treeId           : model.treeId,
+            tierId           : model.tierId,
+            name             : model.name,
+            requiredSkill    : model.required || null,
             ownedBasic       : false,
             ownedAce         : false,
             unlockedBasic    : false,
             unlockedAce      : false,
             tierUnlocked     : false,
             requiredUnlocked : false,
-            alerted       : false,
-            status        : statuses.STATUS_LOCKED
+            alerted          : false,
+            status           : statuses.STATUS_LOCKED
         };
     }
 }
