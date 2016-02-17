@@ -1,4 +1,7 @@
 import * as statuses from '../constants/SkillStatuses';
+import Tree from '../models/Tree';
+import Tier from '../models/Tier';
+import Skill from '../models/Skill';
 
 export default class SkillsBuilder {
     constructor(store = {}) {
@@ -34,7 +37,7 @@ export default class SkillsBuilder {
      * @param Object 階層設定值
      */
     buildTree(treeModel, tierSettings) {
-        var tree = this.parseTreeModel(treeModel);
+        var tree = this.parseTreeModel({ name: treeModel.name });
         var treeId = this.registerTree(tree);
 
         tree.tiers = [];
@@ -61,8 +64,7 @@ export default class SkillsBuilder {
         var treeId = tierModel.treeId;
 
         tier.skills = tierModel.skills.map((skill) =>
-            this.buildSkill(
-                Object.assign({ treeId , tierId }, skill)
+            this.buildSkill({ treeId, tierId, name: skill.name, requiredSkill: skill.required }
             ), this
         );
 
@@ -132,48 +134,14 @@ export default class SkillsBuilder {
     // =========================================================================
 
     parseTreeModel(model) {
-        return {
-            id             : null,
-            name           : model.name,
-            spendPoints    : 0,
-            spendCosts     : 0,
-            availablePoint : 120,
-            reduced        : false
-        }
+        return new Tree(model);
     }
 
     parseTierModel(model) {
-        return {
-            id                       : null,
-            tier                     : model.tier,
-            treeId                   : model.treeId,
-            tierUnlockRequire        : model.tierUnlockRequire,
-            tierUnlockRequireReduced : model.tierUnlockRequireReduced,
-            skillPointBasic          : model.skillPointBasic,
-            skillPointAce            : model.skillPointAce,
-            skillCostBasic           : model.skillCostBasic,
-            skillCostAce             : model.skillCostAce,
-            currectUnlockRequire     : 0,
-            currectUnlockNeeded      : 0,
-            unlocked                 : false
-        }
+        return new Tier(model);
     }
 
     parseSkillModel(model) {
-        return {
-            id               : null,
-            treeId           : model.treeId,
-            tierId           : model.tierId,
-            name             : model.name,
-            requiredSkill    : model.required || null,
-            ownedBasic       : false,
-            ownedAce         : false,
-            unlockedBasic    : false,
-            unlockedAce      : false,
-            tierUnlocked     : false,
-            requiredUnlocked : false,
-            alerted          : false,
-            status           : statuses.STATUS_LOCKED
-        };
+        return new Skill(model);
     }
 }
