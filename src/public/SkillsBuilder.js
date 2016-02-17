@@ -37,24 +37,16 @@ export default class SkillsBuilder {
         var tree = this.parseTreeModel(treeModel);
         var treeId = this.registerTree(tree);
 
-        if (1) {
-            tree.tiers = [];
-            for (var tier = 0; tier <= 6; tier++) {
-                var start = 3 * (tier - 1) + 1;
-                var skills = (tier === 0)
-                    ? treeModel['skills'].slice(0, 1)
-                    : treeModel['skills'].slice(start, start + 3);
+        tree.tiers = [];
+        for (var tier = 0; tier <= 6; tier++) {
+            var start = 3 * (tier - 1) + 1;
+            var skills = (tier === 0)
+                ? treeModel['skills'].slice(0, 1)
+                : treeModel['skills'].slice(start, start + 3);
 
-                tree.tiers.push(this.buildTier(
-                    Object.assign({ treeId, skills, tier }, tierSettings[tier])
-                ));
-            }
-        } else {
-            tree.tiers = treeModel['skills'].map((skills, tierIndex) =>
-                this.buildTier(
-                    Object.assign({ treeId, skills, tier: tierIndex }, tierSettings[tierIndex])
-                ), this
-            );
+            tree.tiers.push(this.buildTier(
+                Object.assign({ treeId, skills, tier }, tierSettings[tier])
+            ));
         }
     }
 

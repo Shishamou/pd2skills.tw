@@ -83,11 +83,11 @@ class App extends Component
 
 function select(state) {
     return {
-        displayInformation: state.displayInformation,
+        displayInformation: state.skills.displayInformation,
         activedTree: state.activedTree,
-        trees: state.trees,
-        tiers: state.tiers,
-        skills: state.skills,
+        trees: state.skills.trees,
+        tiers: state.skills.tiers,
+        skills: state.skills.skills,
     };
 }
 

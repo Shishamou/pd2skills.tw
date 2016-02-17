@@ -1,4 +1,0 @@
-export const FETCH_LANGS = 'FETCH_LANGS';
-export const FETCH_SKILLS = 'FETCH_SKILLS';
-export const HANDLE_SKILL_EVENT = 'HANDLE_SKILL_EVENT';
-export const ACTIVE_SKILL_TREE = 'ACTIVE_SKILL_TREE';

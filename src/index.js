@@ -7,7 +7,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
 import App from './containers/App';
-import skillApp from './reducers/skills';
+import skillApp from './reducers/skillApp';
 import { fetchLangs, fetchSkills } from './actions/initial';
 
 
