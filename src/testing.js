@@ -1,12 +1,4 @@
-import Localisation from './public/Localisation';
+import Tree from './models/Tree';
 
-var local = Localisation;
 
-local.loadLang('local.json');
-local.setLocale('tc');
-
-setTimeout((e) => {
-    var mm = local.localize('menu_mastermind');
-    console.log('mm');
-    console.log(mm);
-}, 1000);
+var tree = new Tree;

@@ -1,4 +1,6 @@
-import * as statuses from '../constants/SkillStatuses';
+import Tree from '../models/Tree';
+import Tier from '../models/Tier';
+import Skill from '../models/Skill';
 
 export default class SkillsBuilder {
     constructor(store = {}) {
@@ -17,12 +19,12 @@ export default class SkillsBuilder {
      *
      * @param Object 資料模型
      */
-    build(skillsModel) {
+    build(datas) {
         this.initialStore();
-        skillsModel = this.modelAttributeToCamelCase(skillsModel);
+        datas = this.objectAttributeToCamelCase(datas);
 
-        var trees = skillsModel.skillTrees;
-        var tierSettings = skillsModel.tierSetting;
+        var trees = datas.skillTrees;
+        var tierSettings = datas.tierSetting;
 
         trees.forEach((tree) => this.buildTree(tree, tierSettings));
     }
@@ -33,28 +35,20 @@ export default class SkillsBuilder {
      * @param Object 資料模型
      * @param Object 階層設定值
      */
-    buildTree(treeModel, tierSettings) {
-        var tree = this.parseTreeModel(treeModel);
+    buildTree(treeData, tierSettings) {
+        var tree = this.createTree({ name: treeData.name });
         var treeId = this.registerTree(tree);
 
-        if (1) {
-            tree.tiers = [];
-            for (var tier = 0; tier <= 6; tier++) {
-                var start = 3 * (tier - 1) + 1;
-                var skills = (tier === 0)
-                    ? treeModel['skills'].slice(0, 1)
-                    : treeModel['skills'].slice(start, start + 3);
+        tree.tiers = [];
+        for (var tier = 0; tier <= 6; tier++) {
+            var start = 3 * (tier - 1) + 1;
+            var skills = (tier === 0)
+                ? treeData['skills'].slice(0, 1)
+                : treeData['skills'].slice(start, start + 3);
 
-                tree.tiers.push(this.buildTier(
-                    Object.assign({ treeId, skills, tier }, tierSettings[tier])
-                ));
-            }
-        } else {
-            tree.tiers = treeModel['skills'].map((skills, tierIndex) =>
-                this.buildTier(
-                    Object.assign({ treeId, skills, tier: tierIndex }, tierSettings[tierIndex])
-                ), this
-            );
+            tree.tiers.push(this.buildTier(
+                Object.assign({ treeId, skills, tier }, tierSettings[tier])
+            ));
         }
     }
 
@@ -63,16 +57,14 @@ export default class SkillsBuilder {
      *
      * @param Object 資料模型
      */
-    buildTier(tierModel) {
-        var tier = this.parseTierModel(tierModel);
+    buildTier(tierData) {
+        var tier = this.createTier(tierData);
         var tierId = this.registerTier(tier);
-        var treeId = tierModel.treeId;
+        var treeId = tierData.treeId;
 
-        tier.skills = tierModel.skills.map((skill) =>
-            this.buildSkill(
-                Object.assign({ treeId , tierId }, skill)
-            ), this
-        );
+        tier.skills = tierData.skills.map((skill) => this.buildSkill(
+            { treeId, tierId, name: skill.name, requiredSkill: skill.required }
+        ), this);
 
         return tierId;
     }
@@ -82,9 +74,8 @@ export default class SkillsBuilder {
      *
      * @param Object 資料模型
      */
-    buildSkill(skillModel) {
-        var skill = this.parseSkillModel(skillModel);
-
+    buildSkill(skillData) {
+        var skill = this.createSkill(skillData);
         return this.registerSkill(skill);
     }
 
@@ -92,18 +83,18 @@ export default class SkillsBuilder {
     // = Other.
     // =========================================================================
 
-    modelAttributeToCamelCase(model) {
-        if ( ! (model instanceof Object))
-            return model;
+    objectAttributeToCamelCase(object) {
+        if ( ! (object instanceof Object))
+            return object;
 
-        if (Array.isArray(model)) {
-            return model.map((value) => this.modelAttributeToCamelCase(value), this);
+        if (Array.isArray(object)) {
+            return object.map((value) => this.objectAttributeToCamelCase(value), this);
         }
 
         var handled = {};
-        Object.keys(model).forEach((key) => {
-            var value = model[key];
-            value = this.modelAttributeToCamelCase(value);
+        Object.keys(object).forEach((key) => {
+            var value = object[key];
+            value = this.objectAttributeToCamelCase(value);
 
             key = this.toCamelCase(key);
             handled[key] = value;
@@ -120,7 +111,7 @@ export default class SkillsBuilder {
     }
 
     // =========================================================================
-    // = Register data.
+    // = Register model.
     // =========================================================================
 
     registerTree(tree) {
@@ -136,52 +127,18 @@ export default class SkillsBuilder {
     }
 
     // =========================================================================
-    // = Parse data.
+    // = Create model.
     // =========================================================================
 
-    parseTreeModel(model) {
-        return {
-            id             : null,
-            name           : model.name,
-            spendPoints    : 0,
-            spendCosts     : 0,
-            availablePoint : 120,
-            reduced        : false
-        }
+    createTree(props) {
+        return new Tree(props);
     }
 
-    parseTierModel(model) {
-        return {
-            id                       : null,
-            tier                     : model.tier,
-            treeId                   : model.treeId,
-            tierUnlockRequire        : model.tierUnlockRequire,
-            tierUnlockRequireReduced : model.tierUnlockRequireReduced,
-            skillPointBasic          : model.skillPointBasic,
-            skillPointAce            : model.skillPointAce,
-            skillCostBasic           : model.skillCostBasic,
-            skillCostAce             : model.skillCostAce,
-            currectUnlockRequire     : 0,
-            currectUnlockNeeded      : 0,
-            unlocked                 : false
-        }
+    createTier(props) {
+        return new Tier(props);
     }
 
-    parseSkillModel(model) {
-        return {
-            id               : null,
-            treeId           : model.treeId,
-            tierId           : model.tierId,
-            name             : model.name,
-            requiredSkill    : model.required || null,
-            ownedBasic       : false,
-            ownedAce         : false,
-            unlockedBasic    : false,
-            unlockedAce      : false,
-            tierUnlocked     : false,
-            requiredUnlocked : false,
-            alerted          : false,
-            status           : statuses.STATUS_LOCKED
-        };
+    createSkill(props) {
+        return new Skill(props);
     }
 }

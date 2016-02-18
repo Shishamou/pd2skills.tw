@@ -4,13 +4,13 @@ import Tier from './Tier';
 class Tree extends Component
 {
 	render() {
-		const { tree, getTier } = this.props;
+		const { app, tree } = this.props;
 		var tiers = tree.tiers.slice().reverse();
 
 		var progressbarPercent = (function(tiers) {
 			for (var i = 1; i < tiers.length; i++) {
-				var currectTier = getTier(tiers[i]);
-				var previousTier = getTier(tiers[i - 1]);
+				var currectTier = app.getTier(tiers[i]);
+				var previousTier = app.getTier(tiers[i - 1]);
 
 				if (currectTier.unlocked === false) {
 					if (i === 1) return 0;
@@ -26,28 +26,31 @@ class Tree extends Component
 			return 100;
 		})(tree.tiers);
 
+		var tiers = tiers.map(function (tierId, index) {
+			var tier = app.getTier(tierId);
+			return (
+				<Tier
+					{...this.props}
+					key={index}
+					tier={tier}
+					tierRank={6 - index}
+				/>
+			);
+		}, this);
 
 		return (
 			<div className="tree">
 				<div className="progressbar" data-percent={progressbarPercent}></div>
-				{tiers.map((tierId, index) =>
-					<Tier
-						{...this.props}
-						key={index}
-                        id={tierId}
-						tierRank={6 - index}
-                    />
-				)}
+				{tiers}
 			</div>
 		);
 	}
 }
 
 Tree.propTypes = {
+	app: PropTypes.object.isRequired,
+	handleSkillEvent: PropTypes.func.isRequired,
 	tree: PropTypes.object.isRequired,
-	getTier: PropTypes.func.isRequired,
-	getSkill: PropTypes.func.isRequired,
-	handleEvent: PropTypes.func.isRequired,
 };
 
 export default Tree;

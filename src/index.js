@@ -1,31 +1,11 @@
-import thunkMiddleware from 'redux-thunk';
-import createLogger from 'redux-logger';
-import { createStore, applyMiddleware } from 'redux';
-
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+import Root from './containers/Root';
+import Localisation from './public/Localisation';
 
-import App from './containers/App';
-import skillApp from './reducers/skills';
-import { fetchLangs, fetchSkills } from './actions/initial';
-
-
-const loggerMiddleware = createLogger();
-
-const createStoreWithMiddleware = applyMiddleware(
-    thunkMiddleware
-    // loggerMiddleware
-)(createStore)
-
-const store = createStoreWithMiddleware(skillApp);
-
-store.dispatch(fetchLangs('local.json'));
-store.dispatch(fetchSkills('skills.json'));
+Localisation.setLocale('tc');
 
 render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
+    <Root />,
     document.getElementById('app')
 );

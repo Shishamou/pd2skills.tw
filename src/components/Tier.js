@@ -4,24 +4,26 @@ import Skill from './Skill';
 class Tier extends Component
 {
 	render() {
-		const { id, getTier } = this.props;
-		var tier = getTier(id);
+		const { app, tier, tierRank } = this.props;
+
+		var skills = tier.skills.map(function (skillId, index) {
+			var skill = app.getSkill(skillId);
+			return (
+				<Skill
+					{...this.props}
+					key={index}
+					skill={skill}
+					skillPointBasic={tier.skillPointBasic}
+					skillPointAce={tier.skillPointAce}
+				/>
+			);
+		}, this);
 
 		return (
 			<div className="tier" data-unlocked={tier.unlocked}>
-				<div className="tier-skills">
-					{tier.skills.map((skillId, index) =>
-						<Skill
-							{...this.props}
-	                        key={index}
-	                        id={skillId}
-							skillPointBasic={tier.skillPointBasic}
-							skillPointAce={tier.skillPointAce}
-	                    />
-					)}
-				</div>
+				<div className="tier-skills">{skills}</div>
 				<div className="tier-aside">
-					<p>{this.props.tierRank}</p>
+					<p>{tierRank}</p>
 					<p>{tier.currectUnlockRequire}</p>
 				</div>
 			</div>
@@ -30,11 +32,10 @@ class Tier extends Component
 }
 
 Tier.propTypes = {
-	id: PropTypes.number.isRequired,
+	app: PropTypes.object.isRequired,
+	handleSkillEvent: PropTypes.func.isRequired,
+	tier: PropTypes.object.isRequired,
 	tierRank: PropTypes.number.isRequired,
-	getTier: PropTypes.func.isRequired,
-	getSkill: PropTypes.func.isRequired,
-	handleEvent: PropTypes.func.isRequired,
 };
 
 export default Tier;

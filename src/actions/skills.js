@@ -1,14 +1,10 @@
 import fetch from 'isomorphic-fetch';
-import * as types from '../constants/ActionTypes';
-
-export function addSkill(model) {
-    return {type: types.ADD_SKILL, model};
-}
+import * as actions from '../constants/SkillAppActions';
 
 export function handleSkillEvent(id, event) {
-    return {type: types.HANDLE_SKILL_EVENT, id, event};
+    return {type: actions.HANDLE_SKILL_EVENT, id, event};
 }
 
 export function activeSkillTree(id) {
-    return {type: types.ACTIVE_SKILL_TREE, id};
+    return {type: actions.SWITCH_SKILL_TREE, id};
 }

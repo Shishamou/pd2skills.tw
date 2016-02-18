@@ -5,7 +5,7 @@ var node_modules_dir = path.resolve(__dirname, 'node_modules');
 module.exports = {
     entry: {
         script: './src/index.js',
-        assets: './src/assets.js'
+        assets: './assets.js'
     },
     output: {
         path: path.resolve(__dirname, 'dev'),

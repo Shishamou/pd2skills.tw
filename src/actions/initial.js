@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import * as types from '../constants/ActionTypes';
+import * as actions from '../constants/SkillAppActions';
 
 
 // =============================================================================
@@ -17,15 +17,15 @@ export function fetchLangs(url) {
 }
 
 export function fetchLangsRequest() {
-    return {type: types.FETCH_LANGS};
+    return {type: actions.LOAD_LANGS};
 }
 
 export function fetchLangsSuccess(response) {
-    return {type: types.FETCH_LANGS, status: 'success', response};
+    return {type: actions.LOAD_LANGS, status: 'success', response};
 }
 
 export function fetchLangsError(error) {
-    return {type: types.FETCH_LANGS, status: 'error', error};
+    return {type: actions.LOAD_LANGS, status: 'error', error};
 }
 
 
@@ -44,13 +44,13 @@ export function fetchSkills(url) {
 }
 
 export function fetchSkillsRequest() {
-    return {type: types.FETCH_SKILLS};
+    return {type: actions.LOAD_SKILLS};
 }
 
 export function fetchSkillsSuccess(response) {
-    return {type: types.FETCH_SKILLS, status: 'success', response};
+    return {type: actions.LOAD_SKILLS, status: 'success', response};
 }
 
 export function fetchSkillsError(error) {
-    return {type: types.FETCH_SKILLS, status: 'error', error};
+    return {type: actions.LOAD_SKILLS, status: 'error', error};
 }
