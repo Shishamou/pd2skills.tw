@@ -1,21 +1,26 @@
 import SkillsHandler from '../public/SkillsHandler';
-import * as actions from '../constants/SkillAppActions';
+import * as types from '../constants/SkillAppActions';
 import * as events from '../constants/Events';
 
 var initialState = {
     trees: [],
     tiers: [],
     skills: [],
-    displayInformation: {}
+    displayInformation: {},
+    activedTree: 0
 };
 
 
 export default function handleSkill(state = initialState, action) {
     switch (action.type) {
-        case actions.LOAD_SKILLS:
+        case types.LOAD_SKILLS:
             return loadSkills(state, action);
-        case actions.HANDLE_SKILL_EVENT:
+        case types.HANDLE_SKILL_EVENT:
             return handleSkillEvent(state, action);
+        case types.SWITCH_SKILL_TREE:
+            return Object.assign({}, state, {
+                activedTree: action.id
+            });
         default:
             return state;
     }
