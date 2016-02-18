@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 import * as actions from '../constants/SkillAppActions';
 
 export function handleSkillEvent(id, event) {
-    return {type: actions.HANDLE_SKILLS, id, event};
+    return {type: actions.HANDLE_SKILL_EVENT, id, event};
 }
 
 export function activeSkillTree(id) {
