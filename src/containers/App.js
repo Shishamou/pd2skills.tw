@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-// import Skills from './Skills';
+import Skills from './Skills';
 
 class App extends Component
 {
@@ -22,11 +22,11 @@ class App extends Component
                         <li>perk decks</li>
                     </ul>
                 </div>
+                <Skills />
             </div>
         );
     }
 }
-// <Skills />
 
 function select(state) {
     return state;

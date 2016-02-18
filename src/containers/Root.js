@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import configureStore from '../configureStore';
 import { fetchLangs, fetchSkills } from '../actions/initial';
 
-import App from './Skills.js';
+import App from './App.js';
 
 const store = configureStore();
 
