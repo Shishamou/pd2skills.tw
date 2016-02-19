@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import Localisation from '../public/Localisation';
 import { handleSkillEvent, activeSkillTree } from '../actions/skills';
-
 import TreeTabs from '../components/TreeTabs';
 import Tree from '../components/Tree';
 import Infobox from '../components/Infobox';
@@ -12,25 +10,23 @@ class Skills extends Component
 {
     constructor(prop) {
         super(prop);
-        this.locale = this.locale.bind(this);
-        this.localeText = this.localeText.bind(this);
+        this.getTree = this.getTree.bind(this);
+        this.getTier = this.getTier.bind(this);
+        this.getSkill = this.getSkill.bind(this);
         this.clickTab = this.clickTab.bind(this);
         this.handleSkillEvent = this.handleSkillEvent.bind(this);
     }
 
-    locale(key) {
-        return Localisation.localize(key);
+    getTree(id) {
+        return this.props.trees[id];
     }
 
-    localeText(key, injects = {}) {
-        var text = this.locale(key);
-        if (text == '') return text;
+    getTier(id) {
+        return this.props.tiers[id];
+    }
 
-        text = text.replace(/{{(\w+)}}/g, (match, key)=>(this.locale(key) || match));
-        text = text.replace(/\$(\w+);?/g, (match, key)=>(injects[key] || match));
-        text = text.replace(/##(.+?)##/g, (match, key)=>(`<strong>${key}</strong>`));
-        text = text.replace(/\n/g, '<br />');
-        return text;
+    getSkill(id) {
+        return this.props.skills[id];
     }
 
     clickTab(index) {
@@ -43,15 +39,15 @@ class Skills extends Component
 
     render() {
         const { dispatch } = this.props;
-        const { trees, tiers, skills } = this.props;
-        const { currectTree } = this.props;
+        const { trees, currectTree } = this.props;
+        const { locale, localeText } = this.props;
 
         const app = {
-            getTree: (id) => trees[id],
-            getTier: (id) => tiers[id],
-            getSkill: (id) => skills[id],
-            locale: this.locale,
-            localeText: this.localeText
+            locale,
+            localeText,
+            getTree: this.getTree,
+            getTier: this.getTier,
+            getSkill: this.getSkill
         }
 
         return (
@@ -79,6 +75,11 @@ class Skills extends Component
         )
     }
 }
+
+Skills.propTypes = {
+	locale: PropTypes.func.isRequired,
+	localeText: PropTypes.func.isRequired,
+};
 
 function select(state) {
     state = state.skills;
