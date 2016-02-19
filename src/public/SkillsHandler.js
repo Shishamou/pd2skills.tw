@@ -58,6 +58,7 @@ class SkillsHandler {
     refreshSkillTrees(treeId = null) {
         this.store.totalSpendPoints = 0;
         this.store.totalSpendCosts = 0;
+        this.store.availablePoints = this.totalAvailablePoints;
 
         const countTreeSpend = (tree) => {
             this.store.totalSpendPoints += tree.spendPoints;
@@ -65,16 +66,16 @@ class SkillsHandler {
             this.store.availablePoints = this.totalAvailablePoints - this.store.totalSpendPoints;
         };
 
-        if (treeId) {
+        if (treeId != null) {
             var target = this.getTree(treeId);
             this.store.trees.forEach((tree) => {
-                if (tree === target) {
+                if (tree !== target) {
                     countTreeSpend(tree);
                 }
             }, this);
 
             this.refreshTreeState(target);
-            countTreeSpend(tree);
+            countTreeSpend(target);
         } else {
             this.store.trees.forEach((tree) => {
                 this.refreshTreeState(tree);
@@ -166,12 +167,27 @@ class SkillsHandler {
 
         // 更新技能解鎖狀態
         var availablePoints = this.store.availablePoints - tree.spendPoints;
+        console.log(availablePoints);
         skill.unlockedBasic = (skill.ownedBasic || (availablePoints >= tier.skillPointBasic));
-        skill.unlockedAce = (tier.skillPointAce >= 0)
+        skill.unlockedAce = (tier.skillPointAce > 0)
             ? (skill.ownedBasic)
                 ? (skill.ownedAce || (availablePoints >= tier.skillPointAce))
                 : (availablePoints >= tier.skillPointBasic + tier.skillPointAce)
             : false;
+
+        if (skill.unlockedAce) {
+            if (tier.skillPointAce > 0) {
+                if (skill.ownedBasic) {
+                    console.log('ownedBasic');
+                    console.log((skill.ownedAce || (availablePoints >= tier.skillPointAce)));
+                    console.log([availablePoints, tier.skillPointAce]);
+                } else {
+                    console.log('no ownedBasic');
+                    console.log((availablePoints >= tier.skillPointBasic + tier.skillPointAce));
+                }
+
+            }
+        }
     }
 
     /**

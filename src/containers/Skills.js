@@ -39,7 +39,7 @@ class Skills extends Component
 
     render() {
         const { dispatch } = this.props;
-        const { trees, currectTree } = this.props;
+        const { trees, currectTree, availablePoints } = this.props;
         const { locale, localeText } = this.props;
 
         const app = {
@@ -64,6 +64,7 @@ class Skills extends Component
                             <Tree app={app}
                                 handleSkillEvent={this.handleSkillEvent}
                                 tree={currectTree}
+                                available={availablePoints}
                             />
                         }
                     </div>

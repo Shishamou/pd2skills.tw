@@ -72,7 +72,7 @@ function handleSkillEvent(state = {}, action) {
                     : hover;
             }
 
-            SkillsHandler.refreshSkillTrees(skill.treeId);
+            SkillsHandler.refreshSkillsStatus(skill.treeId);
             break;
 
         default:

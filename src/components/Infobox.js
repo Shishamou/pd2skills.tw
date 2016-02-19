@@ -37,6 +37,11 @@ class Infobox extends Component
 			);
 		})(tier);
 
+		var basic = `${tier.skillPointBasic} / ${tier.skillCostBasic}`;
+		basic = (skill.unlockedBasic)? basic : `<span class="alerted">${basic}</span>`;
+		var pro = `${tier.skillPointAce} / ${tier.skillCostAce}`;
+		pro = (skill.unlockedAce)? pro : `<span class="alerted">${pro}</span>`;
+
 		return (
 			<div className="infobox">
 				<h1 className="infobox-header" dangerouslySetInnerHTML={{
@@ -44,10 +49,7 @@ class Infobox extends Component
 				}} />
 				{pointsToUnlockTier}
 				<p className="infobox-block" dangerouslySetInnerHTML={{
-					__html: localeText(`menu_${skill.name}_desc`, {
-						basic: `${tier.skillPointBasic} / ${tier.skillCostBasic}`,
-						pro: `${tier.skillPointAce} / ${tier.skillCostAce}`
-					})
+					__html: localeText(`menu_${skill.name}_desc`, { basic, pro })
 				}} />
 			</div>
 		);

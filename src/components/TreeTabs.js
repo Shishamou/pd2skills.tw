@@ -11,7 +11,10 @@ class TreeTabs extends Component
 		            <li key={index}
 		                className={(tree === currectTree)? 'actived' : ''}
 		                onClick={(e)=>{onClick(index)}}
-		            >{app.locale(`st_menu_${tree.name}`)}</li>
+		            >
+						<span>{app.locale(`st_menu_${tree.name}`)}</span>
+						<span>({tree.spendPoints})</span>
+					</li>
 		        )}
 			</ul>
         );
