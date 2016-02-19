@@ -1,12 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import * as statuses from '../constants/SkillStatuses';
-import * as events from '../constants/Events';
 
 class SkillText extends Component
 {
 	render() {
 		const { skill, skillPointBasic, skillPointAce } = this.props;
-		const { locale, localeText } = this.props.app;
+		const { locale, localeText } = this.props;
 
 		switch (skill.status) {
 			case statuses.STATUS_ALERTED:
@@ -56,28 +55,34 @@ class Skill extends Component
 {
 	constructor(props) {
 		super(props);
-		this.handleClick = this.handleClick.bind(this);
-		this.handleMouseEnter = this.handleMouseEnter.bind(this);
-		this.handleMouseLeave = this.handleMouseLeave.bind(this);
-		this.handleRemove = this.handleRemove.bind(this);
+		this.handleSkillClick = this.handleSkillClick.bind(this);
+		this.handleSkillRemove = this.handleSkillRemove.bind(this);
+		this.handleSkillEnter = this.handleSkillEnter.bind(this);
+		this.handleSkillLeave = this.handleSkillLeave.bind(this);
 	}
 
-	handleClick(e) {
-		this.props.handleSkillEvent(this.props.skill.id, events.CLICK);
+	handleSkillClick(e) {
+		var { handleSkillClick, skill } = this.props;
+		handleSkillClick(skill.id);
 	}
 
-	handleMouseEnter(e) {
-		this.props.handleSkillEvent(this.props.skill.id, events.MOUSE_ENTER);
-	}
-
-	handleMouseLeave(e) {
-		this.props.handleSkillEvent(this.props.skill.id, events.MOUSE_LEAVE);
-	}
-
-	handleRemove(e) {
+	handleSkillRemove(e) {
+		var { handleSkillRemove, skill } = this.props;
 		e.stopPropagation();
-		this.props.handleSkillEvent(this.props.skill.id, events.REMOVE);
+		handleSkillRemove(skill.id);
 	}
+
+	handleSkillEnter(e) {
+		var { handleSkillEnter, skill } = this.props;
+		handleSkillEnter(skill.id);
+	}
+
+	handleSkillLeave(e) {
+		var { handleSkillLeave, skill } = this.props;
+		handleSkillLeave(skill.id);
+	}
+
+
 
 	render() {
 		const { app, skill } = this.props;
@@ -88,14 +93,14 @@ class Skill extends Component
 			<div
 				className="skill"
 				data-status={dataset}
-				onClick={this.handleClick}
-				onMouseEnter={this.handleMouseEnter}
-				onMouseLeave={this.handleMouseLeave}
+				onClick={this.handleSkillClick}
+				onMouseEnter={this.handleSkillEnter}
+				onMouseLeave={this.handleSkillLeave}
 			>
 				<SkillText {...this.props} />
 				<div
 					className="skill-remove"
-					onClick={(e) => this.handleRemove(e)}
+					onClick={(e) => this.handleSkillRemove(e)}
 				></div>
 			</div>
 		);
@@ -103,8 +108,12 @@ class Skill extends Component
 }
 
 Skill.propTypes = {
-	app: PropTypes.object.isRequired,
-	handleSkillEvent: PropTypes.func.isRequired,
+	locale: PropTypes.func.isRequired,
+	localeText: PropTypes.func.isRequired,
+	handleSkillClick: PropTypes.func.isRequired,
+	handleSkillRemove: PropTypes.func.isRequired,
+	handleSkillEnter: PropTypes.func.isRequired,
+	handleSkillLeave: PropTypes.func.isRequired,
 	skill: PropTypes.object.isRequired,
 	tierRank: PropTypes.number.isRequired,
 	skillPointBasic: PropTypes.number.isRequired,

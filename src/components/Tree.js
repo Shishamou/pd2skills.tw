@@ -5,15 +5,14 @@ class Tree extends Component
 {
 	constructor(props) {
 		super(props);
-		this.getProgressbarPercent = this.getProgressbarPercent.bind(this);
 	}
 
 	getProgressbarPercent(tiers) {
-		const { app } = this.props;
+		const { getTier } = this.props;
 
 		for (var i = 1; i < tiers.length; i++) {
-			var currectTier = app.getTier(tiers[i]);
-			var previousTier = app.getTier(tiers[i - 1]);
+			var currectTier = getTier(tiers[i]);
+			var previousTier = getTier(tiers[i - 1]);
 
 			if (currectTier.unlocked === false) {
 				if (i === 1) return 0;
@@ -30,12 +29,12 @@ class Tree extends Component
 	}
 
 	render() {
-		const { app, tree } = this.props;
-		const { locale, localeText } = app;
+		const { tree, getTier } = this.props;
+		const { locale, localeText } = this.props;
 
 		var tiers = tree.tiers.slice().reverse();
 		tiers = tiers.map(function (tierId, index) {
-			var tier = app.getTier(tierId);
+			var tier = getTier(tierId);
 			return (
 				<Tier
 					{...this.props}
@@ -65,8 +64,9 @@ class Tree extends Component
 }
 
 Tree.propTypes = {
-	app: PropTypes.object.isRequired,
-	handleSkillEvent: PropTypes.func.isRequired,
+	locale: PropTypes.func.isRequired,
+	localeText: PropTypes.func.isRequired,
+	getTier: PropTypes.func.isRequired,
 	tree: PropTypes.object.isRequired,
 	available: PropTypes.number.isRequired,
 };

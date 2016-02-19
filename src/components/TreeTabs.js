@@ -3,7 +3,8 @@ import React, { Component, PropTypes } from 'react';
 class TreeTabs extends Component
 {
 	render() {
-		const { app, trees, currectTree, onClick } = this.props;
+		const { trees, currectTree, onClick } = this.props;
+		const { locale, localeText } = this.props;
 
         return (
 			<ul className="section-tabs">
@@ -12,7 +13,7 @@ class TreeTabs extends Component
 		                className={(tree === currectTree)? 'actived' : ''}
 		                onClick={(e)=>{onClick(index)}}
 		            >
-						<span>{app.locale(`st_menu_${tree.name}`)}</span>
+						<span>{locale(`st_menu_${tree.name}`)}</span>
 						<span>({tree.spendPoints})</span>
 					</li>
 		        )}
@@ -22,7 +23,8 @@ class TreeTabs extends Component
 }
 
 TreeTabs.propTypes = {
-	app: PropTypes.object.isRequired,
+	locale: PropTypes.func.isRequired,
+	localeText: PropTypes.func.isRequired,
 	trees: PropTypes.array.isRequired,
 	currectTree: PropTypes.object,
 	onClick: PropTypes.func.isRequired

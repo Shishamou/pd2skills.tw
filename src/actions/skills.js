@@ -1,10 +1,23 @@
 import fetch from 'isomorphic-fetch';
-import * as actions from '../constants/SkillAppActions';
+import * as types from '../constants/SkillAppActions';
+import * as events from '../constants/Events';
 
-export function handleSkillEvent(id, event) {
-    return {type: actions.HANDLE_SKILL_EVENT, id, event};
+export function handleSkillClick(id) {
+    return { type: types.HANDLE_SKILL_EVENT, event: events.CLICK, id };
+}
+
+export function handleSkillRemove(id) {
+    return { type: types.HANDLE_SKILL_EVENT, event: events.REMOVE, id };
+}
+
+export function handleSkillEnter(id) {
+    return { type: types.HANDLE_SKILL_EVENT, event: events.MOUSE_ENTER, id };
+}
+
+export function handleSkillLeave(id) {
+    return { type: types.HANDLE_SKILL_EVENT, event: events.MOUSE_LEAVE, id };
 }
 
 export function activeSkillTree(id) {
-    return {type: actions.SWITCH_SKILL_TREE, id};
+    return { type: types.SWITCH_SKILL_TREE, id };
 }

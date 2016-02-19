@@ -4,10 +4,10 @@ import Skill from './Skill';
 class Tier extends Component
 {
 	render() {
-		const { app, tier, tierRank } = this.props;
+		const { tier, tierRank, getSkill } = this.props;
 
 		var skills = tier.skills.map(function (skillId, index) {
-			var skill = app.getSkill(skillId);
+			var skill = getSkill(skillId);
 			return (
 				<Skill
 					{...this.props}
@@ -32,8 +32,7 @@ class Tier extends Component
 }
 
 Tier.propTypes = {
-	app: PropTypes.object.isRequired,
-	handleSkillEvent: PropTypes.func.isRequired,
+	getSkill: PropTypes.func.isRequired,
 	tier: PropTypes.object.isRequired,
 	tierRank: PropTypes.number.isRequired,
 };

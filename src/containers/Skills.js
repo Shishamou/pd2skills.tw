@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { handleSkillEvent, activeSkillTree } from '../actions/skills';
+import * as actions from '../actions/skills';
+
 import TreeTabs from '../components/TreeTabs';
 import Tree from '../components/Tree';
 import Infobox from '../components/Infobox';
@@ -14,7 +15,6 @@ class Skills extends Component
         this.getTier = this.getTier.bind(this);
         this.getSkill = this.getSkill.bind(this);
         this.clickTab = this.clickTab.bind(this);
-        this.handleSkillEvent = this.handleSkillEvent.bind(this);
     }
 
     getTree(id) {
@@ -30,11 +30,7 @@ class Skills extends Component
     }
 
     clickTab(index) {
-        this.props.dispatch(activeSkillTree(index));
-    }
-
-    handleSkillEvent(id, event) {
-        this.props.dispatch(handleSkillEvent(id, event));
+        this.props.dispatch(actions.activeSkillTree(index));
     }
 
     render() {
@@ -47,22 +43,24 @@ class Skills extends Component
             localeText,
             getTree: this.getTree,
             getTier: this.getTier,
-            getSkill: this.getSkill
+            getSkill: this.getSkill,
+            handleSkillClick: (id) => {dispatch(actions.handleSkillClick(id))},
+            handleSkillRemove: (id) => {dispatch(actions.handleSkillRemove(id))},
+            handleSkillEnter: (id) => {dispatch(actions.handleSkillEnter(id))},
+            handleSkillLeave: (id) => {dispatch(actions.handleSkillLeave(id))},
         }
 
         return (
             <div className="section sections-skill">
                 <div className="section-main">
-                    <TreeTabs
-                        app={app}
+                    <TreeTabs {...app}
                         trees={trees}
                         currectTree={currectTree}
                         onClick={this.clickTab}
                     />
                     <div className="section-content">
                         {(currectTree) &&
-                            <Tree app={app}
-                                handleSkillEvent={this.handleSkillEvent}
+                            <Tree {...app}
                                 tree={currectTree}
                                 available={availablePoints}
                             />
