@@ -46,112 +46,160 @@ class SkillsHandler {
     // =
     // =========================================================================
 
+    /**
+     * 初始化技能樹
+     *
+     * @param object 技能樹資料
+     */
     initialSkillTrees(datas) {
         this.builder.build(datas);
         this.refreshSkillTrees();
+    }
+
+    /**
+     * 刷新技能樹
+     *
+     * @param integer 要更新的技能樹 id，若省略則更新所有技能樹階層
+     */
+    refreshSkillTrees(targetId) {
+        this.updateTreeTiersAndCountSpendPoints(targetId);
+        this.updateTreeSkills(targetId);
+    }
+
+    /**
+     * 刷新所有技能狀態，僅刷新 skill.status 不進行技能的更新
+     */
+    refreshAllSkillsStatus() {
+        this.store.skills.forEach((skill) => {
+            this._refreshSkillStatus(skill);
+        }, this);
     }
 
     // =========================================================================
     // = 刷新技能樹
     // =========================================================================
 
-    refreshSkillTrees(treeId = null) {
-        this.store.totalSpendPoints = 0;
-        this.store.totalSpendCosts = 0;
-        this.store.availablePoints = this.totalAvailablePoints;
+    /**
+     * 更新技能樹階層解鎖與計算花費點數
+     *
+     * @param integer 要更新的技能樹 id，若省略則更新所有技能樹階層
+     */
+    updateTreeTiersAndCountSpendPoints(targetId = null) {
+        var spendPoints = this.store.trees.map((tree) =>
+            (targetId === null || tree.id == targetId)
+                ? this._updateTreeTier(tree)
+                : tree.spendPoints
+        );
+        var totalSpendPoints = spendPoints.reduce((prev, curr) => prev + curr);
 
-        const countTreeSpend = (tree) => {
-            this.store.totalSpendPoints += tree.spendPoints;
-            this.store.totalSpendCosts += tree.spendCosts;
-            this.store.availablePoints = this.totalAvailablePoints - this.store.totalSpendPoints;
-        };
-
-        if (treeId != null) {
-            var target = this.getTree(treeId);
-            this.store.trees.forEach((tree) => {
-                if (tree !== target) {
-                    countTreeSpend(tree);
-                }
-            }, this);
-
-            this.refreshTreeState(target);
-            countTreeSpend(target);
-        } else {
-            this.store.trees.forEach((tree) => {
-                this.refreshTreeState(tree);
-                countTreeSpend(tree);
-            }, this);
-        }
+        this.store.totalSpendPoints = totalSpendPoints;
+        this.store.availablePoints = this.totalAvailablePoints - totalSpendPoints;
     }
 
     /**
-     * 刷新技能樹
+     * 更新技能樹階層
+     *
+     * @param Tree 要被處理的技能樹
+     * @return integer 技能樹花費的點數
      */
-    refreshTreeState(tree) {
-        if ( ! (tree instanceof Tree))
-            throw 'refreshTreeState: arg1 must be Tree Object';
+    _updateTreeTier(tree) {
+        var spendPoints = 0;
 
-        tree.spendPoints = 0;
-        tree.spendCosts = 0;
+        tree.tiers.forEach((tier) => {
+            tier = this.getTier(tier);
 
-        var tiers = tree.tiers;
-        for (let i = 0; i < tiers.length; i++) {
-            var tier = this.getTier(tiers[i]);
-            this._refreshTreeStateHandleTier(tier, tree);
-        }
+            tier.currectUnlockRequire = (tree.reduced)
+                ? tier.tierUnlockRequireReduced
+                : tier.tierUnlockRequire;
 
-        this.refreshSkillsStatus();
+            tier.currectUnlockNeeded = spendPoints - tier.currectUnlockRequire;
+            tier.unlocked = (tier.currectUnlockNeeded >= 0);
+
+            if (tier.unlocked)
+                spendPoints += this._countTierSpendPoints(tier);
+        }, this);
+
+        return tree.spendPoints = spendPoints;
     }
 
     /**
-     * 刷新技能樹處理階層
+     * 計算階層花費的點數
+     *
+     * @param Tier 要被處理的階層
+     * @return integer 階層花費的點數
      */
-    _refreshTreeStateHandleTier(tier, tree) {
-        // 判斷是否有惡名減免
-        tier.currectUnlockRequire = (tree.reduced)
-            ? tier.tierUnlockRequireReduced
-            : tier.tierUnlockRequire;
+    _countTierSpendPoints(tier) {
+        var spendPoints = 0;
+        tier.skills.forEach((skill) => {
+            skill = this.getSkill(skill);
+            if (skill.ownedAce)
+                spendPoints += tier.skillPointBasic + tier.skillPointAce;
+            else if (skill.ownedBasic)
+                spendPoints += tier.skillPointBasic;
+        }, this);
+        return spendPoints;
+    }
 
-        // 計算解鎖需求與更新解鎖狀態
-        tier.currectUnlockNeeded = tree.spendPoints - tier.currectUnlockRequire;
-        tier.unlocked = (tier.currectUnlockNeeded >= 0);
-
-        tier.skills.forEach((skillId) => {
-            var skill = this.getSkill(skillId);
-            this._refreshTreeStateHandleTierSkill(skill, tier, tree);
+    /**
+     * 更新技能樹技能
+     *
+     * @param integer 要更新的技能樹 id，若省略則更新所有技能樹階層
+     */
+    updateTreeSkills(targetId = null) {
+        this.store.trees.forEach((tree) => {
+            (targetId === null || tree.id == targetId) && this._doUpdateTreeSkills(tree);
         }, this);
     }
 
     /**
-     * 刷新技能樹處理階層技能
+     * 更新技能樹技能
+     *
+     * @param Tree 要被處理的技能樹
      */
-    _refreshTreeStateHandleTierSkill(skill, tier, tree) {
-        var needClearSkill = this._refreshTreeStateHandleTierSkillUpdate(skill, tier, tree);
+    _doUpdateTreeSkills(tree) {
+        tree.tiers.forEach((tier) => {
+            tier = this.getTier(tier);
+            tier.skills.forEach((skill) => {
+                skill = this.getSkill(skill);
+                this._updateSkill(skill, tier, tree);
+            }, this);
+        }, this);
+    }
 
-        if (needClearSkill) {
+    /**
+     * 更新技能
+     *
+     * @param Skill 要被處理的技能
+     * @param Tier|null 傳入技能階層
+     * @param Tree|null 傳入技能樹
+     */
+    _updateSkill(skill, tier, tree) {
+        if ( ! (skill instanceof Skill))
+            throw 'updateSkillState: arg1 must be Skill Object';
+        tier = (tier instanceof Tier)? tier : this.getTier(skill.tierId);
+        tree = (tree instanceof Tree)? tree : this.getTree(skill.treeId);
+
+        if (this._doUpdateSkill(skill, tier, tree)) {
             skill.unlockedBasic = false;
             skill.unlockedAce = false;
             skill.ownedBasic = false;
             skill.ownedAce = false;
-            return;
         }
 
-        if (skill.ownedBasic) {
-            tree.spendPoints += tier.skillPointBasic;
-            tree.spendCosts += tier.skillCostBasic;
-        }
-
-        if (skill.ownedAce) {
-            tree.spendPoints += tier.skillPointAce;
-            tree.spendCosts += tier.skillCostAce;
-        }
+        this._refreshSkillStatus(skill);
     }
 
     /**
-     * 刷新技能樹處理階層技能更新
+     * 更新技能
+     *
+     * @param Skill 要被處理的技能
+     * @param Tier 傳入技能階層
+     * @param Tree 傳入技能樹
+     * @return boolean 是否清除技能，若技能未解鎖則回傳 true
      */
-    _refreshTreeStateHandleTierSkillUpdate(skill, tier, tree) {
-        // 檢查階層解鎖
+    _doUpdateSkill(skill, tier, tree) {
+        var availablePoints = this.store.availablePoints;
+
         skill.tierUnlocked = tier.unlocked;
         if ( ! skill.tierUnlocked) return true;
 
@@ -166,47 +214,31 @@ class SkillsHandler {
         skill.requiredUnlocked = true;
 
         // 更新技能解鎖狀態
-        var availablePoints = this.store.availablePoints - tree.spendPoints;
-        console.log(availablePoints);
         skill.unlockedBasic = (skill.ownedBasic || (availablePoints >= tier.skillPointBasic));
         skill.unlockedAce = (tier.skillPointAce > 0)
             ? (skill.ownedBasic)
                 ? (skill.ownedAce || (availablePoints >= tier.skillPointAce))
                 : (availablePoints >= tier.skillPointBasic + tier.skillPointAce)
             : false;
-
-        if (skill.unlockedAce) {
-            if (tier.skillPointAce > 0) {
-                if (skill.ownedBasic) {
-                    console.log('ownedBasic');
-                    console.log((skill.ownedAce || (availablePoints >= tier.skillPointAce)));
-                    console.log([availablePoints, tier.skillPointAce]);
-                } else {
-                    console.log('no ownedBasic');
-                    console.log((availablePoints >= tier.skillPointBasic + tier.skillPointAce));
-                }
-
-            }
-        }
     }
 
     /**
-     * 刷新所有技能狀態
+     * 刷新技能狀態(status)
+     *
+     * @param Skill 要被處理的技能
      */
-    refreshSkillsStatus() {
-        this.store.skills.forEach((skill) => {
-            skill.status = (function(skill) {
-                if (skill.alerted)
-                    return statuses.STATUS_ALERTED;
-                if (skill.ownedAce)
-                    return statuses.STATUS_ACED;
-                if (skill.ownedBasic)
-                    return statuses.STATUS_OWNED;
-                if (skill.tierUnlocked)
-                    return statuses.STATUS_UNLOCKED;
-                return statuses.STATUS_LOCKED;
-            })(skill);
-        });
+    _refreshSkillStatus(skill) {
+        skill.status = ((skill) => {
+            if (skill.alerted)
+                return statuses.STATUS_ALERTED;
+            if (skill.ownedAce)
+                return statuses.STATUS_ACED;
+            if (skill.ownedBasic)
+                return statuses.STATUS_OWNED;
+            if (skill.tierUnlocked)
+                return statuses.STATUS_UNLOCKED;
+            return statuses.STATUS_LOCKED;
+        })(skill);
     }
 
     // =========================================================================
@@ -222,6 +254,7 @@ class SkillsHandler {
             if (skill.unlockedAce)
                 skill.ownedAce = true;
         }
+
         this.refreshSkillTrees(skill.treeId);
     }
 
@@ -229,6 +262,7 @@ class SkillsHandler {
         var skill = this.getSkill(skillId);
         skill.ownedBasic = false;
         skill.ownedAce = false;
+
         this.refreshSkillTrees(skill.treeId);
     }
 }

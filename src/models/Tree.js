@@ -8,7 +8,6 @@ export default class Tree extends Model {
             tiers           : [],
             spendPoints     : 0,
             spendCosts      : 0,
-            availablePoints : 120,
             reduced         : false
         }
     }
