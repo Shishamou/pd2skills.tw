@@ -6,8 +6,11 @@ var initialState = {
     trees: [],
     tiers: [],
     skills: [],
+    totalSpendPoints: 0,
+    totalSpendCosts: 0,
+    availablePoints: 0,
     displayInformation: {},
-    activedTree: 0
+    activedTree: 0,
 };
 
 
@@ -69,7 +72,7 @@ function handleSkillEvent(state = {}, action) {
                     : hover;
             }
 
-            SkillsHandler.updateTreeState(skill.treeId);
+            SkillsHandler.refreshSkillTrees(skill.treeId);
             break;
 
         default:
@@ -80,6 +83,9 @@ function handleSkillEvent(state = {}, action) {
         trees: SkillsHandler.store.trees.slice(),
         tiers: SkillsHandler.store.tiers.slice(),
         skills: SkillsHandler.store.skills.slice(),
-        displayInformation: Object.assign({}, state.displayInformation)
+        totalSpendPoints: SkillsHandler.store.totalSpendPoints,
+        totalSpendCosts: SkillsHandler.store.totalSpendCosts,
+        availablePoints: SkillsHandler.store.availablePoints,
+        displayInformation: Object.assign({}, state.displayInformation),
     });
 }
