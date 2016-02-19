@@ -9,7 +9,7 @@ var initialState = {
     totalSpendPoints: 0,
     totalSpendCosts: 0,
     availablePoints: 0,
-    displayInformation: {},
+    display: null,
     activedTree: 0,
 };
 
@@ -63,7 +63,7 @@ function handleSkillEvent(state = {}, action) {
             var hover = true;
         case events.MOUSE_LEAVE:
             if (hover) {
-                state.displayInformation = { skill: skill.id };
+                state.display = skill.id;
             }
 
             // 更新前置技能
@@ -88,6 +88,6 @@ function handleSkillEvent(state = {}, action) {
         totalSpendPoints: SkillsHandler.store.totalSpendPoints,
         totalSpendCosts: SkillsHandler.store.totalSpendCosts,
         availablePoints: SkillsHandler.store.availablePoints,
-        displayInformation: Object.assign({}, state.displayInformation),
+        display: state.display,
     });
 }

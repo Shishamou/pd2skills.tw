@@ -5,7 +5,7 @@ import * as actions from '../actions/skills';
 
 import TreeTabs from '../components/TreeTabs';
 import Tree from '../components/Tree';
-import Infobox from '../components/Infobox';
+import SkillsSide from '../components/SkillsSide';
 
 class Skills extends Component
 {
@@ -63,9 +63,7 @@ class Skills extends Component
                         }
                     </div>
                 </div>
-                <div className="section-aside">
-                    <Infobox app={app} display={this.props.displayInformation} />
-                </div>
+                <SkillsSide {...app} display={this.props.display} />
             </div>
         )
     }
