@@ -5,6 +5,11 @@ class Tree extends Component
 {
 	constructor(props) {
 		super(props);
+		this.handleRespec = this.handleRespec.bind(this);
+	}
+
+	handleRespec() {
+		this.props.respecTree(this.props.tree.id);
 	}
 
 	getProgressbarPercent(tiers) {
@@ -50,11 +55,13 @@ class Tree extends Component
 			points: this.props.available
 		});
 
+		var respec = locale('st_menu_respec_tree');
+
 		return (
 			<div className="tree">
 				<div className="tree-control">
 					<p className="tree-control-available">{available}</p>
-					<p className="tree-control-respec">{locale('st_menu_respec_tree')}</p>
+					<p className="tree-control-respec" onClick={this.handleRespec}>{respec}</p>
 				</div>
 				<div className="progressbar" data-percent={progressbarPercent} />
 				{tiers}
@@ -67,6 +74,7 @@ Tree.propTypes = {
 	locale: PropTypes.func.isRequired,
 	localeText: PropTypes.func.isRequired,
 	getTier: PropTypes.func.isRequired,
+	respecTree: PropTypes.func.isRequired,
 	tree: PropTypes.object.isRequired,
 	available: PropTypes.number.isRequired,
 };

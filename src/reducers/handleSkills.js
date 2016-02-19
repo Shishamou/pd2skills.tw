@@ -24,6 +24,9 @@ export default function handleSkill(state = initialState, action) {
             return Object.assign({}, state, {
                 activedTree: action.id
             });
+        case types.RESPEC_SKILL_TREE:
+            SkillsHandler.respecSkillTrees(action.id);
+            return Object.assign({}, state, SkillsHandler.store);
         default:
             return state;
     }
@@ -32,7 +35,6 @@ export default function handleSkill(state = initialState, action) {
 function loadSkills(state = {}, action) {
     switch (action.status) {
         case 'success':
-            var store = {};
             SkillsHandler.initialSkillTrees(action.response);
             return Object.assign({}, state, SkillsHandler.store);
 

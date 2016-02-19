@@ -21,3 +21,7 @@ export function handleSkillLeave(id) {
 export function activeSkillTree(id) {
     return { type: types.SWITCH_SKILL_TREE, id };
 }
+
+export function respecSkillTree(id) {
+    return { type: types.RESPEC_SKILL_TREE, id };
+}

@@ -14,7 +14,6 @@ class Skills extends Component
         this.getTree = this.getTree.bind(this);
         this.getTier = this.getTier.bind(this);
         this.getSkill = this.getSkill.bind(this);
-        this.clickTab = this.clickTab.bind(this);
     }
 
     getTree(id) {
@@ -29,10 +28,6 @@ class Skills extends Component
         return this.props.skills[id];
     }
 
-    clickTab(index) {
-        this.props.dispatch(actions.activeSkillTree(index));
-    }
-
     render() {
         const { dispatch } = this.props;
         const { trees, currectTree, availablePoints } = this.props;
@@ -44,10 +39,11 @@ class Skills extends Component
             getTree: this.getTree,
             getTier: this.getTier,
             getSkill: this.getSkill,
-            handleSkillClick: (id) => {dispatch(actions.handleSkillClick(id))},
-            handleSkillRemove: (id) => {dispatch(actions.handleSkillRemove(id))},
-            handleSkillEnter: (id) => {dispatch(actions.handleSkillEnter(id))},
-            handleSkillLeave: (id) => {dispatch(actions.handleSkillLeave(id))},
+            respecTree        : (id) => {dispatch(actions.respecSkillTree(id))},
+            handleSkillClick  : (id) => {dispatch(actions.handleSkillClick(id))},
+            handleSkillRemove : (id) => {dispatch(actions.handleSkillRemove(id))},
+            handleSkillEnter  : (id) => {dispatch(actions.handleSkillEnter(id))},
+            handleSkillLeave  : (id) => {dispatch(actions.handleSkillLeave(id))},
         }
 
         return (
@@ -56,7 +52,7 @@ class Skills extends Component
                     <TreeTabs {...app}
                         trees={trees}
                         currectTree={currectTree}
-                        onClick={this.clickTab}
+                        onClick={(e) => {dispatch(actions.activeSkillTree(e))}}
                     />
                     <div className="section-content">
                         {(currectTree) &&

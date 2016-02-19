@@ -62,24 +62,20 @@ class Skill extends Component
 	}
 
 	handleSkillClick(e) {
-		var { handleSkillClick, skill } = this.props;
-		handleSkillClick(skill.id);
+		this.props.handleSkillClick(this.props.skill.id);
 	}
 
 	handleSkillRemove(e) {
-		var { handleSkillRemove, skill } = this.props;
 		e.stopPropagation();
-		handleSkillRemove(skill.id);
+		this.props.handleSkillRemove(this.props.skill.id);
 	}
 
 	handleSkillEnter(e) {
-		var { handleSkillEnter, skill } = this.props;
-		handleSkillEnter(skill.id);
+		this.props.handleSkillEnter(this.props.skill.id);
 	}
 
 	handleSkillLeave(e) {
-		var { handleSkillLeave, skill } = this.props;
-		handleSkillLeave(skill.id);
+		this.props.handleSkillLeave(this.props.skill.id);
 	}
 
 

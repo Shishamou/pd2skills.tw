@@ -57,6 +57,22 @@ class SkillsHandler {
     }
 
     /**
+     * 重置技能樹
+     *
+     * @param integer 要更新的技能樹 id，若省略則更新所有技能樹階層
+     */
+    respecSkillTrees(targetId) {
+        this.store.skills.forEach((skill) => {
+            if (targetId === null || skill.treeId == targetId) {
+                skill.ownedBasic = false;
+                skill.ownedAce = false;
+            }
+        }, this);
+
+        this.refreshSkillTrees(targetId);
+    }
+
+    /**
      * 刷新技能樹
      *
      * @param integer 要更新的技能樹 id，若省略則更新所有技能樹階層
