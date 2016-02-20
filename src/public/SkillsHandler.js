@@ -7,11 +7,11 @@ import Skill from '../models/Skill';
 class SkillsHandler {
     constructor(store = {}) {
         this.store = store;
+        this.builder = new SkillsBuilder(store);
         this.skillSearchTemp = {};
 
         this.totalAvailablePoints = 120;
         this.store.availablePoints = 0;
-        this.builder = new SkillsBuilder(store);
     }
 
     getTree(id) {
@@ -61,7 +61,7 @@ class SkillsHandler {
      *
      * @param integer 要更新的技能樹 id，若省略則更新所有技能樹階層
      */
-    respecSkillTrees(targetId) {
+    respecSkillTrees(targetId = null) {
         this.store.skills.forEach((skill) => {
             if (targetId === null || skill.treeId == targetId) {
                 skill.ownedBasic = false;
@@ -77,7 +77,7 @@ class SkillsHandler {
      *
      * @param integer 要更新的技能樹 id，若省略則更新所有技能樹階層
      */
-    refreshSkillTrees(targetId) {
+    refreshSkillTrees(targetId = null) {
         this.updateTreeTiersAndCountSpendPoints(targetId);
         this.updateTreeSkills(targetId);
     }
@@ -103,7 +103,7 @@ class SkillsHandler {
     updateTreeTiersAndCountSpendPoints(targetId = null) {
         var spendPoints = this.store.trees.map((tree) =>
             (targetId === null || tree.id == targetId)
-                ? this._updateTreeTier(tree)
+                ? this._updateTreeTiers(tree)
                 : tree.spendPoints
         );
         var totalSpendPoints = spendPoints.reduce((prev, curr) => prev + curr);
@@ -118,7 +118,7 @@ class SkillsHandler {
      * @param Tree 要被處理的技能樹
      * @return integer 技能樹花費的點數
      */
-    _updateTreeTier(tree) {
+    _updateTreeTiers(tree) {
         var spendPoints = 0;
 
         tree.tiers.forEach((tier) => {
@@ -191,7 +191,7 @@ class SkillsHandler {
      */
     _updateSkill(skill, tier, tree) {
         if ( ! (skill instanceof Skill))
-            throw 'updateSkillState: arg1 must be Skill Object';
+            throw 'arg1 must be Skill object';
         tier = (tier instanceof Tier)? tier : this.getTier(skill.tierId);
         tree = (tree instanceof Tree)? tree : this.getTree(skill.treeId);
 

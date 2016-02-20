@@ -16,7 +16,8 @@ export default class Skill extends Model {
             tierUnlocked     : false,
             requiredUnlocked : false,
             alerted          : false,
-            status           : statuses.STATUS_LOCKED
+            status           : statuses.STATUS_LOCKED,
+            datas            : {}
         }
     }
 }

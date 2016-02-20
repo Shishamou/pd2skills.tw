@@ -62,9 +62,13 @@ export default class SkillsBuilder {
         var tierId = this.registerTier(tier);
         var treeId = tierData.treeId;
 
-        tier.skills = tierData.skills.map((skill) => this.buildSkill(
-            { treeId, tierId, name: skill.name, requiredSkill: skill.required }
-        ), this);
+        tier.skills = tierData.skills.map((skill) => this.buildSkill({
+            treeId,
+            tierId,
+            name: skill.name,
+            requiredSkill: skill.required,
+            datas: skill.datas
+        }), this);
 
         return tierId;
     }

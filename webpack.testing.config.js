@@ -1,39 +1,7 @@
-var path = require('path');
-var webpack = require('webpack');
-var node_modules_dir = path.resolve(__dirname, 'node_modules');
+var config = require('./webpack.dev.config.js');
 
-module.exports = {
-    entry: {
-        testing: './src/testing.js',
-    },
-    output: {
-        path: path.resolve(__dirname, 'dev'),
-        filename: '[name].js'
-    },
-    resolve: {
-        extensions: ['', '.js', '.jsx']
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loader: "babel",
-                query:
-                {
-                    presets:['es2015', 'react']
-                }
-            },
-            {
-                test: /\.less$/,
-                loader: 'style!css!less'
-            },
-            {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                loaders: [
-                    'url?limit=20480'
-                ]
-            }
-        ]
-    }
+config.entry = {
+    testing: './src/testing.js',
 };
+
+module.exports = config;

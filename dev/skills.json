@@ -3,7 +3,7 @@
         {
             "name": "mastermind",
             "skills": [
-                { "name": "mastermind" },
+                { "name": "mastermind", "datas": {"multibasic" : 2} },
                 { "name": "cable_guy" },
                 { "name": "combat_medic" },
                 { "name": "triathlete" },

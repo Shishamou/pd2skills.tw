@@ -40,8 +40,10 @@
 	}
 
 	ul.section-tabs {
+		@around: 4px;
 		list-style: none;
 		height: @section-top;
+		margin: 0 -@around;
 		line-height: @section-top;
 		font-size: @section-top-font;
 
@@ -53,6 +55,7 @@
 			display: inline-block;
 			float: left;
 			min-width: @section-top-font * 3;
+			margin: 0 @around;
 			padding: 0 12px;
 			color: @color-strong;
 			text-align: center;
