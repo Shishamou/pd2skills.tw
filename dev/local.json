@@ -1,4 +1,7 @@
 { "tc" : {
+"st_menu_point" : "$points;點",
+"st_menu_point_plural" : "$points;點",
+"st_menu_cost" : "$$cost;",
 "menu_spendable_skill_points" : "尚未使用的技能點：$points;",
 "st_menu_mastermind" : "黑手",
 "st_menu_enforcer" : "暴徒",

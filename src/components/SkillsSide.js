@@ -25,9 +25,9 @@ class SkillsSide extends Component
 				<h1 className="infobox-header" dangerouslySetInnerHTML={{
 					__html: localeText(`menu_${skill.name}`)
 				}} />
-				{pointsToUnlockTier}
+				{this.pointsToUnlockTier(tier)}
 				<p className="infobox-block" dangerouslySetInnerHTML={{
-					__html: desc
+					__html: this.desc(skill, tier)
 				}} />
 			</div>
 		);
@@ -54,15 +54,29 @@ class SkillsSide extends Component
 
 	desc(skill, tier) {
 		const { locale, localeText } = this.props;
-		var datas = skill.datas || {};
+
+		const handleCostText = (cost) => locale('st_menu_cost', { cost });
+		const handlePointsText = (points) => locale(
+			(points > 0) ? 'st_menu_point_plural' : 'st_menu_point', { points }
+		);
+
 		var basic, pro;
+		
+		if (skill.ownedBasic) {
+			basic = locale('st_menu_skill_owned');
+		} else {
+			basic = handlePointsText(tier.skillPointBasic) + ' / ' + handleCostText(tier.skillCostBasic);
+			basic = (skill.unlockedBasic)? basic : `<span class="alerted">${basic}</span>`;
+		}
 
-		basic = `${tier.skillPointBasic} / ${tier.skillCostBasic}`;
-		basic = (skill.unlockedBasic)? basic : `<span class="alerted">${basic}</span>`;
+		if (skill.ownedAce) {
+			pro = locale('st_menu_skill_owned');
+		} else {
+			pro = handlePointsText(tier.skillPointAce) + ' / ' + handleCostText(tier.skillCostAce);
+			pro = (skill.unlockedAce)? pro : `<span class="alerted">${pro}</span>`;
+		}
 
-		pro = `${tier.skillPointAce} / ${tier.skillCostAce}`;
-		pro = (skill.unlockedAce)? pro : `<span class="alerted">${pro}</span>`;
-
+		var datas = skill.datas || {};
 		return localeText(`menu_${skill.name}_desc`, Object.assign(datas, { basic, pro }));
 	}
 }

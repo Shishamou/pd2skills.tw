@@ -4,7 +4,7 @@ import * as statuses from '../constants/SkillStatuses';
 class SkillText extends Component
 {
 	render() {
-		const { skill, skillPointBasic, skillPointAce } = this.props;
+		const { skill, tier } = this.props;
 		const { locale, localeText } = this.props;
 
 		switch (skill.status) {
@@ -21,11 +21,16 @@ class SkillText extends Component
 					</div>
 				);
 			case statuses.STATUS_OWNED:
-				if (skillPointAce > 0) {
+				if (tier.skillPointAce > 0) {
 					return (
 						<div className="skill-text">
 							<p className="skill-text-hold">{locale('st_menu_skill_owned')}</p>
-							<p className="skill-text-hide">購買 王牌<br/>花費 {skillPointAce} 點</p>
+							<p className="skill-text-hide" dangerouslySetInnerHTML={{
+								__html: localeText('st_menu_buy_skill_pro_plural', {
+									points: tier.skillPointAce,
+									cost: ''//'$' + tier.skillCostAce,
+								})
+							}} />
 						</div>
 					);
 				} else {
@@ -38,7 +43,12 @@ class SkillText extends Component
 			case statuses.STATUS_UNLOCKED:
 				return (
 					<div className="skill-text">
-						<p className="skill-text-hide">購買 基本<br/>花費 {skillPointBasic} 點</p>
+						<p className="skill-text-hide" dangerouslySetInnerHTML={{
+							__html: localeText('st_menu_buy_skill_basic_plural', {
+								points: tier.skillPointBasic,
+								cost: ''//'$' + tier.skillCostBasic,
+							})
+						}} />
 					</div>
 				);
 			case statuses.STATUS_LOCKED:
@@ -111,9 +121,8 @@ Skill.propTypes = {
 	handleSkillEnter: PropTypes.func.isRequired,
 	handleSkillLeave: PropTypes.func.isRequired,
 	skill: PropTypes.object.isRequired,
+	tier: PropTypes.object.isRequired,
 	tierRank: PropTypes.number.isRequired,
-	skillPointBasic: PropTypes.number.isRequired,
-	skillPointAce: PropTypes.number,
 };
 
 export default Skill;
