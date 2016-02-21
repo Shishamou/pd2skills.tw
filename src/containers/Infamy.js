@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-// import * as actions from '../actions/infamy';
+import * as actions from '../actions/infamy';
 
 import InfamyTree from '../components/InfamyTree';
 import InfamySide from '../components/InfamySide';
@@ -31,7 +31,11 @@ class Infamy extends Component
             locale,
             localeText,
             getInfamy: this.getInfamy,
-            getPosInfamy: this.getPosInfamy
+            getPosInfamy: this.getPosInfamy,
+            handleInfamyClick  : (id) => {dispatch(actions.handleInfamyClick(id))},
+            handleInfamyRemove : (id) => {dispatch(actions.handleInfamyRemove(id))},
+            handleInfamyEnter  : (id) => {dispatch(actions.handleInfamyEnter(id))},
+            handleInfamyLeave  : (id) => {dispatch(actions.handleInfamyLeave(id))},
         }
 
         var display = this.getInfamy(this.props.display);

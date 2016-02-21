@@ -14,9 +14,6 @@ class InfamySide extends Component
 		const infamy = this.props.display;
 		if ( ! infamy) return;
 
-		var pointsToUnlockTier = this.pointsToUnlockTier(tier);
-		var desc = this.desc(skill, tier);
-
 		return (
 			<div className="infobox">
 				<h1 className="infobox-header" dangerouslySetInnerHTML={{

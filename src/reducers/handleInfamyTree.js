@@ -58,8 +58,8 @@ function handleInfamyEvent(state = {}, action) {
             return state;
     }
 
-    return Object.assign({}, state, SkillsHandler.store, {
-        infamyList: SkillsHandler.store.infamyList.slice(),
+    return Object.assign({}, state, InfamyTreeHandler.store, {
+        infamyList: InfamyTreeHandler.store.infamyList.slice(),
         display: state.display
     });
 }

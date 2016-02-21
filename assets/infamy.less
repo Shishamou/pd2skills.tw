@@ -58,6 +58,7 @@
 		position: relative;
 		width: @infamy-block-width;
 		height: @infamy-block-height;
+		cursor: pointer;
 
 		/* =====================================================================
 		 * = Icon
@@ -65,7 +66,7 @@
 
 		.infamy-icon {
 			opacity: .2;
-			background: #fff;
+			background: @color-normal;
 		}
 
 		.infamy-icon {
@@ -83,6 +84,7 @@
 
 		&[data-status="locked"] {
 			.infamy-icon {
+				background: @color-dark;
 				.transform(scale(0.5));
 			}
 
@@ -132,6 +134,31 @@
 
 		&:hover .infamy-text {
 			display: block;
+		}
+
+		/* =====================================================================
+		 * = Remove
+		 * ===================================================================*/
+
+		.infamy-remove {
+			display: none;
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 1000;
+			width: @infamy-block-font;
+			height: @infamy-block-font;
+			background: @color-strong;
+
+			&:hover {
+				background: @color-normal;
+			}
+		}
+
+		&[data-status='owned']:hover {
+			.infamy-remove {
+				display: block;
+			}
 		}
 	}
 }
