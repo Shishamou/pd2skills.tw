@@ -1,87 +1,33 @@
 {
 	"infamy_tree" : [
-		{
-			"name" : "xp"
-		},
-		{
-			"name" : "ranger"
-		},
-		{
-			"name" : "xp"
-		},
-		{
-			"name" : "lurker"
-		},
-		{
-			"name" : "xp"
-		},
+		{ "name" : "xp", "disable" : true },
+		{ "name" : "ranger", "disable" : true },
+		{ "name" : "xp", "disable" : true },
+		{ "name" : "lurker", "disable" : true },
+		{ "name" : "xp", "disable" : true },
 
+		{ "name" : "punk", "disable" : true },
+		{ "name" : "xp", "disable" : true },
+		{ "name" : "ghost" },
+		{ "name" : "xp", "disable" : true },
+		{ "name" : "balaclava", "disable" : true },
 
-		{
-			"name" : "punk"
-		},
-		{
-			"name" : "xp"
-		},
-		{
-			"name" : "ghost"
-		},
-		{
-			"name" : "xp"
-		},
-		{
-			"name" : "balaclava"
-		},
+		{ "name" : "xp", "disable" : true },
+		{ "name" : "mastermind" },
+		{ "name" : "root" },
+		{ "name" : "enforcer" },
+		{ "name" : "xp", "disable" : true },
 
+		{ "name" : "daft", "disable" : true },
+		{ "name" : "xp", "disable" : true },
+		{ "name" : "technician" },
+		{ "name" : "xp", "disable" : true },
+		{ "name" : "hood", "disable" : true },
 
-		{
-			"name" : "xp"
-		},
-		{
-			"name" : "mastermind"
-		},
-		{
-			"name" : "root"
-		},
-		{
-			"name" : "enforcer"
-		},
-		{
-			"name" : "xp"
-		},
-
-
-		{
-			"name" : "daft"
-		},
-		{
-			"name" : "xp"
-		},
-		{
-			"name" : "technician"
-		},
-		{
-			"name" : "xp"
-		},
-		{
-			"name" : "hood"
-		},
-
-
-		{
-			"name" : "xp"
-		},
-		{
-			"name" : "destroyer"
-		},
-		{
-			"name" : "xp"
-		},
-		{
-			"name" : "pain"
-		},
-		{
-			"name" : "xp"
-		}
+		{ "name" : "xp", "disable" : true },
+		{ "name" : "destroyer", "disable" : true },
+		{ "name" : "xp", "disable" : true },
+		{ "name" : "pain", "disable" : true },
+		{ "name" : "xp", "disable" : true }
 	]
 }

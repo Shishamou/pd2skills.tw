@@ -66,7 +66,7 @@
 
 		.infamy-icon {
 			opacity: .2;
-			background: @color-normal;
+			background: @color-dark;
 		}
 
 		.infamy-icon {
@@ -80,11 +80,12 @@
 			margin-top: -@size / 2;
 			margin-left: -@size / 2;
 			.transition(transform @time);
+			.transform(scale(0.5));
 		}
 
+		&[data-status="disable"],
 		&[data-status="locked"] {
 			.infamy-icon {
-				background: @color-dark;
 				.transform(scale(0.5));
 			}
 
@@ -96,6 +97,7 @@
 		&[data-status="unlocked"],
 		&[data-status="owned"] {
 			.infamy-icon {
+				background: @color-normal;
 				.transform(scale(0.9));
 			}
 
