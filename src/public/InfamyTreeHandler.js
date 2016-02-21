@@ -12,6 +12,8 @@ class InfamyTreeHandler {
 
         this.store.availablePoints = 0;
         this.store.spendPoints = 0;
+
+        this.store.reduced = [];
     }
 
     getInfamy(id) {
@@ -67,6 +69,7 @@ class InfamyTreeHandler {
      */
     refreshInfamyTree() {
         this._updateTable();
+        this._refreshReduce();
         this.store.availablePoints = this.totalAvailablePoints;
     }
 
@@ -120,6 +123,17 @@ class InfamyTreeHandler {
                 return statuses.STATUS_UNLOCKED;
             return statuses.STATUS_LOCKED;
         })(infamy);
+    }
+
+    _refreshReduce() {
+        var reduced = [];
+        this.store.infamyList.forEach((infamy) => {
+            if (infamy.owned && infamy.reduce.length > 0) {
+                reduced = reduced.concat(infamy.reduce);
+            }
+        });
+
+        this.store.reduced = reduced.filter((v, k, arr) => arr.indexOf(v) === k);
     }
 
     // =========================================================================

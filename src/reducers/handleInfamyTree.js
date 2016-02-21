@@ -52,12 +52,15 @@ function handleInfamyEvent(state = {}, action) {
             }
 
             InfamyTreeHandler.refreshAllStatus();
-            break;
+            return Object.assign({}, state, {
+                display: state.display
+            });
 
         default:
             return state;
     }
 
+    action.skillReduce = InfamyTreeHandler.store.reduced;
     return Object.assign({}, state, InfamyTreeHandler.store, {
         infamyList: InfamyTreeHandler.store.infamyList.slice(),
         display: state.display

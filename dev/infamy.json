@@ -8,19 +8,19 @@
 
 		{ "name" : "punk", "disable" : true },
 		{ "name" : "xp", "disable" : true },
-		{ "name" : "ghost" },
+		{ "name" : "ghost", "reduce": ["ghost", "hoxton_pack"] },
 		{ "name" : "xp", "disable" : true },
 		{ "name" : "balaclava", "disable" : true },
 
 		{ "name" : "xp", "disable" : true },
-		{ "name" : "mastermind" },
-		{ "name" : "root" },
-		{ "name" : "enforcer" },
+		{ "name" : "mastermind", "reduce": ["mastermind", "hoxton_pack"] },
+		{ "name" : "root", "reduce": ["cost"] },
+		{ "name" : "enforcer", "reduce": ["enforcer", "hoxton_pack"] },
 		{ "name" : "xp", "disable" : true },
 
 		{ "name" : "daft", "disable" : true },
 		{ "name" : "xp", "disable" : true },
-		{ "name" : "technician" },
+		{ "name" : "technician", "reduce": ["technician", "hoxton_pack"] },
 		{ "name" : "xp", "disable" : true },
 		{ "name" : "hood", "disable" : true },
 

@@ -20,6 +20,8 @@ export default function handleSkill(state = initialState, action) {
             return loadSkills(state, action);
         case types.HANDLE_SKILL_EVENT:
             return handleSkillEvent(state, action);
+        case types.HANDLE_INFAMY_EVENT:
+            return handleSkillReduce(state, action);
         case types.SWITCH_SKILL_TREE:
             return Object.assign({}, state, {
                 activedTree: action.id
@@ -89,5 +91,16 @@ function handleSkillEvent(state = {}, action) {
         totalSpendCosts: SkillsHandler.store.totalSpendCosts,
         availablePoints: SkillsHandler.store.availablePoints,
         display: state.display,
+    });
+}
+
+function handleSkillReduce(state, action) {
+    if ( ! action.skillReduce) return state;
+    SkillsHandler.setupSkillReduce(action.skillReduce);
+
+    return Object.assign({}, state, SkillsHandler.store, {
+        trees: SkillsHandler.store.trees.slice(),
+        tiers: SkillsHandler.store.tiers.slice(),
+        skills: SkillsHandler.store.skills.slice(),
     });
 }
