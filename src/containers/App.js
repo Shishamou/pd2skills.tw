@@ -50,7 +50,7 @@ class App extends Component
             switch (display) {
                 case 'skills':
                     return <Skills locale={this.locale} localeText={this.localeText} />;
-                case 'infamys':
+                case 'infamy':
                     return <Infamy locale={this.locale} localeText={this.localeText} />;
                 default:
             }
