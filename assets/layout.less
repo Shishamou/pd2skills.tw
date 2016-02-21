@@ -27,7 +27,6 @@ body {
 		ul.header-nav {
 			float: left;
 			margin: ((@header-height - @font-control) / 2) 0;
-			font-size: @font-control;
 
 			&:after {
 				.clear-float;
@@ -40,9 +39,12 @@ body {
 				color: @color-strong;
 				text-transform: uppercase;
 				line-height: 1;
+				font-size: @font-control;
+				cursor: pointer;
 
 				&.actived {
 					color: @color-normal;
+					cursor: default;
 				}
 
 				&:first-child {

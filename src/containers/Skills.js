@@ -48,12 +48,12 @@ class Skills extends Component
 
         return (
             <div className="section sections-skill">
+                <TreeTabs {...app}
+                    trees={trees}
+                    currectTree={currectTree}
+                    onClick={(e) => {dispatch(actions.activeSkillTree(e))}}
+                />
                 <div className="section-main">
-                    <TreeTabs {...app}
-                        trees={trees}
-                        currectTree={currectTree}
-                        onClick={(e) => {dispatch(actions.activeSkillTree(e))}}
-                    />
                     <div className="section-content">
                         {(currectTree) &&
                             <Tree {...app}

@@ -12,6 +12,8 @@ class SkillsHandler {
 
         this.totalAvailablePoints = 120;
         this.store.availablePoints = 0;
+
+        this.store.costReduced = false;
     }
 
     getTree(id) {
@@ -70,6 +72,20 @@ class SkillsHandler {
         }, this);
 
         this.refreshSkillTrees(targetId);
+    }
+
+    setupSkillReduce(reduced) {
+        if (reduced instanceof Array) {
+            this.store.trees.forEach((tree) => {
+                var bool = (reduced.indexOf(tree.name) >= 0);
+                if (tree.reduced !== bool) {
+                    tree.reduced = bool;
+                    this.refreshSkillTrees(tree.id);
+                }
+            }, this);
+
+            this.store.costReduced = (reduced.indexOf('cost') >= 0);
+        }
     }
 
     /**

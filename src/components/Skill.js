@@ -88,8 +88,6 @@ class Skill extends Component
 		this.props.handleSkillLeave(this.props.skill.id);
 	}
 
-
-
 	render() {
 		const { app, skill } = this.props;
 

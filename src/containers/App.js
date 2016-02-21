@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../actions/app';
 
 import Localisation from '../public/Localisation';
 import Skills from './Skills';
+import Infamy from './Infamy';
 
 class App extends Component
 {
@@ -34,19 +36,41 @@ class App extends Component
         return text;
     }
 
+    switchTab(name) {
+        this.props.dispatch(actions.switchMainTab(name));
+    }
+
     render() {
         const { locale, localeText } = this;
+
+        const tabs = ['skills', 'perk decks', 'infamy'];
+        const display = this.props.display || tabs[0];
+
+        const main = ((display) => {
+            switch (display) {
+                case 'skills':
+                    return <Skills locale={this.locale} localeText={this.localeText} />;
+                case 'infamys':
+                    return <Infamy locale={this.locale} localeText={this.localeText} />;
+                default:
+            }
+        })(display);
 
         return (
             <div className="wrapper">
                 <div className="header">
                     <ul className="header-nav">
-                        <li className="actived">skills</li>
-                        <li>perk decks</li>
-                        <li>infamys</li>
+                        {tabs.map((tab, index) =>
+                            <li key={index}
+                                className={(tab === display)? 'actived' : ''}
+                                onClick={(e)=>{this.switchTab(tab)}}
+                            >
+                                <span>{tab}</span>
+                            </li>
+                        )}
                     </ul>
                 </div>
-                <Skills locale={this.locale} localeText={this.localeText} />
+                {main}
             </div>
         );
     }
