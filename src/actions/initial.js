@@ -54,3 +54,18 @@ export function fetchSkillsSuccess(response) {
 export function fetchSkillsError(error) {
     return {type: actions.LOAD_SKILLS, status: 'error', error};
 }
+
+// =============================================================================
+// = Fetch Infamy
+// =============================================================================
+export function fetchInfamy(url) {
+    return dispatch => {
+        dispatch({type: actions.LOAD_INFAMYTREE});
+        return fetch(url)
+            .then(response => response.json())
+            .then(response => {
+                dispatch({type: actions.LOAD_INFAMYTREE, status: 'success', response})
+            });
+    };
+    return {type: actions.LOAD_INFAMYTREE, status: 'error', error};
+}

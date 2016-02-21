@@ -11,6 +11,7 @@ class InfamyTreeHandler {
         this.tableCenter = [0, 0];
 
         this.store.availablePoints = 0;
+        this.store.spendPoints = 0;
     }
 
     getInfamy(id) {
@@ -43,7 +44,7 @@ class InfamyTreeHandler {
         var table = this.store.infamyTable;
         var rows = table.length;
         var cols = table[0].length;
-        this.tableCenter = [ rows, cols ];
+        this.tableCenter = [ cols, rows ];
     }
 
     // =========================================================================
@@ -124,10 +125,10 @@ class InfamyTreeHandler {
 
     handleInfamyClick(infamyId) {
         var infamy = this.getInfamy(infamyId);
-        if ( ! infamy.owned) {
+
+        if ( ! infamy.owned)
             if (infamy.unlocked)
                 infamy.owned = true;
-
         this.refreshInfamyTree();
     }
 
@@ -139,4 +140,4 @@ class InfamyTreeHandler {
     }
 }
 
-export default new SkillsHandler;
+export default new InfamyTreeHandler;

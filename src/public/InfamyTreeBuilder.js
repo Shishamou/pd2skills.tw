@@ -3,6 +3,7 @@ import Infamy from '../models/Infamy';
 export default class InfamyTreeBuilder {
     constructor(store = {}) {
         this.store = store;
+        this.initialStore();
     }
 
     initialStore() {
@@ -21,10 +22,10 @@ export default class InfamyTreeBuilder {
         datas = this.objectAttributeToCamelCase(datas);
 
         var infamyDatas = datas.infamyTree;
-        var infamyTable = this.infamyTable = [];
+        var infamyTable = this.store.infamyTable = [];
 
         for (var row = 0; row < 5; row++)
-            infamyTable[] = infamyDatas.splice(0, 5).map((infamy)=>this.buildInfamy(infamy));
+            infamyTable[row] = infamyDatas.splice(0, 5).map((infamy)=>this.buildInfamy(infamy));
     }
 
     /**
@@ -55,7 +56,7 @@ export default class InfamyTreeBuilder {
      * @param integer id
      */
     registerInfamy(infamy) {
-        return infamy.id = this.store.infamyList.push(tree) - 1;
+        return infamy.id = this.store.infamyList.push(infamy) - 1;
     }
 
     // =========================================================================

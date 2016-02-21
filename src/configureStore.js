@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from './reducers';
-import { fetchLangs, fetchSkills } from './actions/initial';
+import { fetchLangs, fetchSkills, fetchInfamy } from './actions/initial';
 
 const loggerMiddleware = createLogger();
 
@@ -19,6 +19,7 @@ export default function configureStore(initialState = {}) {
 
     store.dispatch(fetchLangs('local.json'));
     store.dispatch(fetchSkills('skills.json'));
+    store.dispatch(fetchInfamy('infamy.json'));
 
     return store;
 }

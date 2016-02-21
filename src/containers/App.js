@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Localisation from '../public/Localisation';
 import Skills from './Skills';
+import Infamy from './Infamy';
 
 class App extends Component
 {
@@ -46,7 +47,7 @@ class App extends Component
                         <li>infamys</li>
                     </ul>
                 </div>
-                <Skills locale={this.locale} localeText={this.localeText} />
+                <Infamy locale={this.locale} localeText={this.localeText} />
             </div>
         );
     }

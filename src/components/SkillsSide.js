@@ -17,9 +17,6 @@ class SkillsSide extends Component
 		var skill = getSkill(display);
 		var tier = getTier(skill.tierId);
 
-		var pointsToUnlockTier = this.pointsToUnlockTier(tier);
-		var desc = this.desc(skill, tier);
-
 		return (
 			<div className="infobox">
 				<h1 className="infobox-header" dangerouslySetInnerHTML={{
@@ -61,7 +58,7 @@ class SkillsSide extends Component
 		);
 
 		var basic, pro;
-		
+
 		if (skill.ownedBasic) {
 			basic = locale('st_menu_skill_owned');
 		} else {
