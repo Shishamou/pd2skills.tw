@@ -508,6 +508,7 @@
 "menu_deck13_9_desc" : "護甲破損時，擊殺一名敵人可加快回甲時間。$NL;成功回甲後，效果將會重置。$NL;$NL;整組點滿後，結算抽牌獲得稀有物的機率增加##$multiperk2;##.。",
 
 
+"st_menu_infamy_available_points" : "$points; 點可使用的惡名點數",
 "menu_infamy_unlock_prev_tier" : "你需要解鎖前一階段才能購買。",
 "menu_infamy_name_root" : "解鎖惡名樹",
 "menu_infamy_desc_root" : "作為通往犯罪精英的第一步，職業守則的第一條追尋符合你身份的裝備和聲望。\n\n獎勵：\n你的稀有物基礎掉落率從##$base_chance;##增加到##$buffed_chance;##\n結算時的經驗增加##$xpboost;##\n對所有技能所需的現金消費減少##$cashcost;##\n\n物品：\n\n",

@@ -6,7 +6,7 @@
 	@infamy-icon-size : 150px;
 	@infamy-block-width : 230px;
 	@infamy-block-height : 166px;
-	@infamy-block-font: 20px;
+	@infamy-font-size: 20px;
 
 	@infamy-around-x: 40px;
 	@infamy-around-y: 8px;
@@ -38,6 +38,8 @@
 	 * =======================================================================*/
 
 	.infamytree {
+		font-size: @infamy-font-size;
+
 		.infamytree-row {
 			&:after {
 				.clear-float;
@@ -45,6 +47,15 @@
 
 			.infamy {
 				float: left;
+			}
+		}
+
+		.infamytree-control {
+			text-align: center;
+
+			.infamytree-control-available {
+				line-height: 1.6;
+				font-size: 1.2em;
 			}
 		}
 	}
@@ -65,7 +76,6 @@
 		 * ===================================================================*/
 
 		.infamy-icon {
-			opacity: .2;
 			background: @color-dark;
 		}
 
@@ -75,6 +85,7 @@
 			position: absolute;
 			top: 50%;
 			left: 50%;
+			z-index: -1;
 			width: @size;
 			height: @size;
 			margin-top: -@size / 2;
@@ -86,6 +97,7 @@
 		&[data-status="disable"],
 		&[data-status="locked"] {
 			.infamy-icon {
+				opacity: 0.2;
 				.transform(scale(0.5));
 			}
 
@@ -97,13 +109,30 @@
 		&[data-status="unlocked"],
 		&[data-status="owned"] {
 			.infamy-icon {
-				background: @color-normal;
 				.transform(scale(0.9));
 			}
 
 			&:hover .infamy-icon {
 				.transform(scale(1));
 			}
+		}
+
+		&[data-status="unlocked"] {
+			.infamy-icon {
+				opacity: 0.6;
+				background: @color-gray;
+			}
+		}
+
+		&[data-status="owned"] {
+			.infamy-icon {
+				opacity: 1;
+				background: @color-normal;
+			}
+		}
+
+		&:hover .infamy-icon {
+			background: @color-normal;
 		}
 
 		.animate() {
@@ -131,7 +160,7 @@
 			width: 100%;
 			text-align: center;
 			line-height: 1.4;
-			font-size: @infamy-block-font;
+			font-size: @infamy-font-size;
 		}
 
 		&:hover .infamy-text {
@@ -148,8 +177,8 @@
 			top: 0;
 			right: 0;
 			z-index: 1000;
-			width: @infamy-block-font;
-			height: @infamy-block-font;
+			width: @infamy-font-size;
+			height: @infamy-font-size;
 			background: @color-strong;
 
 			&:hover {

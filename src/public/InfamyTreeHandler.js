@@ -67,6 +67,7 @@ class InfamyTreeHandler {
      */
     refreshInfamyTree() {
         this._updateTable();
+        this.store.availablePoints = this.totalAvailablePoints;
     }
 
     /**
