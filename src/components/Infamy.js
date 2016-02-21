@@ -28,9 +28,9 @@ class Infamy extends Component
 			case statuses.STATUS_OWNED:
 				return locale('st_menu_skill_owned');
 			case statuses.STATUS_DISABLE:
-				return locale('st_menu_point', {points: 1});
-			case statuses.STATUS_UNLOCKED:
 				return 'Disabled';
+			case statuses.STATUS_UNLOCKED:
+				return locale('st_menu_point', {points: 1});
 			case statuses.STATUS_LOCKED:
 			default:
 				return locale('st_menu_skill_locked');

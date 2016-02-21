@@ -19,7 +19,7 @@ class InfamyTreeHandler {
     }
 
     getPos(row, col) {
-        return this.store.infamyTable[row][col];
+        return this.getInfamy(this.store.infamyTable[row][col]);
     }
 
     // =========================================================================
@@ -44,7 +44,7 @@ class InfamyTreeHandler {
         var table = this.store.infamyTable;
         var rows = table.length;
         var cols = table[0].length;
-        this.tableCenter = [ cols, rows ];
+        this.tableCenter = [ Math.floor(cols / 2), Math.floor(rows / 2) ];
     }
 
     // =========================================================================
@@ -86,8 +86,8 @@ class InfamyTreeHandler {
         var table = this.store.infamyTable;
 
         for (let row = 0; row < table.length; row++)
-            for (let col = 0; col < row.length; col++)
-                this.updateTableInfamy(row, col);
+            for (let col = 0; col < table[row].length; col++)
+                this._updateTableInfamy(row, col);
     }
 
     _updateTableInfamy(row, col) {
@@ -96,15 +96,17 @@ class InfamyTreeHandler {
 
         var checkX = (col === centerX)
             ? true
-            : (this.getPos(row, col + ((col > centerX)? 1 : -1)).owned);
+            : (this.getPos(row, col + ((col < centerX)? 1 : -1)).owned);
 
         var checkY = (row === centerY)
             ? true
-            : (this.getPos(row + ((row > centerY)? 1 : -1), col).owned);
+            : (this.getPos(row + ((row < centerY)? 1 : -1), col).owned);
 
         infamy.unlocked = (checkX && checkY && ! infamy.disable);
         if ( ! infamy.unlocked)
             infamy.owned = false;
+
+        this._updateInfamyStatue(infamy);
     }
 
     _updateInfamyStatue(infamy) {
