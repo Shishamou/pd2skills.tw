@@ -144,6 +144,7 @@
 @holo-animation-speed: 5s;
 .halo(@size: 100) {
 	background: url('./images/halo.png') no-repeat center;
+	background-size: @size * 1px;
 	// animation: halo @holo-animation-speed infinite linear;
 
 	@-webkit-keyframes halo {
@@ -179,6 +180,7 @@
 
 .halo2(@size: 100) {
 	background: url('./images/halo2.png') no-repeat center;
+	background-size: @size * 1px;
 	// animation: halo2 @holo-animation-speed infinite linear;
 
 	@-webkit-keyframes halo2 {
