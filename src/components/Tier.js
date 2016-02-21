@@ -4,7 +4,7 @@ import Skill from './Skill';
 class Tier extends Component
 {
 	render() {
-		const { tier, tierRank, getSkill } = this.props;
+		const { tree, tier, tierRank, getSkill } = this.props;
 
 		var skills = tier.skills.map(function (skillId, index) {
 			var skill = getSkill(skillId);
@@ -18,7 +18,7 @@ class Tier extends Component
 		}, this);
 
 		return (
-			<div className="tier" data-unlocked={tier.unlocked}>
+			<div className="tier" data-unlocked={tier.unlocked} data-reduced={tree.reduced}>
 				<div className="tier-skills">{skills}</div>
 				<div className="tier-aside">
 					<p>{tierRank}</p>
@@ -31,6 +31,7 @@ class Tier extends Component
 
 Tier.propTypes = {
 	getSkill: PropTypes.func.isRequired,
+	tree: PropTypes.object.isRequired,
 	tier: PropTypes.object.isRequired,
 	tierRank: PropTypes.number.isRequired,
 };

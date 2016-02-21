@@ -6,11 +6,14 @@ import handleInfamyTree from './reducers/handleInfamyTree';
 
 export default function rootReducer(state = {}, action) {
     switch (action.type) {
+        case types.SWITCH_MAIN_TAB:
+            return Object.assign({}, state, {
+                display: action.name
+            });
         case types.LOAD_LANGS:
             return Object.assign({}, state, {
                 langs: loadLangs(state.langs, action)
             });
-
         case types.LOAD_INFAMYTREE:
         case types.HANDLE_INFAMY_EVENT:
             return Object.assign({}, state, {
@@ -24,7 +27,6 @@ export default function rootReducer(state = {}, action) {
             return Object.assign({}, state, {
                 skills: handleSkills(state.skills, action)
             });
-
         default:
             return state;
     }

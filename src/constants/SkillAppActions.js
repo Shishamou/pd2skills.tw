@@ -1,3 +1,5 @@
+export const SWITCH_MAIN_TAB = 'SWITCH_MAIN_TAB';
+
 export const LOAD_LANGS = 'LOAD_LANGS';
 
 export const LOAD_SKILLS = 'LOAD_SKILLS';

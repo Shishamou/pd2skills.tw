@@ -143,6 +143,12 @@
 	        color: @color-normal;
 	    }
 
+		&[data-reduced='true'] .tier-aside {
+			p:last-child {
+				text-shadow: 0 0 20px @color-strong;
+			}
+		}
+
 	    &:last-child .tier-aside {
 	        display: none;
 	    }
