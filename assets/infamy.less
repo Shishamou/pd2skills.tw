@@ -1,0 +1,215 @@
+.infamy() {
+	/* =========================================================================
+	* = Initial
+	* =======================================================================*/
+
+	@infamy-icon-size : 150px;
+	@infamy-block-width : 230px;
+	@infamy-block-height : 166px;
+	@infamy-block-font: 20px;
+
+	@infamy-around-x: 40px;
+	@infamy-around-y: 8px;
+
+	/* =========================================================================
+	 * = Section
+	 * =======================================================================*/
+
+	.section.sections-infamy {
+		@section-main-width: @infamy-block-width * 5;
+		@section-main-height: @infamy-block-height * 5;
+
+		@section-box-width: @section-main-width;
+		@section-box-height: @section-main-height;
+
+		.section-main {
+			width: @section-main-width;
+			height: @section-main-height;
+		}
+
+		.section-aside {
+			width: ~"calc(100% - @{section-main-width})";
+			min-height: @section-main-height;
+		}
+	}
+
+	/* =========================================================================
+	 * = infamyboard
+	 * =======================================================================*/
+
+	.infamyboard {
+	}
+
+	/* =========================================================================
+	 * = Decks
+	 * =======================================================================*/
+
+	@a: 10px;
+	.infamyboard-row {
+		&:after {
+			.clear-float;
+		}
+
+		.infamy {
+			float: left;
+		}
+	}
+
+	.infamy {
+		display: block;
+		position: relative;
+		width: @infamy-block-width;
+		height: @infamy-block-height;
+
+		/* =====================================================================
+		 * = Icon
+		 * ===================================================================*/
+
+		.infamy-icon {
+			opacity: .2;
+			background: #fff;
+		}
+
+		.infamy-icon {
+			@time: 0.2s;
+			@size: @infamy-icon-size;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: @size;
+			height: @size;
+			margin-top: -@size / 2;
+			margin-left: -@size / 2;
+			.transition(transform @time);
+		}
+
+		&[data-status="locked"] {
+			.infamy-icon {
+				.transform(scale(0.5));
+			}
+
+			&:hover .infamy-icon {
+				.transform(scale(0.6));
+			}
+		}
+
+		&[data-status="unlocked"],
+		&[data-status="owned"] {
+			.infamy-icon {
+				.transform(scale(0.9));
+			}
+
+			&:hover .infamy-icon {
+				.transform(scale(1));
+			}
+		}
+
+		.animate() {
+			&[data-status="owned"]:before {
+				.pseudo-block;
+				.halo(@infamy-icon-size);
+			}
+
+			&[data-status="owned"]:after {
+				.pseudo-block;
+				.halo2(@infamy-icon-size);
+			}
+		}
+		.animate();
+
+
+		/* =====================================================================
+		 * = Text
+		 * ===================================================================*/
+
+		.infamy-text {
+			display: none;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			text-align: center;
+			line-height: 1.4;
+			font-size: @infamy-block-font;
+		}
+
+		&:hover .infamy-text {
+			display: block;
+		}
+	}
+}
+
+/* =====================================================================
+ * = 超耗資源的動畫效果
+ * ===================================================================*/
+@holo-animation-speed: 5s;
+.halo(@size: 100) {
+	background: url('./images/halo.png') no-repeat center;
+	// animation: halo @holo-animation-speed infinite linear;
+
+	@-webkit-keyframes halo {
+		0% {
+			-webkit-transform: rotate(0deg);
+			background-size: @size * 1px;
+		}
+		50% {
+			background-size: @size * 0.8px;
+		}
+
+		100% {
+			-webkit-transform: rotate(360deg);
+			background-size: @size * 1px;
+		}
+	}
+
+	@keyframes halo {
+		0% {
+			-webkit-transform: rotate(0deg);
+			background-size: @size * 1px;
+		}
+		50% {
+			background-size: @size * 0.8px;
+		}
+
+		100% {
+			-webkit-transform: rotate(360deg);
+			background-size: @size * 1px;
+		}
+	}
+}
+
+.halo2(@size: 100) {
+	background: url('./images/halo2.png') no-repeat center;
+	// animation: halo2 @holo-animation-speed infinite linear;
+
+	@-webkit-keyframes halo2 {
+		0% {
+			-webkit-transform: rotate(360deg);
+
+			background-size: @size * 1.2px;
+		}
+		50% {
+			background-size: @size * 1px;
+		}
+
+		100% {
+			-webkit-transform: rotate(0deg);
+			background-size: @size * 1.2px;
+		}
+	}
+
+	@keyframes halo2 {
+		0% {
+			-webkit-transform: rotate(360deg);
+
+			background-size: @size * 1.2px;
+		}
+		50% {
+			background-size: @size * 1px;
+		}
+
+		100% {
+			-webkit-transform: rotate(0deg);
+			background-size: @size * 1.2px;
+		}
+	}
+}

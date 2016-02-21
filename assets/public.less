@@ -48,3 +48,59 @@
 	background-repeat: no-repeat;
 	// background-size: 100%;
 }
+
+.transform(@setting) {
+	-webkit-transform: @setting;
+	-ms-transform: @setting;
+	transform: @setting;
+}
+
+.transition(@setting) {
+	-webkit-transition: @setting;
+	-ms-transition: @setting;
+	transition: @setting;
+}
+
+.whirling-clockwise(@time: 1) {
+	animation: clockwise @time * 1s infinite linear;
+
+	@-webkit-keyframes clockwise {
+		from {
+			-webkit-transform: rotate(0deg);
+		}
+		to {
+			-webkit-transform: rotate(360deg);
+		}
+	}
+
+	@keyframes clockwise {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+}
+
+.whirling-anticlockwise(@time: 1) {
+	animation: anticlockwise @time * 1s infinite linear;
+
+	@-webkit-keyframes anticlockwise {
+		from {
+			-webkit-transform: rotate(360deg);
+		}
+		to {
+			-webkit-transform: rotate(0deg);
+		}
+	}
+	@keyframes anticlockwise {
+		from {
+			transform: rotate(360deg);
+		}
+		to {
+			transform: rotate(0deg);
+		}
+	}
+
+}
