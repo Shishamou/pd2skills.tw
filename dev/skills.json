@@ -3,121 +3,722 @@
         {
             "name": "mastermind",
             "skills": [
-                { "name": "mastermind", "datas": {"multibasic" : 2} },
-                { "name": "cable_guy" },
-                { "name": "combat_medic" },
-                { "name": "triathlete" },
-                { "name": "inside_man" },
-                { "name": "fast_learner" },
-                { "name": "leadership" },
-                { "name": "tactician" },
-                { "name": "equilibrium" },
-                { "name": "dominator" },
-                { "name": "stockholm_syndrome" },
-                { "name": "medic_2x" },
-                { "name": "joker", "required" : "dominator" },
-                { "name": "kilmer" },
-                { "name": "gun_fighter" },
-                { "name": "control_freak", "required": "joker" },
-                { "name": "black_marketeer" },
-                { "name": "pistol_messiah" },
-                { "name": "inspire" }
+                {
+                    "name": "mastermind",
+                    "datas": {
+                        "multibasic": "2"
+                    }
+                },
+                {
+                    "name": "cable_guy",
+                    "datas": {
+                        "multibasic": "75%",
+                        "multipro": "4"
+                    }
+                },
+                {
+                    "name": "combat_medic",
+                    "datas": {
+                        "multibasic": "10",
+                        "multibasic2": "25%",
+                        "multipro": "30%"
+                    }
+                },
+                {
+                    "name": "triathlete",
+                    "datas": {
+                        "multibasic": "100%",
+                        "multipro": "50%"
+                    }
+                },
+                {
+                    "name": "inside_man",
+                    "datas": {
+                        "multibasic": "50%"
+                    }
+                },
+                {
+                    "name": "fast_learner",
+                    "datas": {
+                        "multibasic": "10%",
+                        "multibasic2": "5",
+                        "multipro": "20%"
+                    }
+                },
+                {
+                    "name": "leadership",
+                    "datas": {
+                        "multibasic": "4",
+                        "multipro": "8"
+                    }
+                },
+                {
+                    "name": "tactician",
+                    "datas": {
+                        "multibasic": "15%"
+                    }
+                },
+                {
+                    "name": "equilibrium",
+                    "datas": {
+                        "multibasic": "4",
+                        "multibasic2": "50%",
+                        "multipro": "100%"
+                    }
+                },
+                {
+                    "name": "dominator",
+                    "datas": {
+                        "multipro": "50%"
+                    }
+                },
+                {
+                    "name": "stockholm_syndrome",
+                    "datas": {
+
+                    }
+                },
+                {
+                    "name": "medic_2x",
+                    "datas": {
+                        "multibasic": "2",
+                        "multipro": "2"
+                    }
+                },
+                {
+                    "name": "joker",
+                    "required": "dominator",
+                    "datas": {
+                        "multipro": "55%",
+                        "multipro2": "45%",
+                        "multipro3": "65%"
+                    }
+                },
+                {
+                    "name": "kilmer",
+                    "datas": {
+                        "multibasic": "25%",
+                        "multipro": "8"
+                    }
+                },
+                {
+                    "name": "gun_fighter",
+                    "datas": {
+                        "multibasic": "50%",
+                        "multipro": "15"
+                    }
+                },
+                {
+                    "name": "control_freak",
+                    "required": "joker",
+                    "datas": {
+                        "multibasic": "10%",
+                        "multibasic2": "40%",
+                        "multipro": "20%",
+                        "multipro2": "40%"
+                    }
+                },
+                {
+                    "name": "black_marketeer",
+                    "datas": {
+                        "multibasic": "1.5%",
+                        "multibasic2": "5",
+                        "multipro": "4.5%",
+                        "multipro2": "5"
+                    }
+                },
+                {
+                    "name": "pistol_messiah",
+                    "datas": {
+                        "multibasic": "1",
+                        "multipro": "2"
+                    }
+                },
+                {
+                    "name": "inspire",
+                    "datas": {
+                        "multibasic": "50%",
+                        "multibasic2": "20%",
+                        "multibasic3": "10",
+                        "multipro": "75%"
+                    }
+                }
             ]
         },
         {
             "name": "enforcer",
             "skills": [
-                { "name": "enforcer" },
-                { "name": "oppressor" },
-                { "name": "ammo_reservoir" },
-                { "name": "pack_mule" },
-                { "name": "show_of_force" },
-                { "name": "underdog" },
-                { "name": "steroids" },
-                { "name": "shotgun_impact" },
-                { "name": "shades" },
-                { "name": "tough_guy" },
-                { "name": "shotgun_cqb" },
-                { "name": "ammo_2x" },
-                { "name": "wolverine" },
-                { "name": "from_the_hip" },
-                { "name": "bandoliers" },
-                { "name": "portable_saw" },
-                { "name": "overkill" },
-                { "name": "juggernaut" },
-                { "name": "carbon_blade", "required" : "portable_saw" }
+                {
+                    "name": "enforcer",
+                    "datas": {
+
+                    }
+                },
+                {
+                    "name": "oppressor",
+                    "datas": {
+                        "multibasic": "25%",
+                        "multipro": "50%"
+                    }
+                },
+                {
+                    "name": "ammo_reservoir",
+                    "datas": {
+                        "multibasic": "5",
+                        "multipro": "10"
+                    }
+                },
+                {
+                    "name": "pack_mule",
+                    "datas": {
+                        "multibasic": "50%",
+                        "multipro": "50%"
+                    }
+                },
+                {
+                    "name": "show_of_force",
+                    "datas": {
+                        "multipro": "15%"
+                    }
+                },
+                {
+                    "name": "underdog",
+                    "datas": {
+                        "multibasic": "15%",
+                        "multipro": "15%"
+                    }
+                },
+                {
+                    "name": "steroids",
+                    "datas": {
+                        "multibasic": "50%",
+                        "multipro": "50%"
+                    }
+                },
+                {
+                    "name": "shotgun_impact",
+                    "datas": {
+                        "multibasic": "4",
+                        "multipro": "35%"
+                    }
+                },
+                {
+                    "name": "shades",
+                    "datas": {
+                        "multibasic": "25%",
+                        "multipro": "50%"
+                    }
+                },
+                {
+                    "name": "tough_guy",
+                    "datas": {
+                        "multibasic": "50%",
+                        "multipro": "25%"
+                    }
+                },
+                {
+                    "name": "shotgun_cqb",
+                    "datas": {
+                        "multibasic": "50%",
+                        "multipro": "125%"
+                    }
+                },
+                {
+                    "name": "ammo_2x",
+                    "datas": {
+                        "multibasic": "2",
+                        "multipro": "200%"
+                    }
+                },
+                {
+                    "name": "wolverine",
+                    "datas": {
+                        "multibasic": "25%",
+                        "multibasic2": "250%",
+                        "multipro": "25%",
+                        "multipro2": "100%"
+                    }
+                },
+                {
+                    "name": "from_the_hip",
+                    "datas": {
+                        "multibasic": "4",
+                        "multipro": "4"
+                    }
+                },
+                {
+                    "name": "bandoliers",
+                    "datas": {
+                        "multibasic": "25%",
+                        "multipro": "175%"
+                    }
+                },
+                {
+                    "name": "portable_saw",
+                    "datas": {
+                        "multipro": "1"
+                    }
+                },
+                {
+                    "name": "overkill",
+                    "datas": {
+                        "multibasic": "75%",
+                        "multibasic2": "5"
+                    }
+                },
+                {
+                    "name": "juggernaut",
+                    "datas": {
+
+                    }
+                },
+                {
+                    "name": "carbon_blade",
+            		"required": "portable_saw",
+                    "datas": {
+                        "multibasic": "20%",
+                        "multipro": "50%",
+                        "multipro2": "20%"
+                    }
+                }
             ]
         },
         {
             "name": "technician",
             "skills": [
-                { "name": "technician" },
-                { "name": "rifleman" },
-                { "name": "trip_miner" },
-                { "name": "discipline" },
-                { "name": "sharpshooter" },
-                { "name": "trip_mine_expert" },
-                { "name": "hardware_expert" },
-                { "name": "sentry_gun" },
-                { "name": "master_craftsman" },
-                { "name": "drill_expert" },
-                { "name": "sentry_targeting_package" },
-                { "name": "blast_radius" },
-                { "name": "silent_drilling" },
-                { "name": "sentry_2_0" },
-                { "name": "shaped_charge" },
-                { "name": "insulation" },
-                { "name": "sentry_gun_2x" },
-                { "name": "mag_plus" },
-                { "name": "iron_man" }
+                {
+                    "name": "technician",
+                    "datas": {
+                        "multibasic": "2"
+                    }
+                },
+                {
+                    "name": "rifleman",
+                    "datas": {
+                        "multibasic": "100%",
+                        "multipro": "25%"
+                    }
+                },
+                {
+                    "name": "trip_miner",
+                    "datas": {
+                        "multibasic": "1",
+                        "multipro": "20%"
+                    }
+                },
+                {
+                    "name": "discipline",
+                    "datas": {
+                        "multibasic": "50%"
+                    }
+                },
+                {
+                    "name": "sharpshooter",
+                    "datas": {
+                        "multibasic": "4",
+                        "multipro": "8"
+                    }
+                },
+                {
+                    "name": "trip_mine_expert",
+                    "datas": {
+
+                    }
+                },
+                {
+                    "name": "hardware_expert",
+                    "datas": {
+                        "multibasic": "25%",
+                        "multibasic2": "20%",
+                        "multipro": "30%",
+                        "multipro2": "50%"
+                    }
+                },
+                {
+                    "name": "sentry_gun",
+                    "datas": {
+                        "multipro": "150%"
+                    }
+                },
+                {
+                    "name": "master_craftsman",
+                    "datas": {
+                        "multibasic": "30%",
+                        "multipro": "15%"
+                    }
+                },
+                {
+                    "name": "drill_expert",
+                    "datas": {
+                        "multibasic": "15%",
+                        "multipro": "15%"
+                    }
+                },
+                {
+                    "name": "sentry_targeting_package",
+            		"required": "sentry_gun",
+                    "datas": {
+                        "multibasic": "100%",
+                        "multipro": "150%",
+                        "multipro2": "50%"
+                    }
+                },
+                {
+                    "name": "blast_radius",
+                    "datas": {
+                        "multibasic": "70%"
+                    }
+                },
+                {
+                    "name": "silent_drilling",
+                    "datas": {
+                        "multibasic": "65%"
+                    }
+                },
+                {
+                    "name": "sentry_2_0",
+                    "required": "sentry_gun",
+            		"datas": {
+
+                    }
+                },
+                {
+                    "name": "shaped_charge",
+                    "datas": {
+                        "multibasic": "3"
+                    }
+                },
+                {
+                    "name": "insulation",
+                    "datas": {
+                        "multipro": "50%"
+                    }
+                },
+                {
+                    "name": "sentry_gun_2x",
+                    "required": "sentry_gun",
+            		"datas": {
+                        "multibasic": "2",
+                        "multipro": "300%"
+                    }
+                },
+                {
+                    "name": "mag_plus",
+                    "datas": {
+                        "multibasic": "5",
+                        "multipro": "10"
+                    }
+                },
+                {
+                    "name": "iron_man",
+                    "datas": {
+                        "multibasic": "50%",
+                        "multipro": "25%"
+                    }
+                }
             ]
         },
         {
             "name": "ghost",
             "skills": [
-                { "name": "ghost" },
-                { "name": "scavenger" },
-                { "name": "sprinter" },
-                { "name": "cat_burglar" },
-                { "name": "transporter" },
-                { "name": "chameleon" },
-                { "name": "cleaner" },
-                { "name": "assassin" },
-                { "name": "martial_arts" },
-                { "name": "smg_master" },
-                { "name": "nine_lives" },
-                { "name": "ecm_2x" },
-                { "name": "hitman" },
-                { "name": "magic_touch" },
-                { "name": "ecm_booster" },
-                { "name": "silence_expert" },
-                { "name": "good_luck_charm" },
-                { "name": "ecm_feedback" },
-                { "name": "moving_target" }
+                {
+                    "name": "ghost",
+                    "datas": {
+                        "multibasic": "1",
+                        "multibasic2": "20"
+                    }
+                },
+                {
+                    "name": "scavenger",
+                    "datas": {
+                        "multibasic": "10%",
+                        "multipro": "20%"
+                    }
+                },
+                {
+                    "name": "sprinter",
+                    "datas": {
+                        "multibasic": "25%",
+                        "multibasic2": "25%",
+                        "multipro": "25%",
+                        "multipro2": "25%"
+                    }
+                },
+                {
+                    "name": "cat_burglar",
+                    "datas": {
+                        "multibasic": "75%",
+                        "multipro": "50%"
+                    }
+                },
+                {
+                    "name": "transporter",
+                    "datas": {
+                        "multibasic": "25%",
+                        "multipro": "50%"
+                    }
+                },
+                {
+                    "name": "chameleon",
+                    "datas": {
+                        "multibasic": "25%",
+                        "multipro": "15%"
+                    }
+                },
+                {
+                    "name": "cleaner",
+                    "datas": {
+                        "multibasic": "5%",
+                        "multibasic2": "3",
+                        "multipro": "1"
+                    }
+                },
+                {
+                    "name": "assassin",
+                    "datas": {
+                        "multibasic": "25%",
+                        "multibasic2": "10%",
+                        "multipro": "95%"
+                    }
+                },
+                {
+                    "name": "martial_arts",
+                    "datas": {
+                        "multibasic": "50%",
+                        "multipro": "50%"
+                    }
+                },
+                {
+                    "name": "smg_master",
+                    "datas": {
+                        "multibasic": "35%",
+                        "multipro": "20%"
+                    }
+                },
+                {
+                    "name": "nine_lives",
+                    "datas": {
+                        "multibasic": "1",
+                        "multipro": "35%"
+                    }
+                },
+                {
+                    "name": "ecm_2x",
+                    "datas": {
+                        "multibasic": "2",
+                        "multipro": "25%",
+                        "multipro2": "25%"
+                    }
+                },
+                {
+                    "name": "hitman",
+                    "datas": {
+                        "multibasic": "15%",
+                        "multipro": "15%",
+                        "multipro2": "20%"
+                    }
+                },
+                {
+                    "name": "magic_touch",
+                    "datas": {
+                        "multibasic": "25%",
+                        "multipro": "25%"
+                    }
+                },
+                {
+                    "name": "ecm_booster",
+                    "datas": {
+                        "multibasic": "25%"
+                    }
+                },
+                {
+                    "name": "silence_expert",
+                    "datas": {
+                        "multibasic": "8",
+                        "multibasic2": "100%",
+                        "multipro": "8",
+                        "multipro2": "20%"
+                    }
+                },
+                {
+                    "name": "good_luck_charm",
+                    "datas": {
+                        "multibasic": "10",
+                        "multibasic2": "1",
+                        "multipro": "10"
+                    }
+                },
+                {
+                    "name": "ecm_feedback",
+                    "datas": {
+                        "multibasic": "50%-100%",
+                        "multibasic2": "25",
+                        "multibasic3": "1.5",
+                        "multibasic4": "15-20",
+                        "multipro": "25%",
+                        "multipro2": "100%",
+                        "multipro3": "4"
+                    }
+                },
+                {
+                    "name": "moving_target",
+                    "datas": {
+
+                    }
+                }
             ]
         },
         {
             "name": "hoxton_pack",
             "skills": [
-                { "name": "hoxton_pack" },
-                { "name": "freedom_call" },
-                { "name": "hidden_blade" },
-                { "name": "thick_skin" },
-                { "name": "awareness" },
-                { "name": "jail_workout" },
-                { "name": "alpha_dog" },
-                { "name": "cell_mates" },
-                { "name": "thug_life" },
-                { "name": "tea_time" },
-                { "name": "perseverance" },
-                { "name": "second_chances" },
-                { "name": "tea_cookies" },
-                { "name": "trigger_happy" },
-                { "name": "backstab" },
-                { "name": "drop_soap" },
-                { "name": "prison_wife" },
-                { "name": "jail_diet" },
-                { "name": "akimbo_skill" }
+                {
+                    "name": "hoxton_pack",
+                    "datas": {
+                        "multibasic": "4"
+                    }
+                },
+                {
+                    "name": "freedom_call",
+                    "datas": {
+                        "multibasic": "20%",
+                        "multipro": "15%"
+                    }
+                },
+                {
+                    "name": "hidden_blade",
+                    "datas": {
+                        "multibasic": "2",
+                        "multipro": "95%"
+                    }
+                },
+                {
+                    "name": "thick_skin",
+                    "datas": {
+                        "multibasic": "10",
+                        "multipro": "20"
+                    }
+                },
+                {
+                    "name": "awareness",
+                    "datas": {
+                        "multibasic": "10%"
+                    }
+                },
+                {
+                    "name": "jail_workout",
+                    "datas": {
+                        "multibasic": "3.5",
+                        "multibasic2": "10"
+                    }
+                },
+                {
+                    "name": "alpha_dog",
+                    "datas": {
+                        "multibasic": "5%",
+                        "multipro": "10%"
+                    }
+                },
+                {
+                    "name": "cell_mates",
+                    "datas": {
+                        "multibasic": "10%",
+                        "multipro": "25%"
+                    }
+                },
+                {
+                    "name": "thug_life",
+                    "datas": {
+                        "multibasic": "1",
+                        "multipro": "75%"
+                    }
+                },
+                {
+                    "name": "tea_time",
+                    "datas": {
+                        "multibasic": "50%",
+                        "multipro": "20%",
+                        "multipro2": "10"
+                    }
+                },
+                {
+                    "name": "perseverance",
+                    "datas": {
+                        "multibasic": "0",
+                        "multibasic2": "3",
+                        "multibasic3": "60%",
+                        "multipro": "6"
+                    }
+                },
+                {
+                    "name": "second_chances",
+                    "datas": {
+                        "multipro": "2"
+                    }
+                },
+                {
+                    "name": "tea_cookies",
+                    "datas": {
+                        "multibasic": "3",
+                        "multipro": "7"
+                    }
+                },
+                {
+                    "name": "trigger_happy",
+                    "datas": {
+                        "multibasic": "10%",
+                        "multibasic2": "2",
+                        "multibasic3": "4",
+                        "multipro": "8"
+                    }
+                },
+                {
+                    "name": "backstab",
+                    "datas": {
+                        "multibasic": "3%",
+                        "multibasic2": "3",
+                        "multibasic3": "35",
+                        "multibasic4": "30%",
+                        "multipro": "3%",
+                        "multipro2": "1",
+                        "multipro3": "35",
+                        "multipro4": "30%"
+                    }
+                },
+                {
+                    "name": "drop_soap",
+                    "datas": {
+
+                    }
+                },
+                {
+                    "name": "prison_wife",
+                    "datas": {
+                        "multibasic": "15",
+                        "multibasic2": "2",
+                        "multipro": "30"
+                    }
+                },
+                {
+                    "name": "jail_diet",
+                    "datas": {
+                        "multibasic": "1%",
+                        "multibasic2": "3",
+                        "multibasic3": "35",
+                        "multibasic4": "10%",
+                        "multipro": "1%",
+                        "multipro2": "1",
+                        "multipro3": "35",
+                        "multipro4": "10%"
+                    }
+                },
+                {
+                    "name": "akimbo_skill",
+                    "datas": {
+                        "multibasic": "-16",
+                        "multipro": "-8",
+                        "multipro2": "150%"
+                    }
+                }
             ]
         }
     ],
