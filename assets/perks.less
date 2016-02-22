@@ -1,0 +1,70 @@
+.perks() {
+	/* =========================================================================
+	* = Initial
+	* =======================================================================*/
+
+	@deck-icon   : 100px;
+	@deck-width  : @deck-icon;
+	@deck-heigth : @deck-icon;
+
+	@perk-font-size: 18px;
+
+	/* =========================================================================
+	 * = Section
+	 * =======================================================================*/
+
+	.section.sections-perks {
+		@section-main-width: @deck-width * 7;
+		@section-content-height: @deck-heigth * 4;
+
+		@section-box-width: @section-main-width;
+		@section-box-height: @section-content-height;
+
+		.section-content {
+			width: @section-main-width;
+			height: @section-content-height;
+
+			&:before {
+				width: @section-box-width;
+				height: @section-box-height;
+			}
+
+			&:after {
+				width: @section-box-width;
+			}
+		}
+
+		.section-aside {
+			width: ~"calc(100% - @{section-main-width})";
+			min-height: @section-box-height;
+		}
+	}
+
+	/* =========================================================================
+	 * = Perk
+	 * =======================================================================*/
+
+	.perk {
+		height: @deck-heigth;
+
+		.perk-header {
+			font-size: @perk-font-size;
+		}
+
+		&[data-actived='true'] {
+
+		}
+	}
+
+	/* =========================================================================
+	 * = Decks
+	 * =======================================================================*/
+
+	.decks {
+		.deck {
+			display: block;
+			width: @deck-width;
+			height: @deck-heigth;
+		}
+	}
+}
