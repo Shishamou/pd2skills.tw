@@ -3,22 +3,38 @@
 	* = Initial
 	* =======================================================================*/
 
-	@deck-icon   : 100px;
-	@deck-width  : @deck-icon;
-	@deck-heigth : @deck-icon;
+	@deck-size   : 140px;
+	@deck-icon-size: 80px;
+	@deck-width  : @deck-size;
+	@deck-height : @deck-size;
 
-	@perk-font-size: 18px;
+
+	@perk-border-width : 2px;
+	@perk-header : 24px;
+	@perk-space-top : 8px;
+	@perk-space : 32px;
+
+	@perk-width  : @deck-width * 9;
+	@perk-height : @deck-height + @perk-header;
+
+
+	@perks-font-size: 24px;
+	@perks-side   : 32px;
+	@perks-scroll : 24px;
+
+	@perks-width  : @perk-width + @perks-scroll;
+	@perks-height : (@perk-height) * 4 + @perk-space * 3 + @perk-space-top;
 
 	/* =========================================================================
 	 * = Section
 	 * =======================================================================*/
 
 	.section.sections-perks {
-		@section-main-width: @deck-width * 7;
-		@section-content-height: @deck-heigth * 4;
+		@section-main-width: @perk-width + @perks-side;
+		@section-content-height: @perks-height;
 
-		@section-box-width: @section-main-width;
-		@section-box-height: @section-content-height;
+		@section-box-width: @perk-width;
+		@section-box-height: @perks-height;
 
 		.section-content {
 			width: @section-main-width;
@@ -44,15 +60,43 @@
 	 * = Perk
 	 * =======================================================================*/
 
+	.perks {
+		overflow-x: hidden;
+		overflow-y: scroll;
+		width: @perks-width;
+		height: @perks-height;
+
+		.perk {
+			margin-top: @perk-space-top;
+			margin-bottom: @perk-space;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
 	.perk {
-		height: @deck-heigth;
+		width: @perk-width;
+		height: @perk-height;
 
 		.perk-header {
-			font-size: @perk-font-size;
+			box-sizing: border-box;
+			height: @perk-header;
+			padding-left: @perk-header / 4;
+			line-height: 1;
+			font-size: @perk-header;
+			text-transform: uppercase;
 		}
 
-		&[data-actived='true'] {
+		.decks {
+			&:after {
+				.clear-float;
+			}
 
+			.deck {
+				float: left;
+			}
 		}
 	}
 
@@ -60,11 +104,84 @@
 	 * = Decks
 	 * =======================================================================*/
 
-	.decks {
+	.deck {
+		box-sizing: border-box;
+		display: block;
+		position: relative;
+		width: @deck-width;
+		height: @deck-height;
+
+		&:hover::before {
+			.pseudo-block;
+			.frame-border();
+		}
+
+		.deck-icon {
+			opacity: 1;
+			position: relative;
+			width: @deck-icon-size;
+			height: @deck-icon-size;
+			margin: (@deck-height - @deck-icon-size) / 2 (@deck-width - @deck-icon-size) / 2;
+			.transition(transform 0.2s);
+			.transform(scale(0.75));
+
+			&::after {
+				.pseudo-block;
+				background: @color-normal;
+			}
+		}
+
+		&[data-owned='true'] {
+			.deck-icon {
+				&::before {
+					@size: @deck-icon-size * 1.2;
+					@icon: 'deck.png';
+					content: '';
+					display: block;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					z-index: -1000;
+					width: @size;
+					height: @size * 2;
+					margin-top: -(@size * 0.725);
+					margin-left: -(@size / 2);
+					background: url(@icon) no-repeat;
+					background-position: center 0;
+					background-size: @size;
+				}
+
+				&::after {
+					background: @color-black;
+				}
+			}
+		}
+	}
+
+	.perk {
 		.deck {
-			display: block;
-			width: @deck-width;
-			height: @deck-heigth;
+			opacity: .5;
+		}
+	}
+
+	.perk[data-actived='true'] {
+		.deck {
+			opacity: 1;
+		}
+		.deck-icon {
+			.transform(scale(1));
+		}
+	}
+
+	.perk[data-equipped='true'] {
+		.decks {
+			position: relative;
+
+			&::before {
+				.pseudo-block;
+				.frame-border();
+				background: fade(@color-black, 60%);
+			}
 		}
 	}
 }
