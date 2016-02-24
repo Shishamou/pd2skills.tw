@@ -32,7 +32,6 @@ class PerksHandler {
      */
     initialPerks(datas) {
         this.builder.build(datas);
-        console.log(this.store);
         this.respec();
     }
 
@@ -62,9 +61,9 @@ class PerksHandler {
     // = Refresh
     // =========================================================================
 
-    _equipPerk(target) {
-        this.store.perks.forEach((perk, perkId) => {
-            perk.equipped = (perkId === target);
+    equipPerk(target) {
+        this.store.perks.forEach((perk) => {
+            perk.equipped = (perk.id === target);
         }, this);
     }
 
@@ -80,13 +79,8 @@ class PerksHandler {
     handleDeckClick(deckId) {
         var deck = this.getDeck(deckId);
         var perk = this.getPerk(deck.perkId);
-        perk.tier = perk.decks.reduce(function (previous, currect, currectIndex) {
-            return (currect.id === deckId)? currectIndex + 1 : previous;
-        }, 0);
-    }
 
-    handlePerkClick(perkId) {
-        this._equipPerk(perkId);
+        perk.tier = perk.decks.indexOf(deckId) + 1;
     }
 }
 

@@ -3,15 +3,18 @@ import * as types from '../constants/SkillAppActions';
 import * as events from '../constants/Events';
 
 const initialState = Object.assign({
+    activedPerk: null,
     display: null,
 }, PerksHandler.store);
 
-export default function handleInfamyTree(state = initialState, action) {
+export default function handlePerk(state = initialState, action) {
     switch (action.type) {
         case types.LOAD_PERKS:
             return loadPerks(state, action);
         case types.HANDLE_PERK_EVENT:
-            return handleInfamyEvent(state, action);
+            return handlePerkEvent(state, action);
+        case types.HANDLE_DECK_EVENT:
+            return handleDeckEvent(state, action);
         default:
             return state;
     }
@@ -32,26 +35,46 @@ function loadPerks(state = {}, action) {
     }
 }
 
-function handleInfamyEvent(state = {}, action) {
-    var infamy = PerksHandler.getInfamy(action.id);
+function handlePerkEvent(state = {}, action) {
+    var perk = action.id;
 
     switch (action.event) {
         case events.CLICK:
-            PerksHandler.handleInfamyClick(infamy.id);
+            return Object.assign({}, state, {
+                activedPerk: perk
+            });
+        case events.DOUBLE_CLICK:
+            PerksHandler.equipPerk(perk);
             break;
 
-        case events.REMOVE:
-            PerksHandler.handleInfamyRemove(infamy.id);
-            break;
+        default:
+            return state;
+    }
+
+    return Object.assign({}, state, PerksHandler.store, {
+        perks: PerksHandler.store.perks.slice(),
+    });
+}
+
+function handleDeckEvent(state = {}, action) {
+    var deckId = action.id;
+
+    switch (action.event) {
+        case events.CLICK:
+            PerksHandler.handleDeckClick(deckId);
+            return Object.assign({}, state, PerksHandler.store, {
+                perks: PerksHandler.store.perks.slice(),
+                decks: PerksHandler.store.decks.slice(),
+                display: state.display
+            });
 
         case events.MOUSE_ENTER:
             var hover = true;
         case events.MOUSE_LEAVE:
             if (hover) {
-                state.display = infamy.id;
+                state.display = deckId;
             }
 
-            PerksHandler.refreshAllStatus();
             return Object.assign({}, state, {
                 display: state.display
             });
@@ -59,10 +82,4 @@ function handleInfamyEvent(state = {}, action) {
         default:
             return state;
     }
-
-    action.skillReduce = PerksHandler.store.reduced;
-    return Object.assign({}, state, PerksHandler.store, {
-        infamyList: PerksHandler.store.infamyList.slice(),
-        display: state.display
-    });
 }
