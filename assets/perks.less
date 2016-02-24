@@ -1,0 +1,192 @@
+.perks() {
+	/* =========================================================================
+	* = Initial
+	* =======================================================================*/
+
+	@image-deck: './images/deck.png';
+
+	@deck-size   : 140px;
+	@deck-icon-size: 80px;
+	@deck-width  : @deck-size;
+	@deck-height : @deck-size;
+
+	@perk-border-width : 2px;
+	@perk-header : 24px;
+	@perk-space-top : 8px;
+	@perk-space : 32px;
+
+	@perk-width  : @deck-width * 9;
+	@perk-height : @deck-height + @perk-header;
+
+
+	@perks-font-size: 24px;
+	@perks-side   : 32px;
+	@perks-scroll : 24px;
+
+	@perks-width  : @perk-width + @perks-scroll;
+	@perks-height : (@perk-height) * 4 + @perk-space * 3 + @perk-space-top;
+
+	/* =========================================================================
+	 * = Section
+	 * =======================================================================*/
+
+	.section.sections-perks {
+		@section-main-width: @perk-width + @perks-side;
+		@section-content-height: @perks-height;
+
+		@section-box-width: @perk-width;
+		@section-box-height: @perks-height;
+
+		.section-content {
+			width: @section-main-width;
+			height: @section-content-height;
+
+			&:before {
+				width: @section-box-width;
+				height: @section-box-height;
+			}
+
+			&:after {
+				width: @section-box-width;
+			}
+		}
+
+		.section-aside {
+			width: ~"calc(100% - @{section-main-width})";
+			min-height: @section-box-height;
+		}
+	}
+
+	/* =========================================================================
+	 * = Perk
+	 * =======================================================================*/
+
+	.perks {
+		overflow-x: hidden;
+		overflow-y: scroll;
+		width: @perks-width;
+		height: @perks-height;
+
+		.perk {
+			margin-top: @perk-space-top;
+			margin-bottom: @perk-space;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.perk {
+		width: @perk-width;
+		height: @perk-height;
+		cursor: pointer;
+
+		.perk-header {
+			box-sizing: border-box;
+			height: @perk-header;
+			padding-left: @perk-header / 4;
+			line-height: 1;
+			font-size: @perk-header;
+			text-transform: uppercase;
+		}
+
+		.decks {
+			&:after {
+				.clear-float;
+			}
+
+			.deck {
+				float: left;
+			}
+		}
+
+		/* =====================================================================
+		 * = Decks
+		 * ===================================================================*/
+
+		.deck {
+			box-sizing: border-box;
+			display: block;
+			position: relative;
+			width: @deck-width;
+			height: @deck-height;
+			cursor: pointer;
+
+			&:hover::before {
+				.pseudo-block;
+				.frame-border();
+			}
+
+			.deck-icon {
+				position: relative;
+				width: @deck-icon-size;
+				height: @deck-icon-size;
+				margin: (@deck-height - @deck-icon-size) / 2 (@deck-width - @deck-icon-size) / 2;
+
+				&::after {
+					.pseudo-block;
+					background: @color-normal;
+				}
+			}
+
+			&[data-owned='true'] {
+				.deck-icon {
+					&::before {
+						@size: @deck-icon-size * 1.2;
+						content: '';
+						display: block;
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						z-index: -1000;
+						width: @size;
+						height: @size * 2;
+						margin-top: -(@size * 0.725);
+						margin-left: -(@size / 2);
+						background: url(@image-deck) no-repeat;
+						background-position: center 0;
+						background-size: @size;
+					}
+
+					&::after {
+						background: @color-black;
+					}
+				}
+			}
+		}
+
+		& {
+			.deck {
+				opacity: .5;
+			}
+
+			.deck-icon {
+				.transition(transform 0.2s);
+				.transform(scale(0.75));
+			}
+		}
+
+		&[data-actived='true'] {
+			.deck {
+				opacity: 1;
+			}
+
+			.deck-icon {
+				.transform(scale(1));
+			}
+		}
+
+		&[data-equipped='true'] {
+			.decks {
+				position: relative;
+
+				&::before {
+					.pseudo-block;
+					.frame-border();
+					background: fade(@color-black, 60%);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,99 @@
+{
+	"perks": [
+		{
+	        "name": "1",
+			"decks": [
+				{ "name": "deck1_1" },
+				{ "name": "deck1_2" },
+				{ "name": "deck1_3" },
+				{ "name": "deck1_4" },
+				{ "name": "deck1_5" },
+				{ "name": "deck1_6" },
+				{ "name": "deck1_7" },
+				{ "name": "deck1_8" },
+				{ "name": "deck1_9" }
+			]
+	    },
+		{
+			"name": "2",
+			"decks": [
+				{ "name": "deck2_1" },
+				{ "name": "deck2_2" },
+				{ "name": "deck2_3" },
+				{ "name": "deck2_4" },
+				{ "name": "deck2_5" },
+				{ "name": "deck2_6" },
+				{ "name": "deck2_7" },
+				{ "name": "deck2_8" },
+				{ "name": "deck2_9" }
+			]
+		},
+		{
+			"name": "3",
+			"decks": [
+				{ "name": "deck3_1" },
+				{ "name": "deck3_2" },
+				{ "name": "deck3_3" },
+				{ "name": "deck3_4" },
+				{ "name": "deck3_5" },
+				{ "name": "deck3_6" },
+				{ "name": "deck3_7" },
+				{ "name": "deck3_8" },
+				{ "name": "deck3_9" }
+			]
+		},
+		{
+			"name": "4",
+			"decks": [
+				{ "name": "deck4_1" },
+				{ "name": "deck4_2" },
+				{ "name": "deck4_3" },
+				{ "name": "deck4_4" },
+				{ "name": "deck4_5" },
+				{ "name": "deck4_6" },
+				{ "name": "deck4_7" },
+				{ "name": "deck4_8" },
+				{ "name": "deck4_9" }
+			]
+		},
+		{
+			"name": "5",
+			"decks": [
+				{ "name": "deck5_1" },
+				{ "name": "deck5_2" },
+				{ "name": "deck5_3" },
+				{ "name": "deck5_4" },
+				{ "name": "deck5_5" },
+				{ "name": "deck5_6" },
+				{ "name": "deck5_7" },
+				{ "name": "deck5_8" },
+				{ "name": "deck5_9" }
+			]
+		},
+		{
+			"name": "6",
+			"decks": [
+				{ "name": "deck6_1" },
+				{ "name": "deck6_2" },
+				{ "name": "deck6_3" },
+				{ "name": "deck6_4" },
+				{ "name": "deck6_5" },
+				{ "name": "deck6_6" },
+				{ "name": "deck6_7" },
+				{ "name": "deck6_8" },
+				{ "name": "deck6_9" }
+			]
+		}
+	],
+	"tierRequired": [
+		200,
+		300,
+		400,
+		600,
+		1000,
+		1600,
+		2400,
+		3200,
+		4000
+	]
+}

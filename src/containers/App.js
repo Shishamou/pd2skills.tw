@@ -4,6 +4,7 @@ import * as actions from '../actions/app';
 
 import Localisation from '../public/Localisation';
 import Skills from './Skills';
+import PerkDecks from './PerkDecks';
 import Infamy from './Infamy';
 
 class App extends Component
@@ -49,9 +50,11 @@ class App extends Component
         const main = ((display) => {
             switch (display) {
                 case 'skills':
-                    return <Skills locale={this.locale} localeText={this.localeText} />;
+                    return <Skills locale={locale} localeText={localeText} />;
+                case 'perk decks':
+                    return <PerkDecks locale={locale} localeText={localeText} />;
                 case 'infamy':
-                    return <Infamy locale={this.locale} localeText={this.localeText} />;
+                    return <Infamy locale={locale} localeText={localeText} />;
                 default:
             }
         })(display);
