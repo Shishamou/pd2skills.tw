@@ -56,6 +56,21 @@ export function fetchSkillsError(error) {
 }
 
 // =============================================================================
+// = Fetch Perks
+// =============================================================================
+export function fetchPerks(url) {
+    return dispatch => {
+        dispatch({type: actions.LOAD_PERKS});
+        return fetch(url)
+            .then(response => response.json())
+            .then(response => {
+                dispatch({type: actions.LOAD_PERKS, status: 'success', response})
+            });
+    };
+    return {type: actions.LOAD_PERKS, status: 'error', error};
+}
+
+// =============================================================================
 // = Fetch Infamy
 // =============================================================================
 export function fetchInfamy(url) {
