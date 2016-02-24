@@ -79,6 +79,11 @@
 			background: @color-dark;
 		}
 
+		&:hover .infamy-icon {
+			background: @color-normal;
+		}
+
+
 		.infamy-icon {
 			@time: 0.2s;
 			@size: @infamy-icon-size;
@@ -135,19 +140,34 @@
 			background: @color-normal;
 		}
 
-		.animate() {
-			&[data-status="owned"]:before {
-				.pseudo-block;
+		/* =====================================================================
+		 * = Icon halo
+		 * ===================================================================*/
+
+
+		.icon-pseudo-pos(@size) {
+			.pseudo-block-base;
+			@pos: @size / 4;
+			top: -@pos;
+			left: -@pos;
+			right: -@pos;
+			bottom: -@pos;
+		}
+
+		&[data-status="owned"] {
+			.infamy-icon::before {
+				.icon-pseudo-pos(@infamy-icon-size);
 				.halo(@infamy-icon-size);
 			}
 
-			&[data-status="owned"]:after {
+			&[data-status="owned"]::after {
 				.pseudo-block;
-				.halo2(@infamy-icon-size);
+				.infamy-icon::after {
+					.icon-pseudo-pos(@infamy-icon-size);
+					.halo2(@infamy-icon-size);
+				}
 			}
 		}
-		.animate();
-
 
 		/* =====================================================================
 		 * = Text
@@ -201,35 +221,29 @@
 .halo(@size: 100) {
 	background: url('./images/halo.png') no-repeat center;
 	background-size: @size * 1px;
-	// animation: halo @holo-animation-speed infinite linear;
+	animation: halo @holo-animation-speed infinite linear;
 
 	@-webkit-keyframes halo {
 		0% {
-			-webkit-transform: rotate(0deg);
-			background-size: @size * 1px;
+			-webkit-transform: rotate(0deg) scale(1);
 		}
 		50% {
-			background-size: @size * 0.8px;
+			-webkit-transform: rotate(180deg) scale(0.8);
 		}
-
 		100% {
-			-webkit-transform: rotate(360deg);
-			background-size: @size * 1px;
+			-webkit-transform: rotate(360deg) scale(1);
 		}
 	}
 
 	@keyframes halo {
 		0% {
-			-webkit-transform: rotate(0deg);
-			background-size: @size * 1px;
+			transform: rotate(0deg) scale(1);
 		}
 		50% {
-			background-size: @size * 0.8px;
+			transform: rotate(180deg) scale(0.8);
 		}
-
 		100% {
-			-webkit-transform: rotate(360deg);
-			background-size: @size * 1px;
+			transform: rotate(360deg) scale(1);
 		}
 	}
 }
@@ -237,37 +251,29 @@
 .halo2(@size: 100) {
 	background: url('./images/halo2.png') no-repeat center;
 	background-size: @size * 1px;
-	// animation: halo2 @holo-animation-speed infinite linear;
+	animation: halo2 @holo-animation-speed infinite linear;
 
 	@-webkit-keyframes halo2 {
 		0% {
-			-webkit-transform: rotate(360deg);
-
-			background-size: @size * 1.2px;
+			-webkit-transform: rotate(360deg) scale(1.2);
 		}
 		50% {
-			background-size: @size * 1px;
+			-webkit-transform: rotate(180deg) scale(1);
 		}
-
 		100% {
-			-webkit-transform: rotate(0deg);
-			background-size: @size * 1.2px;
+			-webkit-transform: rotate(0deg) scale(1.2);
 		}
 	}
 
 	@keyframes halo2 {
 		0% {
-			-webkit-transform: rotate(360deg);
-
-			background-size: @size * 1.2px;
+			transform: rotate(360deg) scale(1.2);
 		}
 		50% {
-			background-size: @size * 1px;
+			transform: rotate(180deg) scale(1);
 		}
-
 		100% {
-			-webkit-transform: rotate(0deg);
-			background-size: @size * 1.2px;
+			transform: rotate(0deg) scale(1.2);
 		}
 	}
 }
