@@ -6,9 +6,9 @@ import handleSkills from './reducers/handleSkills';
 import handlePerks from './reducers/handlePerks';
 import handleInfamyTree from './reducers/handleInfamyTree';
 
-export default function rootReducer(state = {}, action) {
+function rootReducer(state = {}, action) {
     return Object.assign({}, state, {
-        display: action.name,
+        display: handleDisplay,
         langs: loadLangs(state.langs, action),
         infamy: handleInfamyTree(state.infamy, action),
         skills: handleSkills(state.skills, action),
@@ -16,7 +16,21 @@ export default function rootReducer(state = {}, action) {
     });
 }
 
+function handleDisplay(state = 0, action) {
+    switch (action.type) {
+        case types.SWITCH_MAIN_TAB:
+            return action.name;
+        default:
+            return state;
+    }
+}
+
 var rootReducer = combineReducers({
+    display: handleDisplay,
     langs: loadLangs,
+    infamy: handleInfamyTree,
     skills: handleSkills,
-})
+    perks: handlePerks
+});
+
+export default rootReducer;

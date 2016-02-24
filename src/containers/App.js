@@ -45,7 +45,7 @@ class App extends Component
         const { locale, localeText } = this;
 
         const tabs = ['skills', 'perk decks', 'infamy'];
-        const display = this.props.display || tabs[1];
+        const display = this.props.display || tabs[0];
 
         const main = ((display) => {
             switch (display) {
