@@ -32,6 +32,7 @@ class PerksHandler {
      */
     initialPerks(datas) {
         this.builder.build(datas);
+        console.log(this.store);
         this.respec();
     }
 
@@ -45,7 +46,7 @@ class PerksHandler {
     respec() {
         this.store.perks.forEach((perk) => {
             perk.equipped = false;
-            perk.rank = 0;
+            perk.tier = 0;
         }, this);
 
         this.refresh();
@@ -67,9 +68,9 @@ class PerksHandler {
         }, this);
     }
 
-    _setPerkRank(perkId, rank) {
+    _setPerkTier(perkId, tier) {
         var perk = this.getPerk(perkId);
-        perk.rank = Math.max(1, Math.min(rank, perk.decks.length));
+        perk.tier = Math.max(1, Math.min(tier, perk.decks.length));
     }
 
     // =========================================================================
@@ -79,7 +80,7 @@ class PerksHandler {
     handleDeckClick(deckId) {
         var deck = this.getDeck(deckId);
         var perk = this.getPerk(deck.perkId);
-        perk.rank = perk.decks.reduce(function (previous, currect, currectIndex) {
+        perk.tier = perk.decks.reduce(function (previous, currect, currectIndex) {
             return (currect.id === deckId)? currectIndex + 1 : previous;
         }, 0);
     }
@@ -89,4 +90,4 @@ class PerksHandler {
     }
 }
 
-export default new InfamyTreeHandler;
+export default new PerksHandler;

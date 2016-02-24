@@ -27,7 +27,7 @@ export default class PerksBuilder {
         datas = this.objectAttributeToCamelCase(datas);
 
         var perks = datas.perks;
-        this.rankRequired = datas.ranks;
+        this.tierRequired = datas.tierRequired;
 
         perks.forEach((perk) => {this.buildPerk(perk)}, this);
     }
@@ -43,12 +43,12 @@ export default class PerksBuilder {
         this.registerPerk(perk);
 
         const { rankRequired } = this;
-        perk.decks = datas.decks.map((deck, rank) => this.buildDeck(
+        perk.decks = datas.decks.map((deck, tier) => this.buildDeck(
             Object.assign(deck, {
                 perkId: perk.id,
-                required: rankRequired[rank]
+                required: this.tierRequired[tier]
             }
-        )), txhis);
+        )), this);
     }
 
     /**

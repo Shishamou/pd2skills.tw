@@ -6,7 +6,7 @@ export default class Perk extends Model {
             id       : null,
             name     : null,
             equipped : false,
-            rank     : 0,
+            tier     : 0,
             decks    : []
         }
     }
