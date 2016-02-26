@@ -94,8 +94,16 @@ class SkillsHandler {
      * @param integer 要更新的技能樹 id，若省略則更新所有技能樹階層
      */
     refreshSkillTrees(targetId = null) {
-        this.updateTreeTiersAndCountSpendPoints(targetId);
-        this.updateTreeSkills(targetId);
+        var temp = 0;
+        for (var t = 10; t > 0; t--) {
+            var totalSpendPoints = this._updateTreeTiersAndCountSpendPoints(targetId);
+            this.store.totalSpendPoints = totalSpendPoints;
+            this.store.availablePoints = this.totalAvailablePoints - totalSpendPoints;
+            this._updateTreeSkills(targetId);
+
+            if (temp === totalSpendPoints) break;
+            temp = totalSpendPoints;
+        }
     }
 
     /**
@@ -116,16 +124,14 @@ class SkillsHandler {
      *
      * @param integer 要更新的技能樹 id，若省略則更新所有技能樹階層
      */
-    updateTreeTiersAndCountSpendPoints(targetId = null) {
+    _updateTreeTiersAndCountSpendPoints(targetId = null) {
         var spendPoints = this.store.trees.map((tree) =>
             (targetId === null || tree.id == targetId)
                 ? this._updateTreeTiers(tree)
                 : tree.spendPoints
         );
-        var totalSpendPoints = spendPoints.reduce((prev, curr) => prev + curr);
 
-        this.store.totalSpendPoints = totalSpendPoints;
-        this.store.availablePoints = this.totalAvailablePoints - totalSpendPoints;
+        return spendPoints.reduce((prev, curr) => prev + curr);
     }
 
     /**
@@ -177,7 +183,7 @@ class SkillsHandler {
      *
      * @param integer 要更新的技能樹 id，若省略則更新所有技能樹階層
      */
-    updateTreeSkills(targetId = null) {
+    _updateTreeSkills(targetId = null) {
         this.store.trees.forEach((tree) => {
             (targetId === null || tree.id == targetId) && this._doUpdateTreeSkills(tree);
         }, this);

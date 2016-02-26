@@ -7,8 +7,8 @@ class InfamyTreeHandler {
         this.store = store;
         this.builder = new InfamyTreeBuilder(store);
 
-        this.totalAvailablePoints = 5;
         this.tableCenter = [0, 0];
+        this.totalAvailablePoints = 5;
 
         this.store.availablePoints = 0;
         this.store.spendPoints = 0;
@@ -87,30 +87,42 @@ class InfamyTreeHandler {
     // =========================================================================
 
     _updateTable() {
-        var table = this.store.infamyTable;
+        var temp = 0;
+        for (var t = 10; t > 0; t--) {
+            var spendPoints = this._updateTableAndCountSpendPoints();
+            if (temp == spendPoints) break;
+            temp = spendPoints;
+        }
+    }
 
+    _updateTableAndCountSpendPoints() {
+        var count = 0;
+        var table = this.store.infamyTable;
         for (let row = 0; row < table.length; row++)
             for (let col = 0; col < table[row].length; col++)
-                this._updateTableInfamy(row, col);
+                this._updateTableInfamy(row, col) && count++;
+        return count;
     }
 
     _updateTableInfamy(row, col) {
         var infamy = this.getPos(row, col);
         var [ centerX, centerY ] = this.tableCenter;
 
-        var checkX = (col === centerX)
+        var checkX = () => (col === centerX)
             ? true
             : (this.getPos(row, col + ((col < centerX)? 1 : -1)).owned);
 
-        var checkY = (row === centerY)
+        var checkY = () => (row === centerY)
             ? true
             : (this.getPos(row + ((row < centerY)? 1 : -1), col).owned);
 
-        infamy.unlocked = (checkX && checkY && ! infamy.disable);
-        if ( ! infamy.unlocked)
+        var isEnable = () => ( ! infamy.disable);
+
+        if ( ! (infamy.unlocked = (checkX() && checkY() && isEnable())))
             infamy.owned = false;
 
         this._updateInfamyStatue(infamy);
+        return infamy.owned;
     }
 
     _updateInfamyStatue(infamy) {
