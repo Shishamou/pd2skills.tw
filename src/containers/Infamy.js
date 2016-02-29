@@ -2,9 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../actions/infamy';
-
 import InfamyTree from '../components/InfamyTree';
 import InfamySide from '../components/InfamySide';
+import ImageSpriteDrawer from '../public/ImageSpriteDrawer';
+
+const sprite = new ImageSpriteDrawer('res/infamy.png', {size: 128});
 
 class Infamy extends Component
 {
@@ -12,6 +14,7 @@ class Infamy extends Component
         super(prop);
         this.getInfamy = this.getInfamy.bind(this);
         this.getPosInfamy = this.getPosInfamy.bind(this);
+        this.reflowCanvas = this.reflowCanvas.bind(this);
     }
 
     getInfamy(id) {
@@ -20,6 +23,34 @@ class Infamy extends Component
 
     getPosInfamy(row, col) {
         return this.props.infamyTable[row][col];
+    }
+
+    reflowCanvas(canvas, options) {
+        var color = (function(options) {
+            var { infamy, hover } = options;
+            if (infamy.disable)
+            return '#bf3247';
+            if (infamy.owned || hover)
+                return '#eee';
+            if (infamy.unlocked)
+                return '#607f93';
+            return '#383c45';
+        })(options);
+
+        var pos = (function(options) {
+            var { infamy } = options;
+            return [
+                'root',
+                'technician',
+                'mastermind',
+                'enforcer',
+                'ghost',
+                'xp',
+                'mask'
+            ].indexOf(infamy.icon)
+        })(options);
+
+        sprite.draw(canvas, pos % 4, Math.floor(pos / 4), color);
     }
 
     render() {
@@ -36,6 +67,7 @@ class Infamy extends Component
             handleInfamyRemove : (id) => {dispatch(actions.handleInfamyRemove(id))},
             handleInfamyEnter  : (id) => {dispatch(actions.handleInfamyEnter(id))},
             handleInfamyLeave  : (id) => {dispatch(actions.handleInfamyLeave(id))},
+            reflowCanvas: this.reflowCanvas
         }
 
         var display = this.getInfamy(this.props.display);

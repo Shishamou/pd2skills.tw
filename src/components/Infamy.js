@@ -9,6 +9,24 @@ class Infamy extends Component
 		this.handleInfamyRemove = this.handleInfamyRemove.bind(this);
 		this.handleInfamyEnter = this.handleInfamyEnter.bind(this);
 		this.handleInfamyLeave = this.handleInfamyLeave.bind(this);
+
+		this.hover = false;
+	}
+
+	componentDidMount() {
+		const { reflowCanvas, infamy } = this.props;
+		reflowCanvas(this.refs.canvas, {
+			hover: this.hover,
+			infamy
+		});
+	}
+
+	componentDidUpdate() {
+		const { reflowCanvas, infamy } = this.props;
+		reflowCanvas(this.refs.canvas, {
+			hover: this.hover,
+			infamy
+		});
 	}
 
 	handleInfamyClick(e) {
@@ -21,27 +39,31 @@ class Infamy extends Component
 	}
 
 	handleInfamyEnter(e) {
+		this.hover = true;
 		this.props.handleInfamyEnter(this.props.infamy.id);
 	}
 
 	handleInfamyLeave(e) {
+		this.hover = false;
 		this.props.handleInfamyLeave(this.props.infamy.id);
 	}
 
 	render() {
 		const { infamy } = this.props;
 
-		var dataset = infamy.status.split('_').slice(-1).pop().toLowerCase();
+		var className = ['infamy'];
+		className.push('status-' + infamy.status.split('_').slice(-1).pop().toLowerCase());
 
 		return (
-			<div className="infamy"
-				data-status={dataset}
+			<div className={className.join(' ')}
 				onClick={this.handleInfamyClick}
 				onMouseEnter={this.handleInfamyEnter}
 				onMouseLeave={this.handleInfamyLeave}
 			>
 				<p className="infamy-text">{this.text()}</p>
-				<div className="infamy-icon"></div>
+				<div className="infamy-icon">
+					<canvas ref="canvas"/>
+				</div>
 				<div className="infamy-remove"
 					onClick={(e) => this.handleInfamyRemove(e)}
 				></div>
@@ -75,6 +97,7 @@ Infamy.propTypes = {
 	handleInfamyRemove: PropTypes.func.isRequired,
 	handleInfamyEnter: PropTypes.func.isRequired,
 	handleInfamyLeave: PropTypes.func.isRequired,
+	reflowCanvas: PropTypes.func.isRequired,
 };
 
 export default Infamy;

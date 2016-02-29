@@ -76,15 +76,6 @@
 		 * ===================================================================*/
 
 		.infamy-icon {
-			background: @color-dark;
-		}
-
-		&:hover .infamy-icon {
-			background: @color-normal;
-		}
-
-
-		.infamy-icon {
 			@time: 0.2s;
 			@size: @infamy-icon-size;
 			position: absolute;
@@ -97,12 +88,17 @@
 			margin-left: -@size / 2;
 			.transition(transform @time);
 			.transform(scale(0.5));
+
+			canvas {
+				width: 100%;
+				height: 100%;
+			}
 		}
 
-		&[data-status="disable"],
-		&[data-status="locked"] {
+		&.status-disable,
+		&.status-locked {
 			.infamy-icon {
-				opacity: 0.2;
+				opacity: 0.4;
 				.transform(scale(0.5));
 			}
 
@@ -111,8 +107,8 @@
 			}
 		}
 
-		&[data-status="unlocked"],
-		&[data-status="owned"] {
+		&.status-unlocked,
+		&.status-owned {
 			.infamy-icon {
 				.transform(scale(0.9));
 			}
@@ -122,22 +118,16 @@
 			}
 		}
 
-		&[data-status="unlocked"] {
+		&.status-unlocked {
 			.infamy-icon {
-				opacity: 0.6;
-				background: @color-gray;
+				opacity: 0.75;
 			}
 		}
 
-		&[data-status="owned"] {
+		&.status-owned {
 			.infamy-icon {
 				opacity: 1;
-				background: @color-normal;
 			}
-		}
-
-		&:hover .infamy-icon {
-			background: @color-normal;
 		}
 
 		/* =====================================================================
@@ -154,18 +144,15 @@
 			bottom: -@pos;
 		}
 
-		&[data-status="owned"] {
+		&.status-owned {
 			.infamy-icon::before {
 				.icon-pseudo-pos(@infamy-icon-size);
 				.halo(@infamy-icon-size);
 			}
 
-			&[data-status="owned"]::after {
-				.pseudo-block;
-				.infamy-icon::after {
-					.icon-pseudo-pos(@infamy-icon-size);
-					.halo2(@infamy-icon-size);
-				}
+			.infamy-icon::after {
+				.icon-pseudo-pos(@infamy-icon-size);
+				.halo2(@infamy-icon-size);
 			}
 		}
 
@@ -178,9 +165,17 @@
 			position: absolute;
 			bottom: 0;
 			width: 100%;
+			color: @color-normal;
 			text-align: center;
+			text-transform: uppercase;
 			line-height: 1.4;
 			font-size: @infamy-font-size;
+		}
+
+		&.status-disable {
+			.infamy-text {
+				color: @color-alert;
+			}
 		}
 
 		&:hover .infamy-text {
@@ -197,8 +192,8 @@
 			top: 0;
 			right: 0;
 			z-index: 1000;
-			width: @infamy-font-size;
-			height: @infamy-font-size;
+			width: @infamy-font-size * 1.2;
+			height: @infamy-font-size * 1.2;
 			background: @color-strong;
 
 			&:hover {
@@ -206,7 +201,7 @@
 			}
 		}
 
-		&[data-status='owned']:hover {
+		&.status-owned:hover {
 			.infamy-remove {
 				display: block;
 			}
