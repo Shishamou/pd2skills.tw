@@ -1,41 +1,29 @@
+import ImageSpriteDrawer from './public/ImageSpriteDrawer';
+
 
 window.addEventListener('load', () => {
 	const root = document.querySelector('#app');
 
-	const main = document.createElement('canvas');
-	const mainCtx = main.getContext('2d');
+	var drawer = new ImageSpriteDrawer('res/skills.png', {size: 64});
 
-	const temp = document.createElement('canvas');
-	const tempCtx = temp.getContext('2d');
+	for (var i = 0; i < 25; i++) {
+		var canvas = document.createElement('canvas');
+		var x = i % 8;
+		var y = Math.floor(i / 8);
 
-	var image = new Image;
-	image.onload = (e) => {
-		var width = image.width;
-		var height = image.height;
+		let iconDrawer = drawer.target(canvas).pos(x, y);
 
-		temp.width = width;
-		temp.height = height;
-
-
-		var colors = ['#eee', '#607f93', '#383c45', '#bf3247'];
-		main.width = width * colors.length;
-		main.height = height;
-
-		colors.forEach((color, pos) => {
-			tempCtx.clearRect(0, 0, width, height);
-
-			tempCtx.globalCompositeOperation = 'source-over';
-			tempCtx.fillStyle = color;
-			tempCtx.fillRect(0, 0, width, height);
-
-			tempCtx.globalCompositeOperation = 'destination-in';
-			tempCtx.drawImage(image, 0, 0);
-
-			mainCtx.drawImage(temp, width * pos, 0);
+		canvas.addEventListener('mouseenter', function() {
+			iconDrawer.draw('red');
 		});
 
-		root.appendChild(main);
-	};
+		canvas.addEventListener('mouseleave', function() {
+			iconDrawer.draw('black');
+		});
+		iconDrawer.draw('black');
 
-	image.src = 'res/skills.png';
+		canvas.style.width = '10%';
+		root.appendChild(canvas);
+		root.style.background = 'gray';
+	}
 });
