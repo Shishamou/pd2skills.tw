@@ -1,29 +1,30 @@
 import ImageSpriteDrawer from './public/ImageSpriteDrawer';
+import IconDrawer from './facades/IconDrawer';
 
+var infamyIcons = [ 'root', 'technician', 'mastermind', 'enforcer', 'ghost', 'xp', 'mask' ];
+
+IconDrawer.registerSprite(
+	new ImageSpriteDrawer('res/infamy.png', {size: 128}),
+	infamyIcons
+);
 
 window.addEventListener('load', () => {
 	const root = document.querySelector('#app');
 
-	var drawer = new ImageSpriteDrawer('res/skills.png', {size: 64});
-
-	for (var i = 0; i < 25; i++) {
+	infamyIcons.forEach((infamy) => {
 		var canvas = document.createElement('canvas');
-		var x = i % 8;
-		var y = Math.floor(i / 8);
-
-		let iconDrawer = drawer.target(canvas).pos(x, y);
 
 		canvas.addEventListener('mouseenter', function() {
-			iconDrawer.draw('red');
+			IconDrawer.draw(infamy, canvas, 'normal');
 		});
 
 		canvas.addEventListener('mouseleave', function() {
-			iconDrawer.draw('black');
+			IconDrawer.draw(infamy, canvas, 'dark');
 		});
-		iconDrawer.draw('black');
+		IconDrawer.draw(infamy, canvas, 'dark');
 
 		canvas.style.width = '10%';
 		root.appendChild(canvas);
 		root.style.background = 'gray';
-	}
+	})
 });
