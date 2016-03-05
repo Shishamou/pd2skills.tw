@@ -23,8 +23,8 @@ class Infamy extends Component
         return this.props.infamyTable[row][col];
     }
 
-    reflowCanvas(canvas, options) {
-        const { infamy, hover } = options;
+    reflowCanvas(canvas, datas) {
+        const { infamy, hover } = datas;
 
         var color = (function(infamy, hover) {
             if (infamy.disable)

@@ -179,51 +179,35 @@
 		 * = Skill Icon
 		 * ===================================================================*/
 
-		&:before {
-			content: ' ';
+		.skill-icon {
 			display: block;
 			position: absolute;
 			top: 0;
 			left: 0;
-			opacity: 0.5;
 			width: @skill-icon-size;
 			height: @skill-icon-size;
-			background: @color-dark;
-		}
 
-		&[data-status='alerted']:before {
-			background: @color-alert;
-		}
-
-		&[data-status='locked']:before {
-			background: @color-dark;
-		}
-
-		&[data-status='unlocked']:before {
-			background: @color-gray;
-		}
-
-		&[data-status='owned']:before {
-			background: @color-normal;
-		}
-
-		&[data-status='aced']:before {
-			background: @color-normal;
+			canvas {
+				width: 100%;
+				height: 100%;
+			}
 		}
 
 		@skill-aced-icon: './images/aced.png';
 		@skill-aced-icon-size: @skill-icon-size * 2;
-		&[data-status='aced']:after {
-			content: ' ';
-			display: block;
-			position: absolute;
-			top: -(@skill-icon-size / 2);
-			left: -(@skill-icon-size / 2);
-			z-index: -1;
-			width: @skill-aced-icon-size;
-			height: @skill-aced-icon-size;
-			background: url(@skill-aced-icon) no-repeat;
-			background-size: @skill-aced-icon-size;
+		&.status-aced {
+			.skill-icon::after {
+				content: ' ';
+				display: block;
+				position: absolute;
+				top: -(@skill-icon-size / 2);
+				left: -(@skill-icon-size / 2);
+				z-index: -1;
+				width: @skill-aced-icon-size;
+				height: @skill-aced-icon-size;
+				background: url(@skill-aced-icon) no-repeat;
+				background-size: @skill-aced-icon-size;
+			}
 		}
 
 		/* =====================================================================
@@ -282,7 +266,8 @@
 			}
 		}
 
-		&[data-status='owned']:hover, &[data-status='aced']:hover {
+		&.status-owned:hover,
+		&.status-aced:hover {
 			.skill-remove {
 				display: block;
 			}

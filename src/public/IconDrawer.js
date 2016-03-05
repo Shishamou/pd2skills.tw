@@ -34,6 +34,8 @@ export default class IconDrawer {
 		var sprite = this.sprites[icon.spriteId];
 		this.colors[color] && (color = this.colors[color]);
 
+		if ( ! sprite.frames) return;
+
 		var frameNo = icon.frame;
 		var x = frameNo % sprite.frames[0];
 		var y = Math.floor(frameNo / sprite.frames[1]);

@@ -27,14 +27,18 @@ class App extends Component
         const tabs = ['skills', 'perk decks', 'infamy'];
         const display = this.props.display || tabs[0];
 
+        const func = {
+            locale, localeText, drawIcon
+        };
+
         const main = ((display) => {
             switch (display) {
                 case 'skills':
-                    return <Skills locale={locale} localeText={localeText} />;
+                    return <Skills {...func} />;
                 case 'perk decks':
-                    return <PerkDecks locale={locale} localeText={localeText} />;
+                    return <PerkDecks {...func} />;
                 case 'infamy':
-                    return <Infamy locale={locale} localeText={localeText} drawIcon={drawIcon} />;
+                    return <Infamy {...func} />;
                 default:
             }
         })(display);

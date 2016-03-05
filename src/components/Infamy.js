@@ -15,7 +15,7 @@ class Infamy extends Component
 
 	componentDidMount() {
 		const { reflowCanvas, infamy } = this.props;
-		reflowCanvas(this.refs.canvas, {
+		this.props.reflowCanvas(this.refs.canvas, {
 			hover: this.hover,
 			infamy
 		});
@@ -23,7 +23,7 @@ class Infamy extends Component
 
 	componentDidUpdate() {
 		const { reflowCanvas, infamy } = this.props;
-		reflowCanvas(this.refs.canvas, {
+		this.props.reflowCanvas(this.refs.canvas, {
 			hover: this.hover,
 			infamy
 		});
