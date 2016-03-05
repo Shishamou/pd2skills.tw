@@ -12,12 +12,16 @@
             "ghost",
             "xp",
             "mask"
-        ]
+        ],
+        "prefix": "infamy"
     },
     {
         "src": "res/skills.png",
         "options": {
-            "size": 64
+            "frames": [
+                8,
+                16
+            ]
         },
         "names": [
             "unknown",
@@ -122,6 +126,7 @@
             "thug_life",
             "drop_soap",
             "perseverance"
-        ]
+        ],
+        "prefix": "skills"
     }
 ]

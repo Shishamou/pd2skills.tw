@@ -14,7 +14,7 @@ export default class IconDrawer {
 		}
 	}
 
-	registerSprite(sprite, frameNames) {
+	registerSprite(sprite, frameNames, prefix = '') {
 		if ( ! (sprite instanceof ImageSpriteDrawer))
 			throw 'Arg1 must instance of ImageSpriteDrawer.';
 		if ( ! Array.isArray(frameNames))
@@ -22,7 +22,7 @@ export default class IconDrawer {
 
 		var spriteId = this.sprites.push(sprite) - 1;
 		frameNames.forEach((frameName, frame) => {
-			this.iconIndexes[frameName] = { frame, spriteId };
+			this.iconIndexes[prefix + frameName] = { frame, spriteId };
 		})
 	}
 
@@ -38,7 +38,7 @@ export default class IconDrawer {
 
 		var frameNo = icon.frame;
 		var x = frameNo % sprite.frames[0];
-		var y = Math.floor(frameNo / sprite.frames[1]);
+		var y = Math.floor(frameNo / sprite.frames[0]);
 
 		sprite.draw(canvas, x, y, color);
 	}

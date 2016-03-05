@@ -11,7 +11,8 @@ export default function other(state = initialState, action) {
                 action.response.forEach((icon) => {
                     IconDrawer.registerSprite(
                     	new ImageSpriteDrawer(icon.src, icon.options),
-                    	icon.names
+                    	icon.names,
+                        `${icon.prefix}_`
                     );
                 })
             }

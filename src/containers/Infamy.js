@@ -36,7 +36,7 @@ class Infamy extends Component
             return 'dark';
         })(infamy, hover);
 
-        this.props.drawIcon(infamy.icon, canvas, color);
+        this.props.drawIcon(`infamy_${infamy.icon}`, canvas, color);
     }
 
     render() {

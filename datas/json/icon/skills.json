@@ -1,7 +1,7 @@
 {
 	"src": "res/skills.png",
 	"options": {
-		"size": 64
+		"frames": [8, 16]
 	},
 	"names": [
 		"unknown",
