@@ -1,20 +1,20 @@
 import { combineReducers } from 'redux';
 import * as types from './constants/SkillAppActions';
 
+import other from './reducers/other';
 import loadLangs from './reducers/loadLangs';
 import handleSkills from './reducers/handleSkills';
 import handlePerks from './reducers/handlePerks';
 import handleInfamyTree from './reducers/handleInfamyTree';
 
-function rootReducer(state = {}, action) {
-    return Object.assign({}, state, {
-        display: handleDisplay,
-        langs: loadLangs(state.langs, action),
-        infamy: handleInfamyTree(state.infamy, action),
-        skills: handleSkills(state.skills, action),
-        perks: handlePerks(state.perks, action)
-    });
-}
+export default combineReducers({
+    other: other,
+    display: handleDisplay,
+    langs: loadLangs,
+    infamy: handleInfamyTree,
+    skills: handleSkills,
+    perks: handlePerks
+});
 
 function handleDisplay(state = 0, action) {
     switch (action.type) {
@@ -24,13 +24,3 @@ function handleDisplay(state = 0, action) {
             return state;
     }
 }
-
-var rootReducer = combineReducers({
-    display: handleDisplay,
-    langs: loadLangs,
-    infamy: handleInfamyTree,
-    skills: handleSkills,
-    perks: handlePerks
-});
-
-export default rootReducer;

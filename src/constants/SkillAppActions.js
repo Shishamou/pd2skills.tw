@@ -1,6 +1,6 @@
-export const SWITCH_MAIN_TAB = 'SWITCH_MAIN_TAB';
 
 export const LOAD_LANGS = 'LOAD_LANGS';
+export const LOAD_ICON = 'LOAD_ICON';
 
 export const LOAD_SKILLS = 'LOAD_SKILLS';
 export const HANDLE_SKILL_EVENT = 'HANDLE_SKILL_EVENT';
@@ -13,3 +13,5 @@ export const HANDLE_DECK_EVENT = 'HANDLE_DECK_EVENT';
 
 export const LOAD_INFAMYTREE = 'LOAD_INFAMYTREE';
 export const HANDLE_INFAMY_EVENT = 'HANDLE_INFAMY_EVENT';
+
+export const SWITCH_MAIN_TAB = 'SWITCH_MAIN_TAB';

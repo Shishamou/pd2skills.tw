@@ -11,21 +11,23 @@ class Skills extends Component
 {
     constructor(prop) {
         super(prop);
-        this.getTree = this.getTree.bind(this);
-        this.getTier = this.getTier.bind(this);
-        this.getSkill = this.getSkill.bind(this);
+        this.reflowCanvas = this.reflowCanvas.bind(this);
     }
 
-    getTree(id) {
-        return this.props.trees[id];
-    }
+    reflowCanvas(canvas, datas) {
+        const { skill, tier, hover } = datas;
 
-    getTier(id) {
-        return this.props.tiers[id];
-    }
+        var color = (function(skill, tier) {
+            if (skill.alerted)
+                return 'alert';
+            if (skill.ownedBasic || skill.ownedAce)
+                return 'normal';
+            if (tier.unlocked)
+                return 'gray';
+            return 'dark';
+        })(skill, tier);
 
-    getSkill(id) {
-        return this.props.skills[id];
+        this.props.drawIcon(`skills_${skill.name}`, canvas, color);
     }
 
     render() {
@@ -36,9 +38,10 @@ class Skills extends Component
         const app = {
             locale,
             localeText,
-            getTree: this.getTree,
-            getTier: this.getTier,
-            getSkill: this.getSkill,
+            reflowCanvas      : this.reflowCanvas,
+            getTree           : (id) => this.props.trees[id],
+            getTier           : (id) => this.props.tiers[id],
+            getSkill          : (id) => this.props.skills[id],
             respecTree        : (id) => {dispatch(actions.respecSkillTree(id))},
             handleSkillClick  : (id) => {dispatch(actions.handleSkillClick(id))},
             handleSkillRemove : (id) => {dispatch(actions.handleSkillRemove(id))},
@@ -72,6 +75,7 @@ class Skills extends Component
 Skills.propTypes = {
 	locale: PropTypes.func.isRequired,
 	localeText: PropTypes.func.isRequired,
+	drawIcon: PropTypes.func.isRequired,
 };
 
 function select(state) {

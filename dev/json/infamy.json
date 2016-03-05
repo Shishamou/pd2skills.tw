@@ -1,0 +1,133 @@
+{
+	"infamy_tree" : [
+		{
+			"name" : "xp",
+			"icon": "xp",
+			"disable" : true
+		},
+		{
+			"name" : "ranger",
+			"icon": "mask",
+			"disable" : true
+		},
+		{
+			"name" : "xp",
+			"icon": "xp",
+			"disable" : true
+		},
+		{
+			"name" : "lurker",
+			"icon": "mask",
+			"disable" : true
+		},
+		{
+			"name" : "xp",
+			"icon": "xp",
+			"disable" : true
+		},
+
+		{
+			"name" : "punk",
+			"icon": "mask",
+			"disable" : true
+		},
+		{
+			"name" : "xp",
+			"icon": "xp",
+			"disable" : true
+		},
+		{
+			"name" : "ghost",
+			"icon": "ghost",
+			"reduce": ["ghost", "hoxton_pack"]
+		},
+		{
+			"name" : "xp",
+			"icon": "xp",
+			"disable" : true
+		},
+		{
+			"name" : "balaclava",
+			"icon": "mask",
+			"disable" : true
+		},
+
+		{
+			"name" : "xp",
+			"icon": "xp",
+			"disable" : true
+		},
+		{
+			"name" : "mastermind",
+			"icon": "mastermind",
+			"reduce": ["mastermind", "hoxton_pack"]
+		},
+		{
+			"name" : "root",
+			"icon": "root",
+			"reduce": ["cost"]
+		},
+		{
+			"name" : "enforcer",
+			"icon": "enforcer",
+			"reduce": ["enforcer", "hoxton_pack"]
+		},
+		{
+			"name" : "xp",
+			"icon": "xp",
+			"disable" : true
+		},
+
+		{
+			"name" : "daft",
+			"icon": "mask",
+			"disable" : true
+		},
+		{
+			"name" : "xp",
+			"icon": "xp",
+			"disable" : true
+		},
+		{
+			"name" : "technician",
+			"icon": "technician",
+			"reduce": ["technician", "hoxton_pack"]
+		},
+		{
+			"name" : "xp",
+			"icon": "xp",
+			"disable" : true
+		},
+		{
+			"name" : "hood",
+			"icon": "mask",
+			"disable" : true
+		},
+
+		{
+			"name" : "xp",
+			"icon": "xp",
+			"disable" : true
+		},
+		{
+			"name" : "destroyer",
+			"icon": "mask",
+			"disable" : true
+		},
+		{
+			"name" : "xp",
+			"icon": "xp",
+			"disable" : true
+		},
+		{
+			"name" : "pain",
+			"icon": "mask",
+			"disable" : true
+		},
+		{
+			"name" : "xp",
+			"icon": "xp",
+			"disable" : true
+		}
+	]
+}

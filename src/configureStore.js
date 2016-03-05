@@ -17,10 +17,11 @@ export default function configureStore(initialState = {}) {
 
     const store = createStoreWithMiddleware(rootReducer);
 
-    store.dispatch(initial.fetchLangs('local.json'));
-    store.dispatch(initial.fetchSkills('skills.json'));
-    store.dispatch(initial.fetchPerks('perks.json'));
-    store.dispatch(initial.fetchInfamy('infamy.json'));
+    store.dispatch(initial.fetchIcon('json/icon.json'));
+    store.dispatch(initial.fetchLangs('json/local.json'));
+    store.dispatch(initial.fetchSkills('json/skills.json'));
+    store.dispatch(initial.fetchPerks('json/perks.json'));
+    store.dispatch(initial.fetchInfamy('json/infamy.json'));
 
     return store;
 }

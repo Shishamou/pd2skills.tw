@@ -1,0 +1,15 @@
+{
+	"src": "res/infamy.png",
+	"options": {
+		"size": 128
+	},
+	"names": [
+		"root",
+		"technician",
+		"mastermind",
+		"enforcer",
+		"ghost",
+		"xp",
+		"mask"
+	]
+}

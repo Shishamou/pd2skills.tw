@@ -1,74 +1,47 @@
 import React, { Component, PropTypes } from 'react';
-import * as statuses from '../constants/SkillStatuses';
-
-class SkillText extends Component
-{
-	render() {
-		const { skill, tier } = this.props;
-		const { locale, localeText } = this.props;
-
-		switch (skill.status) {
-			case statuses.STATUS_ALERTED:
-				return (
-					<div className="skill-text">
-						<p>必要</p>
-					</div>
-				);
-			case statuses.STATUS_ACED:
-				return (
-					<div className="skill-text">
-						<p>{locale('st_menu_skill_maxed')}</p>
-					</div>
-				);
-			case statuses.STATUS_OWNED:
-				if (tier.skillPointAce > 0) {
-					return (
-						<div className="skill-text">
-							<p className="skill-text-hold">{locale('st_menu_skill_owned')}</p>
-							<p className="skill-text-hide" dangerouslySetInnerHTML={{
-								__html: localeText('st_menu_buy_skill_pro_plural', {
-									points: tier.skillPointAce,
-									cost: ''//'$' + tier.skillCostAce,
-								})
-							}} />
-						</div>
-					);
-				} else {
-					return (
-	   					<div className="skill-text">
-	   						<p>{locale('st_menu_skill_owned')}</p>
-	   					</div>
-	   				);
-				}
-			case statuses.STATUS_UNLOCKED:
-				return (
-					<div className="skill-text">
-						<p className="skill-text-hide" dangerouslySetInnerHTML={{
-							__html: localeText('st_menu_buy_skill_basic_plural', {
-								points: tier.skillPointBasic,
-								cost: ''//'$' + tier.skillCostBasic,
-							})
-						}} />
-					</div>
-				);
-			case statuses.STATUS_LOCKED:
-				return (
-					<div className="skill-text">
-						<p className="skill-text-hide">{locale('st_menu_skill_locked')}</p>
-					</div>
-				);
-		}
-	}
-}
+import SkillText from './SkillText';
 
 class Skill extends Component
 {
 	constructor(props) {
 		super(props);
-		this.handleSkillClick = this.handleSkillClick.bind(this);
-		this.handleSkillRemove = this.handleSkillRemove.bind(this);
-		this.handleSkillEnter = this.handleSkillEnter.bind(this);
-		this.handleSkillLeave = this.handleSkillLeave.bind(this);
+		this.hover = false;
+	}
+
+	componentDidMount() {
+		this.componentDidUpdate();
+	}
+
+	componentDidUpdate() {
+		const { skill, tier } = this.props;
+		this.props.reflowCanvas(this.refs.canvas, {
+			hover: this.hover, skill, tier
+		});
+	}
+
+	render() {
+		const { app, skill } = this.props;
+
+		var className = ['skill'];
+		className.push('status-' + skill.status.split('_').slice(-1).pop().toLowerCase());
+
+		return (
+			<div
+				className={className.join(' ')}
+				onClick={this.handleSkillClick.bind(this)}
+				onMouseEnter={this.handleSkillEnter.bind(this)}
+				onMouseLeave={this.handleSkillLeave.bind(this)}
+			>
+				<div className="skill-icon">
+					<canvas ref="canvas"/>
+				</div>
+				<SkillText {...this.props} />
+				<div
+					className="skill-remove"
+					onClick={(e) => this.handleSkillRemove(e).bind(this)}
+				></div>
+			</div>
+		);
 	}
 
 	handleSkillClick(e) {
@@ -81,39 +54,18 @@ class Skill extends Component
 	}
 
 	handleSkillEnter(e) {
+		this.hover = true;
 		this.props.handleSkillEnter(this.props.skill.id);
 	}
 
 	handleSkillLeave(e) {
+		this.hover = false;
 		this.props.handleSkillLeave(this.props.skill.id);
-	}
-
-	render() {
-		const { app, skill } = this.props;
-
-		var dataset = skill.status.split('_').slice(-1).pop().toLowerCase();
-
-		return (
-			<div
-				className="skill"
-				data-status={dataset}
-				onClick={this.handleSkillClick}
-				onMouseEnter={this.handleSkillEnter}
-				onMouseLeave={this.handleSkillLeave}
-			>
-				<SkillText {...this.props} />
-				<div
-					className="skill-remove"
-					onClick={(e) => this.handleSkillRemove(e)}
-				></div>
-			</div>
-		);
 	}
 }
 
 Skill.propTypes = {
-	locale: PropTypes.func.isRequired,
-	localeText: PropTypes.func.isRequired,
+	reflowCanvas: PropTypes.func.isRequired,
 	handleSkillClick: PropTypes.func.isRequired,
 	handleSkillRemove: PropTypes.func.isRequired,
 	handleSkillEnter: PropTypes.func.isRequired,
