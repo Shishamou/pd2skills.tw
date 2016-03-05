@@ -1,0 +1,41 @@
+{
+    "name": 12,
+    "decks": [
+        {
+            "name": "deck12_1",
+            "datas": {
+                "multiperk": "__VALUE__",
+                "multiperk2": "__VALUE__"
+            }
+        },
+        {
+            "name": "deck12_3",
+            "datas": {
+                "multiperk": "__VALUE__",
+                "multiperk2": "__VALUE__"
+            }
+        },
+        {
+            "name": "deck12_5",
+            "datas": {
+                "multiperk": "__VALUE__",
+                "multiperk2": "__VALUE__"
+            }
+        },
+        {
+            "name": "deck12_7",
+            "datas": {
+                "multiperk": "__VALUE__",
+                "multiperk2": "__VALUE__"
+            }
+        },
+        {
+            "name": "deck12_9",
+            "datas": {
+                "multiperk": "__VALUE__",
+                "multiperk2": "__VALUE__",
+                "multiperk3": "__VALUE__"
+            }
+        }
+    ]
+}

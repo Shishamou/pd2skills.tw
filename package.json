@@ -22,6 +22,7 @@
     "express": "^4.13.3",
     "image-webpack-loader": "^1.6.2",
     "isomorphic-fetch": "^2.2.0",
+    "javascript-natural-sort": "^0.7.1",
     "less-loader": "^2.2.2",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
