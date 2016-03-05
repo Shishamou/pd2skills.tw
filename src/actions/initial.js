@@ -84,3 +84,18 @@ export function fetchInfamy(url) {
     };
     return {type: actions.LOAD_INFAMYTREE, status: 'error', error};
 }
+
+// =============================================================================
+// = Fetch Icon
+// =============================================================================
+export function fetchIcon(url) {
+    return dispatch => {
+        dispatch({type: actions.LOAD_ICON});
+        return fetch(url)
+            .then(response => response.json())
+            .then(response => {
+                dispatch({type: actions.LOAD_ICON, status: 'success', response})
+            });
+    };
+    return {type: actions.LOAD_ICON, status: 'error', error};
+}

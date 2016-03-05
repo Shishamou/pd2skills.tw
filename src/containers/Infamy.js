@@ -6,8 +6,6 @@ import InfamyTree from '../components/InfamyTree';
 import InfamySide from '../components/InfamySide';
 import ImageSpriteDrawer from '../public/ImageSpriteDrawer';
 
-const sprite = new ImageSpriteDrawer('res/infamy.png', {size: 128});
-
 class Infamy extends Component
 {
     constructor(prop) {
@@ -26,31 +24,19 @@ class Infamy extends Component
     }
 
     reflowCanvas(canvas, options) {
-        var color = (function(options) {
-            var { infamy, hover } = options;
+        const { infamy, hover } = options;
+
+        var color = (function(infamy, hover) {
             if (infamy.disable)
-            return '#bf3247';
+                return 'alert';
             if (infamy.owned || hover)
-                return '#eee';
+                return 'normal';
             if (infamy.unlocked)
-                return '#607f93';
-            return '#383c45';
-        })(options);
+                return 'gray';
+            return 'dark';
+        })(infamy, hover);
 
-        var pos = (function(options) {
-            var { infamy } = options;
-            return [
-                'root',
-                'technician',
-                'mastermind',
-                'enforcer',
-                'ghost',
-                'xp',
-                'mask'
-            ].indexOf(infamy.icon)
-        })(options);
-
-        sprite.draw(canvas, pos % 4, Math.floor(pos / 4), color);
+        this.props.drawIcon(infamy.icon, canvas, color);
     }
 
     render() {
@@ -89,6 +75,7 @@ class Infamy extends Component
 Infamy.propTypes = {
 	locale: PropTypes.func.isRequired,
 	localeText: PropTypes.func.isRequired,
+	drawIcon: PropTypes.func.isRequired,
 };
 
 function select(state) {

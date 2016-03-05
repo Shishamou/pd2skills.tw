@@ -1,7 +1,7 @@
 var fs = require('fs');
 
 var src = __dirname + '/json/icon';
-var save = __dirname + '/../dev/icon.json';
+var save = __dirname + '/../dev/json/icon.json';
 
 var files = fs.readdirSync(src);
 var result = [];

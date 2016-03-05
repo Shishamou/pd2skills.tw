@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/app';
 
 import Localisation from '../public/Localisation';
+import IconDrawer from '../facades/IconDrawer';
+
 import Skills from './Skills';
 import PerkDecks from './PerkDecks';
 import Infamy from './Infamy';
@@ -19,30 +21,8 @@ class App extends Component
         const { dispatch } = this.props;
     }
 
-    locale(key, injects = {}) {
-        var text = Localisation.localize(key);
-        text = text.replace(/\$(\w+);?/g, (match, key)=>(
-            (typeof injects[key] !== 'undefined') ? injects[key] : match)
-        );
-        return text;
-    }
-
-    localeText(key, injects) {
-        var text = this.locale(key, injects);
-        if (text == '') return text;
-
-        text = text.replace(/{{(\w+)}}/g, (match, key)=>(this.locale(key) || match));
-        text = text.replace(/##(.+?)##/g, (match, key)=>(`<strong>${key}</strong>`));
-        text = text.replace(/\n/g, '<br />');
-        return text;
-    }
-
-    switchTab(name) {
-        this.props.dispatch(actions.switchMainTab(name));
-    }
-
     render() {
-        const { locale, localeText } = this;
+        const { locale, localeText, drawIcon } = this;
 
         const tabs = ['skills', 'perk decks', 'infamy'];
         const display = this.props.display || tabs[0];
@@ -54,7 +34,7 @@ class App extends Component
                 case 'perk decks':
                     return <PerkDecks locale={locale} localeText={localeText} />;
                 case 'infamy':
-                    return <Infamy locale={locale} localeText={localeText} />;
+                    return <Infamy locale={locale} localeText={localeText} drawIcon={drawIcon} />;
                 default:
             }
         })(display);
@@ -76,6 +56,34 @@ class App extends Component
                 {main}
             </div>
         );
+    }
+
+    locale(key, injects = {}) {
+        var text = Localisation.localize(key);
+        text = text.replace(/\$(\w+);?/g, (match, key)=>(
+            (typeof injects[key] !== 'undefined') ? injects[key] : match)
+        );
+        return text;
+    }
+
+    localeText(key, injects) {
+        var text = this.locale(key, injects);
+        if (text == '') return text;
+
+        text = text.replace(/{{(\w+)}}/g, (match, key)=>(this.locale(key) || match));
+        text = text.replace(/##(.+?)##/g, (match, key)=>(`<strong>${key}</strong>`));
+        text = text.replace(/\n/g, '<br />');
+        return text;
+    }
+
+    drawIcon(name, canvas, color) {
+        IconDrawer.draw(name, canvas, color);
+        canvas.dataset.icon = name;
+        canvas.dataset.color = color;
+    }
+
+    switchTab(name) {
+        this.props.dispatch(actions.switchMainTab(name));
     }
 }
 
