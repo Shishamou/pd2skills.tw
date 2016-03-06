@@ -64,8 +64,8 @@ class App extends Component
 
     locale(key, injects = {}) {
         var text = Localisation.localize(key);
-        text = text.replace(/\$(\w+);?/g, (match, key)=>(
-            (typeof injects[key] !== 'undefined') ? injects[key] : match)
+        text = text.replace(/\$(\w+);?/g, (match, key) =>
+            (typeof injects[key] !== 'undefined') ? injects[key] : match
         );
         return text;
     }

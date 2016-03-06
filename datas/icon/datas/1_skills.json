@@ -1,5 +1,6 @@
 {
 	"src": "res/skills.png",
+	"prefix": "skill_",
 	"options": {
 		"frames": [8, 16]
 	},
