@@ -1,70 +1,83 @@
 {
-    "name": 8,
     "decks": [
         {
-            "name": "deck8_1",
+            "name": "deck1_1",
             "datas": {
                 "multiperk": "__VALUE__"
             }
         },
         {
-            "name": "deck8_2",
+            "name": "deck1_2",
             "datas": {
                 "multiperk": "__VALUE__"
             }
         },
         {
-            "name": "deck8_3",
-            "datas": {
-                "multiperk": "__VALUE__"
-            }
-        },
-        {
-            "name": "deck8_4",
-            "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__",
-                "multiperk3": "__VALUE__"
-            }
-        },
-        {
-            "name": "deck8_5",
-            "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__",
-                "multiperk3": "__VALUE__",
-                "multiperk4": "__VALUE__"
-            }
-        },
-        {
-            "name": "deck8_6",
-            "datas": {
-                "multiperk": "__VALUE__"
-            }
-        },
-        {
-            "name": "deck8_7",
-            "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__",
-                "multiperk3": "__VALUE__",
-                "multiperk4": "__VALUE__"
-            }
-        },
-        {
-            "name": "deck8_8",
+            "name": "deck1_3",
             "datas": {
                 "multiperk": "__VALUE__",
                 "multiperk2": "__VALUE__"
             }
         },
         {
-            "name": "deck8_9",
+            "name": "deck1_4",
             "datas": {
                 "multiperk": "__VALUE__",
                 "multiperk2": "__VALUE__",
                 "multiperk3": "__VALUE__"
             }
+        },
+        {
+            "name": "deck1_5",
+            "datas": {
+                "multiperk": "__VALUE__"
+            }
+        },
+        {
+            "name": "deck1_6",
+            "datas": {
+                "multiperk": "__VALUE__"
+            }
+        },
+        {
+            "name": "deck1_7",
+            "datas": {
+                "multiperk": "__VALUE__",
+                "multiperk2": "__VALUE__"
+            }
+        },
+        {
+            "name": "deck1_8",
+            "datas": {
+                "multiperk": "__VALUE__",
+                "multiperk2": "__VALUE__"
+            }
+        },
+        {
+            "name": "deck1_9",
+            "datas": {
+                "multiperk": "__VALUE__",
+                "multiperk2": "__VALUE__",
+                "multiperk3": "__VALUE__",
+                "multiperk4": "__VALUE__",
+                "multiperk5": "__VALUE__"
+            }
+        }
+    ],
+    "perks": [
+        {
+            "name": 1,
+            "decks": [
+                "deck1_1",
+                "deck1_2",
+                "deck1_3",
+                "deck1_4",
+                "deck1_5",
+                "deck1_6",
+                "deck1_7",
+                "deck1_8",
+                "deck1_9"
+            ]
         }
     ]
 }

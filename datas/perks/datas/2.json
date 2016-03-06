@@ -1,14 +1,7 @@
 {
-    "name": 2,
     "decks": [
         {
             "name": "deck2_1",
-            "datas": {
-                "multiperk": "__VALUE__"
-            }
-        },
-        {
-            "name": "deck2_2",
             "datas": {
                 "multiperk": "__VALUE__"
             }
@@ -21,34 +14,13 @@
             }
         },
         {
-            "name": "deck2_4",
-            "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__",
-                "multiperk3": "__VALUE__"
-            }
-        },
-        {
             "name": "deck2_5",
             "datas": {
                 "multiperk": "__VALUE__"
             }
         },
         {
-            "name": "deck2_6",
-            "datas": {
-                "multiperk": "__VALUE__"
-            }
-        },
-        {
             "name": "deck2_7"
-        },
-        {
-            "name": "deck2_8",
-            "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__"
-            }
         },
         {
             "name": "deck2_9",
@@ -58,6 +30,22 @@
                 "multiperk3": "__VALUE__",
                 "multiperk4": "__VALUE__"
             }
+        }
+    ],
+    "perks": [
+        {
+            "name": 2,
+            "decks": [
+                "deck2_1",
+                "deck1_2",
+                "deck2_3",
+                "deck1_4",
+                "deck2_5",
+                "deck1_6",
+                "deck2_7",
+                "deck1_8",
+                "deck2_9"
+            ]
         }
     ]
 }

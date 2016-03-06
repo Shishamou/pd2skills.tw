@@ -1,5 +1,4 @@
 {
-    "name": 13,
     "decks": [
         {
             "name": "deck13_1",
@@ -42,6 +41,22 @@
                 "NL": "__VALUE__",
                 "multiperk2": "__VALUE__"
             }
+        }
+    ],
+    "perks": [
+        {
+            "name": 13,
+            "decks": [
+                "deck13_1",
+                "deck1_2",
+                "deck13_3",
+                "deck1_4",
+                "deck13_5",
+                "deck1_6",
+                "deck13_7",
+                "deck1_8",
+                "deck13_9"
+            ]
         }
     ]
 }

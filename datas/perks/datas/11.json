@@ -1,5 +1,4 @@
 {
-    "name": 11,
     "decks": [
         {
             "name": "deck11_1",
@@ -8,12 +7,6 @@
                 "multiperk2": "__VALUE__",
                 "multiperk3": "__VALUE__",
                 "multiperk4": "__VALUE__"
-            }
-        },
-        {
-            "name": "deck11_2",
-            "datas": {
-                "multiperk": "__VALUE__"
             }
         },
         {
@@ -26,26 +19,12 @@
             }
         },
         {
-            "name": "deck11_4",
-            "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__",
-                "multiperk3": "__VALUE__"
-            }
-        },
-        {
             "name": "deck11_5",
             "datas": {
                 "multiperk": "__VALUE__",
                 "multiperk2": "__VALUE__",
                 "multiperk3": "__VALUE__",
                 "multiperk4": "__VALUE__"
-            }
-        },
-        {
-            "name": "deck11_6",
-            "datas": {
-                "multiperk": "__VALUE__"
             }
         },
         {
@@ -58,13 +37,6 @@
             }
         },
         {
-            "name": "deck11_8",
-            "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__"
-            }
-        },
-        {
             "name": "deck11_9",
             "datas": {
                 "multiperk": "__VALUE__",
@@ -73,6 +45,22 @@
                 "multiperk4": "__VALUE__",
                 "multiperk5": "__VALUE__"
             }
+        }
+    ],
+    "perks": [
+        {
+            "name": 11,
+            "decks": [
+                "deck11_1",
+                "deck1_2",
+                "deck11_3",
+                "deck1_4",
+                "deck11_5",
+                "deck1_6",
+                "deck11_7",
+                "deck1_8",
+                "deck11_9"
+            ]
         }
     ]
 }
