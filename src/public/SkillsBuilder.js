@@ -21,12 +21,11 @@ export default class SkillsBuilder {
      */
     build(datas) {
         this.initialStore();
-        datas = this.objectAttributeToCamelCase(datas);
 
-        var trees = datas.skillTrees;
-        var tierSettings = datas.tierSetting;
+        var { trees, tiersInformation } = datas;
+        tiersInformation = this.objectAttributeToCamelCase(tiersInformation);
 
-        trees.forEach((tree) => this.buildTree(tree, tierSettings));
+        trees.forEach((tree) => this.buildTree(tree, tiersInformation));
     }
 
     /**
