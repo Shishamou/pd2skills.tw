@@ -3,64 +3,64 @@
         {
             "name": "deck1_1",
             "datas": {
-                "multiperk": "__VALUE__"
+                "multiperk": "10%"
             }
         },
         {
             "name": "deck1_2",
             "datas": {
-                "multiperk": "__VALUE__"
+                "multiperk": "25%"
             }
         },
         {
             "name": "deck1_3",
             "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__"
+                "multiperk": "50%",
+                "multiperk2": "25%"
             }
         },
         {
             "name": "deck1_4",
             "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__",
-                "multiperk3": "__VALUE__"
+                "multiperk": "+1",
+                "multiperk2": "15%",
+                "multiperk3": "45%"
             }
         },
         {
             "name": "deck1_5",
             "datas": {
-                "multiperk": "__VALUE__"
+                "multiperk": "10%"
             }
         },
         {
             "name": "deck1_6",
             "datas": {
-                "multiperk": "__VALUE__"
+                "multiperk": "135%"
             }
         },
         {
             "name": "deck1_7",
             "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__"
+                "multiperk": "10%",
+                "multiperk2": "5%"
             }
         },
         {
             "name": "deck1_8",
             "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__"
+                "multiperk": "5%",
+                "multiperk2": "20%"
             }
         },
         {
             "name": "deck1_9",
             "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__",
-                "multiperk3": "__VALUE__",
-                "multiperk4": "__VALUE__",
-                "multiperk5": "__VALUE__"
+                "multiperk": "2%",
+                "multiperk2": "4%",
+                "multiperk3": "10",
+                "multiperk4": "8%",
+                "multiperk5": "10%"
             }
         }
     ],

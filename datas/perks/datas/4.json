@@ -3,33 +3,33 @@
         {
             "name": "deck4_1",
             "datas": {
-                "multiperk": "__VALUE__"
+                "multiperk": "5%"
             }
         },
         {
             "name": "deck4_3",
             "datas": {
-                "multiperk": "__VALUE__"
+                "multiperk": "15%"
             }
         },
         {
             "name": "deck4_5",
             "datas": {
-                "multiperk": "__VALUE__"
+                "multiperk": "10%"
             }
         },
         {
             "name": "deck4_7",
             "datas": {
-                "multiperk": "__VALUE__"
+                "multiperk": "10%"
             }
         },
         {
             "name": "deck4_9",
             "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__",
-                "multiperk3": "__VALUE__"
+                "multiperk": "25%",
+                "multiperk2": "80%",
+                "multiperk3": "10%"
             }
         }
     ],

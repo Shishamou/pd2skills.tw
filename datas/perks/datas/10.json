@@ -3,35 +3,35 @@
         {
             "name": "deck10_1",
             "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__",
-                "multiperk3": "__VALUE__"
+                "multiperk": "8",
+                "multiperk2": "12",
+                "multiperk3": "4"
             }
         },
         {
             "name": "deck10_3",
             "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__"
+                "multiperk": "50%",
+                "multiperk2": "5"
             }
         },
         {
             "name": "deck10_5",
             "datas": {
-                "multiperk": "__VALUE__"
+                "multiperk": "100%"
             }
         },
         {
             "name": "deck10_7",
             "datas": {
-                "multiperk": "__VALUE__"
+                "multiperk": "4"
             }
         },
         {
             "name": "deck10_9",
             "datas": {
-                "multiperk": "__VALUE__",
-                "multiperk2": "__VALUE__"
+                "multiperk": "4",
+                "multiperk2": "10%"
             }
         }
     ],
