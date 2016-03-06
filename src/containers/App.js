@@ -81,9 +81,13 @@ class App extends Component
     }
 
     drawIcon(name, canvas, color) {
-        IconDrawer.draw(name, canvas, color);
-        canvas.dataset.icon = name;
-        canvas.dataset.color = color;
+        try {
+            IconDrawer.draw(name, canvas, color);
+            canvas.dataset.icon = name;
+            canvas.dataset.color = color;
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     switchTab(name) {

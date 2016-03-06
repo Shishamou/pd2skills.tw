@@ -10,6 +10,7 @@ class PerkDecks extends Component
 {
     constructor(prop) {
         super(prop);
+        this.reflowCanvas = this.reflowCanvas.bind(this);
     }
 
     reflowCanvas(canvas, datas) {
@@ -28,7 +29,7 @@ class PerkDecks extends Component
         const app = {
             locale,
             localeText,
-            reflowCanvas     : this.reflowCanvas.bind(this),
+            reflowCanvas     : this.reflowCanvas,
             getPerk          : (id) => this.props.perks[id],
             getDeck          : (id) => this.props.decks[id],
             handlePerkClick  : (id) => {dispatch(actions.handlePerkClick(id))},
@@ -38,7 +39,7 @@ class PerkDecks extends Component
             handleDeckLeave  : (id) => {dispatch(actions.handleDeckLeave(id))}
         }
 
-        var display = this.getDeck(this.props.display);
+        var display = app.getDeck(this.props.display);
 
         return (
             <div className="section sections-perks">
