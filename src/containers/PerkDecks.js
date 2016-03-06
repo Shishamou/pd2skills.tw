@@ -10,16 +10,14 @@ class PerkDecks extends Component
 {
     constructor(prop) {
         super(prop);
-        this.getPerk = this.getPerk.bind(this);
-        this.getDeck = this.getDeck.bind(this);
     }
 
-    getPerk(id) {
-        return this.props.perks[id];
-    }
+    reflowCanvas(canvas, datas) {
+        const { hover, deck, isOwned } = datas;
 
-    getDeck(id) {
-        return this.props.decks[id];
+        var color = (isOwned)? 'black' : 'normal';
+
+        this.props.drawIcon(`perks_${deck.name}`, canvas, color);
     }
 
     render() {
@@ -30,13 +28,14 @@ class PerkDecks extends Component
         const app = {
             locale,
             localeText,
-            getPerk : this.getPerk,
-            getDeck : this.getDeck,
-            handlePerkClick : (id) => {dispatch(actions.handlePerkClick(id))},
+            reflowCanvas     : this.reflowCanvas.bind(this),
+            getPerk          : (id) => this.props.perks[id],
+            getDeck          : (id) => this.props.decks[id],
+            handlePerkClick  : (id) => {dispatch(actions.handlePerkClick(id))},
             handlePerkDouble : (id) => {dispatch(actions.handlePerkDouble(id))},
-            handleDeckClick : (id) => {dispatch(actions.handleDeckClick(id))},
-            handleDeckEnter : (id) => {dispatch(actions.handleDeckEnter(id))},
-            handleDeckLeave : (id) => {dispatch(actions.handleDeckLeave(id))}
+            handleDeckClick  : (id) => {dispatch(actions.handleDeckClick(id))},
+            handleDeckEnter  : (id) => {dispatch(actions.handleDeckEnter(id))},
+            handleDeckLeave  : (id) => {dispatch(actions.handleDeckLeave(id))}
         }
 
         var display = this.getDeck(this.props.display);

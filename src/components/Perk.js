@@ -14,11 +14,13 @@ class Perk extends Component
 			? localeText('menu_st_active_spec', {specialization: header})
 			: header;
 
+		var className = ['perk'];
+		if (perk.equipped) className.push('equipped');
+		if (actived) className.push('actived');
+
 		return (
 			<div
-				className="perk"
-				data-equipped={equipped}
-				data-actived={actived}
+				className={className.join(' ')}
 				onClick={(e) => this.props.handlePerkClick(perk.id)}
 				onDoubleClick={(e) => this.props.handlePerkDouble(perk.id)}
 			>
