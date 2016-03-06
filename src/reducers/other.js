@@ -12,7 +12,7 @@ export default function other(state = initialState, action) {
                     IconDrawer.registerSprite(
                     	new ImageSpriteDrawer(icon.src, icon.options),
                     	icon.names,
-                        `${icon.prefix}_`
+                        icon.prefix
                     );
                 })
             }

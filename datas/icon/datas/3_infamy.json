@@ -1,5 +1,6 @@
 {
 	"src": "res/infamy.png",
+	"prefix": "infamy_",
 	"options": {
 		"size": 128
 	},

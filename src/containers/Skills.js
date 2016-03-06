@@ -27,7 +27,7 @@ class Skills extends Component
             return 'dark';
         })(skill, tier);
 
-        this.props.drawIcon(`skills_${skill.name}`, canvas, color);
+        this.props.drawIcon(`skill_${skill.name}`, canvas, color);
     }
 
     render() {

@@ -1,5 +1,6 @@
 {
 	"src": "res/perks.png",
+	"prefix": "deck_",
 	"options": {
 		"size": 64
 	},
