@@ -21,11 +21,18 @@ export default class InfamyTreeBuilder {
         this.initialStore();
         datas = this.objectAttributeToCamelCase(datas);
 
-        var infamyDatas = datas.infamyTree;
-        var infamyTable = this.store.infamyTable = [];
+        var { infamy, tree } = datas;
+        var infamyList = infamy, infamyIndex = {};
+        infamyList.forEach((infamy, index) => {
+            infamyIndex[infamy.name] = index;
+        })
 
+        var infamyTable = this.store.infamyTable = [];
         for (var row = 0; row < 5; row++)
-            infamyTable[row] = infamyDatas.splice(0, 5).map((infamy)=>this.buildInfamy(infamy));
+            infamyTable[row] = tree.splice(0, 5).map((infamy) => {
+                infamy = infamyList[infamyIndex[infamy]];
+                return this.buildInfamy(infamy);
+            });
     }
 
     /**
