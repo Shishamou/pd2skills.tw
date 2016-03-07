@@ -1,4 +1,4 @@
-import InfamyTreeHandler from '../public/InfamyTreeHandler';
+import InfamyTreeHandler from '../facades/InfamyTreeHandler';
 import * as types from '../constants/SkillAppActions';
 import * as events from '../constants/Events';
 

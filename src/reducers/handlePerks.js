@@ -1,4 +1,4 @@
-import PerksHandler from '../public/PerksHandler';
+import PerksHandler from '../facades/PerksHandler';
 import * as types from '../constants/SkillAppActions';
 import * as events from '../constants/Events';
 

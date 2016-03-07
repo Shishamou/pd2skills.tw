@@ -2,7 +2,7 @@ import * as statuses from '../constants/InfamyStatuses';
 import InfamyTreeBuilder from './InfamyTreeBuilder';
 import Infamy from '../models/Infamy';
 
-class InfamyTreeHandler {
+export default class InfamyTreeHandler {
     constructor(store = {}) {
         this.store = store;
         this.builder = new InfamyTreeBuilder(store);
@@ -168,5 +168,3 @@ class InfamyTreeHandler {
         this.refreshInfamyTree();
     }
 }
-
-export default new InfamyTreeHandler;

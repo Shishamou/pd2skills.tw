@@ -2,7 +2,7 @@ import PerksBuilder from './PerksBuilder';
 import Perk from '../models/Perk';
 import Deck from '../models/Deck';
 
-class PerksHandler {
+export default class PerksHandler {
     constructor(store = {}) {
         this.store = store;
         this.builder = new PerksBuilder(store);
@@ -83,5 +83,3 @@ class PerksHandler {
         perk.tier = perk.decks.indexOf(deckId) + 1;
     }
 }
-
-export default new PerksHandler;

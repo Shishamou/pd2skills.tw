@@ -4,7 +4,7 @@ import Tree from '../models/Tree';
 import Tier from '../models/Tier';
 import Skill from '../models/Skill';
 
-class SkillsHandler {
+export default class SkillsHandler {
     constructor(store = {}) {
         this.store = store;
         this.builder = new SkillsBuilder(store);
@@ -304,5 +304,3 @@ class SkillsHandler {
         this.refreshSkillTrees(skill.treeId);
     }
 }
-
-export default new SkillsHandler;

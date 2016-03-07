@@ -1,4 +1,4 @@
-import SkillsHandler from '../public/SkillsHandler';
+import SkillsHandler from '../facades/SkillsHandler';
 import * as types from '../constants/SkillAppActions';
 import * as events from '../constants/Events';
 
