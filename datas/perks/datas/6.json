@@ -2,6 +2,7 @@
     "decks": [
         {
             "name": "deck6_1",
+            "icon": "deck4_1",
             "datas": {
                 "multiperk": "5%"
             }
@@ -29,6 +30,7 @@
         },
         {
             "name": "deck6_9",
+            "icon": "deck5_1",
             "datas": {
                 "multiperk": "10%",
                 "multiperk2": "10%"
