@@ -3,14 +3,31 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from './reducers';
 import * as initial from './actions/initial';
+import HashStorage from './facades/HashStorage';
+
 
 const loggerMiddleware = createLogger();
+
+const hashStorage = store => next => action => {
+    try {
+        return next(action);
+    } catch (e) {
+
+    } finally {
+        if (action.type == 'HANDLE_SKILL_EVENT' && action.event == 'CLICK') {
+            const state = store.getState();
+            HashStorage.saveSkills(state.skills);
+            location.hash = HashStorage.getSkillsHash();
+        }
+    }
+}
 
 export default function configureStore(initialState = {}) {
     const loggerMiddleware = createLogger();
 
     var middlewares = [
         thunkMiddleware,
+        hashStorage,
         // loggerMiddleware
     ];
     const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
