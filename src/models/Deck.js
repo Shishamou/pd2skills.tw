@@ -6,6 +6,7 @@ export default class Deck extends Model {
             id       : null,
             perkId   : null,
             name     : null,
+            icon     : null,
             required : 0,
             datas    : {}
         }

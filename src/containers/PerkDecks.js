@@ -17,8 +17,8 @@ class PerkDecks extends Component
         const { hover, deck, isOwned } = datas;
 
         var color = (isOwned)? 'black' : 'normal';
-
-        this.props.drawIcon(`deck_${deck.name}`, canvas, color);
+        var name = deck.icon || deck.name;
+        this.props.drawIcon(`deck_${name}`, canvas, color);
     }
 
     render() {
