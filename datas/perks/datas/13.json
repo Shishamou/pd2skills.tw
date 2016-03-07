@@ -3,7 +3,6 @@
         {
             "name": "deck13_1",
             "datas": {
-                "NL": "__VALUE__",
                 "multiperk": "4",
                 "multiperk2": "1"
             }
@@ -11,7 +10,6 @@
         {
             "name": "deck13_3",
             "datas": {
-                "NL": "__VALUE__",
                 "multiperk": "4",
                 "multiperk2": "10%",
                 "multiperk3": "10%"
@@ -20,7 +18,6 @@
         {
             "name": "deck13_5",
             "datas": {
-                "NL": "__VALUE__",
                 "multiperk": "50%",
                 "multiperk2": "10%",
                 "multiperk3": "5%"
@@ -29,7 +26,6 @@
         {
             "name": "deck13_7",
             "datas": {
-                "NL": "__VALUE__",
                 "multiperk": "4",
                 "multiperk2": "20%",
                 "multiperk3": "10%"
@@ -38,7 +34,6 @@
         {
             "name": "deck13_9",
             "datas": {
-                "NL": "__VALUE__",
                 "multiperk2": "10%"
             }
         }

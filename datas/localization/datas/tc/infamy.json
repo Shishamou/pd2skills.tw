@@ -12,7 +12,7 @@
 	"menu_infamy_name_ghost" : "MENU_INFAMY_NAME_GHOST",
 	"menu_infamy_desc_ghost" : "現代刺客降臨死亡判決-只要合適的價格。\n\n獎勵：\n幽靈與逃犯每階段需要的技能點減少##$multibasic;##\n結算時的經驗增加## $xpboost;##\n\n備註：對技能樹的加成不疊加。\n\n物品：\n\n",
 	"menu_infamy_name_hood" : "MENU_INFAMY_NAME_HOOD",
-	"menu_infamy_desc_hood" : "恐懼，猶如噩夢般蔓延。\n\n獎勵：$NL;結算時的經驗增加##$xpboost;##\n\n物品：\n\n",
+	"menu_infamy_desc_hood" : "恐懼，猶如噩夢般蔓延。\n\n獎勵：\n結算時的經驗增加##$xpboost;##\n\n物品：\n\n",
 	"menu_infamy_name_lurker" : "MENU_INFAMY_NAME_LURKER",
 	"menu_infamy_desc_lurker" : "某些你害怕在黑暗小徑看到的東西。\n\n獎勵：\n結算時的經驗增加##$xpboost;##\n\n物品：\n\n",
 	"menu_infamy_name_mask" : "MENU_INFAMY_NAME_MASK",

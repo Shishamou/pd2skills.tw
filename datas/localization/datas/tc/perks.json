@@ -243,13 +243,13 @@
 
 	"menu_st_spec_13" : "前總統",
 	"menu_deck13_1" : "飆風特攻",
-	"menu_deck13_1_desc" : "護甲無損時，你或隊友每擊殺 ##$multiperk2;## 名敵人、儲存 ##$multiperk;## 能量值。$NL;$NL;護甲耗盡、開始回甲時，消耗全數能量值轉換為等值HP。$NL;$NL;護甲種類影響能量最大值。（西裝的能量值上限較多）",
+	"menu_deck13_1_desc" : "護甲無損時，你或隊友每擊殺 ##$multiperk2;## 名敵人、儲存 ##$multiperk;## 能量值。\n\n護甲耗盡、開始回甲時，消耗全數能量值轉換為等值HP。\n\n護甲種類影響能量最大值。（西裝的能量值上限較多）",
 	"menu_deck13_3" : "新興之力",
-	"menu_deck13_3_desc" : "儲存能量值額外增加##$multiperk;##。$NL;$NL;最大生命增加 ##$multiperk2;##。$NL;$NL;穿著Ballistic Vests系列護甲時，閃避率增加 ##$multiperk3;##。",
+	"menu_deck13_3_desc" : "儲存能量值額外增加##$multiperk;##。\n\n最大生命增加 ##$multiperk2;##。\n\n穿著Ballistic Vests系列護甲時，閃避率增加 ##$multiperk3;##。",
 	"menu_deck13_5" : "冰之生命",
-	"menu_deck13_5_desc" : "能量值上限增加##$multiperk;##。$NL;$NL;最大生命增加 ##$multiperk2;##。$NL;$NL;閃避率增加 ##$multiperk3;##。",
+	"menu_deck13_5_desc" : "能量值上限增加##$multiperk;##。\n\n最大生命增加 ##$multiperk2;##。\n\n閃避率增加 ##$multiperk3;##。",
 	"menu_deck13_7" : "地球覺醒",
-	"menu_deck13_7_desc" : "儲存能量值額外增加 ##$multiperk;##。$NL;$NL;最大生命增加 ##$multiperk2;##。$NL;$NL;穿著Ballistic Vests系列護甲時，閃避率增加 ##$multiperk3;## 。",
+	"menu_deck13_7_desc" : "儲存能量值額外增加 ##$multiperk;##。\n\n最大生命增加 ##$multiperk2;##。\n\n穿著Ballistic Vests系列護甲時，閃避率增加 ##$multiperk3;## 。",
 	"menu_deck13_9" : "完美極限",
-	"menu_deck13_9_desc" : "護甲破損時，擊殺一名敵人可加快回甲時間。$NL;成功回甲後，效果將會重置。$NL;$NL;整組點滿後，結算抽牌獲得稀有物的機率增加##$multiperk2;##.。"
+	"menu_deck13_9_desc" : "護甲破損時，擊殺一名敵人可加快回甲時間。\n成功回甲後，效果將會重置。\n\n整組點滿後，結算抽牌獲得稀有物的機率增加##$multiperk2;##.。"
 }
