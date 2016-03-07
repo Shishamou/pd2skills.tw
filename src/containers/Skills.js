@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 import * as actions from '../actions/skills';
 
-import TreeTabs from '../components/TreeTabs';
-import Tree from '../components/Tree';
-import SkillsSide from '../components/SkillsSide';
+import TreeTabs from '../components/Skills/TreeTabs';
+import Tree from '../components/Skills/Tree';
+import SkillsSide from '../components/Skills/SkillsSide';
 
 class Skills extends Component
 {

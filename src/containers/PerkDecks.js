@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import * as actions from '../actions/events';
 
-import Perks from '../components/Perks';
-import PerkDecksSide from '../components/PerkDecksSide';
+import Perks from '../components/PerkDecks/Perks';
+import PerkDecksSide from '../components/PerkDecks/PerkDecksSide';
 
 class PerkDecks extends Component
 {

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import * as statuses from '../constants/SkillStatuses';
+import * as statuses from '../../constants/SkillStatuses';
 
 class SkillText extends Component
 {

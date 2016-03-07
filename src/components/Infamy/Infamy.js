@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import * as statuses from '../constants/InfamyStatuses';
+import * as statuses from '../../constants/InfamyStatuses';
 
 class Infamy extends Component
 {
