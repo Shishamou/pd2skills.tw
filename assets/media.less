@@ -7,11 +7,11 @@
     @border-width       : 2px;
 
     @font-control       : 36px;
-    @font-normal        : 16px;
-    @header-height      : 72px;
+    @font-normal        : 13px;
+    @header-height      : 64px;
     .layout();
 
-    @section-top        : 32px;
+    @section-top        : 26px;
     @section-top-font   : @font-normal;
     @infobox-space      : @font-normal * 1;
     @infobox-font       : @font-normal;
@@ -26,13 +26,28 @@
     @progressbar-width  : 4px;
     .skills();
 
+    @deck-size   : 73px;
+    @deck-icon-size: 42px;
+    @perks-font-size: 24px;
+    @perks-side   : 32px;
+    @perks-scroll : 24px;
+    @perk-border-width : 2px;
+    @perk-header : 14px;
+    @perk-space-top : 6px;
+    @perk-space : 18px;
     .perks();
 
+    @infamy-icon-size : 72px;
+    @infamy-block-width : 120px;
+    @infamy-block-height : 89px;
+    @infamy-font-size: @font-normal;
+    @infamy-around-x: 40px;
+    @infamy-around-y: 8px;
     .infamy();
 }
 
 @screen-1280: 1240px;
-@media (min-width: @screen-1280) {
+@media (min-width: 1280px) and (min-height: 720px) {
     @min-width          : @screen-1280;
 	@max-width          : 1330px;
     @wrapper-around     : 40px;
@@ -57,10 +72,29 @@
     @tier-aside-font    : @font-normal;
     @progressbar-width  : 4px;
     .skills();
+
+    @deck-size   : 92px;
+    @deck-icon-size: 52px;
+    @perks-font-size: 24px;
+    @perks-side   : 32px;
+    @perks-scroll : 24px;
+    @perk-border-width : 2px;
+    @perk-header : 18px;
+    @perk-space-top : 8px;
+    @perk-space : 18px;
+    .perks();
+
+    @infamy-icon-size : 96px;
+    @infamy-block-width : 154px;
+    @infamy-block-height : 111px;
+    @infamy-font-size: @font-normal;
+    @infamy-around-x: 40px;
+    @infamy-around-y: 8px;
+    .infamy();
 }
 
 @screen-1600: 1560px;
-@media (min-width: @screen-1600) {
+@media (min-width: 1600px) and (min-height: 900px) {
     @min-width          : @screen-1600;
 	@max-width          : 1600px;
     @wrapper-around     : 50px;
@@ -85,10 +119,29 @@
     @tier-aside-font    : @font-normal;
     @progressbar-width  : 4px;
     .skills();
+
+    @deck-size   : 116px;
+    @deck-icon-size: 66px;
+    @perks-font-size: 24px;
+    @perks-side   : 32px;
+    @perks-scroll : 24px;
+    @perk-border-width : 2px;
+    @perk-header : 22px;
+    @perk-space-top : 8px;
+    @perk-space : 24px;
+    .perks();
+
+    @infamy-icon-size : 120px;
+	@infamy-block-width : 192px;
+	@infamy-block-height : 139px;
+	@infamy-font-size: @font-normal;
+	@infamy-around-x: 40px;
+	@infamy-around-y: 8px;
+    .infamy();
 }
 
 @screen-1920: 1860px;
-@media (min-width: @screen-1920) {
+@media (min-width: 1920px) and (min-height: 1080px) {
     @min-width          : @screen-1920;
 	@max-width          : 1920px;
     @wrapper-around     : 60px;
@@ -113,4 +166,23 @@
     @tier-aside-font    : @font-normal;
     @progressbar-width  : 6px;
     .skills();
+
+    @deck-size   : 140px;
+    @deck-icon-size: 80px;
+    @perks-font-size: 24px;
+    @perks-side   : 32px;
+    @perks-scroll : 24px;
+    @perk-border-width : 2px;
+    @perk-header : 24px;
+    @perk-space-top : 8px;
+    @perk-space : 32px;
+    .perks();
+
+    @infamy-icon-size : 150px;
+	@infamy-block-width : 230px;
+	@infamy-block-height : 166px;
+	@infamy-font-size: @font-normal;
+	@infamy-around-x: 40px;
+	@infamy-around-y: 8px;
+    .infamy();
 }
