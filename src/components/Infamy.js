@@ -60,13 +60,17 @@ class Infamy extends Component
 				onMouseEnter={this.handleInfamyEnter}
 				onMouseLeave={this.handleInfamyLeave}
 			>
-				<p className="infamy-text">{this.text()}</p>
 				<div className="infamy-icon">
 					<canvas ref="canvas"/>
 				</div>
-				<div className="infamy-remove"
-					onClick={(e) => this.handleInfamyRemove(e)}
-				></div>
+				<p className="infamy-text">{this.text()}</p>
+				<div className="infamy-line">
+					<div className="infamy-line-top" />
+					<div className="infamy-line-left" />
+					<div className="infamy-line-right" />
+					<div className="infamy-line-bottom" />
+				</div>
+				<div className="infamy-remove" onClick={(e) => this.handleInfamyRemove(e)} />
 			</div>
 		);
 	}

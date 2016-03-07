@@ -12,13 +12,15 @@ class InfamyTree extends Component
 
 		return (
 			<div className="infamytree">
-				{table.map((row, key) =>
-					<div className="infamytree-row" key={key}>
-						{row.map((infamy, key) =>
-							<Infamy {...this.props} infamy={getInfamy(infamy)} key={key} />
-						)}
-					</div>
-				)}
+				<div className="infamytree-rows">
+					{table.map((row, key) =>
+						<div className="infamytree-row" key={key}>
+							{row.map((infamy, key) =>
+								<Infamy {...this.props} infamy={getInfamy(infamy)} key={key} />
+							)}
+						</div>
+					)}
+				</div>
 				<div className="infamytree-control">
                     <p className="infamytree-control-available">{available}</p>
                 </div>

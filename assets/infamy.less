@@ -61,6 +61,101 @@
 	}
 
 	/* =========================================================================
+	 * = Line
+	 * =======================================================================*/
+
+	@line-width: 8px;
+	.line-base() {
+		background: @color-strong;
+		position: absolute;
+		z-index: -1000;
+	}
+
+	.line-horizontal() {
+		top: 50%;
+		margin-top: -(@line-width / 2);
+		width: @infamy-block-width;
+		height: @line-width;
+		opacity: 0.5;
+	}
+
+	.line-vertical() {
+		left: 50%;
+		margin-left: -(@line-width / 2);
+		width: @line-width;
+		height: @infamy-block-height;
+	}
+
+	.infamy-line-top {
+		.line-base;
+		.line-vertical;
+		top: -50%;
+	}
+
+	.infamy-line-bottom {
+		.line-base;
+		.line-vertical;
+		bottom: -50%;
+	}
+
+	.infamy-line-left {
+		.line-base;
+		.line-horizontal;
+		left: -50%;
+	}
+
+	.infamy-line-right {
+		.line-base;
+		.line-horizontal;
+		right: -50%;
+	}
+
+	.infamytree-rows .infamytree-row {
+		&:first-child {
+			.infamy-line-top {
+				display: none;
+			}
+		}
+
+		&:last-child {
+			.infamy-line-bottom {
+				display: none;
+			}
+		}
+
+		.infamy:first-child {
+			.infamy-line-left {
+				display: none;
+			}
+		}
+
+		.infamy:last-child {
+			.infamy-line-right {
+				display: none;
+			}
+		}
+	}
+
+	.infamy {
+		.infamy-line {
+			opacity: 0.05;
+		}
+
+		&.status-unlocked {
+			.infamy-line {
+				opacity: 0.5;
+			}
+		}
+
+		&.status-owned {
+			.infamy-line {
+				opacity: 1;
+			}
+		}
+	}
+
+
+	/* =========================================================================
 	 * = Infamy
 	 * =======================================================================*/
 
@@ -120,7 +215,7 @@
 
 		&.status-unlocked {
 			.infamy-icon {
-				opacity: 0.75;
+				opacity: 0.9;
 			}
 		}
 
@@ -146,13 +241,15 @@
 
 		&.status-owned {
 			.infamy-icon::before {
-				.icon-pseudo-pos(@infamy-icon-size);
-				.halo(@infamy-icon-size);
+				.icon-pseudo-pos(@infamy-icon-size * 1.4);
+				.halo(@infamy-icon-size * 1.4);
+				z-index: -1000;
 			}
 
 			.infamy-icon::after {
-				.icon-pseudo-pos(@infamy-icon-size);
-				.halo2(@infamy-icon-size);
+				.icon-pseudo-pos(@infamy-icon-size * 1.4);
+				.halo2(@infamy-icon-size * 1.4);
+				z-index: -1000;
 			}
 		}
 
@@ -206,6 +303,8 @@
 				display: block;
 			}
 		}
+
+
 	}
 }
 
@@ -215,7 +314,7 @@
 @holo-animation-speed: 5s;
 .halo(@size: 100) {
 	background: url('./images/halo.png') no-repeat center;
-	background-size: @size * 1px;
+	background-size: @size;
 	animation: halo @holo-animation-speed infinite linear;
 
 	@-webkit-keyframes halo {
@@ -223,7 +322,7 @@
 			-webkit-transform: rotate(0deg) scale(1);
 		}
 		50% {
-			-webkit-transform: rotate(180deg) scale(0.8);
+			-webkit-transform: rotate(180deg) scale(0.9);
 		}
 		100% {
 			-webkit-transform: rotate(360deg) scale(1);
@@ -245,18 +344,18 @@
 
 .halo2(@size: 100) {
 	background: url('./images/halo2.png') no-repeat center;
-	background-size: @size * 1px;
+	background-size: @size;
 	animation: halo2 @holo-animation-speed infinite linear;
 
 	@-webkit-keyframes halo2 {
 		0% {
-			-webkit-transform: rotate(360deg) scale(1.2);
+			-webkit-transform: rotate(360deg) scale(1.1);
 		}
 		50% {
 			-webkit-transform: rotate(180deg) scale(1);
 		}
 		100% {
-			-webkit-transform: rotate(0deg) scale(1.2);
+			-webkit-transform: rotate(0deg) scale(1.1);
 		}
 	}
 
