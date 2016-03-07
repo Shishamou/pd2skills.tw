@@ -58,7 +58,7 @@ class Infamy extends Component
         var display = this.getInfamy(this.props.display);
 
         return (
-            <div className="section sections-skill">
+            <div className="section sections-infamy">
                 <div className="section-main">
                     <InfamyTree {...app}
                         table={infamyTable}
