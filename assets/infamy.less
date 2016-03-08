@@ -64,50 +64,53 @@
 	 * = Line
 	 * =======================================================================*/
 
-	@line-width: 8px;
+	@line-width: 36px;
 	.line-base() {
-		background: @color-strong;
 		position: absolute;
-		z-index: -1000;
+		z-index: -1;
+		top: 50%;
+		width: @infamy-block-width;
+		height: @line-width;
+		margin-top: -(@line-width / 2);
+		background: url('images/infamy-line.png') repeat-x center;
+		background-size: 100%;
+		transform-origin: left;
 	}
 
 	.line-horizontal() {
-		top: 50%;
-		margin-top: -(@line-width / 2);
 		width: @infamy-block-width;
 		height: @line-width;
-		opacity: 0.5;
+		right: -50%;
 	}
 
 	.line-vertical() {
+		width: @infamy-block-height;
+		height: @line-width;
 		left: 50%;
-		margin-left: -(@line-width / 2);
-		width: @line-width;
-		height: @infamy-block-height;
 	}
 
 	.infamy-line-top {
 		.line-base;
 		.line-vertical;
-		top: -50%;
-	}
-
-	.infamy-line-bottom {
-		.line-base;
-		.line-vertical;
-		bottom: -50%;
+		.transform(rotate(270deg));
 	}
 
 	.infamy-line-left {
 		.line-base;
 		.line-horizontal;
-		left: -50%;
+		.transform(rotate(180deg));
 	}
 
 	.infamy-line-right {
 		.line-base;
 		.line-horizontal;
-		right: -50%;
+		.transform(rotate(0deg));
+	}
+
+	.infamy-line-bottom {
+		.line-base;
+		.line-vertical;
+		.transform(rotate(90deg));
 	}
 
 	.infamytree-rows .infamytree-row {
@@ -138,12 +141,12 @@
 
 	.infamy {
 		.infamy-line {
-			opacity: 0.05;
+			opacity: 0.08;
 		}
 
 		&.status-unlocked {
 			.infamy-line {
-				opacity: 0.5;
+				opacity: 0.6;
 			}
 		}
 
@@ -162,6 +165,7 @@
 	.infamy {
 		display: block;
 		position: relative;
+		z-index: 1000;
 		width: @infamy-block-width;
 		height: @infamy-block-height;
 		cursor: pointer;
