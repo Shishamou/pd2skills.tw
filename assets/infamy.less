@@ -141,12 +141,12 @@
 
 	.infamy {
 		.infamy-line {
-			opacity: 0.08;
+			opacity: 0.05;
 		}
 
 		&.status-unlocked {
 			.infamy-line {
-				opacity: 0.6;
+				opacity: 0.2;
 			}
 		}
 
@@ -165,7 +165,6 @@
 	.infamy {
 		display: block;
 		position: relative;
-		z-index: 1000;
 		width: @infamy-block-width;
 		height: @infamy-block-height;
 		cursor: pointer;
@@ -180,7 +179,7 @@
 			position: absolute;
 			top: 50%;
 			left: 50%;
-			z-index: -1;
+			z-index: 1;
 			width: @size;
 			height: @size;
 			margin-top: -@size / 2;
