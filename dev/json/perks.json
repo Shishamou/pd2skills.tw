@@ -65,6 +65,7 @@
         },
         {
             "name": "deck2_1",
+            "icon": "deck1_1",
             "datas": {
                 "multiperk": "10%"
             }
@@ -96,6 +97,7 @@
         },
         {
             "name": "deck3_1",
+            "icon": "deck1_7",
             "datas": {
                 "multiperk": "10%"
             }
@@ -198,6 +200,7 @@
         },
         {
             "name": "deck6_1",
+            "icon": "deck4_1",
             "datas": {
                 "multiperk": "5%"
             }
@@ -225,6 +228,7 @@
         },
         {
             "name": "deck6_9",
+            "icon": "deck5_1",
             "datas": {
                 "multiperk": "10%",
                 "multiperk2": "10%"
@@ -232,6 +236,7 @@
         },
         {
             "name": "deck7_1",
+            "icon": "deck4_1",
             "datas": {
                 "multiperk": "10%"
             }
@@ -306,6 +311,7 @@
         },
         {
             "name": "deck9_1",
+            "icon": "deck8_1",
             "datas": {
                 "multiperk": "8%"
             }
@@ -457,7 +463,6 @@
         {
             "name": "deck13_1",
             "datas": {
-                "NL": "__VALUE__",
                 "multiperk": "4",
                 "multiperk2": "1"
             }
@@ -465,7 +470,6 @@
         {
             "name": "deck13_3",
             "datas": {
-                "NL": "__VALUE__",
                 "multiperk": "4",
                 "multiperk2": "10%",
                 "multiperk3": "10%"
@@ -474,7 +478,6 @@
         {
             "name": "deck13_5",
             "datas": {
-                "NL": "__VALUE__",
                 "multiperk": "50%",
                 "multiperk2": "10%",
                 "multiperk3": "5%"
@@ -483,7 +486,6 @@
         {
             "name": "deck13_7",
             "datas": {
-                "NL": "__VALUE__",
                 "multiperk": "4",
                 "multiperk2": "20%",
                 "multiperk3": "10%"
@@ -492,7 +494,6 @@
         {
             "name": "deck13_9",
             "datas": {
-                "NL": "__VALUE__",
                 "multiperk2": "10%"
             }
         }

@@ -19,7 +19,6 @@ export default class InfamyTreeBuilder {
      */
     build(datas) {
         this.initialStore();
-        datas = this.objectAttributeToCamelCase(datas);
 
         var { infamy, tree } = datas;
         var infamyList = infamy, infamyIndex = {};
@@ -64,36 +63,5 @@ export default class InfamyTreeBuilder {
      */
     registerInfamy(infamy) {
         return infamy.id = this.store.infamyList.push(infamy) - 1;
-    }
-
-    // =========================================================================
-    // = Other.
-    // =========================================================================
-
-    objectAttributeToCamelCase(object) {
-        if ( ! (object instanceof Object))
-            return object;
-
-        if (Array.isArray(object)) {
-            return object.map((value) => this.objectAttributeToCamelCase(value), this);
-        }
-
-        var handled = {};
-        Object.keys(object).forEach((key) => {
-            var value = object[key];
-            value = this.objectAttributeToCamelCase(value);
-
-            key = this.toCamelCase(key);
-            handled[key] = value;
-        }, this);
-
-        return handled;
-    }
-
-    toCamelCase(string) {
-        return string.replace(
-    	    /((?!_)\w)_\w/g,
-    	    (match) => match.charAt(0) + match.substr(-1).toUpperCase()
-        )
     }
 }

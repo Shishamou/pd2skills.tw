@@ -2,6 +2,7 @@
     "decks": [
         {
             "name": "deck2_1",
+            "icon": "deck1_1",
             "datas": {
                 "multiperk": "10%"
             }

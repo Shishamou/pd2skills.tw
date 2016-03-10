@@ -3,6 +3,12 @@
         {
             "name": "root",
             "icon": "root",
+            "datas": {
+                "base_chance": "0.5%",
+                "buffed_chance": "1.0%",
+                "cashcost": "25%",
+                "xpboost": "5%"
+            },
             "reduce": [
                 "cost"
             ]
@@ -10,6 +16,10 @@
         {
             "name": "mastermind",
             "icon": "mastermind",
+            "datas": {
+                "multibasic": "10%",
+                "xpboost": "5%"
+            },
             "reduce": [
                 "mastermind",
                 "hoxton_pack"
@@ -18,6 +28,10 @@
         {
             "name": "enforcer",
             "icon": "enforcer",
+            "datas": {
+                "multibasic": "10%",
+                "xpboost": "5%"
+            },
             "reduce": [
                 "enforcer",
                 "hoxton_pack"
@@ -26,6 +40,10 @@
         {
             "name": "technician",
             "icon": "technician",
+            "datas": {
+                "multibasic": "10%",
+                "xpboost": "5%"
+            },
             "reduce": [
                 "technician",
                 "hoxton_pack"
@@ -34,6 +52,10 @@
         {
             "name": "ghost",
             "icon": "ghost",
+            "datas": {
+                "multibasic": "10%",
+                "xpboost": "5%"
+            },
             "reduce": [
                 "ghost",
                 "hoxton_pack"
@@ -42,46 +64,73 @@
         {
             "name": "xp",
             "icon": "xp",
+            "datas": {
+                "xpboost": "5%"
+            },
             "disable": true
         },
         {
             "name": "ranger",
             "icon": "mask",
+            "datas": {
+                "xpboost": "7.5%"
+            },
             "disable": true
         },
         {
             "name": "lurker",
             "icon": "mask",
+            "datas": {
+                "xpboost": "7.5%"
+            },
             "disable": true
         },
         {
             "name": "punk",
             "icon": "mask",
+            "datas": {
+                "xpboost": "7.5%"
+            },
             "disable": true
         },
         {
             "name": "balaclava",
             "icon": "mask",
+            "datas": {
+                "xpboost": "7.5%"
+            },
             "disable": true
         },
         {
             "name": "daft",
             "icon": "mask",
+            "datas": {
+                "xpboost": "7.5%"
+            },
             "disable": true
         },
         {
             "name": "hood",
             "icon": "mask",
+            "datas": {
+                "xpboost": "7.5%"
+            },
             "disable": true
         },
         {
             "name": "destroyer",
             "icon": "mask",
+            "datas": {
+                "xpboost": "7.5%"
+            },
             "disable": true
         },
         {
             "name": "pain",
             "icon": "mask",
+            "datas": {
+                "xpboost": "7.5%"
+            },
             "disable": true
         }
     ],

@@ -39,7 +39,7 @@ class Skill extends Component
 				<div
 					className="skill-remove"
 					onClick={(e) => this.handleSkillRemove(e).bind(this)}
-				></div>
+				/>
 			</div>
 		);
 	}

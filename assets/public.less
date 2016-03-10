@@ -67,46 +67,22 @@
 	transition: @setting;
 }
 
-.whirling-clockwise(@time: 1) {
-	animation: clockwise @time * 1s infinite linear;
+.icon-remove(@size) {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: @size;
+	height: @size;
+	color: @color-strong;
+	text-align: center;
+	font-size: @size;
 
-	@-webkit-keyframes clockwise {
-		from {
-			-webkit-transform: rotate(0deg);
-		}
-		to {
-			-webkit-transform: rotate(360deg);
-		}
+	&::before {
+		.pseudo-block;
+		content: '×';
 	}
 
-	@keyframes clockwise {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
+	&:hover {
+		color: @color-normal;
 	}
-}
-
-.whirling-anticlockwise(@time: 1) {
-	animation: anticlockwise @time * 1s infinite linear;
-
-	@-webkit-keyframes anticlockwise {
-		from {
-			-webkit-transform: rotate(360deg);
-		}
-		to {
-			-webkit-transform: rotate(0deg);
-		}
-	}
-	@keyframes anticlockwise {
-		from {
-			transform: rotate(360deg);
-		}
-		to {
-			transform: rotate(0deg);
-		}
-	}
-
 }

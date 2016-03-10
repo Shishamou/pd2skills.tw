@@ -54,7 +54,7 @@
 			position: absolute;
 			right: @tier-aside-width + @skill-border-width;
 			bottom: @skill-font-size * @line-height / 2;
-			z-index: 1000;
+			z-index: 1;
 			width: @skill-block-width;
 
 			.tree-control-available,
@@ -253,17 +253,8 @@
 		 * ===================================================================*/
 
 		.skill-remove {
+			.icon-remove(@font-normal * 1.5);
 			display: none;
-			position: absolute;
-			top: 0;
-			right: 0;
-			width: @skill-font-size;
-			height: @skill-font-size;
-			background: @color-strong;
-
-			&:hover {
-				background: @color-normal;
-			}
 		}
 
 		&.status-owned:hover,
