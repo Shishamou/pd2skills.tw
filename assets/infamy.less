@@ -176,7 +176,7 @@
 			position: absolute;
 			top: 50%;
 			left: 50%;
-			z-index: -1;
+			z-index: 10;
 			width: @size;
 			height: @size;
 			margin-top: -@size / 2;
@@ -284,18 +284,9 @@
 		 * ===================================================================*/
 
 		.infamy-remove {
+			.icon-remove(@font-normal * 1.8);
 			display: none;
-			position: absolute;
-			top: 0;
-			right: 0;
-			z-index: 1000;
-			width: @infamy-font-size * 1.2;
-			height: @infamy-font-size * 1.2;
-			background: @color-strong;
-
-			&:hover {
-				background: @color-normal;
-			}
+			z-index: 100;
 		}
 
 		&.status-owned:hover {
