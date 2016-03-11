@@ -11,12 +11,12 @@ class SkillsSide extends Component
 
 	renderContent() {
 		if ( ! this.props.skill) return;
-		const { skill } = this.props;
+		const { localeText, skill } = this.props;
 
 		return (
 			<div className="infobox">
 				<h1 className="infobox-header"
-					dangerouslySetInnerHTML={{ __html: this.getSkillText(skill) }}
+					dangerouslySetInnerHTML={{ __html: localeText(`menu_${skill.name}`) }}
 				/>
 				{this.pointsToUnlockTier()}
 				{this.skillRequired()}
@@ -25,10 +25,6 @@ class SkillsSide extends Component
 				/>
 			</div>
 		);
-	}
-
-	getSkillText(skill) {
-		return this.props.locale(`menu_${skill.name}`);
 	}
 
 	pointsToUnlockTier() {
@@ -58,7 +54,7 @@ class SkillsSide extends Component
 		return (
 			<p className="infobox-block alerted" dangerouslySetInnerHTML={{
 				__html: locale('st_menu_prerequisite_following_skill')
-					+ this.getSkillText(requiredSkill)
+					+ locale(`menu_${requiredSkill.name}`)
 			}} />
 		);
 	}
