@@ -68,9 +68,12 @@ export default class InfamyTreeHandler {
      * 刷新惡名樹
      */
     refreshInfamyTree() {
-        this._updateTable();
+        var spendPoints = this._updateTable();
         this._refreshReduce();
         this.store.availablePoints = this.totalAvailablePoints;
+
+        this.store.availablePoints = this.totalAvailablePoints - spendPoints;
+        this.store.spendPoints = spendPoints;
     }
 
     /**
@@ -90,7 +93,7 @@ export default class InfamyTreeHandler {
         var temp = 0;
         for (var t = 10; t > 0; t--) {
             var spendPoints = this._updateTableAndCountSpendPoints();
-            if (temp == spendPoints) break;
+            if (temp == spendPoints) return spendPoints;
             temp = spendPoints;
         }
     }
