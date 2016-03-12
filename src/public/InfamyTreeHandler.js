@@ -16,10 +16,23 @@ export default class InfamyTreeHandler {
         this.store.reduced = [];
     }
 
+    /**
+     * 取得惡名模型
+     *
+     * @param integer
+     * @return object
+     */
     getInfamy(id) {
         return this.store.infamyList[id];
     }
 
+    /**
+     * 取得指定座標之惡名模型
+     *
+     * @param integer 行
+     * @param integer 列
+     * @return object
+     */
     getPos(row, col) {
         return this.getInfamy(this.store.infamyTable[row][col]);
     }
@@ -29,7 +42,8 @@ export default class InfamyTreeHandler {
     // =========================================================================
 
     /**
-     * 初始化惡名樹
+     * 初始化惡名樹。
+     * 呼叫 builder 建立惡名樹表格。計算表格中心後，刷新惡名樹表格。
      *
      * @param Object
      */
@@ -40,7 +54,8 @@ export default class InfamyTreeHandler {
     }
 
     /**
-     * 初始化惡名樹中心點
+     * 初始化表格中心點。
+     * 用來計算惡名樹。
      */
     initalTableCenter() {
         var table = this.store.infamyTable;
@@ -50,11 +65,12 @@ export default class InfamyTreeHandler {
     }
 
     // =========================================================================
-    // =
+    // = 功能
     // =========================================================================
 
     /**
-     * 重置惡名樹
+     * 重置惡名樹。
+     * 清除所有惡名的 owned 狀態，然後刷新表格。
      */
     respecSkillTrees() {
         this.store.infamyList.forEach((infamy) => {
@@ -65,7 +81,7 @@ export default class InfamyTreeHandler {
     }
 
     /**
-     * 刷新惡名樹
+     * 刷新惡名樹。刷新減免效果(reduce)。並計算花費與可用點數。
      */
     refreshInfamyTree() {
         var spendPoints = this._updateTable();
@@ -77,7 +93,8 @@ export default class InfamyTreeHandler {
     }
 
     /**
-     * 刷新所有惡名狀態，僅刷新 infamy.status 不進行惡名樹的更新
+     * 刷新所有惡名狀態。
+     * 僅刷新 infamy.status 不進行惡名樹的更新。
      */
     refreshAllStatus() {
         this.store.infamyList.forEach((infamy) => {
@@ -89,6 +106,12 @@ export default class InfamyTreeHandler {
     // = 刷新惡名樹
     // =========================================================================
 
+    /**
+     * 更新惡名表格。
+     * 重複更新(最多十次)直到表格穩定，回傳使用的點數。
+     *
+     * @return integer
+     */
     _updateTable() {
         var temp = 0;
         for (var t = 10; t > 0; t--) {
@@ -98,6 +121,12 @@ export default class InfamyTreeHandler {
         }
     }
 
+    /**
+     * 更新惡名表格並回傳使用的點數。
+     * 從座標 0,0 到 5,5 逐一呼叫 _updateTableInfamy。
+     *
+     * @return integer
+     */
     _updateTableAndCountSpendPoints() {
         var count = 0;
         var table = this.store.infamyTable;
@@ -107,6 +136,14 @@ export default class InfamyTreeHandler {
         return count;
     }
 
+    /**
+     * 更新指定座標之惡名模型，並回傳 owned 狀態。
+     * 取得靠近表格中心的兩側相鄰惡名模型之擁有狀態，以計算解鎖狀態。
+     *
+     * @param integer 行
+     * @param integer 列
+     * @return boolean
+     */
     _updateTableInfamy(row, col) {
         var infamy = this.getPos(row, col);
         var [ centerX, centerY ] = this.tableCenter;
@@ -119,15 +156,18 @@ export default class InfamyTreeHandler {
             ? true
             : (this.getPos(row + ((row < centerY)? 1 : -1), col).owned);
 
-        var isEnable = () => ( ! infamy.disable);
-
-        if ( ! (infamy.unlocked = (checkX() && checkY() && isEnable())))
+        if ( ! (infamy.unlocked = (checkX() && checkY())))
             infamy.owned = false;
 
         this._updateInfamyStatue(infamy);
         return infamy.owned;
     }
 
+    /**
+     * 更新 infamy.status。
+     *
+     * @param infamy
+     */
     _updateInfamyStatue(infamy) {
         infamy.status = ((infamy) => {
             if (infamy.disable)
@@ -140,6 +180,9 @@ export default class InfamyTreeHandler {
         })(infamy);
     }
 
+    /**
+     * 刷新減免效果(reduce)。
+     */
     _refreshReduce() {
         var reduced = [];
         this.store.infamyList.forEach((infamy) => {
@@ -157,6 +200,7 @@ export default class InfamyTreeHandler {
 
     handleInfamyClick(infamyId) {
         var infamy = this.getInfamy(infamyId);
+        if (infamy.disable) return;
 
         if ( ! infamy.owned)
             if (infamy.unlocked)
