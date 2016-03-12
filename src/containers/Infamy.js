@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import * as actions from '../actions/infamy';
 import InfamyTree from '../components/Infamy/InfamyTree';
-import InfamySide from '../components/Infamy/InfamySide';
+import InfamySide from './InfamySide';
 
 class Infamy extends Component
 {
@@ -55,8 +55,6 @@ class Infamy extends Component
             reflowCanvas: this.reflowCanvas
         }
 
-        var display = this.getInfamy(this.props.display);
-
         return (
             <div className="section sections-infamy">
                 <div className="section-main">
@@ -65,7 +63,7 @@ class Infamy extends Component
                         available={availablePoints}
                     />
                 </div>
-                <InfamySide {...app} display={display} />
+                <InfamySide {...this.props} />
             </div>
         )
     }

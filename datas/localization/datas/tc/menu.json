@@ -57,5 +57,6 @@
 	"menu_st_spec_xp_perk_total" : "總計可用天賦點數：",
 	"menu_st_spec_xp_progress" : "進度",
 	"st_menu_infamy_available_points" : "$points; 點可使用的惡名點數",
-	"menu_infamy_unlock_prev_tier" : "你需要解鎖前一階段才能購買。"
+	"menu_infamy_unlock_prev_tier" : "你需要解鎖前一階段才能購買。",
+	"menu_l_global_value_dlc" : "這是 DLC 的物品！"
 }

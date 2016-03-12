@@ -113,11 +113,12 @@ export default class InfamyTreeHandler {
      * @return integer
      */
     _updateTable() {
-        var temp = 0;
+        var previous = null;
         for (var t = 10; t > 0; t--) {
             var spendPoints = this._updateTableAndCountSpendPoints();
-            if (temp == spendPoints) return spendPoints;
-            temp = spendPoints;
+            console.log(spendPoints);
+            if (previous == spendPoints) return spendPoints;
+            previous = spendPoints;
         }
     }
 
