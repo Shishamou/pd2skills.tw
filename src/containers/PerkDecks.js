@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../actions/events';
+import * as actions from '../actions/perks';
 
 import Perks from '../components/PerkDecks/Perks';
 import PerkDecksSide from '../components/PerkDecks/PerkDecksSide';
@@ -34,6 +34,7 @@ class PerkDecks extends Component
             getDeck          : (id) => this.props.decks[id],
             handlePerkClick  : (id) => {dispatch(actions.handlePerkClick(id))},
             handlePerkDouble : (id) => {dispatch(actions.handlePerkDouble(id))},
+            handlePerkRemove : (id) => {dispatch(actions.handlePerkRemove(id))},
             handleDeckClick  : (id) => {dispatch(actions.handleDeckClick(id))},
             handleDeckEnter  : (id) => {dispatch(actions.handleDeckEnter(id))},
             handleDeckLeave  : (id) => {dispatch(actions.handleDeckLeave(id))}

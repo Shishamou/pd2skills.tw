@@ -9,6 +9,10 @@ export function handlePerkDouble(id) {
     return { type: types.HANDLE_PERK_EVENT, event: events.DOUBLE_CLICK, id };
 }
 
+export function handlePerkRemove(id) {
+    return { type: types.HANDLE_PERK_EVENT, event: events.REMOVE, id };
+}
+
 export function handleDeckClick(id) {
     return { type: types.HANDLE_DECK_EVENT, event: events.CLICK, id };
 }

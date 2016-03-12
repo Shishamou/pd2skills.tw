@@ -46,6 +46,10 @@ function handlePerkEvent(state = {}, action) {
         case events.DOUBLE_CLICK:
             PerksHandler.equipPerk(perk);
             break;
+        
+        case events.REMOVE:
+            PerksHandler.respec(perk);
+            break;
 
         default:
             return state;

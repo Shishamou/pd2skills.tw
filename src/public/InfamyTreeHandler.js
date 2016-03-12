@@ -116,7 +116,6 @@ export default class InfamyTreeHandler {
         var previous = null;
         for (var t = 10; t > 0; t--) {
             var spendPoints = this._updateTableAndCountSpendPoints();
-            console.log(spendPoints);
             if (previous == spendPoints) return spendPoints;
             previous = spendPoints;
         }
