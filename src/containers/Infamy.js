@@ -27,8 +27,6 @@ class Infamy extends Component
         const { infamy, hover } = datas;
 
         var color = (function(infamy, hover) {
-            if (infamy.disable)
-                return 'alert';
             if (infamy.owned || hover)
                 return 'normal';
             if (infamy.unlocked)

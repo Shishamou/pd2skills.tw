@@ -227,6 +227,21 @@
 			}
 		}
 
+		&.status-disabled::after {
+			@size: @infamy-font-size * 1.5;
+			.pseudo-block;
+			top: 50%;
+			left: 50%;
+			z-index: 10;
+			width: @size;
+			height: @size;
+			margin-top: -@size / 2;
+			margin-left: -@size / 2;
+			background: url('images/dlc.png') no-repeat center;
+			background-size: 100%;
+			z-index: 1;
+		}
+
 		/* =====================================================================
 		 * = Icon halo
 		 * ===================================================================*/
@@ -271,14 +286,14 @@
 			font-size: @infamy-font-size;
 		}
 
+		&:hover .infamy-text {
+			display: block;
+		}
+
 		&.status-disabled {
 			.infamy-text {
 				color: @color-alert;
 			}
-		}
-
-		&:hover .infamy-text {
-			display: block;
 		}
 
 		/* =====================================================================
