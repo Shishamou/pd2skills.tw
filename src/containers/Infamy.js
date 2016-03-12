@@ -2,8 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../actions/infamy';
+
 import InfamyTree from '../components/Infamy/InfamyTree';
-import InfamySide from '../components/Infamy/InfamySide';
+import InfamySide from './InfamySide';
 
 class Infamy extends Component
 {
@@ -26,8 +27,6 @@ class Infamy extends Component
         const { infamy, hover } = datas;
 
         var color = (function(infamy, hover) {
-            if (infamy.disable)
-                return 'alert';
             if (infamy.owned || hover)
                 return 'normal';
             if (infamy.unlocked)
@@ -55,8 +54,6 @@ class Infamy extends Component
             reflowCanvas: this.reflowCanvas
         }
 
-        var display = this.getInfamy(this.props.display);
-
         return (
             <div className="section sections-infamy">
                 <div className="section-main">
@@ -65,7 +62,7 @@ class Infamy extends Component
                         available={availablePoints}
                     />
                 </div>
-                <InfamySide {...app} display={display} />
+                <InfamySide {...this.props} />
             </div>
         )
     }

@@ -5,7 +5,7 @@ import * as actions from '../actions/skills';
 
 import TreeTabs from '../components/Skills/TreeTabs';
 import Tree from '../components/Skills/Tree';
-import SkillsSide from '../components/Skills/SkillsSide';
+import SkillsSide from './SkillsSide';
 
 class Skills extends Component
 {
@@ -32,7 +32,7 @@ class Skills extends Component
 
     render() {
         const { dispatch } = this.props;
-        const { trees, currectTree, availablePoints } = this.props;
+        const { trees, currectTree, availablePoints, display } = this.props;
         const { locale, localeText } = this.props;
 
         const app = {
@@ -66,7 +66,7 @@ class Skills extends Component
                         }
                     </div>
                 </div>
-                <SkillsSide {...app} display={this.props.display} />
+                <SkillsSide {...this.props} />
             </div>
         )
     }
@@ -81,8 +81,7 @@ Skills.propTypes = {
 function select(state) {
     state = state.skills;
     var currectTree = state.trees[state.activedTree] || null;
-    state = Object.assign({ currectTree }, state);
-    return state
+    return Object.assign({ currectTree }, state);
 }
 
 export default connect(select)(Skills)

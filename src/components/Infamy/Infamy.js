@@ -49,13 +49,8 @@ class Infamy extends Component
 	}
 
 	render() {
-		const { infamy } = this.props;
-
-		var className = ['infamy'];
-		className.push('status-' + infamy.status.split('_').slice(-1).pop().toLowerCase());
-
 		return (
-			<div className={className.join(' ')}
+			<div className={this.className()}
 				onClick={this.handleInfamyClick}
 				onMouseEnter={this.handleInfamyEnter}
 				onMouseLeave={this.handleInfamyLeave}
@@ -75,6 +70,20 @@ class Infamy extends Component
 		);
 	}
 
+	className() {
+		const { infamy } = this.props;
+		var className = ['infamy'];
+
+		if (infamy.disable)
+			className.push('status-disabled');
+		if (infamy.owned)
+			className.push('status-owned');
+		else if (infamy.unlocked)
+			className.push('status-unlocked');
+
+		return className.join(' ');
+	}
+
 	text() {
 		const { infamy } = this.props;
 		const { locale, localeText } = this.props;
@@ -82,10 +91,9 @@ class Infamy extends Component
 		switch (infamy.status) {
 			case statuses.STATUS_OWNED:
 				return locale('st_menu_skill_owned');
-			case statuses.STATUS_DISABLE:
-				return 'Disabled';
 			case statuses.STATUS_UNLOCKED:
 				return locale('st_menu_point', {points: 1});
+			case statuses.STATUS_DISABLE:
 			case statuses.STATUS_LOCKED:
 			default:
 				return locale('st_menu_skill_locked');

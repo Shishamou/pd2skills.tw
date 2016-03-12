@@ -141,7 +141,7 @@
 
 	.infamy {
 		.infamy-line {
-			opacity: 0.05;
+			opacity: 0.03;
 		}
 
 		&.status-unlocked {
@@ -193,8 +193,7 @@
 			}
 		}
 
-		&.status-disable,
-		&.status-locked {
+		& {
 			.infamy-icon {
 				opacity: 0.5;
 				.transform(scale(0.6));
@@ -226,6 +225,21 @@
 			.infamy-icon {
 				opacity: 1;
 			}
+		}
+
+		&.status-disabled::after {
+			@size: @infamy-font-size * 1.5;
+			.pseudo-block;
+			top: 50%;
+			left: 50%;
+			z-index: 10;
+			width: @size;
+			height: @size;
+			margin-top: -@size / 2;
+			margin-left: -@size / 2;
+			background: url('images/dlc.png') no-repeat center;
+			background-size: 100%;
+			z-index: 1;
 		}
 
 		/* =====================================================================
@@ -272,14 +286,14 @@
 			font-size: @infamy-font-size;
 		}
 
-		&.status-disable {
+		&:hover .infamy-text {
+			display: block;
+		}
+
+		&.status-disabled {
 			.infamy-text {
 				color: @color-alert;
 			}
-		}
-
-		&:hover .infamy-text {
-			display: block;
 		}
 
 		/* =====================================================================
@@ -287,7 +301,7 @@
 		 * ===================================================================*/
 
 		.infamy-remove {
-			.icon-remove(@font-normal * 1.8);
+			.icon-remove(@font-normal * 1.5);
 			display: none;
 			z-index: 100;
 		}
@@ -297,8 +311,6 @@
 				display: block;
 			}
 		}
-
-
 	}
 }
 

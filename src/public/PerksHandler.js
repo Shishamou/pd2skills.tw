@@ -42,19 +42,13 @@ export default class PerksHandler {
     /**
      * 重置天賦
      */
-    respec() {
+    respec(target = null) {
         this.store.perks.forEach((perk) => {
-            perk.equipped = false;
-            perk.tier = 0;
+            if (target === null || perk.id == target) {
+                perk.equipped = false;
+                perk.tier = 0;
+            }
         }, this);
-
-        this.refresh();
-    }
-
-    /**
-     * 刷新天賦
-     */
-    refresh() {
     }
 
     // =========================================================================

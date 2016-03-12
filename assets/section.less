@@ -94,8 +94,7 @@
 		}
 
 		.infobox-block {
-			margin: @infobox-space 0;
-			line-height: 1.2;
+			line-height: 1.3;
 
 			strong {
 				margin: 0 4px;
@@ -111,5 +110,24 @@
 			color: @color-strong;
 		}
 
+		.dlc-item {
+			color: @color-gold;
+		}
+
+		.locked::before {
+			content: ' ';
+			display: inline-block;
+			float: left;
+			margin: 2px;
+			background: url('images/lock.png') no-repeat;
+			background-size: 100%;
+			width: @infobox-font;
+			height: @infobox-font;
+		}
+
+		.infobox-bottom {
+			margin-top: @infobox-space;
+			text-transform: uppercase;
+		}
 	}
 }

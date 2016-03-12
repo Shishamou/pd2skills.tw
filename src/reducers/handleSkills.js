@@ -23,7 +23,11 @@ export default function handleSkill(state = initialState, action) {
         case types.HANDLE_INFAMY_EVENT:
             return handleSkillReduce(state, action);
         case types.SWITCH_SKILL_TREE:
+            SkillsHandler.refreshSkillTrees(action.id)
             return Object.assign({}, state, {
+                trees: SkillsHandler.store.trees.slice(),
+                tiers: SkillsHandler.store.tiers.slice(),
+                skills: SkillsHandler.store.skills.slice(),
                 activedTree: action.id
             });
         case types.RESPEC_SKILL_TREE:

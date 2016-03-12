@@ -35,6 +35,7 @@ class Perk extends Component
 						/>
 					)}
 				</div>
+				<div className="perk-remove" onClick={(e) => this.props.handlePerkRemove(perk.id)} />
 			</div>
 		);
 	}
@@ -45,6 +46,7 @@ Perk.propTypes = {
 	localeText: PropTypes.func.isRequired,
 	handlePerkClick: PropTypes.func.isRequired,
 	handlePerkDouble: PropTypes.func.isRequired,
+	handlePerkRemove: PropTypes.func.isRequired,
 	getDeck: PropTypes.func.isRequired,
 	perk: PropTypes.object.isRequired,
 	actived: PropTypes.bool,
