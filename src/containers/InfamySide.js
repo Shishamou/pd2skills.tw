@@ -48,9 +48,14 @@ class InfamySide extends Component
 		if ( ! infamy.disable) return;
 
 		return (
-			<p className="infobox-block dlc-item" dangerouslySetInnerHTML={{
-				__html: localeText('menu_l_global_value_dlc')
-			}} />
+			<div className="infobox-bottom">
+				<p className="infobox-block alerted locked" dangerouslySetInnerHTML={{
+					__html: localeText('bm_global_value_dlc')
+				}} />
+				<p className="infobox-block dlc-item" dangerouslySetInnerHTML={{
+					__html: localeText('menu_l_global_value_dlc')
+				}} />
+			</div>
 		);
 	}
 }
