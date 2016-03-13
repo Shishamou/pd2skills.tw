@@ -73,18 +73,17 @@ export default class HashStorage extends Storage {
 
 	hashToPerksStorage(hash) {
 		var equipped = null;
-		return hash.split('').reduce((storage, char, index) => {
-			storage.push(
-				(function(char, index) {
-					char = char.charCodeAt(0);
-					if (char == index + 97 - 32)
-						return 2;
-					if (char == index + 97)
-						return 1;
-					return 0;
-				})(char, index)
-			);
-			return storage;
+		return hash.match(/(\w\d)/g).reduce((storage, part) => {
+			char = part.charCodeAt(0);
+			if (char >= 65) {
+				if (char >= 97) {
+					var index = char - 97;
+					equipped = index;
+				} else {
+					var index = char - 65;
+				}
+				storage[index] = part.substr(-1);
+			}
 		}, []);
 	}
 }
