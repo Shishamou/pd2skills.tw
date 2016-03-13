@@ -14,10 +14,11 @@ const hashStorage = store => next => action => {
     } catch (e) {
 
     } finally {
-        if (action.type == 'HANDLE_SKILL_EVENT' && action.event == 'CLICK') {
+        if (action.event == 'CLICK') {
             const state = store.getState();
             HashStorage.saveSkills(state.skills);
-            location.hash = HashStorage.getSkillsHash();
+            HashStorage.savePerks(state.perks);
+            HashStorage.save((hash) => location.hash = hash);
         }
     }
 }
