@@ -4,8 +4,10 @@ import * as statuses from '../../constants/SkillStatuses';
 class SkillText extends Component
 {
 	render() {
-		const { skill, tier } = this.props;
+		const { skill, tier, tree } = this.props;
 		const { locale, localeText } = this.props;
+
+		const parseCost = (cost) => ((0)? '$'+ cost : '');
 
 		switch (skill.status) {
 			case statuses.STATUS_ALERTED:
@@ -28,7 +30,7 @@ class SkillText extends Component
 							<p className="skill-text-hide" dangerouslySetInnerHTML={{
 								__html: localeText('st_menu_buy_skill_pro_plural', {
 									points: tier.skillPointAce,
-									cost: ''//'$' + tier.skillCostAce,
+									cost: parseCost(tier.skillCostAce),
 								})
 							}} />
 						</div>
@@ -36,7 +38,9 @@ class SkillText extends Component
 				} else {
 					return (
 						<div className="skill-text-content">
-							<p>{locale('st_menu_skill_owned')}</p>
+							<p className="skill-text-hide">{locale('st_menu_profession_unlocked', {
+								profession: locale(`st_menu_${tree.name}`)
+							})}</p>
 						</div>
 					);
 				}
@@ -46,7 +50,7 @@ class SkillText extends Component
 						<p className="skill-text-hide" dangerouslySetInnerHTML={{
 							__html: localeText('st_menu_buy_skill_basic_plural', {
 								points: tier.skillPointBasic,
-								cost: ''//'$' + tier.skillCostBasic,
+								cost: parseCost(tier.skillCostBasic),
 							})
 						}} />
 					</div>
@@ -66,6 +70,7 @@ SkillText.propTypes = {
 	localeText: PropTypes.func.isRequired,
 	skill: PropTypes.object.isRequired,
 	tier: PropTypes.object.isRequired,
+	tree: PropTypes.object.isRequired,
 };
 
 export default SkillText;
