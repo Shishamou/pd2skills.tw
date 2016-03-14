@@ -35,11 +35,10 @@ class Skill extends Component
 				<div className="skill-icon">
 					<canvas ref="canvas"/>
 				</div>
-				<SkillText {...this.props} />
-				<div
-					className="skill-remove"
-					onClick={(e) => this.handleSkillRemove(e)}
-				/>
+				<div className="skill-text">
+					<SkillText {...this.props} />
+				</div>
+				<div className="skill-remove" onClick={(e) => this.handleSkillRemove(e)} />
 			</div>
 		);
 	}

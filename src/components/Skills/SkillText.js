@@ -10,20 +10,20 @@ class SkillText extends Component
 		switch (skill.status) {
 			case statuses.STATUS_ALERTED:
 				return (
-					<div className="skill-text">
+					<div className="skill-text-content">
 						<p>必要</p>
 					</div>
 				);
 			case statuses.STATUS_ACED:
 				return (
-					<div className="skill-text">
+					<div className="skill-text-content">
 						<p>{locale('st_menu_skill_maxed')}</p>
 					</div>
 				);
 			case statuses.STATUS_OWNED:
 				if (tier.skillPointAce > 0) {
 					return (
-						<div className="skill-text">
+						<div className="skill-text-content">
 							<p className="skill-text-hold">{locale('st_menu_skill_owned')}</p>
 							<p className="skill-text-hide" dangerouslySetInnerHTML={{
 								__html: localeText('st_menu_buy_skill_pro_plural', {
@@ -35,14 +35,14 @@ class SkillText extends Component
 					);
 				} else {
 					return (
-						<div className="skill-text">
+						<div className="skill-text-content">
 							<p>{locale('st_menu_skill_owned')}</p>
 						</div>
 					);
 				}
 			case statuses.STATUS_UNLOCKED:
 				return (
-					<div className="skill-text">
+					<div className="skill-text-content">
 						<p className="skill-text-hide" dangerouslySetInnerHTML={{
 							__html: localeText('st_menu_buy_skill_basic_plural', {
 								points: tier.skillPointBasic,
@@ -53,7 +53,7 @@ class SkillText extends Component
 				);
 			case statuses.STATUS_LOCKED:
 				return (
-					<div className="skill-text">
+					<div className="skill-text-content">
 						<p className="skill-text-hide">{locale('st_menu_skill_locked')}</p>
 					</div>
 				);

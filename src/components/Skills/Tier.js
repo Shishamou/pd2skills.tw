@@ -4,9 +4,31 @@ import Skill from './Skill';
 class Tier extends Component
 {
 	render() {
-		const { tree, tier, tierRank, getSkill } = this.props;
+		const { tree, tier, tierRank } = this.props;
 
-		var skills = tier.skills.map(function (skillId, index) {
+		var className = ['tier'];
+		if (tier.unlocked) className.push('tier-unlocked');
+		if (tree.reduced) className.push('tier-reduced');
+		className = className.join(' ');
+
+		var currectUnlockRequire = tier.currectUnlockRequire;
+		if (currectUnlockRequire < 10)
+			currectUnlockRequire = '0' + currectUnlockRequire;
+
+		return (
+			<div className={className}>
+				<div className="tier-skills">{this.renderSkills()}</div>
+				<div className="tier-aside">
+					<p>{tierRank}</p>
+					<p>{currectUnlockRequire}</p>
+				</div>
+			</div>
+		);
+	}
+
+	renderSkills() {
+		const { tier, getSkill } = this.props;
+		return tier.skills.map(function (skillId, index) {
 			var skill = getSkill(skillId);
 			return (
 				<Skill
@@ -15,17 +37,7 @@ class Tier extends Component
 					skill={skill}
 				/>
 			);
-		}, this);
-
-		return (
-			<div className="tier" data-unlocked={tier.unlocked} data-reduced={tree.reduced}>
-				<div className="tier-skills">{skills}</div>
-				<div className="tier-aside">
-					<p>{tierRank}</p>
-					<p>{tier.currectUnlockRequire}</p>
-				</div>
-			</div>
-		);
+		}, this)
 	}
 }
 

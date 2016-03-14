@@ -24,7 +24,8 @@ class Skills extends Component
                 return 'normal';
             if (tier.unlocked)
                 return 'gray';
-            return 'dark';
+            return 'gray';
+            // return 'dark';
         })(skill, tier);
 
         this.props.drawIcon(`skill_${skill.name}`, canvas, color);
