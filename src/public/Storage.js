@@ -51,9 +51,10 @@ export default class Storage {
 	}
 
 	loadTree(tree, state) {
-		const { tiers, skills } = state;
 		var storage = this.get(tree.name.charAt(0).toLowerCase());
+		if ( ! storage) return;
 
+		const { tiers, skills } = state;
 		tree.tiers.forEach((tier) => {
 			tier = tiers[tier];
 
@@ -100,9 +101,10 @@ export default class Storage {
 	// =========================================================================
 
 	loadPerks(state) {
-		const { perks } = state;
-
 		var storage = this.get('perks');
+		if ( ! storage) return;
+
+		const { perks } = state;
 		var equipped = storage.shift();
 		perks.forEach((perk, index) => {
 			perk.tier = storage[index];
@@ -129,9 +131,10 @@ export default class Storage {
 	// =========================================================================
 
 	loadInfamy(state) {
-		const { infamyList } = state;
-
 		var storage = this.get('infamy');
+		if ( ! storage) return;
+
+		const { infamyList } = state;
 		infamyList.forEach((infamy, index) => {
 			infamy.owned = (storage[index]);
 		});

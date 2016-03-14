@@ -4,11 +4,18 @@ export default class HashStorage extends Storage {
 
 	load(callable) {
 		var hash = callable();
+		var parts = hash.split(':');
+		if (parts.length >= 7) {
+			this.setSkillsHash(parts.splice(0, 5));
+			this.setPerksHash(parts.shift());
+			this.setInfamyHash(parts.shift());
+		}
+		console.log(this.container);
 	}
 
 	save(callable) {
 		var hash = [];
-		hash.push(this.getSkillsHash());
+		hash.push(this.getSkillsHash().join(':'));
 		hash.push(this.getPerksHash());
 		hash.push(this.getInfamyHash());
 		callable(hash.join(':'));
@@ -21,7 +28,13 @@ export default class HashStorage extends Storage {
 	getSkillsHash() {
 		return 'metgh'.split('').map((name) => {
 			return this.skillStorageToHash(this.get(name) || []);
-		}, this).join(':');
+		}, this);
+	}
+
+	setSkillsHash(parts) {
+		'metgh'.split('').forEach((name) => {
+			return this.set(name, this.hashToSkillStorage(parts.shift()));
+		}, this);
 	}
 
 	skillStorageToHash(storage) {
@@ -78,22 +91,28 @@ export default class HashStorage extends Storage {
 
 	hashToPerksStorage(hash) {
 		var equipped = null;
-		var storage = hash.match(/(\w\d)/g).reduce((storage, part) => {
+		var parts = hash.match(/(\w\d)/g);
+		if ( ! parts)
+			return [null];
+
+		var storage = parts.reduce((storage, part) => {
 			var char = part.charCodeAt(0);
 			if (char >= 65) {
 				if (char >= 97) {
 					var index = char - 97;
-					equipped = index;
 				} else {
 					var index = char - 65;
+					equipped = index;
 				}
 				storage[index] = parseInt(part.substr(-1));
 			}
 			return storage;
 		}, []);
 
+
 		storage = Array.from({length: storage.length}, (v, k) => storage[k] || 0);
 		storage.unshift(equipped);
+		console.log(storage);
 		return storage;
 	}
 
@@ -119,7 +138,7 @@ export default class HashStorage extends Storage {
 	}
 
 	hashToInfamyStorage(hash) {
-		var storage = hash.match(/(\w\d)/g).reduce((storage, part) => {
+		return hash.split('').reduce((storage, part) => {
 			var char = part.charCodeAt(0);
 			if (char >= 65) {
 				if (char >= 97) {
@@ -131,8 +150,5 @@ export default class HashStorage extends Storage {
 			}
 			return storage;
 		}, []);
-
-		storage = Array.from({length: storage.length}, (v, k) => storage[k] || 0);
-		return storage;
 	}
 }
