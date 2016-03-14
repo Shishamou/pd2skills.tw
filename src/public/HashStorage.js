@@ -10,7 +10,6 @@ export default class HashStorage extends Storage {
 			this.setPerksHash(parts.shift());
 			this.setInfamyHash(parts.shift());
 		}
-		console.log(this.container);
 	}
 
 	save(callable) {

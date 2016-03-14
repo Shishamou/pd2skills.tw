@@ -53,6 +53,7 @@ export default class Storage {
 	loadTree(tree, state) {
 		var storage = this.get(tree.name.charAt(0).toLowerCase());
 		if ( ! storage) return;
+		storage = storage.concat();
 
 		const { tiers, skills } = state;
 		tree.tiers.forEach((tier) => {
@@ -103,6 +104,7 @@ export default class Storage {
 	loadPerks(state) {
 		var storage = this.get('perks');
 		if ( ! storage) return;
+		storage = storage.concat();
 
 		const { perks } = state;
 		var equipped = storage.shift();
