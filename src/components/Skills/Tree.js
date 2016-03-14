@@ -60,8 +60,10 @@ class Tree extends Component
 		return (
 			<div className="tree">
 				<div className="tree-control">
-					<p className="tree-control-available">{available}</p>
-					<p className="tree-control-respec" onClick={this.handleRespec}>{respec}</p>
+					<div className="tree-control-content">
+						<p className="tree-control-available">{available}</p>
+						<p className="tree-control-respec" onClick={this.handleRespec}>{respec}</p>
+					</div>
 				</div>
 				<div className="progressbar" data-percent={progressbarPercent} />
 				{tiers}

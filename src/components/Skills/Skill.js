@@ -38,7 +38,7 @@ class Skill extends Component
 				<SkillText {...this.props} />
 				<div
 					className="skill-remove"
-					onClick={(e) => this.handleSkillRemove(e).bind(this)}
+					onClick={(e) => this.handleSkillRemove(e)}
 				/>
 			</div>
 		);
