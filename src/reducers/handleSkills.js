@@ -24,14 +24,14 @@ export default function handleSkill(state = initialState, action) {
             return handleSkillReduce(state, action);
         case types.SWITCH_SKILL_TREE:
             SkillsHandler.refreshSkillTrees(action.id)
-            return Object.assign({}, state, {
-                trees: SkillsHandler.store.trees.slice(),
-                tiers: SkillsHandler.store.tiers.slice(),
-                skills: SkillsHandler.store.skills.slice(),
+            return Object.assign({}, state, SkillsHandler.store, {
                 activedTree: action.id
             });
         case types.RESPEC_SKILL_TREE:
             SkillsHandler.respecSkillTrees(action.id);
+            return Object.assign({}, state, SkillsHandler.store);
+        case types.REFRESH_SKILLS:
+            SkillsHandler.refreshSkillTrees();
             return Object.assign({}, state, SkillsHandler.store);
         default:
             return state;
