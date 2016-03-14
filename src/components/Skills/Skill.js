@@ -20,18 +20,14 @@ class Skill extends Component
 	}
 
 	render() {
-		const { app, skill } = this.props;
-
-		var className = ['skill'];
-		className.push('status-' + skill.status.split('_').slice(-1).pop().toLowerCase());
+		var events = {
+			onClick: this.handleSkillClick.bind(this),
+			onMouseEnter: this.handleSkillEnter.bind(this),
+			onMouseLeave: this.handleSkillLeave.bind(this)
+		};
 
 		return (
-			<div
-				className={className.join(' ')}
-				onClick={this.handleSkillClick.bind(this)}
-				onMouseEnter={this.handleSkillEnter.bind(this)}
-				onMouseLeave={this.handleSkillLeave.bind(this)}
-			>
+			<div className={this.getClassName()} {...events}>
 				<div className="skill-icon">
 					<canvas ref="canvas"/>
 				</div>
@@ -41,6 +37,26 @@ class Skill extends Component
 				<div className="skill-remove" onClick={(e) => this.handleSkillRemove(e)} />
 			</div>
 		);
+	}
+
+	getClassName() {
+		const { skill } = this.props;
+
+		var className = ['skill'];
+
+		(function() {
+			if (skill.alerted)
+				return className.push('skill-alerted');
+			if (skill.ownedAce)
+				return className.push('skill-aced');
+			if (skill.ownedBasic)
+				return className.push('skill-owned');
+			if (skill.tierUnlocked)
+				return className.push('skill-unlocked');
+			return className.push('skill-locked');
+		})();
+
+		return className.join(' ');
 	}
 
 	handleSkillClick(e) {

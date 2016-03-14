@@ -133,10 +133,6 @@
 			width: @tier-width;
 		}
 
-		&:not(.tier-unlocked) .skill-icon canvas {
-			opacity: 0.2;
-		}
-
 	    .tier-aside {
 			@width: @tier-aside-font * 3;
 	        box-sizing: border-box;
@@ -224,9 +220,17 @@
 			}
 		}
 
+		&.skill-locked:not(:hover) canvas {
+			opacity: 0.2;
+		}
+
+		&.skill-alerted canvas {
+			opacity: 0.75;
+		}
+
 		@skill-aced-icon: './images/aced.png';
 		@skill-aced-icon-size: @skill-icon-size * 2;
-		&.status-aced {
+		&.skill-aced {
 			.skill-icon::after {
 				.pseudo-block-base;
 				top: -(@skill-icon-size / 2);
@@ -250,8 +254,8 @@
 			display: none;
 		}
 
-		&.status-owned:hover,
-		&.status-aced:hover {
+		&.skill-owned:hover,
+		&.skill-aced:hover {
 			.skill-remove {
 				display: block;
 			}

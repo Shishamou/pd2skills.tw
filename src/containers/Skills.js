@@ -20,7 +20,7 @@ class Skills extends Component
         var color = (function(skill, tier) {
             if (skill.alerted)
                 return 'alert';
-            if (skill.ownedBasic || skill.ownedAce)
+            if (skill.ownedBasic || skill.ownedAce || hover)
                 return 'normal';
             if (tier.unlocked)
                 return 'gray';
