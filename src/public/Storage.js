@@ -124,4 +124,23 @@ export default class Storage {
 		this.set('perks', storage);
 	}
 
+	// =========================================================================
+	// = Infamy
+	// =========================================================================
+
+	loadInfamy(state) {
+		const { infamyList } = state;
+
+		var storage = this.get('infamy');
+		infamyList.forEach((infamy, index) => {
+			infamy.owned = (storage[index]);
+		});
+	}
+
+	saveInfamy(state) {
+		const { infamyList } = state;
+
+		var storage = infamyList.map((infamy, index) => (infamy.owned)? 1 : 0);
+		this.set('infamy', storage);
+	}
 }

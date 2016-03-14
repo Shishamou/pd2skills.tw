@@ -10,6 +10,7 @@ export default class HashStorage extends Storage {
 		var hash = [];
 		hash.push(this.getSkillsHash());
 		hash.push(this.getPerksHash());
+		hash.push(this.getInfamyHash());
 		callable(hash.join(':'));
 	}
 
@@ -19,7 +20,7 @@ export default class HashStorage extends Storage {
 
 	getSkillsHash() {
 		return 'metgh'.split('').map((name) => {
-			return this.skillStorageToHash(this.get(name));
+			return this.skillStorageToHash(this.get(name) || []);
 		}, this).join(':');
 	}
 
@@ -93,6 +94,45 @@ export default class HashStorage extends Storage {
 
 		storage = Array.from({length: storage.length}, (v, k) => storage[k] || 0);
 		storage.unshift(equipped);
+		return storage;
+	}
+
+	// =========================================================================
+	// = Infamy
+	// =========================================================================
+
+	getInfamyHash() {
+		return this.infamyStorageToHash(this.get('infamy') || []);
+	}
+
+	setInfamyHash(hash) {
+		return this.set('infamy', this.hashToInfamyStorage(hash));
+	}
+
+	infamyStorageToHash(storage) {
+		return storage.reduce((hash, infamy, index) => {
+			if (infamy > 0) {
+				hash += String.fromCharCode(index + 97);
+			}
+			return hash;
+		}, '');
+	}
+
+	hashToInfamyStorage(hash) {
+		var storage = hash.match(/(\w\d)/g).reduce((storage, part) => {
+			var char = part.charCodeAt(0);
+			if (char >= 65) {
+				if (char >= 97) {
+					var index = char - 97;
+				} else {
+					var index = char - 65;
+				}
+				storage[index] = 1;
+			}
+			return storage;
+		}, []);
+
+		storage = Array.from({length: storage.length}, (v, k) => storage[k] || 0);
 		return storage;
 	}
 }

@@ -7,7 +7,6 @@ const middleware = store => next => action => {
 
     const state = store.getState();
     const inArray = (search, array) => (array.indexOf(search) >= 0);
-    const save = () => { HashStorage.save((hash) => location.hash = `/${hash}`) };
 
     switch (action.type) {
         case types.HANDLE_SKILL_EVENT:
@@ -16,19 +15,21 @@ const middleware = store => next => action => {
             }
         case types.RESPEC_SKILL_TREE:
             HashStorage.saveSkills(state.skills);
-            save();
             break;
 
         case types.HANDLE_PERK_EVENT:
         case types.HANDLE_DECK_EVENT:
             HashStorage.savePerks(state.perks);
-            save();
             break;
 
         case types.HANDLE_INFAMY_EVENT:
-
+            HashStorage.saveInfamy(state.infamy);
+            break;
+        default:
+            return result;
     }
 
+    HashStorage.save((hash) => location.hash = `/${hash}`);
     return result;
 }
 
