@@ -60,6 +60,10 @@ export default class HashStorage extends Storage {
 		return this.perksStorageToHash(this.get('perks'));
 	}
 
+	setPerksHash(hash) {
+		return this.set('perks', this.hashToPerksStorage(hash));
+	}
+
 	perksStorageToHash(storage) {
 		var equipped = storage.shift();
 		return storage.reduce((hash, tier, index) => {
@@ -73,8 +77,8 @@ export default class HashStorage extends Storage {
 
 	hashToPerksStorage(hash) {
 		var equipped = null;
-		return hash.match(/(\w\d)/g).reduce((storage, part) => {
-			char = part.charCodeAt(0);
+		var storage = hash.match(/(\w\d)/g).reduce((storage, part) => {
+			var char = part.charCodeAt(0);
 			if (char >= 65) {
 				if (char >= 97) {
 					var index = char - 97;
@@ -82,8 +86,13 @@ export default class HashStorage extends Storage {
 				} else {
 					var index = char - 65;
 				}
-				storage[index] = part.substr(-1);
+				storage[index] = parseInt(part.substr(-1));
 			}
+			return storage;
 		}, []);
+
+		storage = Array.from({length: storage.length}, (v, k) => storage[k] || 0);
+		storage.unshift(equipped);
+		return storage;
 	}
 }

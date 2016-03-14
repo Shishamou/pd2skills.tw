@@ -19,6 +19,8 @@ const hashStorage = store => next => action => {
             HashStorage.saveSkills(state.skills);
             HashStorage.savePerks(state.perks);
             HashStorage.save((hash) => location.hash = hash);
+
+            console.log(HashStorage.setPerksHash('d1E9'));
         }
     }
 }
