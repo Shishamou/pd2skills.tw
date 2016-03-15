@@ -92,16 +92,6 @@ export default class InfamyTreeHandler {
         this.store.spendPoints = spendPoints;
     }
 
-    /**
-     * 刷新所有惡名狀態。
-     * 僅刷新 infamy.status 不進行惡名樹的更新。
-     */
-    refreshAllStatus() {
-        this.store.infamyList.forEach((infamy) => {
-            this._updateInfamyStatue(infamy);
-        }, this);
-    }
-
     // =========================================================================
     // = 刷新惡名樹
     // =========================================================================
@@ -159,25 +149,7 @@ export default class InfamyTreeHandler {
         if ( ! (infamy.unlocked = (checkX() && checkY())))
             infamy.owned = false;
 
-        this._updateInfamyStatue(infamy);
         return infamy.owned;
-    }
-
-    /**
-     * 更新 infamy.status。
-     *
-     * @param infamy
-     */
-    _updateInfamyStatue(infamy) {
-        infamy.status = ((infamy) => {
-            if (infamy.disable)
-                return statuses.STATUS_DISABLE;
-            if (infamy.owned)
-                return statuses.STATUS_OWNED;
-            if (infamy.unlocked)
-                return statuses.STATUS_UNLOCKED;
-            return statuses.STATUS_LOCKED;
-        })(infamy);
     }
 
     /**

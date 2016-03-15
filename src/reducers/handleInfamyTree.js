@@ -12,6 +12,10 @@ export default function handleInfamyTree(state = initialState, action) {
             return loadInfamyTree(state, action);
         case types.HANDLE_INFAMY_EVENT:
             return handleInfamyEvent(state, action);
+        case types.REFRESH_INFAMYTREE:
+            InfamyTreeHandler.refreshInfamyTree();
+            action.skillReduce = InfamyTreeHandler.store.reduced;
+            return Object.assign({}, state, InfamyTreeHandler.store);
         default:
             return state;
     }
@@ -45,24 +49,17 @@ function handleInfamyEvent(state = {}, action) {
             break;
 
         case events.MOUSE_ENTER:
-            var hover = true;
-        case events.MOUSE_LEAVE:
-            if (hover) {
-                state.display = infamy.id;
-            }
-
-            InfamyTreeHandler.refreshAllStatus();
             return Object.assign({}, state, {
-                display: state.display
+                display: infamy.id
             });
 
+        case events.MOUSE_LEAVE:
         default:
             return state;
     }
 
     action.skillReduce = InfamyTreeHandler.store.reduced;
     return Object.assign({}, state, InfamyTreeHandler.store, {
-        infamyList: InfamyTreeHandler.store.infamyList.slice(),
         display: state.display
     });
 }
