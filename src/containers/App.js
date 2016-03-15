@@ -22,26 +22,15 @@ class App extends Component
     }
 
     render() {
-        const { locale, localeText, drawIcon } = this;
+        const { locale } = this;
 
-        const tabs = ['skills', 'perk decks', 'infamy'];
-        const display = this.props.display || tabs[0];
+        const tabs = [
+            locale('menu_st_skilltree'),
+            locale('menu_specialization'),
+            locale('menu_infamytree'),
+        ];
 
-        const func = {
-            locale, localeText, drawIcon
-        };
-
-        const main = ((display) => {
-            switch (display) {
-                case 'skills':
-                    return <Skills {...func} />;
-                case 'perk decks':
-                    return <PerkDecks {...func} />;
-                case 'infamy':
-                    return <Infamy {...func} />;
-                default:
-            }
-        })(display);
+        const display = this.props.display || 0;
 
         return (
             <div className="wrapper">
@@ -49,17 +38,34 @@ class App extends Component
                     <ul className="header-nav">
                         {tabs.map((tab, index) =>
                             <li key={index}
-                                className={(tab === display)? 'actived' : ''}
-                                onClick={(e)=>{this.switchTab(tab)}}
+                                className={(index === display)? 'actived' : ''}
+                                onClick={(e)=>{this.switchTab(index)}}
                             >
                                 <span>{tab}</span>
                             </li>
                         )}
                     </ul>
                 </div>
-                {main}
+                {this.renderMain(display)}
             </div>
         );
+    }
+
+    renderMain(display) {
+        const { locale, localeText, drawIcon } = this;
+        const func = {
+            locale, localeText, drawIcon
+        };
+
+        switch (display) {
+            case 2:
+                return <Infamy {...func} />;
+            case 1:
+                return <PerkDecks {...func} />;
+            case 0:
+            default:
+                return <Skills {...func} />;
+        }
     }
 
     locale(key, injects = {}) {

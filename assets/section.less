@@ -61,14 +61,14 @@
 			text-transform: uppercase;
 			cursor: pointer;
 
+			&:hover {
+				color: lighten(@color-strong, 25%);
+			}
+
 			&.actived {
 				background: @color-normal;
 				color: darken(@color-strong, 50%);
 				cursor: default;
-			}
-
-			&:not(.actived):hover {
-				color: lighten(@color-strong, 20%);
 			}
 		}
 	}

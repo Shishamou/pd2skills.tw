@@ -42,6 +42,10 @@ body {
 				font-size: @font-control;
 				cursor: pointer;
 
+				&:hover {
+					color: lighten(@color-strong, 25%);
+				}
+
 				&.actived {
 					color: @color-normal;
 					cursor: default;
