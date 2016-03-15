@@ -70,7 +70,7 @@ export default class HashStorage extends Storage {
 	// =========================================================================
 
 	getPerksHash() {
-		return this.perksStorageToHash(this.get('perks').concat() || []);
+		return this.perksStorageToHash((this.get('perks') || []).concat());
 	}
 
 	setPerksHash(hash) {

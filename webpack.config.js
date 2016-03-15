@@ -8,8 +8,9 @@ module.exports = {
         assets: './assets.js'
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js'
+        path: path.resolve(__dirname, 'bundle'),
+        filename: '[name].js',
+        publicPath: '/bundle/'
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
@@ -32,7 +33,9 @@ module.exports = {
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 loaders: [
-                    'url?limit=20480'
+                    // 'url?limit=20480',
+                    'file?hash=sha512&digest=hex&name=/[hash].[ext]',
+                    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
                 ]
             }
         ]
