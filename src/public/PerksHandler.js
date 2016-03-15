@@ -61,7 +61,15 @@ export default class PerksHandler {
         }, this);
     }
 
-    _setPerkTier(perkId, tier) {
+    getEquippedPerk() {
+        return this.store.perks.reduce((equipped, perk, index) => {
+            if (perk.equipped)
+                return index;
+            return equipped;
+        }, null);
+    }
+
+    setPerkTier(perkId, tier) {
         var perk = this.getPerk(perkId);
         perk.tier = Math.max(1, Math.min(tier, perk.decks.length));
     }

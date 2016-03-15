@@ -15,6 +15,10 @@ export default function handlePerk(state = initialState, action) {
             return handlePerkEvent(state, action);
         case types.HANDLE_DECK_EVENT:
             return handleDeckEvent(state, action);
+        case types.REFRESH_PERKS:
+            return Object.assign({}, state, PerksHandler.store, {
+                activedPerk: PerksHandler.getEquippedPerk()
+            });
         default:
             return state;
     }
@@ -46,7 +50,7 @@ function handlePerkEvent(state = {}, action) {
         case events.DOUBLE_CLICK:
             PerksHandler.equipPerk(perk);
             break;
-        
+
         case events.REMOVE:
             PerksHandler.respec(perk);
             break;

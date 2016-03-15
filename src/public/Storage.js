@@ -120,7 +120,7 @@ export default class Storage {
 		var storage = [];
 		var equipped = null;
 		perks.forEach((perk, index) => {
-			storage.push(perk.tier);
+			storage.push(perk.tier || 0);
 			perk.equipped && (equipped = index);
 		}, this);
 

@@ -70,7 +70,7 @@ export default class HashStorage extends Storage {
 	// =========================================================================
 
 	getPerksHash() {
-		return this.perksStorageToHash(this.get('perks') || []);
+		return this.perksStorageToHash(this.get('perks').concat() || []);
 	}
 
 	setPerksHash(hash) {
@@ -111,7 +111,6 @@ export default class HashStorage extends Storage {
 
 		storage = Array.from({length: storage.length}, (v, k) => storage[k] || 0);
 		storage.unshift(equipped);
-		console.log(storage);
 		return storage;
 	}
 
