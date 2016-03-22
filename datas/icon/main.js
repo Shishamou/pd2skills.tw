@@ -3,7 +3,8 @@ var naturalSort = require('javascript-natural-sort');
 
 var result = packing(__dirname + '/datas');
 result = JSON.stringify(result, null, 4);
-console.log(result);
+
+module.exports = result;
 
 
 function packing(base) {
