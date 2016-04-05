@@ -13,47 +13,60 @@ var initialState = {
     activedTree: 0,
 };
 
-
 export default function handleSkill(state = initialState, action) {
     switch (action.type) {
-        case types.LOAD_SKILLS:
+        // 初始化
+        case types.INITIALIZE_SUCCESS:
             return loadSkills(state, action);
+
+        // 處理事件
         case types.HANDLE_SKILL_EVENT:
             return handleSkillEvent(state, action);
-        case types.HANDLE_INFAMY_EVENT:
-        case types.REFRESH_INFAMYTREE:
-            return handleSkillReduce(state, action);
+
+        // 切換技能樹
         case types.SWITCH_SKILL_TREE:
             SkillsHandler.refreshSkillTrees(action.id)
             return Object.assign({}, state, SkillsHandler.store, {
                 activedTree: action.id
             });
-        case types.RESPEC_SKILL_TREE:
-            SkillsHandler.respecSkillTrees(action.id);
-            return Object.assign({}, state, SkillsHandler.store);
+
+        // 刷新技能樹
         case types.REFRESH_SKILLS:
             SkillsHandler.refreshSkillTrees();
             return Object.assign({}, state, SkillsHandler.store);
-        default:
-            return state;
-    }
-}
 
-function loadSkills(state = {}, action) {
-    switch (action.status) {
-        case 'success':
-            SkillsHandler.initialSkillTrees(action.response);
+        // 重置技能樹
+        case types.RESPEC_SKILL_TREE:
+            SkillsHandler.respecSkillTrees(action.id);
             return Object.assign({}, state, SkillsHandler.store);
 
-        case 'error':
-            throw '讀取技能檔案失敗: ' + action.error;
-            return state;
+        // 更新惡名減免
+        case types.HANDLE_INFAMY_EVENT:
+        case types.REFRESH_INFAMYTREE:
+            return handleSkillReduce(state, action);
 
         default:
-            return initialState;
+            return state;
     }
 }
 
+/**
+ * 載入技能
+ */
+function loadSkills(state = {}, action) {
+    var response = action.response.skills;
+
+    if (typeof response === 'undefined') {
+        return state;
+    }
+
+    SkillsHandler.initialSkillTrees(response);
+    return Object.assign({}, state, SkillsHandler.store);
+}
+
+/**
+ * 處理事件
+ */
 function handleSkillEvent(state = {}, action) {
     var skill = SkillsHandler.getSkill(action.id);
 
@@ -99,6 +112,9 @@ function handleSkillEvent(state = {}, action) {
     });
 }
 
+/**
+ * 處理技能減免
+ */
 function handleSkillReduce(state, action) {
     if ( ! action.skillReduce) return state;
     SkillsHandler.setupSkillReduce(action.skillReduce);

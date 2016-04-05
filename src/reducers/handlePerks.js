@@ -7,38 +7,48 @@ const initialState = Object.assign({
     display: null,
 }, PerksHandler.store);
 
-export default function handlePerk(state = initialState, action) {
+export default function handlePerks(state = initialState, action) {
     switch (action.type) {
-        case types.LOAD_PERKS:
+        // 初始化
+        case types.INITIALIZE_SUCCESS:
             return loadPerks(state, action);
+
+        // 處理天賦事件
         case types.HANDLE_PERK_EVENT:
             return handlePerkEvent(state, action);
+
+        // 處理牌組事件
         case types.HANDLE_DECK_EVENT:
             return handleDeckEvent(state, action);
+
+        // 刷新天賦
         case types.REFRESH_PERKS:
             return Object.assign({}, state, PerksHandler.store, {
                 activedPerk: PerksHandler.getEquippedPerk()
             });
+
         default:
             return state;
     }
 }
 
+/**
+ * 載入天賦
+ */
 function loadPerks(state = {}, action) {
-    switch (action.status) {
-        case 'success':
-            PerksHandler.initialPerks(action.response);
-            return Object.assign({}, state, PerksHandler.store);
+    var response = action.response.perks;
 
-        case 'error':
-            throw '讀取檔案失敗: ' + action.error;
-            return state;
-
-        default:
-            return initialState;
+    if (typeof response === 'undefined') {
+        return state;
     }
+
+    PerksHandler.initialPerks(response);
+    return Object.assign({}, state, PerksHandler.store);
 }
 
+/**
+ * 處理天賦事件
+ */
 function handlePerkEvent(state = {}, action) {
     var perk = action.id;
 
@@ -64,6 +74,9 @@ function handlePerkEvent(state = {}, action) {
     });
 }
 
+/**
+ * 處理牌組事件
+ */
 function handleDeckEvent(state = {}, action) {
     var deckId = action.id;
 

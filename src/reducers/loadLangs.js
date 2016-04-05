@@ -2,17 +2,27 @@ import Localisation from '../public/Localisation';
 
 var initialState = {};
 
-export default function loadLangs(state = initialState, action) {
-    switch (action.status) {
-        case 'success':
-            Localisation.addLangs(action.response);
-            return Object.assign({}, Localisation.langs);
-
-        case 'error':
-            throw '讀取語言檔失敗: ' + action.error;
-            return state;
+export default function handleLangs(state = initialState, action) {
+    switch (action.type) {
+        // 初始化
+        case types.INITIALIZE_SUCCESS:
+            return loadLangs(state, action);
 
         default:
-            return initialState;
+            return state;
     }
+}
+
+/**
+ * 載入語系檔
+ */
+function loadLangs(state = initialState, action) {
+    var response = action.response.localization;
+
+    if (typeof response === 'undefined') {
+        return state;
+    }
+
+    Localisation.addLangs(response);
+    return Object.assign({}, Localisation.langs);
 }
