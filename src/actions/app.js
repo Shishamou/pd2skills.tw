@@ -17,13 +17,13 @@ export function initialize(url) {
 }
 
 export function initializeRequest() {
-    return { type: actions.INITIALIZE };
+    return { type: types.INITIALIZE };
 }
 
 export function initializeSuccess(response) {
-    return { type: actions.INITIALIZE_SUCCESS, response };
+    return { type: types.INITIALIZE_SUCCESS, response };
 }
 
 export function initializeError(error) {
-    return { type: actions.INITIALIZE_FAIL, error };
+    return { type: types.INITIALIZE_FAIL, error };
 }
