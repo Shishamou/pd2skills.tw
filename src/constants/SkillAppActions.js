@@ -1,4 +1,6 @@
 
+export const INITIALIZE = 'INITIALIZE';
+
 export const LOAD_LANGS = 'LOAD_LANGS';
 export const LOAD_ICON = 'LOAD_ICON';
 
