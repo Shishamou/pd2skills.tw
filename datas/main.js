@@ -1,19 +1,12 @@
 var fs = require('fs');
-var naturalSort = require('javascript-natural-sort');
-var packing = require('packing');
+var packingDatasMain = require('./helper');
 
-var result = ((base) => {
-	var files = fs.readdirSync(base);
-	files = files.sort(naturalSort);
+var result = packingDatasMain(__dirname);
 
-	return files.reduce(function(container, filename, index) {
-		var fullname = base + '/' + filename;
-		if (isDirectory(fullname)) {
-			container[fullname] = packing(fullname);
-		}
-
-		return container;
-	}, new Object);
-})(__dirname);
-
-result = JSON.stringify(result, null, 4);
+var saveName = process.argv[2] || '';
+if (saveName) {
+	saveName = __dirname + '/' + saveName;
+	fs.writeFile(saveName, JSON.stringify(result, null, 4), function(err) {
+		console.log('檔案已保存在路徑: ' + saveName);
+	});
+}
