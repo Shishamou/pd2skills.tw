@@ -21,9 +21,9 @@ export function initializeRequest() {
 }
 
 export function initializeSuccess(response) {
-    return { type: actions.INITIALIZE, status: 'success', response };
+    return { type: actions.INITIALIZE_SUCCESS, response };
 }
 
 export function initializeError(error) {
-    return { type: actions.INITIALIZE, status: 'error', error };
+    return { type: actions.INITIALIZE_FAIL, error };
 }

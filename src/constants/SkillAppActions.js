@@ -1,5 +1,7 @@
 
 export const INITIALIZE = 'INITIALIZE';
+export const INITIALIZE_SUCCESS = 'INITIALIZE_SUCCESS';
+export const INITIALIZE_FAIL = 'INITIALIZE_FAIL';
 
 export const LOAD_LANGS = 'LOAD_LANGS';
 export const LOAD_ICON = 'LOAD_ICON';
