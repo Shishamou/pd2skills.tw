@@ -8,34 +8,42 @@ const initialState = Object.assign({
 
 export default function handleInfamyTree(state = initialState, action) {
     switch (action.type) {
-        case types.LOAD_INFAMYTREE:
+        // 初始化
+        case types.INITIALIZE_SUCCESS:
             return loadInfamyTree(state, action);
+
+        // 處理事件
         case types.HANDLE_INFAMY_EVENT:
             return handleInfamyEvent(state, action);
+
+        // 刷新惡名
         case types.REFRESH_INFAMYTREE:
             InfamyTreeHandler.refreshInfamyTree();
             action.skillReduce = InfamyTreeHandler.store.reduced;
             return Object.assign({}, state, InfamyTreeHandler.store);
+
         default:
             return state;
     }
 }
 
+/**
+ * 載入惡名
+ */
 function loadInfamyTree(state = {}, action) {
-    switch (action.status) {
-        case 'success':
-            InfamyTreeHandler.initialInfamyTrees(action.response);
-            return Object.assign({}, state, InfamyTreeHandler.store);
+    var response = action.response.infamy;
 
-        case 'error':
-            throw '讀取檔案失敗: ' + action.error;
-            return state;
-
-        default:
-            return initialState;
+    if (typeof response === 'undefined') {
+        return state;
     }
+
+    InfamyTreeHandler.initialInfamyTrees(response);
+    return Object.assign({}, state, InfamyTreeHandler.store);
 }
 
+/**
+ * 處理事件
+ */
 function handleInfamyEvent(state = {}, action) {
     var infamy = InfamyTreeHandler.getInfamy(action.id);
 

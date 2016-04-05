@@ -3,7 +3,7 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from './reducers';
 
-import * as initial from './actions/initial';
+import * as app from './actions/app';
 import hashMiddleware from './hashMiddleware';
 
 
@@ -22,11 +22,7 @@ export default function configureStore(initialState = {}) {
 
     const store = createStoreWithMiddleware(rootReducer);
 
-    store.dispatch(initial.fetchIcon('json/icon.json'));
-    store.dispatch(initial.fetchLangs('json/local.json'));
-    store.dispatch(initial.fetchSkills('json/skills.json'));
-    store.dispatch(initial.fetchPerks('json/perks.json'));
-    store.dispatch(initial.fetchInfamy('json/infamy.json'));
+    store.dispatch(app.initialize('json/datas.json'));
 
     return store;
 }

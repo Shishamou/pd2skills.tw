@@ -1,12 +1,7 @@
 var fs = require('fs');
 var naturalSort = require('javascript-natural-sort');
 
-var result = packing(__dirname + '/datas');
-result = JSON.stringify(result, null, 4);
-console.log(result);
-
-
-function packing(base) {
+module.exports = (function(base) {
     var files = fs.readdirSync(base);
     files = files.sort(naturalSort);
 
@@ -22,4 +17,4 @@ function packing(base) {
 
         return container;
     }, []);
-}
+})(__dirname + '/datas');
