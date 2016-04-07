@@ -1,0 +1,18 @@
+
+body, html, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, p, span {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol, dl {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-weight: normal;
+    line-height: 1;
+}
+
+body, html {
+    height: 100%;
+}

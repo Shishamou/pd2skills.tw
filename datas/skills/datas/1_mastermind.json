@@ -1,0 +1,147 @@
+{
+    "trees": [
+        {
+            "name": "mastermind",
+            "skills": [
+                {
+                    "name": "mastermind",
+                    "datas": {
+                        "multibasic": "2"
+                    }
+                },
+                {
+                    "name": "cable_guy",
+                    "datas": {
+                        "multibasic": "75%",
+                        "multipro": "4"
+                    }
+                },
+                {
+                    "name": "combat_medic",
+                    "datas": {
+                        "multibasic": "10",
+                        "multibasic2": "25%",
+                        "multipro": "30%"
+                    }
+                },
+                {
+                    "name": "triathlete",
+                    "datas": {
+                        "multibasic": "100%",
+                        "multipro": "50%"
+                    }
+                },
+                {
+                    "name": "inside_man",
+                    "datas": {
+                        "multibasic": "50%"
+                    }
+                },
+                {
+                    "name": "fast_learner",
+                    "datas": {
+                        "multibasic": "10%",
+                        "multibasic2": "5",
+                        "multipro": "20%"
+                    }
+                },
+                {
+                    "name": "leadership",
+                    "datas": {
+                        "multibasic": "4",
+                        "multipro": "8"
+                    }
+                },
+                {
+                    "name": "tactician",
+                    "datas": {
+                        "multibasic": "15%"
+                    }
+                },
+                {
+                    "name": "equilibrium",
+                    "datas": {
+                        "multibasic": "4",
+                        "multibasic2": "50%",
+                        "multipro": "100%"
+                    }
+                },
+                {
+                    "name": "dominator",
+                    "datas": {
+                        "multipro": "50%"
+                    }
+                },
+                {
+                    "name": "stockholm_syndrome",
+                    "datas": []
+                },
+                {
+                    "name": "medic_2x",
+                    "datas": {
+                        "multibasic": "2",
+                        "multipro": "2"
+                    }
+                },
+                {
+                    "name": "joker",
+                    "required": "dominator",
+                    "datas": {
+                        "multipro": "55%",
+                        "multipro2": "45%",
+                        "multipro3": "65%"
+                    }
+                },
+                {
+                    "name": "kilmer",
+                    "datas": {
+                        "multibasic": "25%",
+                        "multipro": "8"
+                    }
+                },
+                {
+                    "name": "gun_fighter",
+                    "datas": {
+                        "multibasic": "50%",
+                        "multipro": "15"
+                    }
+                },
+                {
+                    "name": "control_freak",
+                    "required": "joker",
+                    "datas": {
+                        "multibasic": "10%",
+                        "multibasic2": "40%",
+                        "multipro": "20%",
+                        "multipro2": "40%"
+                    }
+                },
+                {
+                    "name": "black_marketeer",
+                    "datas": {
+                        "multibasic": "1.5%",
+                        "multibasic2": "5",
+                        "multipro": "4.5%",
+                        "multipro2": "5"
+                    }
+                },
+                {
+                    "name": "pistol_messiah",
+                    "datas": {
+                        "multibasic": "1",
+                        "multipro": "2"
+                    }
+                },
+                {
+                    "name": "inspire",
+                    "datas": {
+                        "multibasic": "50%",
+                        "multibasic2": "20%",
+                        "multibasic3": "10",
+                        "multipro": "75%"
+                    }
+                }
+            ]
+        }
+    ]
+}
