@@ -41,7 +41,7 @@ const middleware = store => next => action => {
             return result;
     }
 
-    HashStorage.save((hash) => location.hash = `/${hash}`);
+    HashStorage.save((hash) => location.hash = '/' + hash);
     return result;
 }
 
@@ -62,7 +62,7 @@ function initialize(state, action, refresh) {
     if (response.perks) {
         HashStorage.loadPerks(state.perks);
     }
-    
+
     refresh(types.REFRESH_INFAMYTREE);
     refresh(types.REFRESH_SKILLS);
     refresh(types.REFRESH_PERKS);

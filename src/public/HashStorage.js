@@ -50,17 +50,20 @@ export default class HashStorage extends Storage {
 	}
 
 	hashToSkillStorage(hash) {
+		var storage = [];
+
 		return hash.split('').reduce((storage, char, index) => {
-			storage.push(
-				(function(char, index) {
-					char = char.charCodeAt(0);
-					if (char == index + 65)
-						return 2;
-					if (char == index + 97)
-						return 1;
-					return 0;
-				})(char, index)
-			);
+			var code = char.charCodeAt(0);
+
+			var lower = code - 97;
+			var upper = code - 65;
+
+			if (0 <= lower && lower < 26) {
+				storage[lower] = 1;
+			} else if (0 <= upper && upper < 26) {
+				storage[upper] = 2;
+			}
+
 			return storage;
 		}, []);
 	}
