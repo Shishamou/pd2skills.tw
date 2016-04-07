@@ -33,25 +33,8 @@ const middleware = store => next => action => {
             HashStorage.saveInfamy(state.infamy);
             break;
 
-        case types.LOAD_SKILLS:
-            if (action.status == 'success') {
-                HashStorage.loadSkills(state.skills);
-                refresh(types.REFRESH_SKILLS);
-            }
-            break;
-
-        case types.LOAD_PERKS:
-            if (action.status == 'success') {
-                HashStorage.loadPerks(state.perks);
-                refresh(types.REFRESH_PERKS);
-            }
-            break;
-
-        case types.LOAD_INFAMYTREE:
-            if (action.status == 'success') {
-                HashStorage.loadInfamy(state.infamy);
-                refresh(types.REFRESH_INFAMYTREE);
-            }
+        case types.INITIALIZE_SUCCESS:
+            initialize(state, action, refresh);
             break;
 
         default:
@@ -60,6 +43,29 @@ const middleware = store => next => action => {
 
     HashStorage.save((hash) => location.hash = `/${hash}`);
     return result;
+}
+
+/**
+ * 初始化
+ */
+function initialize(state, action, refresh) {
+    var response = action.response;
+
+    if (response.infamy) {
+        HashStorage.loadInfamy(state.infamy);
+    }
+
+    if (response.skills) {
+        HashStorage.loadSkills(state.skills);
+    }
+
+    if (response.perks) {
+        HashStorage.loadPerks(state.perks);
+    }
+    
+    refresh(types.REFRESH_INFAMYTREE);
+    refresh(types.REFRESH_SKILLS);
+    refresh(types.REFRESH_PERKS);
 }
 
 export default middleware;
