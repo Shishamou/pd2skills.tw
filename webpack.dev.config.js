@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
-var node_modules_dir = path.resolve(__dirname, 'node_modules');
+
+var publicPath = '/assets';
 
 module.exports = {
     entry: {
@@ -8,8 +9,9 @@ module.exports = {
         assets: './assets.js'
     },
     output: {
-        path: path.resolve(__dirname, 'dev'),
-        filename: '[name].js'
+        path: __dirname + '/public',
+        filename: '[name].js',
+        publicPath: publicPath
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
@@ -32,7 +34,9 @@ module.exports = {
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 loaders: [
-                    'url?limit=2048000'
+                    // 'url?limit=20480',
+                    'file?hash=sha512&digest=hex&name=' + publicPath + '/[hash].[ext]',
+                    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
                 ]
             }
         ]
