@@ -11,7 +11,7 @@ module.exports = {
     output: {
         path: __dirname + '/public',
         filename: '[name].js',
-        publicPath: publicPath
+        publicPath: ''
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
