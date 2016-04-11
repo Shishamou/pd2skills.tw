@@ -1,0 +1,35 @@
+{
+    "subtrees": [
+        {
+            "name": "mastermind_1",
+            "skills": [
+                "mastermind_1_1",
+                "mastermind_1_2",
+                "mastermind_1_3",
+                "mastermind_1_4",
+                "mastermind_1_5",
+                "mastermind_1_6"
+            ]
+        }
+    ],
+    "skills": [
+        {
+            "name": "mastermind_1_1"
+        },
+        {
+            "name": "mastermind_1_2"
+        },
+        {
+            "name": "mastermind_1_3"
+        },
+        {
+            "name": "mastermind_1_4"
+        },
+        {
+            "name": "mastermind_1_5"
+        },
+        {
+            "name": "mastermind_1_6"
+        }
+    ]
+}

@@ -2364,5 +2364,142 @@
                 "skill_cost_ace": 904500
             }
         ]
+    },
+    "skills-new": {
+        "trees": [
+            {
+                "name": "mastermind",
+                "subtrees": [
+                    "mastermind_1",
+                    "mastermind_2",
+                    "mastermind_3"
+                ]
+            }
+        ],
+        "subtrees": [
+            {
+                "name": "mastermind_1",
+                "skills": [
+                    "mastermind_1_1",
+                    "mastermind_1_2",
+                    "mastermind_1_3",
+                    "mastermind_1_4",
+                    "mastermind_1_5",
+                    "mastermind_1_6"
+                ]
+            },
+            {
+                "name": "mastermind_2",
+                "skills": [
+                    "mastermind_2_1",
+                    "mastermind_2_2",
+                    "mastermind_2_3",
+                    "mastermind_2_4",
+                    "mastermind_2_5",
+                    "mastermind_2_6"
+                ]
+            },
+            {
+                "name": "mastermind_3",
+                "skills": [
+                    "mastermind_3_1",
+                    "mastermind_3_2",
+                    "mastermind_3_3",
+                    "mastermind_3_4",
+                    "mastermind_3_5",
+                    "mastermind_3_6"
+                ]
+            }
+        ],
+        "skills": [
+            {
+                "name": "mastermind_1_1"
+            },
+            {
+                "name": "mastermind_1_2"
+            },
+            {
+                "name": "mastermind_1_3"
+            },
+            {
+                "name": "mastermind_1_4"
+            },
+            {
+                "name": "mastermind_1_5"
+            },
+            {
+                "name": "mastermind_1_6"
+            },
+            {
+                "name": "mastermind_2_1"
+            },
+            {
+                "name": "mastermind_2_2"
+            },
+            {
+                "name": "mastermind_2_3"
+            },
+            {
+                "name": "mastermind_2_4"
+            },
+            {
+                "name": "mastermind_2_5"
+            },
+            {
+                "name": "mastermind_2_6"
+            },
+            {
+                "name": "mastermind_3_1"
+            },
+            {
+                "name": "mastermind_3_2"
+            },
+            {
+                "name": "mastermind_3_3"
+            },
+            {
+                "name": "mastermind_3_4"
+            },
+            {
+                "name": "mastermind_3_5"
+            },
+            {
+                "name": "mastermind_3_6"
+            }
+        ],
+        "tiersInformation": [
+            {
+                "tier_unlock_require": 0,
+                "tier_unlock_require_reduced": 0,
+                "skill_point_basic": 1,
+                "skill_point_ace": 3,
+                "skill_cost_basic": 500,
+                "skill_cost_ace": 0
+            },
+            {
+                "tier_unlock_require": 4,
+                "tier_unlock_require_reduced": 4,
+                "skill_point_basic": 2,
+                "skill_point_ace": 4,
+                "skill_cost_basic": 4500,
+                "skill_cost_ace": 12500
+            },
+            {
+                "tier_unlock_require": 10,
+                "tier_unlock_require_reduced": 10,
+                "skill_point_basic": 3,
+                "skill_point_ace": 5,
+                "skill_cost_basic": 23500,
+                "skill_cost_ace": 69500
+            },
+            {
+                "tier_unlock_require": 18,
+                "tier_unlock_require_reduced": 18,
+                "skill_point_basic": 4,
+                "skill_point_ace": 6,
+                "skill_cost_basic": 44500,
+                "skill_cost_ace": 132500
+            }
+        ]
     }
 }
