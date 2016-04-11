@@ -11,12 +11,12 @@
 	// @progressbar-width  : 6px;
 
 	@tier-column-width  : @skill-block-width + @skill-border-width * 2;
-	@tier-width         : @tier-column-width * 3;
+	@tier-width         : @tier-column-width * 2;
 	@tier-height        : @skill-icon-size + @skill-border-width * 2;
 	@tier-aside-font    : @skill-font-size * 0.9;
 
 	@tree-width         : @tier-width + @tier-aside-width;
-	@tree-heigth        : @tier-height * 7;
+	@tree-heigth        : @tier-height * 4;
 
 	/* =========================================================================
 	 * = Section
@@ -24,10 +24,10 @@
 
 	.section.sections-skill {
 		@section-main-width: @tree-width;
-		@section-content-height: @tier-height * 7;
+		@section-content-height: @tier-height * 4;
 
 		@section-box-width: @tier-width;
-		@section-box-height: @tier-height * 6;
+		@section-box-height: @tier-height * 4;
 
 		.section-tabs {
 			width: @section-box-width;
@@ -195,6 +195,7 @@
 		width: @skill-block-width;
 		height: @skill-icon-size;
 		border: @skill-border-width solid transparent;
+		background: rgba(255,255,255,.2);
 		cursor: pointer;
 
 		&:hover {
