@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 
 import * as actions from '../actions/perks';
 
-import Perks from '../components/PerkDecks/Perks';
+
+import PerkDecksTabs from '../components/PerkDecks/PerkDecksTabs';
+import PerkDecksMain from '../components/PerkDecks/PerkDecksMain';
 import PerkDecksSide from '../components/PerkDecks/PerkDecksSide';
 
 class PerkDecks extends Component
@@ -23,12 +25,8 @@ class PerkDecks extends Component
 
     render() {
         const { dispatch } = this.props;
-        const { perks, activedPerk } = this.props;
-        const { locale, localeText } = this.props;
 
         const app = {
-            locale,
-            localeText,
             reflowCanvas     : this.reflowCanvas,
             getPerk          : (id) => this.props.perks[id],
             getDeck          : (id) => this.props.decks[id],
@@ -44,25 +42,9 @@ class PerkDecks extends Component
 
         return (
             <div className="section sections-perks">
-                <div className="section-tabs">
-                    <div className="section-tabs-main">
-                        <div className="section-tabs-contain">
-                            {perks.map((perk, index) =>
-                                <div key={index}
-                                    className={(index === activedPerk)? 'section-tab actived' : 'section-tab'}
-                                >
-                                    <span>{locale(`menu_st_spec_${perk.name}`)}</span>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
-                <div className="section-main">
-                    <div className="section-content">
-                        <Perks {...app} perks={perks} activedPerk={activedPerk} />
-                    </div>
-                </div>
-                <PerkDecksSide {...app} display={display} />
+                <PerkDecksTabs {...this.props} />
+                <PerkDecksMain {...this.props} {...app} />
+                <PerkDecksSide {...this.props} display={display} />
             </div>
         )
     }

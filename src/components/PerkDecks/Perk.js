@@ -4,27 +4,35 @@ import Deck from './Deck';
 
 class Perk extends Component
 {
-	render() {
-		const { locale, localeText } = this.props;
-		const { perk, getDeck, actived } = this.props;
-		const { equipped } = perk;
+	getHeader() {
+		const { locale, localeText, perk } = this.props;
 
 		var header = locale(`menu_st_spec_${perk.name}`);
-		header = (equipped)
+		return (perk.equipped)
 			? localeText('menu_st_active_spec', {specialization: header})
 			: header;
+	}
+	getClassName() {
+		const { perk, actived } = this.props;
 
 		var className = ['perk'];
 		if (perk.equipped) className.push('equipped');
 		if (actived) className.push('actived');
 
+		return className.join(' ');
+	}
+
+	render() {
+		const { perk, getDeck } = this.props;
+		const { handlePerkClick, handlePerkDouble, handlePerkRemove } = this.props;
+
 		return (
 			<div
-				className={className.join(' ')}
-				onClick={(e) => this.props.handlePerkClick(perk.id)}
-				onDoubleClick={(e) => this.props.handlePerkDouble(perk.id)}
+				className={this.getClassName()}
+				onClick={(e) => handlePerkClick(perk.id)}
+				onDoubleClick={(e) => handlePerkDouble(perk.id)}
 			>
-				<div className="perk-header">{header}</div>
+				<div className="perk-header">{this.getHeader()}</div>
 				<div className="decks">
 					{perk.decks.map((deck, tier) =>
 						<Deck
@@ -35,7 +43,7 @@ class Perk extends Component
 						/>
 					)}
 				</div>
-				<div className="perk-remove" onClick={(e) => this.props.handlePerkRemove(perk.id)} />
+				<div className="perk-remove" onClick={(e) => handlePerkRemove(perk.id)} />
 			</div>
 		);
 	}
