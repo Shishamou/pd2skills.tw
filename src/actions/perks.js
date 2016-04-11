@@ -24,3 +24,7 @@ export function handleDeckEnter(id) {
 export function handleDeckLeave(id) {
     return { type: types.HANDLE_DECK_EVENT, event: events.MOUSE_LEAVE, id };
 }
+
+export function switchPerks(id) {
+    return { type: types.SWITCH_PERKS, id };
+}

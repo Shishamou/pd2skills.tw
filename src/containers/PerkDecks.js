@@ -3,15 +3,14 @@ import { connect } from 'react-redux';
 
 import * as actions from '../actions/perks';
 
-
 import PerkDecksTabs from '../components/PerkDecks/PerkDecksTabs';
 import PerkDecksMain from '../components/PerkDecks/PerkDecksMain';
 import PerkDecksSide from '../components/PerkDecks/PerkDecksSide';
 
 class PerkDecks extends Component
 {
-    constructor(prop) {
-        super(prop);
+    constructor(props) {
+        super(props);
         this.reflowCanvas = this.reflowCanvas.bind(this);
     }
 
@@ -42,7 +41,7 @@ class PerkDecks extends Component
 
         return (
             <div className="section sections-perks">
-                <PerkDecksTabs {...this.props} />
+                <PerkDecksTabs {...this.props} onClick={(e) => dispatch(actions.switchPerks(e))} />
                 <PerkDecksMain {...this.props} {...app} />
                 <PerkDecksSide {...this.props} display={display} />
             </div>

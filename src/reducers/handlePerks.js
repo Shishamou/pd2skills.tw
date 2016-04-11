@@ -13,6 +13,12 @@ export default function handlePerks(state = initialState, action) {
         case types.INITIALIZE_SUCCESS:
             return loadPerks(state, action);
 
+        // 切換技能樹
+        case types.SWITCH_PERKS:
+            return Object.assign({}, state, {
+                activedPerk: action.id
+            });
+
         // 處理天賦事件
         case types.HANDLE_PERK_EVENT:
             return handlePerkEvent(state, action);
