@@ -22,10 +22,12 @@ export default class SkillsBuilder {
     build(datas) {
         this.initialStore();
 
-        var { trees, tiersInformation } = datas;
+        var { subtrees, skills, tiersInformation } = datas;
         tiersInformation = this.objectAttributeToCamelCase(tiersInformation);
 
-        trees.forEach((tree) => this.buildTree(tree, tiersInformation));
+        this.skills = datas.skills;
+        this.tierSettings = tiersInformation;
+        subtrees.forEach((tree) => this.buildSubTree(tree));
     }
 
     /**
@@ -52,6 +54,30 @@ export default class SkillsBuilder {
     }
 
     /**
+     * 建立樹模型
+     *
+     * @param Object 資料模型
+     * @param Object 階層設定值
+     */
+    buildSubTree(treeData) {
+        var tree = this.createTree({ name: treeData.name });
+        var treeId = this.registerTree(tree);
+        var tierSettings = this.tierSettings;
+
+        tree.tiers = [];
+        for (var tier = 0; tier < 4; tier++) {
+            var start = 2 * (tier - 1) + 1;
+            var skills = (tier === 0 || tier === 4)
+                ? treeData['skills'].slice(0, 1)
+                : treeData['skills'].slice(start, start + 2);
+
+            tree.tiers.push(this.buildTier(
+                Object.assign({ treeId, skills, tier }, tierSettings[tier])
+            ));
+        }
+    }
+
+    /**
      * 建立階層模型
      *
      * @param Object 資料模型
@@ -61,13 +87,15 @@ export default class SkillsBuilder {
         var tierId = this.registerTier(tier);
         var treeId = tierData.treeId;
 
-        tier.skills = tierData.skills.map((skill) => this.buildSkill({
-            treeId,
-            tierId,
-            name: skill.name,
-            requiredSkill: skill.required,
-            datas: skill.datas
-        }), this);
+        tier.skills = tierData.skills.map((skill) => {
+            return this.buildSkill({
+                treeId,
+                tierId,
+                name: skill.name,
+                requiredSkill: skill.required,
+                datas: skill.datas
+            });
+        });
 
         return tierId;
     }

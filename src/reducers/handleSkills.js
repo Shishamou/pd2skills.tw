@@ -54,7 +54,7 @@ export default function handleSkill(state = initialState, action) {
  * 載入技能
  */
 function loadSkills(state = {}, action) {
-    var response = action.response.skills;
+    var response = action.response['skills-new'];
 
     if (typeof response === 'undefined') {
         return state;
