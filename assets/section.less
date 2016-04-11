@@ -38,40 +38,54 @@
 		}
 	}
 
-	ul.section-tabs {
-		@around: 4px;
-		list-style: none;
+	.section-tabs {
+		@control-width: 16px;
+		box-sizing: border-box;
+		position: relative;
+		overflow: hidden;
 		height: @section-top;
-		margin: 0 -@around;
 		line-height: @section-top;
 		font-size: @section-top-font;
 
-		&:after {
-			.clear-float;
+		.section-tabs-main {
+			overflow-y: hidden;
 		}
 
-		li {
-			display: inline-block;
-			float: left;
-			min-width: @section-top-font * 3;
-			margin: 0 @around;
-			padding: 0 12px;
-			color: @color-strong;
-			text-align: center;
-			text-transform: uppercase;
-			cursor: pointer;
+		.section-tabs-contain {
+			@around: 4px;
+			white-space:nowrap;
 
-			&:hover {
-				color: lighten(@color-strong, 25%);
-			}
+			.section-tab {
+				display: inline-block;
+				min-width: @section-top-font * 3;
+				margin: 0 @around;
+				padding: 0 12px;
+				color: @color-strong;
+				text-align: center;
+				text-transform: uppercase;
+				cursor: pointer;
 
-			&.actived {
-				background: @color-normal;
-				color: darken(@color-strong, 50%);
-				cursor: default;
+				&:hover {
+					color: lighten(@color-strong, 25%);
+				}
+
+				&.actived {
+					background: @color-normal;
+					color: darken(@color-strong, 50%);
+					cursor: default;
+				}
+
+				&:first-child {
+					margin-left: 0;
+				}
+
+				&:last-child {
+					margin-right: 0;
+				}
 			}
 		}
 	}
+
 
 	/* =========================================================================
 	 * = infobox

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import * as actions from '../actions/skills';
 
-import TreeTabs from '../components/Skills/TreeTabs';
 import Tree from '../components/Skills/Tree';
 import SkillsSide from './SkillsSide';
 
@@ -52,11 +51,21 @@ class Skills extends Component
 
         return (
             <div className="section sections-skill">
-                <TreeTabs {...app}
-                    trees={trees}
-                    currectTree={currectTree}
-                    onClick={(e) => {dispatch(actions.activeSkillTree(e))}}
-                />
+                <div className="section-tabs">
+    				<div className="section-tabs-main">
+    					<div className="section-tabs-contain">
+    						{trees.map((tree, index) =>
+    				            <li key={index}
+    				                className={(tree === currectTree)? 'section-tab actived' : 'section-tab'}
+    				                onClick={(e) => {dispatch(actions.activeSkillTree(index))}}
+    				            >
+    								<span>{locale(`st_menu_${tree.name}`)}</span>
+    								<span>({tree.spendPoints})</span>
+    							</li>
+    				        )}
+    					</div>
+    				</div>
+    			</div>
                 <div className="section-main">
                     <div className="section-content">
                         {(currectTree) &&

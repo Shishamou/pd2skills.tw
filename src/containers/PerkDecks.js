@@ -44,6 +44,19 @@ class PerkDecks extends Component
 
         return (
             <div className="section sections-perks">
+                <div className="section-tabs">
+                    <div className="section-tabs-main">
+                        <div className="section-tabs-contain">
+                            {perks.map((perk, index) =>
+                                <div key={index}
+                                    className={(index === activedPerk)? 'section-tab actived' : 'section-tab'}
+                                >
+                                    <span>{locale(`menu_st_spec_${perk.name}`)}</span>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
                 <div className="section-main">
                     <div className="section-content">
                         <Perks {...app} perks={perks} activedPerk={activedPerk} />
