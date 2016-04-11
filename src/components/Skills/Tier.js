@@ -4,19 +4,14 @@ import Skill from './Skill';
 class Tier extends Component
 {
 	render() {
-		const { tree, tier, tierRank } = this.props;
-
-		var className = ['tier'];
-		if (tier.unlocked) className.push('tier-unlocked');
-		if (tree.reduced) className.push('tier-reduced');
-		className = className.join(' ');
+		const { tier, tierRank } = this.props;
 
 		var currectUnlockRequire = tier.currectUnlockRequire;
 		if (currectUnlockRequire < 10)
 			currectUnlockRequire = '0' + currectUnlockRequire;
 
 		return (
-			<div className={className}>
+			<div className={this.getClassName()}>
 				<div className="tier-skills">{this.renderSkills()}</div>
 				<div className="tier-aside">
 					<p>{tierRank}</p>
@@ -24,6 +19,16 @@ class Tier extends Component
 				</div>
 			</div>
 		);
+	}
+
+	getClassName() {
+		const { tree, tier } = this.props;
+
+		var className = ['tier'];
+		if (tier.unlocked) className.push('tier-unlocked');
+		if (tree.reduced) className.push('tier-reduced');
+
+		return className.join(' ');
 	}
 
 	renderSkills() {

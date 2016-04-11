@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import * as actions from '../actions/skills';
 
-import Tree from '../components/Skills/Tree';
+import SkillsTabs from '../components/Skills/SkillsTabs';
+import SkillsMain from '../components/Skills/SkillsMain';
 import SkillsSide from './SkillsSide';
 
 class Skills extends Component
@@ -36,8 +37,6 @@ class Skills extends Component
         const { locale, localeText } = this.props;
 
         const app = {
-            locale,
-            localeText,
             reflowCanvas      : this.reflowCanvas,
             getTree           : (id) => this.props.trees[id],
             getTier           : (id) => this.props.tiers[id],
@@ -51,31 +50,8 @@ class Skills extends Component
 
         return (
             <div className="section sections-skill">
-                <div className="section-tabs">
-    				<div className="section-tabs-main">
-    					<div className="section-tabs-contain">
-    						{trees.map((tree, index) =>
-    				            <li key={index}
-    				                className={(tree === currectTree)? 'section-tab actived' : 'section-tab'}
-    				                onClick={(e) => {dispatch(actions.activeSkillTree(index))}}
-    				            >
-    								<span>{locale(`st_menu_${tree.name}`)}</span>
-    								<span>({tree.spendPoints})</span>
-    							</li>
-    				        )}
-    					</div>
-    				</div>
-    			</div>
-                <div className="section-main">
-                    <div className="section-content">
-                        {(currectTree) &&
-                            <Tree {...app}
-                                tree={currectTree}
-                                available={availablePoints}
-                            />
-                        }
-                    </div>
-                </div>
+                <SkillsTabs {...this.props} onClick={(e) => {dispatch(actions.activeSkillTree(e))}} />
+                <SkillsMain {...this.props} {...app} />
                 <SkillsSide {...this.props} />
             </div>
         )
