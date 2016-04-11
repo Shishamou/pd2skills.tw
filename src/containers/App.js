@@ -33,7 +33,7 @@ class App extends Component
         const display = this.props.display || 0;
 
         return (
-            <div className="wrapper">
+            <div className="app">
                 <div className="header">
                     <ul className="header-nav">
                         {tabs.map((tab, index) =>

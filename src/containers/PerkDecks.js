@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 
 import * as actions from '../actions/perks';
 
-import Perks from '../components/PerkDecks/Perks';
+import PerkDecksTabs from '../components/PerkDecks/PerkDecksTabs';
+import PerkDecksMain from '../components/PerkDecks/PerkDecksMain';
 import PerkDecksSide from '../components/PerkDecks/PerkDecksSide';
 
 class PerkDecks extends Component
 {
-    constructor(prop) {
-        super(prop);
+    constructor(props) {
+        super(props);
         this.reflowCanvas = this.reflowCanvas.bind(this);
     }
 
@@ -23,12 +24,8 @@ class PerkDecks extends Component
 
     render() {
         const { dispatch } = this.props;
-        const { perks, activedPerk } = this.props;
-        const { locale, localeText } = this.props;
 
         const app = {
-            locale,
-            localeText,
             reflowCanvas     : this.reflowCanvas,
             getPerk          : (id) => this.props.perks[id],
             getDeck          : (id) => this.props.decks[id],
@@ -44,12 +41,9 @@ class PerkDecks extends Component
 
         return (
             <div className="section sections-perks">
-                <div className="section-main">
-                    <div className="section-content">
-                        <Perks {...app} perks={perks} activedPerk={activedPerk} />
-                    </div>
-                </div>
-                <PerkDecksSide {...app} display={display} />
+                <PerkDecksTabs {...this.props} onClick={(e) => dispatch(actions.switchPerks(e))} />
+                <PerkDecksMain {...this.props} {...app} />
+                <PerkDecksSide {...this.props} display={display} />
             </div>
         )
     }

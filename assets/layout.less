@@ -2,6 +2,7 @@
 
 body {
 	@background: './images/background.png';
+
 	background: @color-background;
 	background-image: url(@background);
 	background-position: center;
@@ -11,20 +12,28 @@ body {
 	font-family: 'Roboto Condensed', 'sans-serif', 'WenQuanYi Zen Hei', 'Heiti TC', 'Noto Sans TC', 'Microsoft JhengHei';
 }
 
-footer {
-	text-align: center;
-	font-size: 14px;
-}
-
 .layout() {
 	.wrapper {
 		box-sizing: border-box;
+		overflow: hidden;
 		min-width: @min-width;
 		max-width: @max-width;
-		height: @max-height;
+		height: 100%;
 		margin: 0 auto;
 		padding: 0 @wrapper-around;
+		background-color: rgba(255,255,255,.02);
 	}
+
+	.app {
+		height: @max-height;
+	}
+
+	footer {
+		padding: 20px 0;
+		text-align: center;
+		font-size: 14px;
+	}
+
 	/* =========================================================================
 	 * = Header
 	 * =======================================================================*/

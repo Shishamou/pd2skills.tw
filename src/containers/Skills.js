@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import * as actions from '../actions/skills';
 
-import TreeTabs from '../components/Skills/TreeTabs';
-import Tree from '../components/Skills/Tree';
+import SkillsTabs from '../components/Skills/SkillsTabs';
+import SkillsMain from '../components/Skills/SkillsMain';
 import SkillsSide from './SkillsSide';
 
 class Skills extends Component
@@ -37,8 +37,6 @@ class Skills extends Component
         const { locale, localeText } = this.props;
 
         const app = {
-            locale,
-            localeText,
             reflowCanvas      : this.reflowCanvas,
             getTree           : (id) => this.props.trees[id],
             getTier           : (id) => this.props.tiers[id],
@@ -52,21 +50,8 @@ class Skills extends Component
 
         return (
             <div className="section sections-skill">
-                <TreeTabs {...app}
-                    trees={trees}
-                    currectTree={currectTree}
-                    onClick={(e) => {dispatch(actions.activeSkillTree(e))}}
-                />
-                <div className="section-main">
-                    <div className="section-content">
-                        {(currectTree) &&
-                            <Tree {...app}
-                                tree={currectTree}
-                                available={availablePoints}
-                            />
-                        }
-                    </div>
-                </div>
+                <SkillsTabs {...this.props} onClick={(e) => {dispatch(actions.activeSkillTree(e))}} />
+                <SkillsMain {...this.props} {...app} />
                 <SkillsSide {...this.props} />
             </div>
         )
