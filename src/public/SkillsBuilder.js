@@ -25,7 +25,7 @@ export default class SkillsBuilder {
         var { subtrees, skills, tiersInformation } = datas;
         tiersInformation = this.objectAttributeToCamelCase(tiersInformation);
 
-        this.skills = datas.skills;
+        this.skillDatas = datas.skills;
         this.tierSettings = tiersInformation;
         subtrees.forEach((tree) => this.buildSubTree(tree));
     }
@@ -62,7 +62,6 @@ export default class SkillsBuilder {
     buildSubTree(treeData) {
         var tree = this.createTree({ name: treeData.name });
         var treeId = this.registerTree(tree);
-        var tierSettings = this.tierSettings;
 
         tree.tiers = [];
         for (var tier = 0; tier < 4; tier++) {
@@ -72,7 +71,7 @@ export default class SkillsBuilder {
                 : treeData['skills'].slice(start, start + 2);
 
             tree.tiers.push(this.buildTier(
-                Object.assign({ treeId, skills, tier }, tierSettings[tier])
+                Object.assign({ treeId, skills, tier }, this.tierSettings[tier])
             ));
         }
     }
@@ -88,6 +87,7 @@ export default class SkillsBuilder {
         var treeId = tierData.treeId;
 
         tier.skills = tierData.skills.map((skill) => {
+            skill = this.getSkillData(skill);
             return this.buildSkill({
                 treeId,
                 tierId,
@@ -108,6 +108,23 @@ export default class SkillsBuilder {
     buildSkill(skillData) {
         var skill = this.createSkill(skillData);
         return this.registerSkill(skill);
+    }
+
+    /**
+     *
+     * @param string
+     * @return Object
+     */
+    getSkillData(key) {
+        if ( ! this.skillDataIndex) {
+            this.skillDataIndex = {};
+
+            this.skillDatas.forEach((data, key) => {
+                this.skillDataIndex[data.name] = key;
+            });
+        }
+
+        return this.skillDatas[this.skillDataIndex[key]];
     }
 
     // =========================================================================
