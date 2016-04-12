@@ -14,22 +14,69 @@
     ],
     "skills": [
         {
-            "name": "ghost_2_1"
+            "name": "ghost_2_1",
+            "icon": "unknown",
+            "datas": {
+                "multibasic": "multibasic",
+                "multibasic2": "multibasic2",
+                "multipro": "multipro",
+                "multipro2": "multipro2"
+            }
         },
         {
-            "name": "ghost_2_2"
+            "name": "ghost_2_2",
+            "icon": "unknown",
+            "datas": {
+                "multibasic": "multibasic",
+                "multibasic2": "multibasic2",
+                "multipro": "multipro"
+            }
         },
         {
-            "name": "ghost_2_3"
+            "name": "ghost_2_3",
+            "icon": "unknown",
+            "datas": {
+                "multibasic": "multibasic",
+                "multipro": "multipro"
+            }
         },
         {
-            "name": "ghost_2_4"
+            "name": "ghost_2_4",
+            "icon": "unknown",
+            "datas": {
+                "multibasic": "multibasic",
+                "multibasic2": "multibasic2",
+                "multibasic3": "multibasic3",
+                "multibasic4": "multibasic4",
+                "multibasic5": "multibasic5",
+                "multipro": "multipro",
+                "multipro2": "multipro2",
+                "multipro3": "multipro3",
+                "multipro4": "multipro4"
+            }
         },
         {
-            "name": "ghost_2_5"
+            "name": "ghost_2_5",
+            "icon": "unknown",
+            "datas": {
+                "multibasic": "multibasic",
+                "multipro": "multipro"
+            }
         },
         {
-            "name": "ghost_2_6"
+            "name": "ghost_2_6",
+            "icon": "unknown",
+            "datas": {
+                "multibasic": "multibasic",
+                "multibasic2": "multibasic2",
+                "multibasic3": "multibasic3",
+                "multibasic4": "multibasic4",
+                "multibasic5": "multibasic5",
+                "multipro": "multipro",
+                "multipro2": "multipro2",
+                "multipro3": "multipro3",
+                "multipro4": "multipro4"
+            }
         }
     ]
 }

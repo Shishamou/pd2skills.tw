@@ -14,22 +14,57 @@
     ],
     "skills": [
         {
-            "name": "mastermind_3_1"
+            "name": "mastermind_3_1",
+            "icon": "unknown",
+            "datas": {
+                "multibasic": "multibasic",
+                "multipro": "multipro"
+            }
         },
         {
-            "name": "mastermind_3_2"
+            "name": "mastermind_3_2",
+            "icon": "unknown",
+            "datas": {
+                "multibasic": "multibasic",
+                "multipro": "multipro"
+            }
         },
         {
-            "name": "mastermind_3_3"
+            "name": "mastermind_3_3",
+            "icon": "unknown",
+            "datas": {
+                "multibasic": "multibasic",
+                "multipro": "multipro"
+            }
         },
         {
-            "name": "mastermind_3_4"
+            "name": "mastermind_3_4",
+            "icon": "unknown",
+            "datas": {
+                "multibasic": "multibasic",
+                "multipro": "multipro",
+                "multipro2": "multipro2"
+            }
         },
         {
-            "name": "mastermind_3_5"
+            "name": "mastermind_3_5",
+            "icon": "unknown",
+            "datas": {
+                "multibasic": "multibasic",
+                "multibasic2": "multibasic2",
+                "multipro": "multipro",
+                "multipro2": "multipro2"
+            }
         },
         {
-            "name": "mastermind_3_6"
+            "name": "mastermind_3_6",
+            "icon": "unknown",
+            "datas": {
+                "multibasic": "multibasic",
+                "multibasic2": "multibasic2",
+                "multipro": "multipro",
+                "multipro2": "multipro2"
+            }
         }
     ]
 }
