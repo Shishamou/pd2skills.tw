@@ -16,7 +16,7 @@
 	@tier-aside-font    : @skill-font-size * 0.9;
 
 	@tree-width         : @tier-width + @tier-aside-width;
-	@tree-heigth        : @tier-height * 4;
+	@tree-heigth        : @tier-height * 4.5;
 
 	/* =========================================================================
 	 * = Section
@@ -59,13 +59,15 @@
 
 	.tree {
 		position: relative;
+		height: @tree-heigth;
 
 		.progressbar {
 			position: absolute;
 			top: @tier-height;
 			right: (@tier-aside-width - @progressbar-width) / 2;
 			width: @progressbar-width;
-			height: @tier-height * 5;
+			height: @tier-height * 3;
+			background: rgba(255,255,255,.02);
 
 			&:before {
 				content: ' ';
@@ -93,7 +95,7 @@
 		bottom: 0;
 		z-index: 1;
 		width: @skill-block-width;
-		height: @tier-height;
+		height: @tier-height * 0.5;
 		font-size: 0;
 
 		&::before {
@@ -195,7 +197,6 @@
 		width: @skill-block-width;
 		height: @skill-icon-size;
 		border: @skill-border-width solid transparent;
-		background: rgba(255,255,255,.2);
 		cursor: pointer;
 
 		&:hover {

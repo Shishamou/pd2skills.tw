@@ -44,11 +44,10 @@ class Tree extends Component
 			var previousTier = getTier(tiers[i - 1]);
 
 			if (currectTier.unlocked === false) {
-				if (i === 1) return 0;
 				var range = currectTier.currectUnlockRequire - previousTier.currectUnlockRequire;
 				var tierUsed = currectTier.currectUnlockNeeded + range;
 				var tierProgress = Math.floor(tierUsed / range * 100 * 0.2);
-				var progress = (i - 2) * 20;
+				var progress = (i - 1) * 33;
 
 				return progress + tierProgress;
 			}
