@@ -1,0 +1,35 @@
+{
+    "subtrees": [
+        {
+            "name": "technician_3",
+            "skills": [
+                "technician_3_1",
+                "technician_3_2",
+                "technician_3_3",
+                "technician_3_4",
+                "technician_3_5",
+                "technician_3_6"
+            ]
+        }
+    ],
+    "skills": [
+        {
+            "name": "technician_3_1"
+        },
+        {
+            "name": "technician_3_2"
+        },
+        {
+            "name": "technician_3_3"
+        },
+        {
+            "name": "technician_3_4"
+        },
+        {
+            "name": "technician_3_5"
+        },
+        {
+            "name": "technician_3_6"
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+{
+    "subtrees": [
+        {
+            "name": "ghost_1",
+            "skills": [
+                "ghost_1_1",
+                "ghost_1_2",
+                "ghost_1_3",
+                "ghost_1_4",
+                "ghost_1_5",
+                "ghost_1_6"
+            ]
+        }
+    ],
+    "skills": [
+        {
+            "name": "ghost_1_1"
+        },
+        {
+            "name": "ghost_1_2"
+        },
+        {
+            "name": "ghost_1_3"
+        },
+        {
+            "name": "ghost_1_4"
+        },
+        {
+            "name": "ghost_1_5"
+        },
+        {
+            "name": "ghost_1_6"
+        }
+    ]
+}

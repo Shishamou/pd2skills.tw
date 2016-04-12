@@ -893,6 +893,84 @@
             "menu_jail_diet_desc": "基礎：##$basic;##\n當你的隱匿值從##$multibasic3;##每降##$multibasic2;##點，你會得到##$multibasic;##閃避機率直到##$multibasic4;##。\n\n精通：##$pro;##\n當你的隱匿值從##$multipro3;##每降##$multipro2;##點，你會得到##$multipro;##閃避機率直到##$multipro4;##。",
             "menu_akimbo_skill": "雙槍\nAkimbo",
             "menu_akimbo_skill_desc": "基礎：##$basic;##\n你可以一次拿著兩把武器。雙持武器列表可以在物品選單中的\"Akimbo\"列表下找到。\n\n雙持武器有##$multibasic;##的穩定懲罰。\n\n精通：##$pro;##\n雙持武器的後座力懲罰提高至##$multipro;##，並且增加##$multipro2;##的備用彈藥量。",
+            "st_menu_enforcer_1": "st_menu_enforcer_1",
+            "menu_enforcer_1_1": "menu_enforcer_1_1",
+            "menu_enforcer_1_1_desc": "menu_enforcer_1_1_desc",
+            "menu_enforcer_1_2": "menu_enforcer_1_2",
+            "menu_enforcer_1_2_desc": "menu_enforcer_1_2_desc",
+            "menu_enforcer_1_3": "menu_enforcer_1_3",
+            "menu_enforcer_1_3_desc": "menu_enforcer_1_3_desc",
+            "menu_enforcer_1_4": "menu_enforcer_1_4",
+            "menu_enforcer_1_4_desc": "menu_enforcer_1_4_desc",
+            "menu_enforcer_1_5": "menu_enforcer_1_5",
+            "menu_enforcer_1_5_desc": "menu_enforcer_1_5_desc",
+            "menu_enforcer_1_6": "menu_enforcer_1_6",
+            "menu_enforcer_1_6_desc": "menu_enforcer_1_6_desc",
+            "st_menu_enforcer_2": "st_menu_enforcer_2",
+            "menu_enforcer_2_1": "menu_enforcer_2_1",
+            "menu_enforcer_2_1_desc": "menu_enforcer_2_1_desc",
+            "menu_enforcer_2_2": "menu_enforcer_2_2",
+            "menu_enforcer_2_2_desc": "menu_enforcer_2_2_desc",
+            "menu_enforcer_2_3": "menu_enforcer_2_3",
+            "menu_enforcer_2_3_desc": "menu_enforcer_2_3_desc",
+            "menu_enforcer_2_4": "menu_enforcer_2_4",
+            "menu_enforcer_2_4_desc": "menu_enforcer_2_4_desc",
+            "menu_enforcer_2_5": "menu_enforcer_2_5",
+            "menu_enforcer_2_5_desc": "menu_enforcer_2_5_desc",
+            "menu_enforcer_2_6": "menu_enforcer_2_6",
+            "menu_enforcer_2_6_desc": "menu_enforcer_2_6_desc",
+            "st_menu_enforcer_3": "st_menu_enforcer_3",
+            "menu_enforcer_3_1": "menu_enforcer_3_1",
+            "menu_enforcer_3_1_desc": "menu_enforcer_3_1_desc",
+            "menu_enforcer_3_2": "menu_enforcer_3_2",
+            "menu_enforcer_3_2_desc": "menu_enforcer_3_2_desc",
+            "menu_enforcer_3_3": "menu_enforcer_3_3",
+            "menu_enforcer_3_3_desc": "menu_enforcer_3_3_desc",
+            "menu_enforcer_3_4": "menu_enforcer_3_4",
+            "menu_enforcer_3_4_desc": "menu_enforcer_3_4_desc",
+            "menu_enforcer_3_5": "menu_enforcer_3_5",
+            "menu_enforcer_3_5_desc": "menu_enforcer_3_5_desc",
+            "menu_enforcer_3_6": "menu_enforcer_3_6",
+            "menu_enforcer_3_6_desc": "menu_enforcer_3_6_desc",
+            "st_menu_ghost_1": "st_menu_ghost_1",
+            "menu_ghost_1_1": "menu_ghost_1_1",
+            "menu_ghost_1_1_desc": "menu_ghost_1_1_desc",
+            "menu_ghost_1_2": "menu_ghost_1_2",
+            "menu_ghost_1_2_desc": "menu_ghost_1_2_desc",
+            "menu_ghost_1_3": "menu_ghost_1_3",
+            "menu_ghost_1_3_desc": "menu_ghost_1_3_desc",
+            "menu_ghost_1_4": "menu_ghost_1_4",
+            "menu_ghost_1_4_desc": "menu_ghost_1_4_desc",
+            "menu_ghost_1_5": "menu_ghost_1_5",
+            "menu_ghost_1_5_desc": "menu_ghost_1_5_desc",
+            "menu_ghost_1_6": "menu_ghost_1_6",
+            "menu_ghost_1_6_desc": "menu_ghost_1_6_desc",
+            "st_menu_ghost_2": "st_menu_ghost_2",
+            "menu_ghost_2_1": "menu_ghost_2_1",
+            "menu_ghost_2_1_desc": "menu_ghost_2_1_desc",
+            "menu_ghost_2_2": "menu_ghost_2_2",
+            "menu_ghost_2_2_desc": "menu_ghost_2_2_desc",
+            "menu_ghost_2_3": "menu_ghost_2_3",
+            "menu_ghost_2_3_desc": "menu_ghost_2_3_desc",
+            "menu_ghost_2_4": "menu_ghost_2_4",
+            "menu_ghost_2_4_desc": "menu_ghost_2_4_desc",
+            "menu_ghost_2_5": "menu_ghost_2_5",
+            "menu_ghost_2_5_desc": "menu_ghost_2_5_desc",
+            "menu_ghost_2_6": "menu_ghost_2_6",
+            "menu_ghost_2_6_desc": "menu_ghost_2_6_desc",
+            "st_menu_ghost_3": "st_menu_ghost_3",
+            "menu_ghost_3_1": "menu_ghost_3_1",
+            "menu_ghost_3_1_desc": "menu_ghost_3_1_desc",
+            "menu_ghost_3_2": "menu_ghost_3_2",
+            "menu_ghost_3_2_desc": "menu_ghost_3_2_desc",
+            "menu_ghost_3_3": "menu_ghost_3_3",
+            "menu_ghost_3_3_desc": "menu_ghost_3_3_desc",
+            "menu_ghost_3_4": "menu_ghost_3_4",
+            "menu_ghost_3_4_desc": "menu_ghost_3_4_desc",
+            "menu_ghost_3_5": "menu_ghost_3_5",
+            "menu_ghost_3_5_desc": "menu_ghost_3_5_desc",
+            "menu_ghost_3_6": "menu_ghost_3_6",
+            "menu_ghost_3_6_desc": "menu_ghost_3_6_desc",
             "st_menu_mastermind_1": "醫療兵",
             "menu_mastermind_1_1": "醫療兵\nCombat Medic",
             "menu_mastermind_1_1_desc": "基礎：##$basic;##\n當你救起一名隊友，可以獲得##$multibasic;##秒的##$multibasic2;##傷害加乘 。\n\n精通：##$pro;##\n被你救起的隊友可以獲得多##$multipro;##的生命值。",
@@ -906,32 +984,71 @@
             "menu_mastermind_1_5_desc": "基礎：##$basic;##\n你攜帶的醫療包增加至##$multibasic;##個。\n\n精通：##$pro;##\n醫療包的使用次數增加了##$multipro;##次。",
             "menu_mastermind_1_6": "激勵\nInspire",
             "menu_mastermind_1_6_desc": "基礎：##$basic;##\n你救起隊友的時間快##$multibasic;##。 呼喝隊友可增加他的移動速度##$multibasic2;##，維持##$multibasic3;##秒。\n\n精通： ##$pro;##\n你能在七米距離內用叫聲遙距救起隊友，成功率##$multipro;##，隔著牆壁和地板，有效距離將會更長。",
-            "st_menu_mastermind_2": "Controller",
-            "menu_mastermind_2_1": "menu_mastermind_2_1",
-            "menu_mastermind_2_1_desc": "menu_mastermind_2_1_desc",
-            "menu_mastermind_2_2": "menu_mastermind_2_2",
-            "menu_mastermind_2_2_desc": "menu_mastermind_2_2_desc",
-            "menu_mastermind_2_3": "menu_mastermind_2_3",
-            "menu_mastermind_2_3_desc": "menu_mastermind_2_3_desc",
-            "menu_mastermind_2_4": "menu_mastermind_2_4",
-            "menu_mastermind_2_4_desc": "menu_mastermind_2_4_desc",
-            "menu_mastermind_2_5": "menu_mastermind_2_5",
-            "menu_mastermind_2_5_desc": "menu_mastermind_2_5_desc",
-            "menu_mastermind_2_6": "menu_mastermind_2_6",
-            "menu_mastermind_2_6_desc": "menu_mastermind_2_6_desc",
-            "st_menu_mastermind_3": "Sharpshooter",
-            "menu_mastermind_3_1": "menu_mastermind_3_1",
-            "menu_mastermind_3_1_desc": "menu_mastermind_3_1_desc",
-            "menu_mastermind_3_2": "menu_mastermind_3_2",
-            "menu_mastermind_3_2_desc": "menu_mastermind_3_2_desc",
-            "menu_mastermind_3_3": "menu_mastermind_3_3",
-            "menu_mastermind_3_3_desc": "menu_mastermind_3_3_desc",
-            "menu_mastermind_3_4": "menu_mastermind_3_4",
-            "menu_mastermind_3_4_desc": "menu_mastermind_3_4_desc",
-            "menu_mastermind_3_5": "menu_mastermind_3_5",
-            "menu_mastermind_3_5_desc": "menu_mastermind_3_5_desc",
-            "menu_mastermind_3_6": "menu_mastermind_3_6",
-            "menu_mastermind_3_6_desc": "menu_mastermind_3_6_desc"
+            "st_menu_mastermind_2": "控制手",
+            "menu_mastermind_2_1": "捆工\nCable Guy",
+            "menu_mastermind_2_1_desc": "基礎：##$basic;##\n捆綁人質快##$multibasic;##。\n\n精通：##$pro;##\n攜帶的綁繩增加##$multipro;##條。",
+            "menu_mastermind_2_2": "耐力\nEndurance",
+            "menu_mastermind_2_2_desc": "基礎：##$basic;##\n你跑步的耐力增加##$multibasic;##，你和隊友的耐力增加##$multibasic2;##。\n\n精通：##$pro;##\n你製造的噪音可壓制平民（包括開槍、敲破玻璃、手榴彈、甚至開電鋸。武器威嚇值越高就越遠越有效。）。 壓制平民的有效時間增加##$multipro;##，\n\n他們會乖乖伏地更長時間。",
+            "menu_mastermind_2_3": "小丑\nJoker",
+            "menu_mastermind_2_3_desc": "基礎：##$basic;##\n你可對成為人質的警察互動，讓他變節成為我方同伴。本技能在潛行階段無法使用。\n\n你只能擁有一名變節警察，但擁有本技能的同伴可各自擁有自己的變節警察。\n\n精通：##$pro;##\n變節警察增加##$multipro;##生命值，並增加##$multipro2;##攻擊力。\n\n變節所需時間減少##$multipro3;##。",
+            "menu_mastermind_2_4": "斯德哥爾摩症候群\nStockholm Syndrome",
+            "menu_mastermind_2_4_desc": "基礎：##$basic;##\n當你倒地時，你可以向附近未被綁住的平民案F鍵互動有機會他們會救起你。你的人質不會被執法人員救走。\n\n精通：##$pro;##\n救你的平民會有機會再送你##$multipro;##%子彈量。每當你被逮捕時，你的人質會交換自身而讓你平安歸來，突襲時仍有此效果。",
+            "menu_mastermind_2_5": "共犯\nPartner in Crime",
+            "menu_mastermind_2_5_desc": "基礎：##$basic;##\n當你擁有一名變節警察，你的移動速度快 ##$multibasic;##。\n\n變節警察受傷減少##$multibasic2;##。\n\n精通：##$pro;##\n醫療包的使用次數增加至##$multipro;##次。",
+            "menu_mastermind_2_6": "綁匪\nHostage Taker",
+            "menu_mastermind_2_6_desc": "基礎：##$basic;##\n當隊伍擁有最少一名人質（包括變節警察）時，每##$multibasic2;##秒你能回復##$multibasic;##生命值。\n\n精通：##$pro;##\n當隊伍擁有最少一名人質（包括變節警察）時，每##$multipro2;##秒你能回復##$multipro;##生命值。",
+            "st_menu_mastermind_3": "神射手",
+            "menu_mastermind_3_1": "穩定射擊\nStable Shot",
+            "menu_mastermind_3_1_desc": "基礎：##$basic;##\n你獲得##$multibasic;##點穩定度 。\n\n精通：##$pro;##\n當你站著不動時，將獲得##$multipro;##點精準度。",
+            "menu_mastermind_3_2": "步槍兵\nRifleman",
+            "menu_mastermind_3_2_desc": "基礎：##$basic;##\n突擊步槍及狙擊槍切換瞄準速度快##$multibasic;##。\n\n精通：##$pro;##\n突擊步槍及狙擊槍的瞄具放大倍率提升##$multipro;##。",
+            "menu_mastermind_3_3": "狙擊手\nSharpshooter",
+            "menu_mastermind_3_3_desc": "基礎：##$basic;##\n單發射擊的SMG、突擊步槍與狙擊槍增加##$multibasic;##點精確度。\n\n精通：##$pro;##\n當你放下瞄具的同時，你將獲得##$multipro;##%的精準度。只有單發射擊的SMG、突擊步槍與狙擊槍能觸發此效果",
+            "menu_mastermind_3_4": "觀察者\nSpotter",
+            "menu_mastermind_3_4_desc": "基礎：##$basic;##\n被你標記的特殊敵人會受多##$multibasic;##的額外傷害。\n\n精通：##$pro;##\n你標記的敵人會依你標記##$multipro;##米的距離，再額外多受##$multipro2;##%的傷害。",
+            "menu_mastermind_3_5": "激進裝填\nAggressive Reload",
+            "menu_mastermind_3_5_desc": "基礎：##$basic;##\n用彈匣內最後一發子彈擊殺任一名敵人將會減少你##$multibasic;##%的裝填時間，時間維持##$multibasic2;##秒。只有單發射擊的SMG、突擊步槍與狙擊槍能觸發此效果。\n\n精通：##$pro;##\n爆頭擊殺任一名敵人將會減少你##$multipro;##%的裝填時間，時間維持##$multipro2;##秒。只有單發射擊的SMG、突擊步槍與狙擊槍能觸發此效果。",
+            "menu_mastermind_3_6": "彈藥效率\nAmmo Efficency",
+            "menu_mastermind_3_6_desc": "基礎：##$basic;##\n連續##$multibasic;##個爆頭將退還##$multibasic2;##發子彈到你所使用的武器。只有單發射擊的SMG、突擊步槍與狙擊槍能觸發此效果。\n\n精通：##$pro;##\n連續##$multipro;##個爆頭將退還##$multipro2;##發子彈道你所使用的武器。只有單發射擊的SMG、突擊步槍與狙擊槍能觸發此效果。",
+            "st_menu_technician_1": "st_menu_technician_1",
+            "menu_technician_1_1": "menu_technician_1_1",
+            "menu_technician_1_1_desc": "menu_technician_1_1_desc",
+            "menu_technician_1_2": "menu_technician_1_2",
+            "menu_technician_1_2_desc": "menu_technician_1_2_desc",
+            "menu_technician_1_3": "menu_technician_1_3",
+            "menu_technician_1_3_desc": "menu_technician_1_3_desc",
+            "menu_technician_1_4": "menu_technician_1_4",
+            "menu_technician_1_4_desc": "menu_technician_1_4_desc",
+            "menu_technician_1_5": "menu_technician_1_5",
+            "menu_technician_1_5_desc": "menu_technician_1_5_desc",
+            "menu_technician_1_6": "menu_technician_1_6",
+            "menu_technician_1_6_desc": "menu_technician_1_6_desc",
+            "st_menu_technician_2": "st_menu_technician_2",
+            "menu_technician_2_1": "menu_technician_2_1",
+            "menu_technician_2_1_desc": "menu_technician_2_1_desc",
+            "menu_technician_2_2": "menu_technician_2_2",
+            "menu_technician_2_2_desc": "menu_technician_2_2_desc",
+            "menu_technician_2_3": "menu_technician_2_3",
+            "menu_technician_2_3_desc": "menu_technician_2_3_desc",
+            "menu_technician_2_4": "menu_technician_2_4",
+            "menu_technician_2_4_desc": "menu_technician_2_4_desc",
+            "menu_technician_2_5": "menu_technician_2_5",
+            "menu_technician_2_5_desc": "menu_technician_2_5_desc",
+            "menu_technician_2_6": "menu_technician_2_6",
+            "menu_technician_2_6_desc": "menu_technician_2_6_desc",
+            "st_menu_technician_3": "st_menu_technician_3",
+            "menu_technician_3_1": "menu_technician_3_1",
+            "menu_technician_3_1_desc": "menu_technician_3_1_desc",
+            "menu_technician_3_2": "menu_technician_3_2",
+            "menu_technician_3_2_desc": "menu_technician_3_2_desc",
+            "menu_technician_3_3": "menu_technician_3_3",
+            "menu_technician_3_3_desc": "menu_technician_3_3_desc",
+            "menu_technician_3_4": "menu_technician_3_4",
+            "menu_technician_3_4_desc": "menu_technician_3_4_desc",
+            "menu_technician_3_5": "menu_technician_3_5",
+            "menu_technician_3_5_desc": "menu_technician_3_5_desc",
+            "menu_technician_3_6": "menu_technician_3_6",
+            "menu_technician_3_6_desc": "menu_technician_3_6_desc"
         }
     },
     "perks": {
@@ -2413,6 +2530,38 @@
                     "mastermind_2",
                     "mastermind_3"
                 ]
+            },
+            {
+                "name": "enforcer",
+                "subtrees": [
+                    "enforcer_1",
+                    "enforcer_2",
+                    "enforcer_3"
+                ]
+            },
+            {
+                "name": "technician",
+                "subtrees": [
+                    "technician_1",
+                    "technician_2",
+                    "technician_3"
+                ]
+            },
+            {
+                "name": "ghost",
+                "subtrees": [
+                    "ghost_1",
+                    "ghost_2",
+                    "ghost_3"
+                ]
+            },
+            {
+                "name": "hoxton_pack",
+                "subtrees": [
+                    "hoxton_pack_1",
+                    "hoxton_pack_2",
+                    "hoxton_pack_3"
+                ]
             }
         ],
         "subtrees": [
@@ -2447,6 +2596,138 @@
                     "mastermind_3_4",
                     "mastermind_3_5",
                     "mastermind_3_6"
+                ]
+            },
+            {
+                "name": "enforcer_1",
+                "skills": [
+                    "enforcer_1_1",
+                    "enforcer_1_2",
+                    "enforcer_1_3",
+                    "enforcer_1_4",
+                    "enforcer_1_5",
+                    "enforcer_1_6"
+                ]
+            },
+            {
+                "name": "enforcer_2",
+                "skills": [
+                    "enforcer_2_1",
+                    "enforcer_2_2",
+                    "enforcer_2_3",
+                    "enforcer_2_4",
+                    "enforcer_2_5",
+                    "enforcer_2_6"
+                ]
+            },
+            {
+                "name": "enforcer_3",
+                "skills": [
+                    "enforcer_3_1",
+                    "enforcer_3_2",
+                    "enforcer_3_3",
+                    "enforcer_3_4",
+                    "enforcer_3_5",
+                    "enforcer_3_6"
+                ]
+            },
+            {
+                "name": "technician_1",
+                "skills": [
+                    "technician_1_1",
+                    "technician_1_2",
+                    "technician_1_3",
+                    "technician_1_4",
+                    "technician_1_5",
+                    "technician_1_6"
+                ]
+            },
+            {
+                "name": "technician_2",
+                "skills": [
+                    "technician_2_1",
+                    "technician_2_2",
+                    "technician_2_3",
+                    "technician_2_4",
+                    "technician_2_5",
+                    "technician_2_6"
+                ]
+            },
+            {
+                "name": "technician_3",
+                "skills": [
+                    "technician_3_1",
+                    "technician_3_2",
+                    "technician_3_3",
+                    "technician_3_4",
+                    "technician_3_5",
+                    "technician_3_6"
+                ]
+            },
+            {
+                "name": "ghost_1",
+                "skills": [
+                    "ghost_1_1",
+                    "ghost_1_2",
+                    "ghost_1_3",
+                    "ghost_1_4",
+                    "ghost_1_5",
+                    "ghost_1_6"
+                ]
+            },
+            {
+                "name": "ghost_2",
+                "skills": [
+                    "ghost_2_1",
+                    "ghost_2_2",
+                    "ghost_2_3",
+                    "ghost_2_4",
+                    "ghost_2_5",
+                    "ghost_2_6"
+                ]
+            },
+            {
+                "name": "ghost_3",
+                "skills": [
+                    "ghost_3_1",
+                    "ghost_3_2",
+                    "ghost_3_3",
+                    "ghost_3_4",
+                    "ghost_3_5",
+                    "ghost_3_6"
+                ]
+            },
+            {
+                "name": "hoxton_pack_1",
+                "skills": [
+                    "hoxton_pack_1_1",
+                    "hoxton_pack_1_2",
+                    "hoxton_pack_1_3",
+                    "hoxton_pack_1_4",
+                    "hoxton_pack_1_5",
+                    "hoxton_pack_1_6"
+                ]
+            },
+            {
+                "name": "hoxton_pack_2",
+                "skills": [
+                    "hoxton_pack_2_1",
+                    "hoxton_pack_2_2",
+                    "hoxton_pack_2_3",
+                    "hoxton_pack_2_4",
+                    "hoxton_pack_2_5",
+                    "hoxton_pack_2_6"
+                ]
+            },
+            {
+                "name": "hoxton_pack_3",
+                "skills": [
+                    "hoxton_pack_3_1",
+                    "hoxton_pack_3_2",
+                    "hoxton_pack_3_3",
+                    "hoxton_pack_3_4",
+                    "hoxton_pack_3_5",
+                    "hoxton_pack_3_6"
                 ]
             }
         ],
@@ -2504,6 +2785,222 @@
             },
             {
                 "name": "mastermind_3_6"
+            },
+            {
+                "name": "enforcer_1_1"
+            },
+            {
+                "name": "enforcer_1_2"
+            },
+            {
+                "name": "enforcer_1_3"
+            },
+            {
+                "name": "enforcer_1_4"
+            },
+            {
+                "name": "enforcer_1_5"
+            },
+            {
+                "name": "enforcer_1_6"
+            },
+            {
+                "name": "enforcer_2_1"
+            },
+            {
+                "name": "enforcer_2_2"
+            },
+            {
+                "name": "enforcer_2_3"
+            },
+            {
+                "name": "enforcer_2_4"
+            },
+            {
+                "name": "enforcer_2_5"
+            },
+            {
+                "name": "enforcer_2_6"
+            },
+            {
+                "name": "enforcer_3_1"
+            },
+            {
+                "name": "enforcer_3_2"
+            },
+            {
+                "name": "enforcer_3_3"
+            },
+            {
+                "name": "enforcer_3_4"
+            },
+            {
+                "name": "enforcer_3_5"
+            },
+            {
+                "name": "enforcer_3_6"
+            },
+            {
+                "name": "technician_1_1"
+            },
+            {
+                "name": "technician_1_2"
+            },
+            {
+                "name": "technician_1_3"
+            },
+            {
+                "name": "technician_1_4"
+            },
+            {
+                "name": "technician_1_5"
+            },
+            {
+                "name": "technician_1_6"
+            },
+            {
+                "name": "technician_2_1"
+            },
+            {
+                "name": "technician_2_2"
+            },
+            {
+                "name": "technician_2_3"
+            },
+            {
+                "name": "technician_2_4"
+            },
+            {
+                "name": "technician_2_5"
+            },
+            {
+                "name": "technician_2_6"
+            },
+            {
+                "name": "technician_3_1"
+            },
+            {
+                "name": "technician_3_2"
+            },
+            {
+                "name": "technician_3_3"
+            },
+            {
+                "name": "technician_3_4"
+            },
+            {
+                "name": "technician_3_5"
+            },
+            {
+                "name": "technician_3_6"
+            },
+            {
+                "name": "ghost_1_1"
+            },
+            {
+                "name": "ghost_1_2"
+            },
+            {
+                "name": "ghost_1_3"
+            },
+            {
+                "name": "ghost_1_4"
+            },
+            {
+                "name": "ghost_1_5"
+            },
+            {
+                "name": "ghost_1_6"
+            },
+            {
+                "name": "ghost_2_1"
+            },
+            {
+                "name": "ghost_2_2"
+            },
+            {
+                "name": "ghost_2_3"
+            },
+            {
+                "name": "ghost_2_4"
+            },
+            {
+                "name": "ghost_2_5"
+            },
+            {
+                "name": "ghost_2_6"
+            },
+            {
+                "name": "ghost_3_1"
+            },
+            {
+                "name": "ghost_3_2"
+            },
+            {
+                "name": "ghost_3_3"
+            },
+            {
+                "name": "ghost_3_4"
+            },
+            {
+                "name": "ghost_3_5"
+            },
+            {
+                "name": "ghost_3_6"
+            },
+            {
+                "name": "hoxton_pack_1_1"
+            },
+            {
+                "name": "hoxton_pack_1_2"
+            },
+            {
+                "name": "hoxton_pack_1_3"
+            },
+            {
+                "name": "hoxton_pack_1_4"
+            },
+            {
+                "name": "hoxton_pack_1_5"
+            },
+            {
+                "name": "hoxton_pack_1_6"
+            },
+            {
+                "name": "hoxton_pack_2_1"
+            },
+            {
+                "name": "hoxton_pack_2_2"
+            },
+            {
+                "name": "hoxton_pack_2_3"
+            },
+            {
+                "name": "hoxton_pack_2_4"
+            },
+            {
+                "name": "hoxton_pack_2_5"
+            },
+            {
+                "name": "hoxton_pack_2_6"
+            },
+            {
+                "name": "hoxton_pack_3_1"
+            },
+            {
+                "name": "hoxton_pack_3_2"
+            },
+            {
+                "name": "hoxton_pack_3_3"
+            },
+            {
+                "name": "hoxton_pack_3_4"
+            },
+            {
+                "name": "hoxton_pack_3_5"
+            },
+            {
+                "name": "hoxton_pack_3_6"
             }
         ],
         "tiersInformation": [

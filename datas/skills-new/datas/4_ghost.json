@@ -1,0 +1,12 @@
+{
+    "trees": [
+        {
+            "name": "ghost",
+            "subtrees": [
+                "ghost_1",
+                "ghost_2",
+                "ghost_3"
+            ]
+        }
+    ]
+}

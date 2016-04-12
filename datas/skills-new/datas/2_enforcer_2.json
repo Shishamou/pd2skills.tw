@@ -1,0 +1,35 @@
+{
+    "subtrees": [
+        {
+            "name": "enforcer_2",
+            "skills": [
+                "enforcer_2_1",
+                "enforcer_2_2",
+                "enforcer_2_3",
+                "enforcer_2_4",
+                "enforcer_2_5",
+                "enforcer_2_6"
+            ]
+        }
+    ],
+    "skills": [
+        {
+            "name": "enforcer_2_1"
+        },
+        {
+            "name": "enforcer_2_2"
+        },
+        {
+            "name": "enforcer_2_3"
+        },
+        {
+            "name": "enforcer_2_4"
+        },
+        {
+            "name": "enforcer_2_5"
+        },
+        {
+            "name": "enforcer_2_6"
+        }
+    ]
+}

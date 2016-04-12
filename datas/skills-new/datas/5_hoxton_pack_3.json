@@ -1,0 +1,35 @@
+{
+    "subtrees": [
+        {
+            "name": "hoxton_pack_3",
+            "skills": [
+                "hoxton_pack_3_1",
+                "hoxton_pack_3_2",
+                "hoxton_pack_3_3",
+                "hoxton_pack_3_4",
+                "hoxton_pack_3_5",
+                "hoxton_pack_3_6"
+            ]
+        }
+    ],
+    "skills": [
+        {
+            "name": "hoxton_pack_3_1"
+        },
+        {
+            "name": "hoxton_pack_3_2"
+        },
+        {
+            "name": "hoxton_pack_3_3"
+        },
+        {
+            "name": "hoxton_pack_3_4"
+        },
+        {
+            "name": "hoxton_pack_3_5"
+        },
+        {
+            "name": "hoxton_pack_3_6"
+        }
+    ]
+}
