@@ -9,6 +9,7 @@ export default class Skill extends Model {
             tierId           : null,
             requiredSkill    : null,
             name             : null,
+            icon             : 'unknown',
             ownedBasic       : false,
             ownedAce         : false,
             unlockedBasic    : false,
