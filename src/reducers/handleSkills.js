@@ -101,15 +101,7 @@ function handleSkillEvent(state = {}, action) {
             return state;
     }
 
-    return Object.assign({}, state, {
-        trees: SkillsHandler.store.trees.slice(),
-        tiers: SkillsHandler.store.tiers.slice(),
-        skills: SkillsHandler.store.skills.slice(),
-        totalSpendPoints: SkillsHandler.store.totalSpendPoints,
-        totalSpendCosts: SkillsHandler.store.totalSpendCosts,
-        availablePoints: SkillsHandler.store.availablePoints,
-        display: state.display,
-    });
+    return Object.assign({}, state, SkillsHandler.store);
 }
 
 /**
@@ -117,7 +109,7 @@ function handleSkillEvent(state = {}, action) {
  */
 function handleSkillReduce(state, action) {
     if ( ! action.skillReduce) return state;
-    SkillsHandler.setupSkillReduce(action.skillReduce);
+    SkillsHandler.refreshInfamyBonus(action.skillReduce);
 
     return Object.assign({}, state, SkillsHandler.store, {
         trees: SkillsHandler.store.trees.slice(),
