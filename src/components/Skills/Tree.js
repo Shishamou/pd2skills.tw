@@ -9,7 +9,8 @@ class Tree extends Component
 	}
 
 	handleRespec() {
-		this.props.respecTree(this.props.tree.id);
+		// this.props.respecTree(this.props.tree.id);
+		this.props.respecTree();
 	}
 
 	render() {
@@ -19,7 +20,7 @@ class Tree extends Component
 			points: this.props.availablePoints
 		});
 
-		var respec = locale('st_menu_respec_tree');
+		var respec = locale('st_menu_respec_all_trees');
 
 		return (
 			<div className="tree">
