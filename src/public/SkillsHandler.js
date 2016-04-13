@@ -94,6 +94,11 @@ export default class SkillsHandler {
         }
     }
 
+    /**
+     * 刷新惡名加成
+     *
+     * @param array
+     */
     refreshInfamyBonus(reduced) {
         if ( ! (reduced instanceof Array)) return;
 
