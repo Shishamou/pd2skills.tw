@@ -5,16 +5,16 @@ export default class HashStorage extends Storage {
 	load(callable) {
 		var hash = callable();
 		var parts = hash.split(':');
-		if (parts.length >= 7) {
-			this.setSkillsHash(parts.splice(0, 5));
-			this.setPerksHash(parts.shift());
-			this.setInfamyHash(parts.shift());
+		if (parts.length >= 3) {
+			this.setPerksHash(parts.pop());
+			this.setInfamyHash(parts.pop());
+			this.setSkillsHash(parts.splice(0, parts.length));
 		}
 	}
 
 	save(callable) {
 		var hash = [];
-		hash.push(this.getSkillsHash().join(':'));
+		hash.push(this.getSkillsHash());
 		hash.push(this.getPerksHash());
 		hash.push(this.getInfamyHash());
 		callable(hash.join(':'));
@@ -25,15 +25,30 @@ export default class HashStorage extends Storage {
 	// =========================================================================
 
 	getSkillsHash() {
-		return 'metgh'.split('').map((name) => {
-			return this.skillStorageToHash(this.get(name) || []);
-		}, this);
+		var storage = this.get('skills') || [];
+		var parts = storage.reduce((parts, storage, index) => {
+			var part = this.skillStorageToHash(storage);
+			if (part) {
+				part = String.fromCharCode(index + 97) + part;
+				parts.push(part);
+			}
+
+			return parts;
+		}, [])
+
+		return parts.join(':');
 	}
 
 	setSkillsHash(parts) {
-		'metgh'.split('').forEach((name) => {
-			return this.set(name, this.hashToSkillStorage(parts.shift()));
-		}, this);
+		var storage = parts.reduce((storage, part) => {
+			var index = part.charCodeAt(0) - 97;
+			storage[index] = this.hashToSkillStorage(part.substr(1));
+
+			return storage;
+		}, []);
+
+		storage = Array.from({length: storage.length}, (v, k) => storage[k] || []);
+		this.set('skills', storage);
 	}
 
 	skillStorageToHash(storage) {

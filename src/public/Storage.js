@@ -28,30 +28,22 @@ export default class Storage {
 	// = Skill
 	// =========================================================================
 
+	/**
+	 * 自storage載入技能狀態
+	 */
 	loadSkills(state) {
 		const { trees } = state;
 
-		trees.forEach((tree) => {
-			this.loadTree(tree, state);
+		var storage = this.get('skills') || [];
+		trees.forEach((tree, index) => {
+			this.storageToTree(storage[index], tree, state);
 		}, this);
 	}
 
-	saveSkills(state) {
-		const { trees } = state;
-
-		trees.forEach((tree) => {
-			this.saveTree(tree, state);
-		}, this);
-	}
-
-	getSkillsHash() {
-		return 'metgh'.split('').map((name) => {
-			return this.skillStorageToHash(this.get(name));
-		}, this).join(':');
-	}
-
-	loadTree(tree, state) {
-		var storage = this.get(tree.name.charAt(0).toLowerCase());
+	/**
+	 * 自storage載入技能狀態
+	 */
+	storageToTree(storage, tree, state) {
 		if ( ! storage) return;
 		storage = storage.concat();
 
@@ -72,7 +64,17 @@ export default class Storage {
 		});
 	}
 
-	saveTree(tree, state) {
+	/**
+	 * 儲存技能狀態至storage
+	 */
+	saveSkills(state) {
+		const { trees } = state;
+
+		var storage = trees.map((tree) => this.treeToStrage(tree, state));
+		this.set('skills', storage);
+	}
+
+	treeToStrage(tree, state) {
 		const { tiers, skills } = state;
 
 		var storage = [];
@@ -94,7 +96,7 @@ export default class Storage {
 			});
 		});
 
-		this.set(tree.name.charAt(0).toLowerCase(), storage);
+		return storage;
 	}
 
 	// =========================================================================

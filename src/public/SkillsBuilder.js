@@ -29,8 +29,6 @@ export default class SkillsBuilder {
 
         datas.subtrees.forEach((treeData) => this.buildTree(treeData));
         datas.trees.forEach((treeData) => this.buildMasterTree(treeData));
-
-        console.log(this.store);
     }
 
     /**
