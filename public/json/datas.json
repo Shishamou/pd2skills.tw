@@ -370,6 +370,7 @@
     },
     "localization": {
         "tc": {
+            "datas": {},
             "menu_infamytree": "惡名",
             "menu_infamy_name_root": "解鎖惡名樹",
             "menu_infamy_desc_root": "作為通往犯罪精英的第一步，職業守則的第一條追尋符合你身份的裝備和聲望。\n\n獎勵：\n你的稀有物基礎掉落率從##$base_chance;##增加到##$buffed_chance;##\n結算時的經驗增加##$xpboost;##\n對所有技能所需的現金消費減少##$cashcost;##\n\n物品：\n\n",
@@ -981,18 +982,18 @@
             "menu_mastermind_1_4": "濫藥成癮\nUppers",
             "menu_mastermind_1_4_desc": "基礎：##$basic;##\n你攜帶的急救包增加##$multibasic;##個。\n\n精通：##$pro;##\n你攜帶的急救包再增加##$multipro;##個。",
             "menu_mastermind_1_5": "戰地醫生\nCombat Doctor",
-            "menu_mastermind_1_5_desc": "基礎：##$basic;##\n你攜帶的醫療包增加至##$multibasic;##個。\n\n精通：##$pro;##\n醫療包的使用次數增加了##$multipro;##次。",
+            "menu_mastermind_1_5_desc": "基礎：##$basic;##\n你攜帶的醫療包增加至##$multibasic;##個。如果有玩家進入你佈署的急救包##$multibasic2;##米範圍內，有##$multibasic3;##機率將自動使用。\n\n精通：##$pro;##\n醫療包的使用次數增加至##$multipro;##次。",
             "menu_mastermind_1_6": "激勵\nInspire",
             "menu_mastermind_1_6_desc": "基礎：##$basic;##\n你救起隊友的時間快##$multibasic;##。 呼喝隊友可增加他的移動速度##$multibasic2;##，維持##$multibasic3;##秒。\n\n精通： ##$pro;##\n你能在七米距離內用叫聲遙距救起隊友，成功率##$multipro;##，隔著牆壁和地板，有效距離將會更長。",
             "st_menu_mastermind_2": "控制手",
             "menu_mastermind_2_1": "捆工\nCable Guy",
             "menu_mastermind_2_1_desc": "基礎：##$basic;##\n捆綁人質快##$multibasic;##。\n\n精通：##$pro;##\n攜帶的綁繩增加##$multipro;##條。",
             "menu_mastermind_2_2": "耐力\nEndurance",
-            "menu_mastermind_2_2_desc": "基礎：##$basic;##\n你跑步的耐力增加##$multibasic;##，你和隊友的耐力增加##$multibasic2;##。\n\n精通：##$pro;##\n你製造的噪音可壓制平民（包括開槍、敲破玻璃、手榴彈、甚至開電鋸。武器威嚇值越高就越遠越有效。）。 壓制平民的有效時間增加##$multipro;##，\n\n他們會乖乖伏地更長時間。",
+            "menu_mastermind_2_2_desc": "基礎：##$basic;##\n你跑步的耐力增加##$multibasic;##，你和隊友的耐力增加##$multibasic2;##。你製造的噪音可壓制平民。 壓制平民的有效時間增加##$multibasic3;##，\n他們會乖乖伏地更長時間。\n\n精通：##$pro;##\n衝刺時可更換彈匣。",
             "menu_mastermind_2_3": "小丑\nJoker",
             "menu_mastermind_2_3_desc": "基礎：##$basic;##\n你可對成為人質的警察互動，讓他變節成為我方同伴。本技能在潛行階段無法使用。\n\n你只能擁有一名變節警察，但擁有本技能的同伴可各自擁有自己的變節警察。\n\n精通：##$pro;##\n變節警察增加##$multipro;##生命值，並增加##$multipro2;##攻擊力。\n\n變節所需時間減少##$multipro3;##。",
             "menu_mastermind_2_4": "斯德哥爾摩症候群\nStockholm Syndrome",
-            "menu_mastermind_2_4_desc": "基礎：##$basic;##\n當你倒地時，你可以向附近未被綁住的平民案F鍵互動有機會他們會救起你。你的人質不會被執法人員救走。\n\n精通：##$pro;##\n救你的平民會有機會再送你##$multipro;##%子彈量。每當你被逮捕時，你的人質會交換自身而讓你平安歸來，突襲時仍有此效果。",
+            "menu_mastermind_2_4_desc": "基礎：##$basic;##\n當你倒地時，你可以向附近未被綁住的平民案F鍵互動有機會他們會救起你。你的人質不會被執法人員救走。\n\n精通：##$pro;##\n救你的平民會有機會再送你##$multipro;##子彈量。每當你被逮捕時，你的人質會交換自身而讓你平安歸來，突襲時仍有此效果。",
             "menu_mastermind_2_5": "共犯\nPartner in Crime",
             "menu_mastermind_2_5_desc": "基礎：##$basic;##\n當你擁有一名變節警察，你的移動速度快 ##$multibasic;##。\n\n變節警察受傷減少##$multibasic2;##。\n\n精通：##$pro;##\n醫療包的使用次數增加至##$multipro;##次。",
             "menu_mastermind_2_6": "綁匪\nHostage Taker",
@@ -1001,15 +1002,15 @@
             "menu_mastermind_3_1": "穩定射擊\nStable Shot",
             "menu_mastermind_3_1_desc": "基礎：##$basic;##\n你獲得##$multibasic;##點穩定度 。\n\n精通：##$pro;##\n當你站著不動時，將獲得##$multipro;##點精準度。",
             "menu_mastermind_3_2": "步槍兵\nRifleman",
-            "menu_mastermind_3_2_desc": "基礎：##$basic;##\n突擊步槍及狙擊槍切換瞄準速度快##$multibasic;##。\n\n精通：##$pro;##\n突擊步槍及狙擊槍的瞄具放大倍率提升##$multipro;##。",
-            "menu_mastermind_3_3": "狙擊手\nSharpshooter",
-            "menu_mastermind_3_3_desc": "基礎：##$basic;##\n單發射擊的SMG、突擊步槍與狙擊槍增加##$multibasic;##點精確度。\n\n精通：##$pro;##\n當你放下瞄具的同時，你將獲得##$multipro;##%的精準度。只有單發射擊的SMG、突擊步槍與狙擊槍能觸發此效果",
+            "menu_mastermind_3_2_desc": "基礎：##$basic;##\n任何武器切換瞄準速度快##$multibasic;##倍。\n\n精通：##$pro;##\n任何武器的瞄具放大倍率提升##$multipro;##。",
+            "menu_mastermind_3_3": "神射手\nMarksman",
+            "menu_mastermind_3_3_desc": "基礎：##$basic;##\n單發射擊的衝鋒槍、突擊步槍與狙擊槍增加##$multibasic;##點精確度。\n\n精通：##$pro;##\n當你放下瞄具的同時，你將獲得##$multipro;##%的精準度。只有單發射擊的衝鋒槍、突擊步槍與狙擊槍能觸發此效果",
             "menu_mastermind_3_4": "觀察者\nSpotter",
             "menu_mastermind_3_4_desc": "基礎：##$basic;##\n被你標記的特殊敵人會受多##$multibasic;##的額外傷害。\n\n精通：##$pro;##\n你標記的敵人會依你標記##$multipro;##米的距離，再額外多受##$multipro2;##%的傷害。",
             "menu_mastermind_3_5": "激進裝填\nAggressive Reload",
-            "menu_mastermind_3_5_desc": "基礎：##$basic;##\n用彈匣內最後一發子彈擊殺任一名敵人將會減少你##$multibasic;##%的裝填時間，時間維持##$multibasic2;##秒。只有單發射擊的SMG、突擊步槍與狙擊槍能觸發此效果。\n\n精通：##$pro;##\n爆頭擊殺任一名敵人將會減少你##$multipro;##%的裝填時間，時間維持##$multipro2;##秒。只有單發射擊的SMG、突擊步槍與狙擊槍能觸發此效果。",
+            "menu_mastermind_3_5_desc": "基礎：##$basic;##\n用彈匣內最後一發子彈擊殺任一名敵人將會減少你##$multibasic;##%的裝填時間，時間維持##$multibasic2;##秒。只有單發射擊的衝鋒槍、突擊步槍與狙擊槍能觸發此效果。\n\n精通：##$pro;##\n爆頭擊殺任一名敵人將會減少你##$multipro;##%的裝填時間，時間維持##$multipro2;##秒。只有單發射擊的衝鋒槍、突擊步槍與狙擊槍能觸發此效果。",
             "menu_mastermind_3_6": "彈藥效率\nAmmo Efficency",
-            "menu_mastermind_3_6_desc": "基礎：##$basic;##\n連續##$multibasic;##個爆頭將退還##$multibasic2;##發子彈到你所使用的武器。只有單發射擊的SMG、突擊步槍與狙擊槍能觸發此效果。\n\n精通：##$pro;##\n連續##$multipro;##個爆頭將退還##$multipro2;##發子彈道你所使用的武器。只有單發射擊的SMG、突擊步槍與狙擊槍能觸發此效果。",
+            "menu_mastermind_3_6_desc": "基礎：##$basic;##\n連續##$multibasic;##個爆頭將退還##$multibasic2;##發子彈到你所使用的武器。只有單發射擊的衝鋒槍、突擊步槍與狙擊槍能觸發此效果。\n\n精通：##$pro;##\n連續##$multipro;##個爆頭將退還##$multipro2;##發子彈道你所使用的武器。只有單發射擊的衝鋒槍、突擊步槍與狙擊槍能觸發此效果。",
             "st_menu_technician_1": "攻城師",
             "menu_technician_1_1": "防禦力上升\nDefence Up",
             "menu_technician_1_1_desc": "基礎：##$basic;##\n減少放置步哨塔所需彈藥##$multibasic;##。\n\n精通：##$pro;##\n你的步哨塔多了防護盾。",
@@ -1044,9 +1045,9 @@
             "menu_technician_3_3": "火力控制\nFire Control",
             "menu_technician_3_3_desc": "基礎：##$basic;##\n武器穩定度增加##$multibasic;##。\n\n精通：##$pro;##\n你腰射時準確度增加##$multipro;##。",
             "menu_technician_3_4": "震懾\nShock and Awe",
-            "menu_technician_3_4_desc": "基礎：##$basic;##\n跑步時可以腰射。\n\n精通：##$pro;##\n當你使用全自動模式的衝鋒槍、輕機槍、步槍擊殺了X位敵人會增加下次裝填速度最高到##$multipro;##，如果你的彈匣超過##$multipro3;##發子彈的話，每多一發減少##$multipro2;##加成最低到##$multipro4;##。",
+            "menu_technician_3_4_desc": "基礎：##$basic;##\n跑步時可以腰射。\n\n精通：##$pro;##\n當你使用全自動模式的衝鋒槍、輕機槍、步槍擊殺了##$multipro;##位敵人會增加下次裝填速度最高到##$multipro2;##，如果你的彈匣超過##$multipro4;##發子彈的話，每多一發減少##$multipro3;##加成最低到##$multipro5;##。",
             "menu_technician_3_5": "快速射擊\nFast Fire",
-            "menu_technician_3_5_desc": "基礎：##$basic;##\n當你使用全自動模式的衝鋒槍、輕機槍、步槍彈匣容量增加##$multibasic;##。此技能不影響##震懾(Shock and Awe)##王牌技能。\n\n精通：##$pro;##\n你腰射時準確度增加##$multipro;##。",
+            "menu_technician_3_5_desc": "基礎：##$basic;##\n當你使用全自動模式的衝鋒槍、輕機槍、步槍彈匣容量增加##$multibasic;##。此技能不影響##震懾(Shock and Awe)##王牌技能。\n\n精通：##$pro;##\n你的武器可以打穿護甲。",
             "menu_technician_3_6": "ボディ エクスパーティーズ\nBody Expertise",
             "menu_technician_3_6_desc": "基礎：##$basic;##\n敵人的身體額外增加##$multibasic;##爆頭傷害(當你使用全自動模式的衝鋒槍、輕機槍、步槍時)。\n\n精通：##$pro;##\n敵人的身體額外增加##$multipro;##爆頭傷害(當你使用全自動模式的衝鋒槍、輕機槍、步槍時)。"
         }
@@ -2733,220 +2734,615 @@
         ],
         "skills": [
             {
-                "name": "mastermind_1_1"
-            },
-            {
-                "name": "mastermind_1_2"
-            },
-            {
-                "name": "mastermind_1_3"
-            },
-            {
-                "name": "mastermind_1_4"
-            },
-            {
-                "name": "mastermind_1_5"
-            },
-            {
-                "name": "mastermind_1_6"
-            },
-            {
-                "name": "mastermind_2_1"
-            },
-            {
-                "name": "mastermind_2_2"
-            },
-            {
-                "name": "mastermind_2_3"
-            },
-            {
-                "name": "mastermind_2_4"
-            },
-            {
-                "name": "mastermind_2_5"
-            },
-            {
-                "name": "mastermind_2_6"
-            },
-            {
-                "name": "mastermind_3_1"
-            },
-            {
-                "name": "mastermind_3_2"
-            },
-            {
-                "name": "mastermind_3_3"
-            },
-            {
-                "name": "mastermind_3_4"
-            },
-            {
-                "name": "mastermind_3_5"
-            },
-            {
-                "name": "mastermind_3_6"
-            },
-            {
-                "name": "enforcer_1_1"
-            },
-            {
-                "name": "enforcer_1_2"
-            },
-            {
-                "name": "enforcer_1_3"
-            },
-            {
-                "name": "enforcer_1_4"
-            },
-            {
-                "name": "enforcer_1_5"
-            },
-            {
-                "name": "enforcer_1_6"
-            },
-            {
-                "name": "enforcer_2_1"
-            },
-            {
-                "name": "enforcer_2_2"
-            },
-            {
-                "name": "enforcer_2_3"
-            },
-            {
-                "name": "enforcer_2_4"
-            },
-            {
-                "name": "enforcer_2_5"
-            },
-            {
-                "name": "enforcer_2_6"
-            },
-            {
-                "name": "enforcer_3_1"
-            },
-            {
-                "name": "enforcer_3_2"
-            },
-            {
-                "name": "enforcer_3_3"
-            },
-            {
-                "name": "enforcer_3_4"
-            },
-            {
-                "name": "enforcer_3_5"
-            },
-            {
-                "name": "enforcer_3_6"
-            },
-            {
-                "name": "technician_1_1"
-            },
-            {
-                "name": "technician_1_2"
-            },
-            {
-                "name": "technician_1_3"
-            },
-            {
-                "name": "technician_1_4"
-            },
-            {
-                "name": "technician_1_5"
-            },
-            {
-                "name": "technician_1_6"
-            },
-            {
-                "name": "technician_2_1"
-            },
-            {
-                "name": "technician_2_2"
-            },
-            {
-                "name": "technician_2_3"
-            },
-            {
-                "name": "technician_2_4"
-            },
+                "name": "mastermind_1_1",
+                "icon": "combat_medic",
+                "datas": {
+                    "multibasic": "10",
+                    "multibasic2": "25%",
+                    "multipro": "30%"
+                }
+            },
+            {
+                "name": "mastermind_1_2",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "50%",
+                    "multipro2": "10",
+                    "multipro": "20%"
+                }
+            },
+            {
+                "name": "mastermind_1_3",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic2": "5",
+                    "multibasic": "30%",
+                    "multipro": "20%"
+                }
+            },
+            {
+                "name": "mastermind_1_4",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "7",
+                    "multipro": "3"
+                }
+            },
+            {
+                "name": "mastermind_1_5",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "2",
+                    "multipro": "4"
+                }
+            },
+            {
+                "name": "mastermind_1_6",
+                "icon": "inspire",
+                "datas": {
+                    "multibasic": "50%",
+                    "multibasic2": "20%",
+                    "multibasic3": "30",
+                    "multipro": "75%"
+                }
+            },
+            {
+                "name": "mastermind_2_1",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "75%",
+                    "multipro": "4"
+                }
+            },
+            {
+                "name": "mastermind_2_2",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "150%",
+                    "multibasic2": "50%",
+                    "multibasic3": "50%"
+                }
+            },
+            {
+                "name": "mastermind_2_3",
+                "icon": "unknown",
+                "datas": {
+                    "multipro": "55%",
+                    "multipro2": "45%",
+                    "multipro3": "65%"
+                }
+            },
+            {
+                "name": "mastermind_2_4",
+                "icon": "unknown",
+                "datas": {
+                    "multipro": "X%"
+                }
+            },
+            {
+                "name": "mastermind_2_5",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "10%",
+                    "multibasic2": "40%",
+                    "multipro": "4"
+                }
+            },
+            {
+                "name": "mastermind_2_6",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic2": "5",
+                    "multibasic": "1.5%",
+                    "multipro2": "5",
+                    "multipro": "4.5%"
+                }
+            },
+            {
+                "name": "mastermind_3_1",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "8",
+                    "multipro": "8"
+                }
+            },
+            {
+                "name": "mastermind_3_2",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "1",
+                    "multipro": "25%"
+                }
+            },
+            {
+                "name": "mastermind_3_3",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "8",
+                    "multipro": "20%"
+                }
+            },
             {
-                "name": "technician_2_5"
+                "name": "mastermind_3_4",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "15%",
+                    "multipro": "Y",
+                    "multipro2": "X %"
+                }
             },
-            {
-                "name": "technician_2_6"
-            },
-            {
-                "name": "technician_3_1"
-            },
-            {
-                "name": "technician_3_2"
-            },
-            {
-                "name": "technician_3_3"
+            {
+                "name": "mastermind_3_5",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "30%",
+                    "multibasic2": "2",
+                    "multipro": "50%",
+                    "multipro2": "2"
+                }
+            },
+            {
+                "name": "mastermind_3_6",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "6",
+                    "multibasic2": "1",
+                    "multipro": "3",
+                    "multipro2": "1"
+                }
             },
             {
-                "name": "technician_3_4"
+                "name": "enforcer_1_1",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "10%",
+                    "multipro": "10%"
+                }
             },
             {
-                "name": "technician_3_5"
+                "name": "enforcer_1_2",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "25%",
+                    "multipro": "25%",
+                    "multipro2": "125%"
+                }
             },
             {
-                "name": "technician_3_6"
+                "name": "enforcer_1_3",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "8",
+                    "multipro": "35%"
+                }
             },
             {
-                "name": "ghost_1_1"
+                "name": "enforcer_1_4",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "40%",
+                    "multipro": "35%"
+                }
             },
             {
-                "name": "ghost_1_2"
+                "name": "enforcer_1_5",
+                "icon": "unknown",
+                "datas": {
+                    "multipro": "35%"
+                }
+            },
+            {
+                "name": "enforcer_1_6",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic2": "10",
+                    "multibasic": "75%"
+                }
             },
             {
-                "name": "ghost_1_3"
+                "name": "enforcer_2_1",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "75%",
+                    "multipro": "75%"
+                }
+            },
+            {
+                "name": "enforcer_2_2",
+                "icon": "unknown",
+                "datas": {
+                    "multipro": "15%"
+                }
+            },
+            {
+                "name": "enforcer_2_3",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "50%"
+                }
             },
             {
-                "name": "ghost_1_4"
+                "name": "enforcer_2_4",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "25%",
+                    "multipro": "35%"
+                }
             },
             {
-                "name": "ghost_1_5"
+                "name": "enforcer_2_5",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "10",
+                    "multibasic2": "2",
+                    "multipro": "20"
+                }
             },
             {
-                "name": "ghost_1_6"
+                "name": "enforcer_2_6",
+                "icon": "unknown"
             },
             {
-                "name": "ghost_2_1"
+                "name": "enforcer_3_1",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "50%"
+                }
             },
             {
-                "name": "ghost_2_2"
+                "name": "enforcer_3_2",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "0",
+                    "multipro": "15"
+                }
             },
             {
-                "name": "ghost_2_3"
+                "name": "enforcer_3_3",
+                "icon": "unknown",
+                "datas": {
+                    "multipro": "1"
+                }
             },
             {
-                "name": "ghost_2_4"
+                "name": "enforcer_3_4",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "2",
+                    "multipro": "200%"
+                }
             },
             {
-                "name": "ghost_2_5"
+                "name": "enforcer_3_5",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "40%",
+                    "multibasic2": "50%",
+                    "multipro": "X%"
+                }
             },
             {
-                "name": "ghost_2_6"
+                "name": "enforcer_3_6",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "25%",
+                    "multipro": "75%",
+                    "multipro2": "X%",
+                    "multipro3": "Y%"
+                }
             },
-            {
-                "name": "ghost_3_1"
-            },
-            {
-                "name": "ghost_3_2"
+            {
+                "name": "technician_1_1",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "25%"
+                }
             },
             {
-                "name": "ghost_3_3"
+                "name": "technician_1_2",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "100%",
+                    "multipro": "150%",
+                    "multipro2": "50%"
+                }
             },
-            {
-                "name": "ghost_3_4"
-            },
-            {
-                "name": "ghost_3_5"
+            {
+                "name": "technician_1_3",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "25%",
+                    "multipro": "150%"
+                }
             },
-            {
-                "name": "ghost_3_6"
+            {
+                "name": "technician_1_4",
+                "icon": "unknown"
+            },
+            {
+                "name": "technician_1_5",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "50%",
+                    "multipro": "50%"
+                }
+            },
+            {
+                "name": "technician_1_6",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "2",
+                    "multipro": "2"
+                }
+            },
+            {
+                "name": "technician_2_1",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "25%",
+                    "multipro": "10%"
+                }
+            },
+            {
+                "name": "technician_2_2",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "30%",
+                    "multipro": "50%"
+                }
+            },
+            {
+                "name": "technician_2_3",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "15%",
+                    "multipro": "15%"
+                }
+            },
+            {
+                "name": "technician_2_4",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "1",
+                    "multibasic2": "4",
+                    "multipro": "2",
+                    "multipro2": "7"
+                }
+            },
+            {
+                "name": "technician_2_5",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "20%",
+                    "multipro": "1",
+                    "multipro2": "50%"
+                }
+            },
+            {
+                "name": "technician_2_6",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "X",
+                    "multibasic2": "Y",
+                    "multipro": "X",
+                    "multipro2": "Y"
+                }
+            },
+            {
+                "name": "technician_3_1",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "8"
+                }
+            },
+            {
+                "name": "technician_3_2",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "25%",
+                    "multipro": "50%"
+                }
+            },
+            {
+                "name": "technician_3_3",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "8",
+                    "multipro": "12"
+                }
+            },
+            {
+                "name": "technician_3_4",
+                "icon": "unknown",
+                "datas": {
+                    "multipro": "X",
+                    "multipro2": "60%",
+                    "multipro3": "1%",
+                    "multipro4": "20",
+                    "multipro5": "20%"
+                }
+            },
+            {
+                "name": "technician_3_5",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "15"
+                }
+            },
+            {
+                "name": "technician_3_6",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "15%",
+                    "multipro": "50%"
+                }
+            },
+            {
+                "name": "ghost_1_1",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "10",
+                    "multibasic2": "3.5",
+                    "multipro": "30%"
+                }
+            },
+            {
+                "name": "ghost_1_2",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "75%",
+                    "multipro": "1",
+                    "multipro2": "1"
+                }
+            },
+            {
+                "name": "ghost_1_3",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "25%",
+                    "multipro": "20"
+                }
+            },
+            {
+                "name": "ghost_1_4",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "2",
+                    "multipro": "50%"
+                }
+            },
+            {
+                "name": "ghost_1_5",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "25%"
+                }
+            },
+            {
+                "name": "ghost_1_6",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "2",
+                    "multipro": "25%"
+                }
+            },
+            {
+                "name": "ghost_2_1",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "25%",
+                    "multibasic2": "25%",
+                    "multipro": "25%",
+                    "multipro2": "15%"
+                }
+            },
+            {
+                "name": "ghost_2_2",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "10%",
+                    "multibasic2": "2%",
+                    "multipro": "75%"
+                }
+            },
+            {
+                "name": "ghost_2_3",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "2",
+                    "multipro": "4"
+                }
+            },
+            {
+                "name": "ghost_2_4",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "1%",
+                    "multibasic2": "3",
+                    "multibasic3": "35",
+                    "multibasic4": "10%",
+                    "multibasic5": "multibasic5",
+                    "multipro": "1%",
+                    "multipro2": "1",
+                    "multipro3": "35",
+                    "multipro4": "10%"
+                }
+            },
+            {
+                "name": "ghost_2_5",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "30%",
+                    "multipro": "2"
+                }
+            },
+            {
+                "name": "ghost_2_6",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "3%",
+                    "multibasic2": "3",
+                    "multibasic3": "35",
+                    "multibasic4": "30%",
+                    "multibasic5": "multibasic5",
+                    "multipro": "3%",
+                    "multipro2": "1",
+                    "multipro3": "35",
+                    "multipro4": "30%"
+                }
+            },
+            {
+                "name": "ghost_3_1",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "15%",
+                    "multipro": "30%"
+                }
+            },
+            {
+                "name": "ghost_3_2",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "1",
+                    "multipro": "2"
+                }
+            },
+            {
+                "name": "ghost_3_3",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "50%",
+                    "multibasic2": "100%",
+                    "multipro": "50%"
+                }
+            },
+            {
+                "name": "ghost_3_4",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "multibasic",
+                    "multipro": "6",
+                    "multipro2": "multipro2",
+                    "multipro3": "multipro3"
+                }
+            },
+            {
+                "name": "ghost_3_5",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "15%",
+                    "multipro": "15%"
+                }
+            },
+            {
+                "name": "ghost_3_6",
+                "icon": "unknown",
+                "datas": {
+                    "multibasic": "2",
+                    "multibasic2": "35%",
+                    "multibasic3": "4",
+                    "multipro": "12"
+                }
             },
             {
                 "name": "hoxton_pack_1_1"

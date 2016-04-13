@@ -35,9 +35,9 @@
 	"menu_technician_3_3": "火力控制\nFire Control",
 	"menu_technician_3_3_desc": "基礎：##$basic;##\n武器穩定度增加##$multibasic;##。\n\n精通：##$pro;##\n你腰射時準確度增加##$multipro;##。",
 	"menu_technician_3_4": "震懾\nShock and Awe",
-	"menu_technician_3_4_desc": "基礎：##$basic;##\n跑步時可以腰射。\n\n精通：##$pro;##\n當你使用全自動模式的衝鋒槍、輕機槍、步槍擊殺了X位敵人會增加下次裝填速度最高到##$multipro;##，如果你的彈匣超過##$multipro3;##發子彈的話，每多一發減少##$multipro2;##加成最低到##$multipro4;##。",
+	"menu_technician_3_4_desc": "基礎：##$basic;##\n跑步時可以腰射。\n\n精通：##$pro;##\n當你使用全自動模式的衝鋒槍、輕機槍、步槍擊殺了##$multipro;##位敵人會增加下次裝填速度最高到##$multipro2;##，如果你的彈匣超過##$multipro4;##發子彈的話，每多一發減少##$multipro3;##加成最低到##$multipro5;##。",
 	"menu_technician_3_5": "快速射擊\nFast Fire",
-	"menu_technician_3_5_desc": "基礎：##$basic;##\n當你使用全自動模式的衝鋒槍、輕機槍、步槍彈匣容量增加##$multibasic;##。此技能不影響##震懾(Shock and Awe)##王牌技能。\n\n精通：##$pro;##\n你腰射時準確度增加##$multipro;##。",
+	"menu_technician_3_5_desc": "基礎：##$basic;##\n當你使用全自動模式的衝鋒槍、輕機槍、步槍彈匣容量增加##$multibasic;##。此技能不影響##震懾(Shock and Awe)##王牌技能。\n\n精通：##$pro;##\n你的武器可以打穿護甲。",
 	"menu_technician_3_6": "ボディ エクスパーティーズ\nBody Expertise",
 	"menu_technician_3_6_desc": "基礎：##$basic;##\n敵人的身體額外增加##$multibasic;##爆頭傷害(當你使用全自動模式的衝鋒槍、輕機槍、步槍時)。\n\n精通：##$pro;##\n敵人的身體額外增加##$multipro;##爆頭傷害(當你使用全自動模式的衝鋒槍、輕機槍、步槍時)。"
 }

@@ -17,52 +17,52 @@
             "name": "mastermind_2_1",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "75%",
+                "multipro": "4"
             }
         },
         {
             "name": "mastermind_2_2",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multibasic2": "multibasic2",
-                "multipro": "multipro"
+                "multibasic": "150%",
+                "multibasic2": "50%",
+                "multibasic3": "50%"
             }
         },
         {
             "name": "mastermind_2_3",
             "icon": "unknown",
             "datas": {
-                "multipro": "multipro",
-                "multipro2": "multipro2",
-                "multipro3": "multipro3"
+                "multipro": "55%",
+                "multipro2": "45%",
+                "multipro3": "65%"
             }
         },
         {
             "name": "mastermind_2_4",
             "icon": "unknown",
             "datas": {
-                "multipro": "multipro"
+                "multipro": "X%"
             }
         },
         {
             "name": "mastermind_2_5",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multibasic2": "multibasic2",
-                "multipro": "multipro"
+                "multibasic": "10%",
+                "multibasic2": "40%",
+                "multipro": "4"
             }
         },
         {
             "name": "mastermind_2_6",
             "icon": "unknown",
             "datas": {
-                "multibasic2": "multibasic2",
-                "multibasic": "multibasic",
-                "multipro2": "multipro2",
-                "multipro": "multipro"
+                "multibasic2": "5",
+                "multibasic": "1.5%",
+                "multipro2": "5",
+                "multipro": "4.5%"
             }
         }
     ]

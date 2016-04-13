@@ -17,49 +17,49 @@
             "name": "ghost_1_1",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multibasic2": "multibasic2",
-                "multipro": "multipro"
+                "multibasic": "10",
+                "multibasic2": "3.5",
+                "multipro": "30%"
             }
         },
         {
             "name": "ghost_1_2",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro",
-                "multipro2": "multipro2"
+                "multibasic": "75%",
+                "multipro": "1",
+                "multipro2": "1"
             }
         },
         {
             "name": "ghost_1_3",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "25%",
+                "multipro": "20"
             }
         },
         {
             "name": "ghost_1_4",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "2",
+                "multipro": "50%"
             }
         },
         {
             "name": "ghost_1_5",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic"
+                "multibasic": "25%"
             }
         },
         {
             "name": "ghost_1_6",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "2",
+                "multipro": "25%"
             }
         }
     ]

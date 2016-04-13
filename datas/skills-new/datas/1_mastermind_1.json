@@ -15,55 +15,55 @@
     "skills": [
         {
             "name": "mastermind_1_1",
-            "icon": "unknown",
+            "icon": "combat_medic",
             "datas": {
-                "multibasic": "multibasic",
-                "multibasic2": "multibasic2",
-                "multipro": "multipro"
+                "multibasic": "10",
+                "multibasic2": "25%",
+                "multipro": "30%"
             }
         },
         {
             "name": "mastermind_1_2",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro2": "multipro2",
-                "multipro": "multipro"
+                "multibasic": "50%",
+                "multipro2": "10",
+                "multipro": "20%"
             }
         },
         {
             "name": "mastermind_1_3",
             "icon": "unknown",
             "datas": {
-                "multibasic2": "multibasic2",
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic2": "5",
+                "multibasic": "30%",
+                "multipro": "20%"
             }
         },
         {
             "name": "mastermind_1_4",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "7",
+                "multipro": "3"
             }
         },
         {
             "name": "mastermind_1_5",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "2",
+                "multipro": "4"
             }
         },
         {
             "name": "mastermind_1_6",
-            "icon": "unknown",
+            "icon": "inspire",
             "datas": {
-                "multibasic": "multibasic",
-                "multibasic2": "multibasic2",
-                "multibasic3": "multibasic3",
-                "multipro": "multipro"
+                "multibasic": "50%",
+                "multibasic2": "20%",
+                "multibasic3": "30",
+                "multipro": "75%"
             }
         }
     ]

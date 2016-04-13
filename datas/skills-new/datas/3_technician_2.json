@@ -17,53 +17,53 @@
             "name": "technician_2_1",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "25%",
+                "multipro": "10%"
             }
         },
         {
             "name": "technician_2_2",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "30%",
+                "multipro": "50%"
             }
         },
         {
             "name": "technician_2_3",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "15%",
+                "multipro": "15%"
             }
         },
         {
             "name": "technician_2_4",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multibasic2": "multibasic2",
-                "multipro": "multipro",
-                "multipro2": "multipro2"
+                "multibasic": "1",
+                "multibasic2": "4",
+                "multipro": "2",
+                "multipro2": "7"
             }
         },
         {
             "name": "technician_2_5",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro",
-                "multipro2": "multipro2"
+                "multibasic": "20%",
+                "multipro": "1",
+                "multipro2": "50%"
             }
         },
         {
             "name": "technician_2_6",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multibasic2": "multibasic2",
-                "multipro": "multipro",
-                "multipro2": "multipro2"
+                "multibasic": "X",
+                "multibasic2": "Y",
+                "multipro": "X",
+                "multipro2": "Y"
             }
         }
     ]

@@ -17,24 +17,24 @@
             "name": "technician_1_1",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic"
+                "multibasic": "25%"
             }
         },
         {
             "name": "technician_1_2",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro",
-                "multipro2": "multipro2"
+                "multibasic": "100%",
+                "multipro": "150%",
+                "multipro2": "50%"
             }
         },
         {
             "name": "technician_1_3",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "25%",
+                "multipro": "150%"
             }
         },
         {
@@ -45,16 +45,16 @@
             "name": "technician_1_5",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "50%",
+                "multipro": "50%"
             }
         },
         {
             "name": "technician_1_6",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "2",
+                "multipro": "2"
             }
         }
     ]

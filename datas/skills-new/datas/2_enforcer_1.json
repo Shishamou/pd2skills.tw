@@ -17,48 +17,48 @@
             "name": "enforcer_1_1",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "10%",
+                "multipro": "10%"
             }
         },
         {
             "name": "enforcer_1_2",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro",
-                "multipro2": "multipro2"
+                "multibasic": "25%",
+                "multipro": "25%",
+                "multipro2": "125%"
             }
         },
         {
             "name": "enforcer_1_3",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "8",
+                "multipro": "35%"
             }
         },
         {
             "name": "enforcer_1_4",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "40%",
+                "multipro": "35%"
             }
         },
         {
             "name": "enforcer_1_5",
             "icon": "unknown",
             "datas": {
-                "multipro": "multipro"
+                "multipro": "35%"
             }
         },
         {
             "name": "enforcer_1_6",
             "icon": "unknown",
             "datas": {
-                "multibasic2": "multibasic2",
-                "multibasic": "multibasic"
+                "multibasic2": "10",
+                "multibasic": "75%"
             }
         }
     ]

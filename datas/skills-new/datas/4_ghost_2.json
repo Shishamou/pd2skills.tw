@@ -17,65 +17,65 @@
             "name": "ghost_2_1",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multibasic2": "multibasic2",
-                "multipro": "multipro",
-                "multipro2": "multipro2"
+                "multibasic": "25%",
+                "multibasic2": "25%",
+                "multipro": "25%",
+                "multipro2": "15%"
             }
         },
         {
             "name": "ghost_2_2",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multibasic2": "multibasic2",
-                "multipro": "multipro"
+                "multibasic": "10%",
+                "multibasic2": "2%",
+                "multipro": "75%"
             }
         },
         {
             "name": "ghost_2_3",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "2",
+                "multipro": "4"
             }
         },
         {
             "name": "ghost_2_4",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multibasic2": "multibasic2",
-                "multibasic3": "multibasic3",
-                "multibasic4": "multibasic4",
+                "multibasic": "1%",
+                "multibasic2": "3",
+                "multibasic3": "35",
+                "multibasic4": "10%",
                 "multibasic5": "multibasic5",
-                "multipro": "multipro",
-                "multipro2": "multipro2",
-                "multipro3": "multipro3",
-                "multipro4": "multipro4"
+                "multipro": "1%",
+                "multipro2": "1",
+                "multipro3": "35",
+                "multipro4": "10%"
             }
         },
         {
             "name": "ghost_2_5",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "30%",
+                "multipro": "2"
             }
         },
         {
             "name": "ghost_2_6",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multibasic2": "multibasic2",
-                "multibasic3": "multibasic3",
-                "multibasic4": "multibasic4",
+                "multibasic": "3%",
+                "multibasic2": "3",
+                "multibasic3": "35",
+                "multibasic4": "30%",
                 "multibasic5": "multibasic5",
-                "multipro": "multipro",
-                "multipro2": "multipro2",
-                "multipro3": "multipro3",
-                "multipro4": "multipro4"
+                "multipro": "3%",
+                "multipro2": "1",
+                "multipro3": "35",
+                "multipro4": "30%"
             }
         }
     ]

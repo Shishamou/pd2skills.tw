@@ -17,49 +17,49 @@
             "name": "technician_3_1",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic"
+                "multibasic": "8"
             }
         },
         {
             "name": "technician_3_2",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "25%",
+                "multipro": "50%"
             }
         },
         {
             "name": "technician_3_3",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "8",
+                "multipro": "12"
             }
         },
         {
             "name": "technician_3_4",
             "icon": "unknown",
             "datas": {
-                "multipro": "multipro",
-                "multipro3": "multipro3",
-                "multipro2": "multipro2",
-                "multipro4": "multipro4"
+                "multipro": "X",
+                "multipro2": "60%",
+                "multipro3": "1%",
+                "multipro4": "20",
+                "multipro5": "20%"
             }
         },
         {
             "name": "technician_3_5",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "15"
             }
         },
         {
             "name": "technician_3_6",
             "icon": "unknown",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "multipro"
+                "multibasic": "15%",
+                "multipro": "50%"
             }
         }
     ]
