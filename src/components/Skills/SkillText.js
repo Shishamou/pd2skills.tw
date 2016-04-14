@@ -27,12 +27,7 @@ class SkillText extends Component
 					return (
 						<div className="skill-text-content">
 							<p className="skill-text-hold">{locale('st_menu_skill_owned')}</p>
-							<p className="skill-text-hide" dangerouslySetInnerHTML={{
-								__html: localeText('st_menu_buy_skill_pro_plural', {
-									points: tier.skillPointAce,
-									cost: parseCost(tier.skillCostAce),
-								})
-							}} />
+								<p className="skill-text-hide">{this.parsePointsText(tier.skillPointAce)}</p>
 						</div>
 					);
 				} else {
@@ -47,12 +42,7 @@ class SkillText extends Component
 			case statuses.STATUS_UNLOCKED:
 				return (
 					<div className="skill-text-content">
-						<p className="skill-text-hide" dangerouslySetInnerHTML={{
-							__html: localeText('st_menu_buy_skill_basic_plural', {
-								points: tier.skillPointBasic,
-								cost: parseCost(tier.skillCostBasic),
-							})
-						}} />
+						<p className="skill-text-hide">{this.parsePointsText(tier.skillPointBasic)}</p>
 					</div>
 				);
 			case statuses.STATUS_LOCKED:
@@ -61,6 +51,16 @@ class SkillText extends Component
 						<p className="skill-text-hide">{locale('st_menu_skill_locked')}</p>
 					</div>
 				);
+		}
+	}
+
+	parsePointsText(points, name = 'st_menu_point') {
+		const { locale } = this.props;
+
+		if (points > 1) {
+			return locale(name + '_plural', { points });
+		} else {
+			return locale(name, { points });
 		}
 	}
 }
