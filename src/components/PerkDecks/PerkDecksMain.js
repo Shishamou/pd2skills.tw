@@ -36,11 +36,11 @@ class PerkDecksMain extends Component
 	}
 
 	renderTotalPoints() {
-		const { locale, localeText, totalPoints } = this.props;
+		const { locale, localeText, spentPoints } = this.props;
 
 		return locale('menu_st_spent_xp_perk_total') + localeText(
-			(1 == totalPoints)? 'st_menu_point_plural' : 'st_menu_point',
-			{ points: totalPoints }
+			(1 == spentPoints)? 'st_menu_point_plural' : 'st_menu_point',
+			{ points: spentPoints }
 		);
 	}
 }
@@ -49,7 +49,7 @@ PerkDecksMain.propTypes = {
 	locale: PropTypes.func.isRequired,
 	localeText: PropTypes.func.isRequired,
 	respecPerks: PropTypes.func.isRequired,
-	totalPoints: PropTypes.number.isRequired,
+	spentPoints: PropTypes.number.isRequired,
 };
 
 export default PerkDecksMain;

@@ -26,7 +26,6 @@ class PerkDecks extends Component
         const { dispatch } = this.props;
 
         const app = {
-            totalPoints : 0,
             reflowCanvas     : this.reflowCanvas,
             getPerk          : (id) => this.props.perks[id],
             getDeck          : (id) => this.props.decks[id],
