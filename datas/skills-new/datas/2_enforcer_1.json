@@ -15,7 +15,7 @@
     "skills": [
         {
             "name": "enforcer_1_1",
-            "icon": "unknown",
+            "icon": "underdog",
             "datas": {
                 "multibasic": "10%",
                 "multipro": "10%"
@@ -23,7 +23,7 @@
         },
         {
             "name": "enforcer_1_2",
-            "icon": "unknown",
+            "icon": "shotgun_cqb",
             "datas": {
                 "multibasic": "25%",
                 "multipro": "25%",
@@ -32,7 +32,7 @@
         },
         {
             "name": "enforcer_1_3",
-            "icon": "unknown",
+            "icon": "shotgun_impact",
             "datas": {
                 "multibasic": "8",
                 "multipro": "35%"
@@ -40,7 +40,7 @@
         },
         {
             "name": "enforcer_1_4",
-            "icon": "unknown",
+            "icon": "shotgun_impact",
             "datas": {
                 "multibasic": "40%",
                 "multipro": "35%"
@@ -48,14 +48,14 @@
         },
         {
             "name": "enforcer_1_5",
-            "icon": "unknown",
+            "icon": "from_the_hip",
             "datas": {
                 "multipro": "35%"
             }
         },
         {
             "name": "enforcer_1_6",
-            "icon": "unknown",
+            "icon": "overkill",
             "datas": {
                 "multibasic2": "10",
                 "multibasic": "75%"

@@ -24,7 +24,7 @@
         },
         {
             "name": "mastermind_1_2",
-            "icon": "unknown",
+            "icon": "tea_time",
             "datas": {
                 "multibasic": "50%",
                 "multipro2": "10",
@@ -33,7 +33,7 @@
         },
         {
             "name": "mastermind_1_3",
-            "icon": "unknown",
+            "icon": "fast_learner",
             "datas": {
                 "multibasic2": "5",
                 "multibasic": "30%",
@@ -42,7 +42,7 @@
         },
         {
             "name": "mastermind_1_4",
-            "icon": "unknown",
+            "icon": "tea_cookies",
             "datas": {
                 "multibasic": "7",
                 "multipro": "3"
@@ -50,7 +50,7 @@
         },
         {
             "name": "mastermind_1_5",
-            "icon": "unknown",
+            "icon": "medic_2x",
             "datas": {
                 "multibasic": "2",
                 "multipro": "4"

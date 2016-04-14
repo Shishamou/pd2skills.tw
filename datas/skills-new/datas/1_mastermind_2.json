@@ -15,7 +15,7 @@
     "skills": [
         {
             "name": "mastermind_2_1",
-            "icon": "unknown",
+            "icon": "cable_guy",
             "datas": {
                 "multibasic": "75%",
                 "multipro": "4"
@@ -23,7 +23,7 @@
         },
         {
             "name": "mastermind_2_2",
-            "icon": "unknown",
+            "icon": "triathlete",
             "datas": {
                 "multibasic": "150%",
                 "multibasic2": "50%",
@@ -32,7 +32,7 @@
         },
         {
             "name": "mastermind_2_3",
-            "icon": "unknown",
+            "icon": "joker",
             "datas": {
                 "multipro": "55%",
                 "multipro2": "45%",
@@ -41,14 +41,14 @@
         },
         {
             "name": "mastermind_2_4",
-            "icon": "unknown",
+            "icon": "stockholm_syndrome",
             "datas": {
                 "multipro": "X%"
             }
         },
         {
             "name": "mastermind_2_5",
-            "icon": "unknown",
+            "icon": "control_freak",
             "datas": {
                 "multibasic": "10%",
                 "multibasic2": "40%",
@@ -57,7 +57,7 @@
         },
         {
             "name": "mastermind_2_6",
-            "icon": "unknown",
+            "icon": "black_marketeer",
             "datas": {
                 "multibasic2": "5",
                 "multibasic": "1.5%",

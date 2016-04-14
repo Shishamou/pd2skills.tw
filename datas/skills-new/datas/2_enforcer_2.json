@@ -15,7 +15,7 @@
     "skills": [
         {
             "name": "enforcer_2_1",
-            "icon": "unknown",
+            "icon": "oppressor",
             "datas": {
                 "multibasic": "75%",
                 "multipro": "75%"
@@ -23,21 +23,21 @@
         },
         {
             "name": "enforcer_2_2",
-            "icon": "unknown",
+            "icon": "show_of_force",
             "datas": {
                 "multipro": "15%"
             }
         },
         {
             "name": "enforcer_2_3",
-            "icon": "unknown",
+            "icon": "pack_mule",
             "datas": {
                 "multibasic": "50%"
             }
         },
         {
             "name": "enforcer_2_4",
-            "icon": "unknown",
+            "icon": "iron_man",
             "datas": {
                 "multibasic": "25%",
                 "multipro": "35%"
@@ -45,7 +45,7 @@
         },
         {
             "name": "enforcer_2_5",
-            "icon": "unknown",
+            "icon": "prison_wife",
             "datas": {
                 "multibasic": "10",
                 "multibasic2": "2",
@@ -54,7 +54,7 @@
         },
         {
             "name": "enforcer_2_6",
-            "icon": "unknown"
+            "icon": "juggernaut"
         }
     ]
 }

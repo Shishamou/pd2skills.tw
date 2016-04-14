@@ -2742,7 +2742,7 @@
             },
             {
                 "name": "mastermind_1_2",
-                "icon": "unknown",
+                "icon": "tea_time",
                 "datas": {
                     "multibasic": "50%",
                     "multipro2": "10",
@@ -2751,7 +2751,7 @@
             },
             {
                 "name": "mastermind_1_3",
-                "icon": "unknown",
+                "icon": "fast_learner",
                 "datas": {
                     "multibasic2": "5",
                     "multibasic": "30%",
@@ -2760,7 +2760,7 @@
             },
             {
                 "name": "mastermind_1_4",
-                "icon": "unknown",
+                "icon": "tea_cookies",
                 "datas": {
                     "multibasic": "7",
                     "multipro": "3"
@@ -2768,7 +2768,7 @@
             },
             {
                 "name": "mastermind_1_5",
-                "icon": "unknown",
+                "icon": "medic_2x",
                 "datas": {
                     "multibasic": "2",
                     "multipro": "4"
@@ -2786,7 +2786,7 @@
             },
             {
                 "name": "mastermind_2_1",
-                "icon": "unknown",
+                "icon": "cable_guy",
                 "datas": {
                     "multibasic": "75%",
                     "multipro": "4"
@@ -2794,7 +2794,7 @@
             },
             {
                 "name": "mastermind_2_2",
-                "icon": "unknown",
+                "icon": "triathlete",
                 "datas": {
                     "multibasic": "150%",
                     "multibasic2": "50%",
@@ -2803,7 +2803,7 @@
             },
             {
                 "name": "mastermind_2_3",
-                "icon": "unknown",
+                "icon": "joker",
                 "datas": {
                     "multipro": "55%",
                     "multipro2": "45%",
@@ -2812,14 +2812,14 @@
             },
             {
                 "name": "mastermind_2_4",
-                "icon": "unknown",
+                "icon": "stockholm_syndrome",
                 "datas": {
                     "multipro": "X%"
                 }
             },
             {
                 "name": "mastermind_2_5",
-                "icon": "unknown",
+                "icon": "control_freak",
                 "datas": {
                     "multibasic": "10%",
                     "multibasic2": "40%",
@@ -2828,7 +2828,7 @@
             },
             {
                 "name": "mastermind_2_6",
-                "icon": "unknown",
+                "icon": "black_marketeer",
                 "datas": {
                     "multibasic2": "5",
                     "multibasic": "1.5%",
@@ -2838,7 +2838,7 @@
             },
             {
                 "name": "mastermind_3_1",
-                "icon": "unknown",
+                "icon": "rifleman",
                 "datas": {
                     "multibasic": "8",
                     "multipro": "8"
@@ -2846,7 +2846,7 @@
             },
             {
                 "name": "mastermind_3_2",
-                "icon": "unknown",
+                "icon": "rifleman",
                 "datas": {
                     "multibasic": "1",
                     "multipro": "25%"
@@ -2854,7 +2854,7 @@
             },
             {
                 "name": "mastermind_3_3",
-                "icon": "unknown",
+                "icon": "from_the_hip",
                 "datas": {
                     "multibasic": "8",
                     "multipro": "20%"
@@ -2862,7 +2862,7 @@
             },
             {
                 "name": "mastermind_3_4",
-                "icon": "unknown",
+                "icon": "tactician",
                 "datas": {
                     "multibasic": "15%",
                     "multipro": "Y",
@@ -2871,7 +2871,7 @@
             },
             {
                 "name": "mastermind_3_5",
-                "icon": "unknown",
+                "icon": "mag_plus",
                 "datas": {
                     "multibasic": "30%",
                     "multibasic2": "2",
@@ -2881,7 +2881,7 @@
             },
             {
                 "name": "mastermind_3_6",
-                "icon": "unknown",
+                "icon": "prison_wife",
                 "datas": {
                     "multibasic": "6",
                     "multibasic2": "1",
@@ -2891,7 +2891,7 @@
             },
             {
                 "name": "enforcer_1_1",
-                "icon": "unknown",
+                "icon": "underdog",
                 "datas": {
                     "multibasic": "10%",
                     "multipro": "10%"
@@ -2899,7 +2899,7 @@
             },
             {
                 "name": "enforcer_1_2",
-                "icon": "unknown",
+                "icon": "shotgun_cqb",
                 "datas": {
                     "multibasic": "25%",
                     "multipro": "25%",
@@ -2908,7 +2908,7 @@
             },
             {
                 "name": "enforcer_1_3",
-                "icon": "unknown",
+                "icon": "shotgun_impact",
                 "datas": {
                     "multibasic": "8",
                     "multipro": "35%"
@@ -2916,7 +2916,7 @@
             },
             {
                 "name": "enforcer_1_4",
-                "icon": "unknown",
+                "icon": "shotgun_impact",
                 "datas": {
                     "multibasic": "40%",
                     "multipro": "35%"
@@ -2924,14 +2924,14 @@
             },
             {
                 "name": "enforcer_1_5",
-                "icon": "unknown",
+                "icon": "from_the_hip",
                 "datas": {
                     "multipro": "35%"
                 }
             },
             {
                 "name": "enforcer_1_6",
-                "icon": "unknown",
+                "icon": "overkill",
                 "datas": {
                     "multibasic2": "10",
                     "multibasic": "75%"
@@ -2939,7 +2939,7 @@
             },
             {
                 "name": "enforcer_2_1",
-                "icon": "unknown",
+                "icon": "oppressor",
                 "datas": {
                     "multibasic": "75%",
                     "multipro": "75%"
@@ -2947,21 +2947,21 @@
             },
             {
                 "name": "enforcer_2_2",
-                "icon": "unknown",
+                "icon": "show_of_force",
                 "datas": {
                     "multipro": "15%"
                 }
             },
             {
                 "name": "enforcer_2_3",
-                "icon": "unknown",
+                "icon": "pack_mule",
                 "datas": {
                     "multibasic": "50%"
                 }
             },
             {
                 "name": "enforcer_2_4",
-                "icon": "unknown",
+                "icon": "iron_man",
                 "datas": {
                     "multibasic": "25%",
                     "multipro": "35%"
@@ -2969,7 +2969,7 @@
             },
             {
                 "name": "enforcer_2_5",
-                "icon": "unknown",
+                "icon": "prison_wife",
                 "datas": {
                     "multibasic": "10",
                     "multibasic2": "2",
@@ -2978,18 +2978,18 @@
             },
             {
                 "name": "enforcer_2_6",
-                "icon": "unknown"
+                "icon": "juggernaut"
             },
             {
                 "name": "enforcer_3_1",
-                "icon": "unknown",
+                "icon": "rifleman",
                 "datas": {
                     "multibasic": "50%"
                 }
             },
             {
                 "name": "enforcer_3_2",
-                "icon": "unknown",
+                "icon": "ammo_reservoir",
                 "datas": {
                     "multibasic": "0",
                     "multipro": "15"
@@ -2997,14 +2997,14 @@
             },
             {
                 "name": "enforcer_3_3",
-                "icon": "unknown",
+                "icon": "portable_saw",
                 "datas": {
                     "multipro": "1"
                 }
             },
             {
                 "name": "enforcer_3_4",
-                "icon": "unknown",
+                "icon": "ammo_2x",
                 "datas": {
                     "multibasic": "2",
                     "multipro": "200%"
@@ -3012,7 +3012,7 @@
             },
             {
                 "name": "enforcer_3_5",
-                "icon": "unknown",
+                "icon": "carbon_blade",
                 "datas": {
                     "multibasic": "40%",
                     "multibasic2": "50%",
@@ -3021,7 +3021,7 @@
             },
             {
                 "name": "enforcer_3_6",
-                "icon": "unknown",
+                "icon": "bandoliers",
                 "datas": {
                     "multibasic": "25%",
                     "multipro": "75%",
