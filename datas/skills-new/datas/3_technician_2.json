@@ -15,7 +15,7 @@
     "skills": [
         {
             "name": "technician_2_1",
-            "icon": "unknown",
+            "icon": "silent_drilling",
             "datas": {
                 "multibasic": "25%",
                 "multipro": "10%"
@@ -23,7 +23,7 @@
         },
         {
             "name": "technician_2_2",
-            "icon": "unknown",
+            "icon": "master_craftsman",
             "datas": {
                 "multibasic": "30%",
                 "multipro": "50%"
@@ -31,7 +31,7 @@
         },
         {
             "name": "technician_2_3",
-            "icon": "unknown",
+            "icon": "drill_expert",
             "datas": {
                 "multibasic": "15%",
                 "multipro": "15%"
@@ -39,7 +39,7 @@
         },
         {
             "name": "technician_2_4",
-            "icon": "unknown",
+            "icon": "trip_miner",
             "datas": {
                 "multibasic": "1",
                 "multibasic2": "4",
@@ -49,7 +49,7 @@
         },
         {
             "name": "technician_2_5",
-            "icon": "unknown",
+            "icon": "hardware_expert",
             "datas": {
                 "multibasic": "20%",
                 "multipro": "1",

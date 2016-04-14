@@ -15,7 +15,7 @@
     "skills": [
         {
             "name": "ghost_1_1",
-            "icon": "unknown",
+            "icon": "jail_workout",
             "datas": {
                 "multibasic": "10",
                 "multibasic2": "3.5",
@@ -24,7 +24,7 @@
         },
         {
             "name": "ghost_1_2",
-            "icon": "unknown",
+            "icon": "thug_life",
             "datas": {
                 "multibasic": "75%",
                 "multipro": "1",
@@ -33,7 +33,7 @@
         },
         {
             "name": "ghost_1_3",
-            "icon": "unknown",
+            "icon": "chameleon",
             "datas": {
                 "multibasic": "25%",
                 "multipro": "20"
@@ -41,7 +41,7 @@
         },
         {
             "name": "ghost_1_4",
-            "icon": "unknown",
+            "icon": "second_chances",
             "datas": {
                 "multibasic": "2",
                 "multipro": "50%"
@@ -49,14 +49,14 @@
         },
         {
             "name": "ghost_1_5",
-            "icon": "unknown",
+            "icon": "ghost",
             "datas": {
                 "multibasic": "25%"
             }
         },
         {
             "name": "ghost_1_6",
-            "icon": "unknown",
+            "icon": "ecm_booster",
             "datas": {
                 "multibasic": "2",
                 "multipro": "25%"

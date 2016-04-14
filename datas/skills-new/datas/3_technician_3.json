@@ -15,7 +15,7 @@
     "skills": [
         {
             "name": "technician_3_1",
-            "icon": "unknown",
+            "icon": "sharpshooter",
             "datas": {
                 "multibasic": "8"
             }
@@ -30,7 +30,7 @@
         },
         {
             "name": "technician_3_3",
-            "icon": "unknown",
+            "icon": "leadership",
             "datas": {
                 "multibasic": "8",
                 "multipro": "12"
@@ -38,7 +38,7 @@
         },
         {
             "name": "technician_3_4",
-            "icon": "unknown",
+            "icon": "awareness",
             "datas": {
                 "multipro": "X",
                 "multipro2": "60%",

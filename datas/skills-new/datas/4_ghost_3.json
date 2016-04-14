@@ -31,7 +31,7 @@
         },
         {
             "name": "ghost_3_3",
-            "icon": "unknown",
+            "icon": "silence_expert",
             "datas": {
                 "multibasic": "50%",
                 "multibasic2": "100%",
@@ -50,7 +50,7 @@
         },
         {
             "name": "ghost_3_5",
-            "icon": "unknown",
+            "icon": "hitman",
             "datas": {
                 "multibasic": "15%",
                 "multipro": "15%"

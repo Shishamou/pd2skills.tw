@@ -3031,14 +3031,14 @@
             },
             {
                 "name": "technician_1_1",
-                "icon": "unknown",
+                "icon": "sentry_2_0",
                 "datas": {
                     "multibasic": "25%"
                 }
             },
             {
                 "name": "technician_1_2",
-                "icon": "unknown",
+                "icon": "sentry_targeting_package",
                 "datas": {
                     "multibasic": "100%",
                     "multipro": "150%",
@@ -3067,7 +3067,7 @@
             },
             {
                 "name": "technician_1_6",
-                "icon": "unknown",
+                "icon": "sentry_gun_2x",
                 "datas": {
                     "multibasic": "2",
                     "multipro": "2"
@@ -3075,7 +3075,7 @@
             },
             {
                 "name": "technician_2_1",
-                "icon": "unknown",
+                "icon": "silent_drilling",
                 "datas": {
                     "multibasic": "25%",
                     "multipro": "10%"
@@ -3083,7 +3083,7 @@
             },
             {
                 "name": "technician_2_2",
-                "icon": "unknown",
+                "icon": "master_craftsman",
                 "datas": {
                     "multibasic": "30%",
                     "multipro": "50%"
@@ -3091,7 +3091,7 @@
             },
             {
                 "name": "technician_2_3",
-                "icon": "unknown",
+                "icon": "drill_expert",
                 "datas": {
                     "multibasic": "15%",
                     "multipro": "15%"
@@ -3099,7 +3099,7 @@
             },
             {
                 "name": "technician_2_4",
-                "icon": "unknown",
+                "icon": "trip_miner",
                 "datas": {
                     "multibasic": "1",
                     "multibasic2": "4",
@@ -3109,7 +3109,7 @@
             },
             {
                 "name": "technician_2_5",
-                "icon": "unknown",
+                "icon": "hardware_expert",
                 "datas": {
                     "multibasic": "20%",
                     "multipro": "1",
@@ -3128,7 +3128,7 @@
             },
             {
                 "name": "technician_3_1",
-                "icon": "unknown",
+                "icon": "sharpshooter",
                 "datas": {
                     "multibasic": "8"
                 }
@@ -3143,7 +3143,7 @@
             },
             {
                 "name": "technician_3_3",
-                "icon": "unknown",
+                "icon": "leadership",
                 "datas": {
                     "multibasic": "8",
                     "multipro": "12"
@@ -3151,7 +3151,7 @@
             },
             {
                 "name": "technician_3_4",
-                "icon": "unknown",
+                "icon": "awareness",
                 "datas": {
                     "multipro": "X",
                     "multipro2": "60%",
@@ -3177,7 +3177,7 @@
             },
             {
                 "name": "ghost_1_1",
-                "icon": "unknown",
+                "icon": "jail_workout",
                 "datas": {
                     "multibasic": "10",
                     "multibasic2": "3.5",
@@ -3186,7 +3186,7 @@
             },
             {
                 "name": "ghost_1_2",
-                "icon": "unknown",
+                "icon": "thug_life",
                 "datas": {
                     "multibasic": "75%",
                     "multipro": "1",
@@ -3195,7 +3195,7 @@
             },
             {
                 "name": "ghost_1_3",
-                "icon": "unknown",
+                "icon": "chameleon",
                 "datas": {
                     "multibasic": "25%",
                     "multipro": "20"
@@ -3203,7 +3203,7 @@
             },
             {
                 "name": "ghost_1_4",
-                "icon": "unknown",
+                "icon": "second_chances",
                 "datas": {
                     "multibasic": "2",
                     "multipro": "50%"
@@ -3211,14 +3211,14 @@
             },
             {
                 "name": "ghost_1_5",
-                "icon": "unknown",
+                "icon": "ghost",
                 "datas": {
                     "multibasic": "25%"
                 }
             },
             {
                 "name": "ghost_1_6",
-                "icon": "unknown",
+                "icon": "ecm_booster",
                 "datas": {
                     "multibasic": "2",
                     "multipro": "25%"
@@ -3226,7 +3226,7 @@
             },
             {
                 "name": "ghost_2_1",
-                "icon": "unknown",
+                "icon": "alpha_dog",
                 "datas": {
                     "multibasic": "25%",
                     "multibasic2": "25%",
@@ -3236,7 +3236,7 @@
             },
             {
                 "name": "ghost_2_2",
-                "icon": "unknown",
+                "icon": "freedom_call",
                 "datas": {
                     "multibasic": "10%",
                     "multibasic2": "2%",
@@ -3245,7 +3245,7 @@
             },
             {
                 "name": "ghost_2_3",
-                "icon": "unknown",
+                "icon": "hidden_blade",
                 "datas": {
                     "multibasic": "2",
                     "multipro": "4"
@@ -3253,7 +3253,7 @@
             },
             {
                 "name": "ghost_2_4",
-                "icon": "unknown",
+                "icon": "jail_diet",
                 "datas": {
                     "multibasic": "1%",
                     "multibasic2": "3",
@@ -3268,7 +3268,7 @@
             },
             {
                 "name": "ghost_2_5",
-                "icon": "unknown",
+                "icon": "insulation",
                 "datas": {
                     "multibasic": "30%",
                     "multipro": "2"
@@ -3276,7 +3276,7 @@
             },
             {
                 "name": "ghost_2_6",
-                "icon": "unknown",
+                "icon": "backstab",
                 "datas": {
                     "multibasic": "3%",
                     "multibasic2": "3",
@@ -3307,7 +3307,7 @@
             },
             {
                 "name": "ghost_3_3",
-                "icon": "unknown",
+                "icon": "silence_expert",
                 "datas": {
                     "multibasic": "50%",
                     "multibasic2": "100%",
@@ -3326,7 +3326,7 @@
             },
             {
                 "name": "ghost_3_5",
-                "icon": "unknown",
+                "icon": "hitman",
                 "datas": {
                     "multibasic": "15%",
                     "multipro": "15%"
