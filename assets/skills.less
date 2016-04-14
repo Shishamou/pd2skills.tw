@@ -10,14 +10,14 @@
 	// @progressbar-width  : 6px;
 
 	@skill-width  : (@skill-icon-size + @skill-border-width * 2) * 1.5;
-	@skill-height : (@skill-icon-size + @skill-border-width * 2) + @font-normal * 2;
+	@skill-height : (@skill-icon-size + @skill-border-width * 2) + @font-normal * 1.5;
 
 	@tier-column-width  : @skill-width;
 	@tier-width         : @tier-column-width * 2;
 	@tier-height        : @skill-height;
 
 	@subtree-width  : @tier-column-width * 2.2;
-	@subtree-height : @tier-height * 4 + @font-normal * 5;
+	@subtree-height : @tier-height * 4 + @font-normal * 6;
 
 	@tree-width  : @subtree-width * 3;
 	@tree-heigth : @subtree-height;
@@ -82,14 +82,12 @@
 		width: @subtree-width;
 		height: @subtree-height;
 		padding: (@font-normal * 0.5) ((@subtree-width - @tier-width) / 2);
-		background-color: rgba(200,100,200,.2);
-
 		font-size: @font-normal;
 
 		.subtree-header,
 		.subtree-footer {
-			height: @font-normal * 2;
-			line-height: @font-normal * 2;
+			height: @font-normal * 2.5;
+			line-height: @font-normal * 2.5;
 			text-align: center;
 		}
 	}
@@ -108,7 +106,6 @@
 		position: relative;
 		width: @tier-width;
 		height: @tier-height;
-		background: rgba(100,200,200,.2);
 	}
 
 	.subtree-tiers {
@@ -209,10 +206,10 @@
 
 	.skill-text {
 		display: block;
-		height: @font-normal * 2;
-		line-height: @font-normal * 2;
+		height: @font-normal * 1.5;
+		line-height: @font-normal * 1.5;
 		text-align: center;
-		font-size: @font-normal * 0.9;
+		font-size: @font-normal * 0.8;
 		vertical-align: middle;
 	}
 
