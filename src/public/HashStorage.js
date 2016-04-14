@@ -6,8 +6,8 @@ export default class HashStorage extends Storage {
 		var hash = callable();
 		var parts = hash.split(':');
 		if (parts.length >= 3) {
-			this.setPerksHash(parts.pop());
 			this.setInfamyHash(parts.pop());
+			this.setPerksHash(parts.pop());
 			this.setSkillsHash(parts.splice(0, parts.length));
 		}
 	}

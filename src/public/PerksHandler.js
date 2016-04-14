@@ -47,6 +47,13 @@ export default class PerksHandler {
             }
         }, this);
 
+        this.refresh();
+    }
+
+    /**
+     * 刷新
+     */
+    refresh() {
         this.refreshSpentPoints();
     }
 
@@ -97,6 +104,8 @@ export default class PerksHandler {
     setPerkTier(perkId, tier) {
         var perk = this.getPerk(perkId);
         perk.tier = Math.max(1, Math.min(tier, perk.decks.length));
+        
+        this.refresh();
     }
 
     // =========================================================================
@@ -108,6 +117,6 @@ export default class PerksHandler {
         var perk = this.getPerk(deck.perkId);
 
         perk.tier = perk.decks.indexOf(deckId) + 1;
-        this.refreshSpentPoints();
+        this.refresh();
     }
 }

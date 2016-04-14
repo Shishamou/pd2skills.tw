@@ -23,6 +23,7 @@ export default function handlePerks(state = initialState, action) {
 
         // 刷新天賦
         case types.REFRESH_PERKS:
+            PerksHandler.refresh();
             return Object.assign({}, state, PerksHandler.store, {
                 activedPerk: PerksHandler.getEquippedPerk()
             });
