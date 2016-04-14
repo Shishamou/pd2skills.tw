@@ -42,10 +42,7 @@
             "name": "ghost_3_4",
             "icon": "oppressor",
             "datas": {
-                "multibasic": "multibasic",
-                "multipro": "6",
-                "multipro2": "multipro2",
-                "multipro3": "multipro3"
+                "multipro": "6"
             }
         },
         {
@@ -61,8 +58,8 @@
             "icon": "jail_diet",
             "datas": {
                 "multibasic": "2",
-                "multibasic2": "35%",
-                "multibasic3": "4",
+                "multibasic2": "4",
+                "multibasic3": "35%",
                 "multipro": "12"
             }
         }

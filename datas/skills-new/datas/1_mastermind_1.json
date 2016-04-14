@@ -45,7 +45,9 @@
             "icon": "tea_cookies",
             "datas": {
                 "multibasic": "7",
-                "multipro": "3"
+                "multipro": "3",
+                "multipro2": "15",
+                "multipro3": "70%"
             }
         },
         {

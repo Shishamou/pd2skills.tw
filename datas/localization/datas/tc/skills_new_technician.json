@@ -7,7 +7,7 @@
 	"menu_technician_1_3": "經濟步哨塔\nEco Sentry",
 	"menu_technician_1_3_desc": "基礎：##$basic;##\n減少放置步哨塔所需彈藥##$multibasic;##。\n\n精通：##$pro;##\n你的步哨塔增加##$multipro;##血量。",
 	"menu_technician_1_4": "工事中\nEngineering",
-	"menu_technician_1_4_desc": "基礎：##$basic;##\n你的步哨塔現在可以選擇低音模式，減少被當成目標的機率。\n\n精通：##$pro;##\n你的步哨塔現在可以切換成穿甲彈，減少開火速率和彈藥量，但是增加傷害合穿透敵人與盾牌的能力",
+	"menu_technician_1_4_desc": "基礎：##$basic;##\n你的步哨塔現在可以選擇低音模式，減少被當成目標的機率。\n\n精通：##$pro;##\n你的步哨塔現在可以切換成穿甲彈，減少開火速率和彈藥量，但是增加傷害合穿透敵人與盾牌的能力。",
 	"menu_technician_1_5": "萬事通\nJack of All Trades",
 	"menu_technician_1_5_desc": "基礎：##$basic;##\n你對裝備部屬與互動所需時間減少##$multibasic;##。\n\n精通：##$pro;##\n你現在可以攜帶第二個裝備，第二個裝備的效果減少##$multipro;##。",
 	"menu_technician_1_6": "攻防戰\nTower Defence",
