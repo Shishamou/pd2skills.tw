@@ -15,14 +15,14 @@
     "skills": [
         {
             "name": "technician_1_1",
-            "icon": "unknown",
+            "icon": "sentry_2_0",
             "datas": {
                 "multibasic": "25%"
             }
         },
         {
             "name": "technician_1_2",
-            "icon": "unknown",
+            "icon": "sentry_targeting_package",
             "datas": {
                 "multibasic": "100%",
                 "multipro": "150%",
@@ -51,7 +51,7 @@
         },
         {
             "name": "technician_1_6",
-            "icon": "unknown",
+            "icon": "sentry_gun_2x",
             "datas": {
                 "multibasic": "2",
                 "multipro": "2"
