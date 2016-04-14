@@ -24,10 +24,8 @@ class PerkDecksMain extends Component
 					<Perks {...this.props} />
 					<div className="control perks-control">
 						<div className="control-content">
-							<span className="control-text" id="perk_points">{this.renderTotalPoints()}</span>
-							<span>(</span>
-							<span className="control-button" onClick={this.handleRespec}>{respec}</span>
-							<span>)</span>
+							<p className="control-text" id="perk_points">{this.renderTotalPoints()}</p>
+							<p className="control-button" onClick={this.handleRespec}>{respec}</p>
 						</div>
 					</div>
 				</div>
@@ -38,10 +36,7 @@ class PerkDecksMain extends Component
 	renderTotalPoints() {
 		const { locale, localeText, spentPoints } = this.props;
 
-		return locale('menu_st_spent_xp_perk_total') + localeText(
-			(1 == spentPoints)? 'st_menu_point_plural' : 'st_menu_point',
-			{ points: spentPoints }
-		);
+		return locale('menu_st_spent_xp_perk_total') + spentPoints;
 	}
 }
 
