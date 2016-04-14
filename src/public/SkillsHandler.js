@@ -105,15 +105,19 @@ export default class SkillsHandler {
         var bonusPoints = 0;
 
         reduced.forEach((bonus) => {
-            console.log(bonus);
             if (bonus === 'cost') {
                 return this.store.costReduced = true;
+            }
+
+            if (bonus === 'hoxton_pack') {
+                return;
             }
 
             bonusPoints += 1;
         });
 
         this.totalAvailablePoints = 100 + Math.min(4, bonusPoints);
+        this.refreshSkillTrees();
     }
 
     /**
