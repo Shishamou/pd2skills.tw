@@ -13,10 +13,6 @@ class Tier extends Component
 		return (
 			<div className={this.getClassName()}>
 				<div className="tier-skills">{this.renderSkills()}</div>
-				<div className="tier-aside">
-					<p>{tierRank}</p>
-					<p>{currectUnlockRequire}</p>
-				</div>
 			</div>
 		);
 	}
