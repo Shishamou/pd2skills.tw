@@ -24,10 +24,10 @@ class Tree extends Component
 
 		return (
 			<div className="tree">
-				<div className="tree-control">
-					<div className="tree-control-content">
-						<p className="tree-control-available">{available}</p>
-						<p className="tree-control-respec" onClick={this.handleRespec}>{respec}</p>
+				<div className="control tree-control">
+					<div className="control-content">
+						<p className="control-text">{available}</p>
+						<p className="control-button" onClick={this.handleRespec}>{respec}</p>
 					</div>
 				</div>
 				<div className="progressbar" data-percent={this.getProgressbarPercent()} />

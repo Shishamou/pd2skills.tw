@@ -88,6 +88,38 @@
 
 
 	/* =========================================================================
+	 * = control
+	 * =======================================================================*/
+
+	.control {
+		font-size: 0;
+
+		&::before {
+			content: '';
+			display: inline-block;
+			height: 100%;
+			vertical-align: middle;
+		}
+
+		.control-content {
+			display: inline-block;
+			line-height: 1.3;
+			font-size: @font-normal;
+			vertical-align: middle;
+
+			.control-button {
+				color: @color-strong;
+				cursor: pointer;
+
+				&:hover {
+					color: lighten(@color-strong, 20%);
+				}
+			}
+		}
+	}
+
+
+	/* =========================================================================
 	 * = infobox
 	 * =======================================================================*/
 

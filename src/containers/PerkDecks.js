@@ -26,9 +26,11 @@ class PerkDecks extends Component
         const { dispatch } = this.props;
 
         const app = {
+            totalPoints : 0,
             reflowCanvas     : this.reflowCanvas,
             getPerk          : (id) => this.props.perks[id],
             getDeck          : (id) => this.props.decks[id],
+            respecPerks      : (id) => {dispatch(actions.respecPerk(id))},
             handlePerkClick  : (id) => {dispatch(actions.handlePerkClick(id))},
             handlePerkDouble : (id) => {dispatch(actions.handlePerkDouble(id))},
             handlePerkRemove : (id) => {dispatch(actions.handlePerkRemove(id))},

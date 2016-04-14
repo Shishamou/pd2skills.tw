@@ -96,33 +96,6 @@
 		z-index: 1;
 		width: @skill-block-width;
 		height: @tier-height * 0.5;
-		font-size: 0;
-
-		&::before {
-			content: '';
-			display: inline-block;
-			height: 100%;
-			vertical-align: middle;
-		}
-
-		.tree-control-content {
-			display: inline-block;
-			font-size: @skill-font-size;
-			vertical-align: middle;
-
-			p {
-				line-height: 1.3;
-			}
-
-			.tree-control-respec {
-				color: @color-strong;
-				cursor: pointer;
-
-				&:hover {
-					color: lighten(@color-strong, 20%);
-				}
-			}
-		}
 	}
 
 	/* =========================================================================
