@@ -1,89 +1,33 @@
 import React, { Component, PropTypes } from 'react';
-import Tier from './Tier';
+import Subtree from './Subtree';
 
 class Tree extends Component
 {
-	constructor(props) {
-		super(props);
-		this.handleRespec = this.handleRespec.bind(this);
-	}
-
-	handleRespec() {
-		// this.props.respecTree(this.props.tree.id);
-		this.props.respecTree();
-	}
-
 	render() {
 		const { locale, localeText } = this.props;
 
-		var available = locale('st_menu_available_skill_points', {
-			points: this.props.availablePoints
-		});
-
-		var respec = locale('st_menu_respec_all_trees');
-
 		return (
 			<div className="tree">
-				<div className="control tree-control">
-					<div className="control-content">
-						<p className="control-text">{available}</p>
-						<p className="control-button" onClick={this.handleRespec}>{respec}</p>
-					</div>
+				<div className="subtrees">
+					{this.renderSubtrees()}
 				</div>
-				<div className="progressbar" data-percent={this.getProgressbarPercent()} />
-				{this.renderTiers()}
 			</div>
 		);
 	}
 
-	getProgressbarPercent() {
-		const { tree, getTier } = this.props;
-		var tiers = tree.tiers;
+	renderSubtrees() {
+		const { tree, getTree } = this.props;
 
-		for (var i = 1; i < tiers.length; i++) {
-			var currectTier = getTier(tiers[i]);
-			var previousTier = getTier(tiers[i - 1]);
-
-			if (currectTier.unlocked === false) {
-				var range = currectTier.currectUnlockRequire - previousTier.currectUnlockRequire;
-				var tierUsed = currectTier.currectUnlockNeeded + range;
-				var tierProgress = Math.floor(tierUsed / range * 100 * 0.2);
-				var progress = (i - 1) * 33;
-
-				return progress + tierProgress;
-			}
-		}
-
-		return 100;
-	}
-
-	renderTiers() {
-		const { tree, getTier } = this.props;
-
-		var tiers = tree.tiers.slice().reverse();
-		tiers = tiers.map(function (tierId, index) {
-			var tier = getTier(tierId);
-			return (
-				<Tier
-					{...this.props}
-					key={index}
-					tier={tier}
-					tierRank={tiers.length - index - 1}
-				/>
-			);
-		}, this);
-
-		return tiers;
+		return tree.subtrees.map((subtreeId, index) => {
+			var subtree = getTree(subtreeId);
+			return <Subtree {...this.props} key={index} tree={subtree} />;
+		})
 	}
 }
 
 Tree.propTypes = {
-	locale: PropTypes.func.isRequired,
-	localeText: PropTypes.func.isRequired,
-	getTier: PropTypes.func.isRequired,
-	respecTree: PropTypes.func.isRequired,
+	getTree: PropTypes.func.isRequired,
 	tree: PropTypes.object.isRequired,
-	availablePoints: PropTypes.number.isRequired,
 };
 
 export default Tree;

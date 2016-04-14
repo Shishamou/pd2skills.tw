@@ -3,6 +3,7 @@ import * as types from '../constants/SkillAppActions';
 import * as events from '../constants/Events';
 
 var initialState = {
+    masterTrees: [],
     trees: [],
     tiers: [],
     skills: [],
