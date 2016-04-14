@@ -40,7 +40,7 @@
         },
         {
             "name": "enforcer_1_4",
-            "icon": "shotgun_impact",
+            "icon": "sharpshooter",
             "datas": {
                 "multibasic": "40%",
                 "multipro": "35%"

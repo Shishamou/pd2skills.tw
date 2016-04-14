@@ -15,7 +15,7 @@
     "skills": [
         {
             "name": "mastermind_3_1",
-            "icon": "rifleman",
+            "icon": "sharpshooter",
             "datas": {
                 "multibasic": "8",
                 "multipro": "8"
@@ -48,7 +48,7 @@
         },
         {
             "name": "mastermind_3_5",
-            "icon": "mag_plus",
+            "icon": "kilmer",
             "datas": {
                 "multibasic": "30%",
                 "multibasic2": "2",

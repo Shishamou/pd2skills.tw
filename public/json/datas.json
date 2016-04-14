@@ -2838,7 +2838,7 @@
             },
             {
                 "name": "mastermind_3_1",
-                "icon": "rifleman",
+                "icon": "sharpshooter",
                 "datas": {
                     "multibasic": "8",
                     "multipro": "8"
@@ -2871,7 +2871,7 @@
             },
             {
                 "name": "mastermind_3_5",
-                "icon": "mag_plus",
+                "icon": "kilmer",
                 "datas": {
                     "multibasic": "30%",
                     "multibasic2": "2",
@@ -2916,7 +2916,7 @@
             },
             {
                 "name": "enforcer_1_4",
-                "icon": "shotgun_impact",
+                "icon": "sharpshooter",
                 "datas": {
                     "multibasic": "40%",
                     "multipro": "35%"
@@ -3047,7 +3047,7 @@
             },
             {
                 "name": "technician_1_3",
-                "icon": "unknown",
+                "icon": "unknown2",
                 "datas": {
                     "multibasic": "25%",
                     "multipro": "150%"
@@ -3055,11 +3055,11 @@
             },
             {
                 "name": "technician_1_4",
-                "icon": "unknown"
+                "icon": "sentry_gun"
             },
             {
                 "name": "technician_1_5",
-                "icon": "unknown",
+                "icon": "blast_radius",
                 "datas": {
                     "multibasic": "50%",
                     "multipro": "50%"
@@ -3135,7 +3135,7 @@
             },
             {
                 "name": "technician_3_2",
-                "icon": "unknown",
+                "icon": "martial_arts",
                 "datas": {
                     "multibasic": "25%",
                     "multipro": "50%"
@@ -3162,14 +3162,14 @@
             },
             {
                 "name": "technician_3_5",
-                "icon": "unknown",
+                "icon": "mag_plus",
                 "datas": {
                     "multibasic": "15"
                 }
             },
             {
                 "name": "technician_3_6",
-                "icon": "unknown",
+                "icon": "thick_skin",
                 "datas": {
                     "multibasic": "15%",
                     "multipro": "50%"
@@ -3291,7 +3291,7 @@
             },
             {
                 "name": "ghost_3_1",
-                "icon": "unknown",
+                "icon": "chameleon",
                 "datas": {
                     "multibasic": "15%",
                     "multipro": "30%"
@@ -3299,7 +3299,7 @@
             },
             {
                 "name": "ghost_3_2",
-                "icon": "unknown",
+                "icon": "jail_workout",
                 "datas": {
                     "multibasic": "1",
                     "multipro": "2"
@@ -3316,7 +3316,7 @@
             },
             {
                 "name": "ghost_3_4",
-                "icon": "unknown",
+                "icon": "oppressor",
                 "datas": {
                     "multibasic": "multibasic",
                     "multipro": "6",
@@ -3334,7 +3334,7 @@
             },
             {
                 "name": "ghost_3_6",
-                "icon": "unknown",
+                "icon": "jail_diet",
                 "datas": {
                     "multibasic": "2",
                     "multibasic2": "35%",

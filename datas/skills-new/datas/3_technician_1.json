@@ -31,7 +31,7 @@
         },
         {
             "name": "technician_1_3",
-            "icon": "unknown",
+            "icon": "unknown2",
             "datas": {
                 "multibasic": "25%",
                 "multipro": "150%"
@@ -39,11 +39,11 @@
         },
         {
             "name": "technician_1_4",
-            "icon": "unknown"
+            "icon": "sentry_gun"
         },
         {
             "name": "technician_1_5",
-            "icon": "unknown",
+            "icon": "blast_radius",
             "datas": {
                 "multibasic": "50%",
                 "multipro": "50%"

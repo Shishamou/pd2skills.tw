@@ -15,7 +15,7 @@
     "skills": [
         {
             "name": "ghost_3_1",
-            "icon": "unknown",
+            "icon": "chameleon",
             "datas": {
                 "multibasic": "15%",
                 "multipro": "30%"
@@ -23,7 +23,7 @@
         },
         {
             "name": "ghost_3_2",
-            "icon": "unknown",
+            "icon": "jail_workout",
             "datas": {
                 "multibasic": "1",
                 "multipro": "2"
@@ -40,7 +40,7 @@
         },
         {
             "name": "ghost_3_4",
-            "icon": "unknown",
+            "icon": "oppressor",
             "datas": {
                 "multibasic": "multibasic",
                 "multipro": "6",
@@ -58,7 +58,7 @@
         },
         {
             "name": "ghost_3_6",
-            "icon": "unknown",
+            "icon": "jail_diet",
             "datas": {
                 "multibasic": "2",
                 "multibasic2": "35%",
