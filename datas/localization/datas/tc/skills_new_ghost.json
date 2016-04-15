@@ -3,7 +3,7 @@
 	"menu_ghost_1_1": "國■布\nDefence Up",
 	"menu_ghost_1_1_desc": "基礎：##$basic;##\n當你時站立不動##$multibasic;##秒，你會自動標注半徑##$multibasic2;##公尺內的所有人。\n\n王牌：##$pro;##\n你可以在踩點模式撿起物品，你取得的贓物價值增加##$multipro;##。",
 	"menu_ghost_1_2": "清潔工\nCleaner",
-	"menu_ghost_1_2_desc": "基礎：##$basic;##\n你殺害平民的善後罰款減少##$multibasic;##。\n\n精通：##$pro;##\n你的屍袋上限加##$multipro;##，你開始時身上有##$multipro2;##個屍袋。",
+	"menu_ghost_1_2_desc": "基礎：##$basic;##\n你獲得權限能購買特殊任務支援。殺害平民的善後罰款減少##$multibasic;##。\n\n精通：##$pro;##\n你的屍袋上限加##$multipro;##，你開始時身上有##$multipro2;##個屍袋。",
 	"menu_ghost_1_3": "變色龍\nChameleon",
 	"menu_ghost_1_3_desc": "基礎：##$basic;##\n在未戴上面具時的隱匿值增加##$multibasic;##，你能按F鍵標記出警衛和監視鏡頭。\n\n精通：##$pro;##\n可以在近距離對監視鏡頭按F鍵進行互動令該鏡頭失效##$multipro;##秒。",
 	"menu_ghost_1_4": "送葬者\nUndertaker",
