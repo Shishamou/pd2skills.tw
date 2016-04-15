@@ -23,7 +23,7 @@
 	"menu_mastermind_2_4": "斯德哥爾摩症候群\nStockholm Syndrome",
 	"menu_mastermind_2_4_desc": "基礎：##$basic;##\n當你倒地時，你可以向附近未被綁住的平民案F鍵互動有機會他們會救起你。你的人質不會被執法人員救走。\n\n精通：##$pro;##\n救你的平民會有機會再送你##$multipro;##子彈量。每當你被逮捕時，你的人質會交換自身而讓你平安歸來，突襲時仍有此效果。",
 	"menu_mastermind_2_5": "共犯\nPartner in Crime",
-	"menu_mastermind_2_5_desc": "基礎：##$basic;##\n當你擁有一名變節警察，你的移動速度快 ##$multibasic;##。\n\n變節警察受傷減少##$multibasic2;##。\n\n精通：##$pro;##\n醫療包的使用次數增加至##$multipro;##次。",
+	"menu_mastermind_2_5_desc": "基礎：##$basic;##\n當你擁有一名變節警察，你的移動速度快 ##$multibasic;##。\n\n變節警察受傷減少##$multibasic2;##。\n\n精通：##$pro;##\n當你擁有一名變節警察，你的生命值增加##$multipro;##。\n\n變節警察受傷減少 ##$multipro2;##。",
 	"menu_mastermind_2_6": "綁匪\nHostage Taker",
 	"menu_mastermind_2_6_desc": "基礎：##$basic;##\n當隊伍擁有最少一名人質（包括變節警察）時，每##$multibasic2;##秒你能回復##$multibasic;##生命值。\n\n精通：##$pro;##\n當隊伍擁有最少一名人質（包括變節警察）時，每##$multipro2;##秒你能回復##$multipro;##生命值。",
 
