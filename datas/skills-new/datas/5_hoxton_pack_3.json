@@ -14,22 +14,53 @@
     ],
     "skills": [
         {
-            "name": "hoxton_pack_3_1"
+            "name": "hoxton_pack_3_1",
+            "icon": "martial_arts",
+            "datas": {
+                "multibasic": "50%",
+                "multipro": "50%"
+            }
         },
         {
-            "name": "hoxton_pack_3_2"
+            "name": "hoxton_pack_3_2",
+            "icon": "tough_guy",
+            "datas": {
+                "multibasic": "30%",
+                "multibasic2": "40%",
+                "multipro": "60%"
+            }
         },
         {
-            "name": "hoxton_pack_3_3"
+            "name": "hoxton_pack_3_3",
+            "icon": "steroids",
+            "datas": {
+                "multibasic": "50%",
+                "multipro": "50%"
+            }
         },
         {
-            "name": "hoxton_pack_3_4"
+            "name": "hoxton_pack_3_4",
+            "icon": "hidden_blade",
+            "datas": {
+                "multibasic": "50%",
+                "multibasic2": "200%",
+                "multipro": "50%",
+                "multipro2": "X"
+            }
         },
         {
-            "name": "hoxton_pack_3_5"
+            "name": "hoxton_pack_3_5",
+            "icon": "drop_soap"
         },
         {
-            "name": "hoxton_pack_3_6"
+            "name": "hoxton_pack_3_6",
+            "icon": "wolverine",
+            "datas": {
+                "multibasic": "50%",
+                "multibasic2": "250%",
+                "multipro": "50%",
+                "multipro2": "100%"
+            }
         }
     ]
 }
