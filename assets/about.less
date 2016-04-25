@@ -1,0 +1,132 @@
+
+@space: @font-size * 1;
+@font-size: 20px;
+.about {
+    background: rgba(0,0,0,.2);
+    font-size: @font-size;
+    line-height: 1.3;
+    margin: 80px auto;
+
+    &:before {
+        .pseudo-block;
+        .frame-border(3px);
+    }
+}
+
+.about {
+    box-sizing: border-box;
+    position: relative;
+    width: 800px;
+    height: 600px;
+    padding: @space * 0.6 @space;
+
+    .about-side {
+        position: relative;
+        float: left;
+        width: ~"calc(40% - @{space})";
+        height: 100%;
+        // background: rgba(1,22,233,.2);
+    }
+
+    .about-main {
+        float: right;
+        width: 60%;
+        height: 100%;
+        // background: rgba(32,222,1,.2);
+    }
+}
+
+/* =============================================================================
+ * = main
+ * ===========================================================================*/
+
+.about-main {
+    box-sizing: border-box;
+    padding: 0 @space * 0.25;
+
+    .about-main-header {
+        font-size: 120%;
+        text-transform: uppercase;
+    }
+
+    .about-figure {
+        height: 50%;
+        margin: (@space * 0.5) 0;
+    }
+}
+
+.about-figure {
+    position: relative;
+
+    &::before {
+        .pseudo-block;
+        border: 2px solid fade(@color-normal, 30%);
+    }
+}
+
+
+
+/* =============================================================================
+ * = side
+ * ===========================================================================*/
+
+.about-side {
+    @footer-height: @font-size * 1.4;
+
+    box-sizing: border-box;
+    padding-bottom: @footer-height;
+    text-transform: uppercase;
+
+    .about-button:hover {
+        background: fade(@color-strong, 40%);
+    }
+
+    .about-side-footer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: @footer-height;
+        line-height: @footer-height;
+    }
+}
+
+.about-side-group {
+    margin-bottom: @space * 0.5;
+
+    .group-header {
+        color: @color-normal;
+    }
+
+    ul.group-list {
+        li {
+
+            &::before {
+                content: '►';
+                font-size: 50%;
+                margin-right: 2px;
+                vertical-align: middle;
+            }
+
+            &:not(.actived)::before {
+                visibility: hidden;
+            }
+        }
+    }
+}
+
+.about-side-footer {
+    .about-button {
+        height: 100%;
+        padding: 0 (@space * 0.4);
+    }
+}
+
+.about-button {
+    color: @color-strong;
+    cursor: pointer;
+
+    &:hover {
+        color: lighten(@color-strong, 25%);
+    }
+}
