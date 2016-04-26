@@ -14,7 +14,6 @@
 
 
     &:not(.show) {
-        // display: none;
         visibility: hidden;
     }
 
@@ -81,7 +80,6 @@
     padding: @space * 0.6 @space;
 
     .about-side {
-        position: relative;
         float: left;
         width: ~"calc(40% - @{space})";
         height: 100%;
@@ -129,7 +127,7 @@
     }
 
     .about-figure {
-        height: 50%;
+        height: 45%;
         margin: (@space * 0.5) 0;
     }
 }
@@ -146,7 +144,6 @@
 .about-main-content {
     a {
         .about-button;
-        text-decoration: none;
     }
 
     strong {
@@ -162,25 +159,37 @@
 .about-side {
     @footer-height: @font-size * 1.4;
 
+    position: relative;
     box-sizing: border-box;
     padding-bottom: @footer-height;
     text-transform: uppercase;
 
-    .about-button:hover {
-        background: fade(@color-strong, 40%);
+    .about-side-content {
+        overflow: auto;
+        height: 100%;
     }
 
     .about-side-footer {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        width: 100%;
         height: @footer-height;
         line-height: @footer-height;
+    }
+
+
+    .about-button:hover {
+        background: fade(@color-strong, 40%);
+    }
+}
+
+.about-side-footer {
+    .about-button {
+        height: 100%;
+        padding: 0 (@space * 0.4);
     }
 }
 
 .about-side-group {
+    overflow: auto;
     margin-bottom: @space * 0.5;
 
     .group-header {
@@ -207,12 +216,9 @@
             }
         }
     }
-}
 
-.about-side-footer {
     .about-button {
-        height: 100%;
-        padding: 0 (@space * 0.4);
+        cursor: default;
     }
 }
 
