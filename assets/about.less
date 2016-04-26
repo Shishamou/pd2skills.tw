@@ -12,6 +12,12 @@
 	font-size: 0;
     cursor: default;
 
+
+    &:not(.show) {
+        // display: none;
+        visibility: hidden;
+    }
+
     &::before {
         content: '';
         display: inline-block;

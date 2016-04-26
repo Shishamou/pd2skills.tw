@@ -68,6 +68,16 @@
 	transition: @setting;
 }
 
+.link {
+	color: @color-normal;
+	text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+        color: lighten(@color-strong, 25%);
+    }
+}
+
 .icon-remove(@size) {
 	position: absolute;
 	top: 0;
