@@ -1,11 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Provider } from 'react-redux';
-import configureStore from '../configureStore';
-import { fetchLangs, fetchSkills } from '../actions/initial';
-
 import App from './App.js';
-
-const store = configureStore();
 
 export default class Root extends Component
 {
@@ -15,9 +10,13 @@ export default class Root extends Component
 
   render() {
     return (
-      <Provider store={store}>
+      <Provider store={this.props.store}>
         <App />
       </Provider>
     );
   }
 }
+
+Root.propTypes = {
+  store: PropTypes.func.isRequired
+};
