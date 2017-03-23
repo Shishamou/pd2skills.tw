@@ -28,7 +28,8 @@ class Skills extends Component
             // return 'dark';
         })(skill, tier);
 
-        this.props.drawIcon(`skill_${skill.name}`, canvas, color);
+        var icon = skill.icon || skill.name
+        this.props.drawIcon(`skill_${icon}`, canvas, color);
     }
 
     render() {
@@ -66,7 +67,7 @@ Skills.propTypes = {
 
 function select(state) {
     state = state.skills;
-    var currectTree = state.trees[state.activedTree] || null;
+    var currectTree = state.masterTrees[state.activedTree] || null;
     return Object.assign({ currectTree }, state);
 }
 

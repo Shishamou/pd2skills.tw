@@ -1,0 +1,70 @@
+{
+    "subtrees": [
+        {
+            "name": "technician_2",
+            "skills": [
+                "technician_2_1",
+                "technician_2_2",
+                "technician_2_3",
+                "technician_2_4",
+                "technician_2_5",
+                "technician_2_6"
+            ]
+        }
+    ],
+    "skills": [
+        {
+            "name": "technician_2_1",
+            "icon": "silent_drilling",
+            "datas": {
+                "multibasic": "25%",
+                "multipro": "10%"
+            }
+        },
+        {
+            "name": "technician_2_2",
+            "icon": "master_craftsman",
+            "datas": {
+                "multibasic": "30%",
+                "multipro": "50%"
+            }
+        },
+        {
+            "name": "technician_2_3",
+            "icon": "drill_expert",
+            "datas": {
+                "multibasic": "15%",
+                "multipro": "15%"
+            }
+        },
+        {
+            "name": "technician_2_4",
+            "icon": "trip_miner",
+            "datas": {
+                "multibasic": "1",
+                "multibasic2": "4",
+                "multipro": "2",
+                "multipro2": "7"
+            }
+        },
+        {
+            "name": "technician_2_5",
+            "icon": "hardware_expert",
+            "datas": {
+                "multibasic": "20%",
+                "multipro": "1",
+                "multipro2": "50%"
+            }
+        },
+        {
+            "name": "technician_2_6",
+            "icon": "unknown",
+            "datas": {
+                "multibasic": "X",
+                "multibasic2": "Y",
+                "multipro": "X",
+                "multipro2": "Y"
+            }
+        }
+    ]
+}

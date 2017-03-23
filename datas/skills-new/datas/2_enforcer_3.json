@@ -1,0 +1,66 @@
+{
+    "subtrees": [
+        {
+            "name": "enforcer_3",
+            "skills": [
+                "enforcer_3_1",
+                "enforcer_3_2",
+                "enforcer_3_3",
+                "enforcer_3_4",
+                "enforcer_3_5",
+                "enforcer_3_6"
+            ]
+        }
+    ],
+    "skills": [
+        {
+            "name": "enforcer_3_1",
+            "icon": "rifleman",
+            "datas": {
+                "multibasic": "50%"
+            }
+        },
+        {
+            "name": "enforcer_3_2",
+            "icon": "ammo_reservoir",
+            "datas": {
+                "multibasic": "0",
+                "multipro": "15"
+            }
+        },
+        {
+            "name": "enforcer_3_3",
+            "icon": "portable_saw",
+            "datas": {
+                "multipro": "1"
+            }
+        },
+        {
+            "name": "enforcer_3_4",
+            "icon": "ammo_2x",
+            "datas": {
+                "multibasic": "2",
+                "multipro": "200%"
+            }
+        },
+        {
+            "name": "enforcer_3_5",
+            "icon": "carbon_blade",
+            "datas": {
+                "multibasic": "40%",
+                "multibasic2": "50%",
+                "multipro": "X%"
+            }
+        },
+        {
+            "name": "enforcer_3_6",
+            "icon": "bandoliers",
+            "datas": {
+                "multibasic": "25%",
+                "multipro": "75%",
+                "multipro2": "X%",
+                "multipro3": "Y%"
+            }
+        }
+    ]
+}

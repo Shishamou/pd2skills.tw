@@ -1,0 +1,12 @@
+{
+    "trees": [
+        {
+            "name": "hoxton_pack",
+            "subtrees": [
+                "hoxton_pack_1",
+                "hoxton_pack_2",
+                "hoxton_pack_3"
+            ]
+        }
+    ]
+}

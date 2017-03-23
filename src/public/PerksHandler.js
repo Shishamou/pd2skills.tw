@@ -7,10 +7,7 @@ export default class PerksHandler {
         this.store = store;
         this.builder = new PerksBuilder(store);
 
-        this.totalAvailablePoints = 37100;
-
-        this.store.availablePoints = 0;
-        this.store.spendPoints = 0;
+        this.store.spentPoints = 0;
     }
 
     getPerk(id) {
@@ -49,6 +46,41 @@ export default class PerksHandler {
                 perk.tier = 0;
             }
         }, this);
+
+        this.refresh();
+    }
+
+    /**
+     * 刷新
+     */
+    refresh() {
+        this.refreshSpentPoints();
+    }
+
+    /**
+     * 刷新花費點數
+     */
+    refreshSpentPoints() {
+        this.store.spentPoints = this.countSpentPoints();
+    }
+
+    /**
+     * 計算花費點數
+     */
+    countSpentPoints() {
+        return this.store.perks.reduce((spentPoints, perk) => {
+            if (perk.tier > 0) {
+                return perk.decks.reduce((spentPoints, deckId, index) => {
+                    if (index < perk.tier) {
+                        return spentPoints + this.getDeck(deckId).required;
+                    }
+
+                    return spentPoints;
+                }, spentPoints);
+            }
+
+            return spentPoints;
+        }, 0);
     }
 
     // =========================================================================
@@ -72,6 +104,8 @@ export default class PerksHandler {
     setPerkTier(perkId, tier) {
         var perk = this.getPerk(perkId);
         perk.tier = Math.max(1, Math.min(tier, perk.decks.length));
+        
+        this.refresh();
     }
 
     // =========================================================================
@@ -83,5 +117,6 @@ export default class PerksHandler {
         var perk = this.getPerk(deck.perkId);
 
         perk.tier = perk.decks.indexOf(deckId) + 1;
+        this.refresh();
     }
 }

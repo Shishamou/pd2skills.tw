@@ -26,5 +26,9 @@ export function handleDeckLeave(id) {
 }
 
 export function switchPerks(id) {
-    return { type: types.SWITCH_PERKS, id };
+    return { type: types.SWITCH_PERK, id };
+}
+
+export function respecPerk(id) {
+    return { type: types.RESPEC_PERK, id };
 }

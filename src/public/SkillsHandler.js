@@ -10,7 +10,7 @@ export default class SkillsHandler {
         this.builder = new SkillsBuilder(store);
         this.skillSearchTemp = {};
 
-        this.totalAvailablePoints = 120;
+        this.totalAvailablePoints = 100;
         this.store.availablePoints = 0;
 
         this.store.costReduced = false;
@@ -76,16 +76,48 @@ export default class SkillsHandler {
 
     setupSkillReduce(reduced) {
         if (reduced instanceof Array) {
+            this.totalAvailablePoints = 100;
+
             this.store.trees.forEach((tree) => {
                 var bool = (reduced.indexOf(tree.name) >= 0);
                 if (tree.reduced !== bool) {
                     tree.reduced = bool;
                     this.refreshSkillTrees(tree.id);
                 }
+
+                if (bool) {
+                    this.totalAvailablePoints += 1;
+                }
             }, this);
 
             this.store.costReduced = (reduced.indexOf('cost') >= 0);
         }
+    }
+
+    /**
+     * 刷新惡名加成
+     *
+     * @param array
+     */
+    refreshInfamyBonus(reduced) {
+        if ( ! (reduced instanceof Array)) return;
+
+        var bonusPoints = 0;
+
+        reduced.forEach((bonus) => {
+            if (bonus === 'cost') {
+                return this.store.costReduced = true;
+            }
+
+            if (bonus === 'hoxton_pack') {
+                return;
+            }
+
+            bonusPoints += 1;
+        });
+
+        this.totalAvailablePoints = 100 + Math.min(4, bonusPoints);
+        this.refreshSkillTrees();
     }
 
     /**
