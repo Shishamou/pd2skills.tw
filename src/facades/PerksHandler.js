@@ -1,3 +1,3 @@
-import PerksHandler from '../public/PerksHandler';
+import PerksHandler from '../services/PerksHandler';
 
 export default new PerksHandler;

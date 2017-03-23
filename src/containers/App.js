@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/app';
 
-import Localisation from '../public/Localisation';
+import Localisation from '../facades/Localisation';
 import IconDrawer from '../facades/IconDrawer';
 
 import Skills from './Skills';

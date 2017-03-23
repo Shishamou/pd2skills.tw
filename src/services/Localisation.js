@@ -1,5 +1,5 @@
 
-class Localisation {
+export default class Localisation {
   constructor() {
     this.locale = '';
     this.langs = {};
@@ -41,5 +41,3 @@ class Localisation {
     return '';
   }
 }
-
-export default new Localisation;

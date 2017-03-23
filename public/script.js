@@ -60,7 +60,7 @@
 
 	var _Localisation2 = _interopRequireDefault(_Localisation);
 
-	var _configureStore = __webpack_require__(245);
+	var _configureStore = __webpack_require__(246);
 
 	var _configureStore2 = _interopRequireDefault(_configureStore);
 
@@ -21491,19 +21491,19 @@
 
 	var _Localisation2 = _interopRequireDefault(_Localisation);
 
-	var _IconDrawer = __webpack_require__(216);
+	var _IconDrawer = __webpack_require__(217);
 
 	var _IconDrawer2 = _interopRequireDefault(_IconDrawer);
 
-	var _Skills = __webpack_require__(219);
+	var _Skills = __webpack_require__(220);
 
 	var _Skills2 = _interopRequireDefault(_Skills);
 
-	var _PerkDecks = __webpack_require__(231);
+	var _PerkDecks = __webpack_require__(232);
 
 	var _PerkDecks2 = _interopRequireDefault(_PerkDecks);
 
-	var _Infamy = __webpack_require__(239);
+	var _Infamy = __webpack_require__(240);
 
 	var _Infamy2 = _interopRequireDefault(_Infamy);
 
@@ -22151,6 +22151,24 @@
 
 /***/ },
 /* 215 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _Localisation = __webpack_require__(216);
+
+	var _Localisation2 = _interopRequireDefault(_Localisation);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = new Localisation();
+
+/***/ },
+/* 216 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22218,25 +22236,7 @@
 	  return Localisation;
 	}();
 
-	exports.default = new Localisation();
-
-/***/ },
-/* 216 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _IconDrawer = __webpack_require__(217);
-
-	var _IconDrawer2 = _interopRequireDefault(_IconDrawer);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = new _IconDrawer2.default();
+	exports.default = Localisation;
 
 /***/ },
 /* 217 */
@@ -22248,9 +22248,27 @@
 	  value: true
 	});
 
+	var _IconDrawer = __webpack_require__(218);
+
+	var _IconDrawer2 = _interopRequireDefault(_IconDrawer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = new _IconDrawer2.default();
+
+/***/ },
+/* 218 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _ImageSpriteDrawer = __webpack_require__(218);
+	var _ImageSpriteDrawer = __webpack_require__(219);
 
 	var _ImageSpriteDrawer2 = _interopRequireDefault(_ImageSpriteDrawer);
 
@@ -22316,7 +22334,7 @@
 	exports.default = IconDrawer;
 
 /***/ },
-/* 218 */
+/* 219 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22463,7 +22481,7 @@
 	exports.default = ImageSpriteDrawer;
 
 /***/ },
-/* 219 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22482,19 +22500,19 @@
 
 	var _reactRedux = __webpack_require__(184);
 
-	var _skills = __webpack_require__(220);
+	var _skills = __webpack_require__(221);
 
 	var actions = _interopRequireWildcard(_skills);
 
-	var _SkillsTabs = __webpack_require__(222);
+	var _SkillsTabs = __webpack_require__(223);
 
 	var _SkillsTabs2 = _interopRequireDefault(_SkillsTabs);
 
-	var _SkillsMain = __webpack_require__(223);
+	var _SkillsMain = __webpack_require__(224);
 
 	var _SkillsMain2 = _interopRequireDefault(_SkillsMain);
 
-	var _SkillsSide = __webpack_require__(230);
+	var _SkillsSide = __webpack_require__(231);
 
 	var _SkillsSide2 = _interopRequireDefault(_SkillsSide);
 
@@ -22613,7 +22631,7 @@
 	exports.default = (0, _reactRedux.connect)(select)(Skills);
 
 /***/ },
-/* 220 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22632,7 +22650,7 @@
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _Events = __webpack_require__(221);
+	var _Events = __webpack_require__(222);
 
 	var events = _interopRequireWildcard(_Events);
 
@@ -22663,7 +22681,7 @@
 	}
 
 /***/ },
-/* 221 */
+/* 222 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22679,7 +22697,7 @@
 	var REMOVE = exports.REMOVE = 'REMOVE';
 
 /***/ },
-/* 222 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22770,7 +22788,7 @@
 	exports.default = SkillsTabs;
 
 /***/ },
-/* 223 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22787,7 +22805,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Tree = __webpack_require__(224);
+	var _Tree = __webpack_require__(225);
 
 	var _Tree2 = _interopRequireDefault(_Tree);
 
@@ -22884,7 +22902,7 @@
 	exports.default = SkillsMain;
 
 /***/ },
-/* 224 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22901,7 +22919,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Subtree = __webpack_require__(225);
+	var _Subtree = __webpack_require__(226);
 
 	var _Subtree2 = _interopRequireDefault(_Subtree);
 
@@ -22968,7 +22986,7 @@
 	exports.default = Tree;
 
 /***/ },
-/* 225 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22985,7 +23003,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Tier = __webpack_require__(226);
+	var _Tier = __webpack_require__(227);
 
 	var _Tier2 = _interopRequireDefault(_Tier);
 
@@ -23067,7 +23085,7 @@
 	exports.default = Subtree;
 
 /***/ },
-/* 226 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23084,7 +23102,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Skill = __webpack_require__(227);
+	var _Skill = __webpack_require__(228);
 
 	var _Skill2 = _interopRequireDefault(_Skill);
 
@@ -23170,7 +23188,7 @@
 	exports.default = Tier;
 
 /***/ },
-/* 227 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23187,7 +23205,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SkillText = __webpack_require__(228);
+	var _SkillText = __webpack_require__(229);
 
 	var _SkillText2 = _interopRequireDefault(_SkillText);
 
@@ -23316,7 +23334,7 @@
 	exports.default = Skill;
 
 /***/ },
-/* 228 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23331,7 +23349,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SkillStatuses = __webpack_require__(229);
+	var _SkillStatuses = __webpack_require__(230);
 
 	var statuses = _interopRequireWildcard(_SkillStatuses);
 
@@ -23471,7 +23489,7 @@
 	exports.default = SkillText;
 
 /***/ },
-/* 229 */
+/* 230 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23487,7 +23505,7 @@
 	var STATUS_FOCUSED = exports.STATUS_FOCUSED = 'STATUS_FOCUSED';
 
 /***/ },
-/* 230 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23662,7 +23680,7 @@
 	exports.default = (0, _reactRedux.connect)(select)(SkillsSide);
 
 /***/ },
-/* 231 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23681,19 +23699,19 @@
 
 	var _reactRedux = __webpack_require__(184);
 
-	var _perks = __webpack_require__(232);
+	var _perks = __webpack_require__(233);
 
 	var actions = _interopRequireWildcard(_perks);
 
-	var _PerkDecksTabs = __webpack_require__(233);
+	var _PerkDecksTabs = __webpack_require__(234);
 
 	var _PerkDecksTabs2 = _interopRequireDefault(_PerkDecksTabs);
 
-	var _PerkDecksMain = __webpack_require__(234);
+	var _PerkDecksMain = __webpack_require__(235);
 
 	var _PerkDecksMain2 = _interopRequireDefault(_PerkDecksMain);
 
-	var _PerkDecksSide = __webpack_require__(238);
+	var _PerkDecksSide = __webpack_require__(239);
 
 	var _PerkDecksSide2 = _interopRequireDefault(_PerkDecksSide);
 
@@ -23799,7 +23817,7 @@
 	exports.default = (0, _reactRedux.connect)(select)(PerkDecks);
 
 /***/ },
-/* 232 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23820,7 +23838,7 @@
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _Events = __webpack_require__(221);
+	var _Events = __webpack_require__(222);
 
 	var events = _interopRequireWildcard(_Events);
 
@@ -23859,7 +23877,7 @@
 	}
 
 /***/ },
-/* 233 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23987,7 +24005,7 @@
 	exports.default = PerkDecksTabs;
 
 /***/ },
-/* 234 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24002,7 +24020,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Perks = __webpack_require__(235);
+	var _Perks = __webpack_require__(236);
 
 	var _Perks2 = _interopRequireDefault(_Perks);
 
@@ -24093,7 +24111,7 @@
 	exports.default = PerkDecksMain;
 
 /***/ },
-/* 235 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24114,7 +24132,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Perk = __webpack_require__(236);
+	var _Perk = __webpack_require__(237);
 
 	var _Perk2 = _interopRequireDefault(_Perk);
 
@@ -24212,7 +24230,7 @@
 	exports.default = Perks;
 
 /***/ },
-/* 236 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24229,7 +24247,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Deck = __webpack_require__(237);
+	var _Deck = __webpack_require__(238);
 
 	var _Deck2 = _interopRequireDefault(_Deck);
 
@@ -24341,7 +24359,7 @@
 	exports.default = Perk;
 
 /***/ },
-/* 237 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24448,7 +24466,7 @@
 	exports.default = Deck;
 
 /***/ },
-/* 238 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24530,7 +24548,7 @@
 	exports.default = PerkDecksSide;
 
 /***/ },
-/* 239 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24549,15 +24567,15 @@
 
 	var _reactRedux = __webpack_require__(184);
 
-	var _infamy = __webpack_require__(240);
+	var _infamy = __webpack_require__(241);
 
 	var actions = _interopRequireWildcard(_infamy);
 
-	var _InfamyTree = __webpack_require__(241);
+	var _InfamyTree = __webpack_require__(242);
 
 	var _InfamyTree2 = _interopRequireDefault(_InfamyTree);
 
-	var _InfamySide = __webpack_require__(244);
+	var _InfamySide = __webpack_require__(245);
 
 	var _InfamySide2 = _interopRequireDefault(_InfamySide);
 
@@ -24674,7 +24692,7 @@
 	exports.default = (0, _reactRedux.connect)(select)(Infamy);
 
 /***/ },
-/* 240 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24691,7 +24709,7 @@
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _Events = __webpack_require__(221);
+	var _Events = __webpack_require__(222);
 
 	var events = _interopRequireWildcard(_Events);
 
@@ -24714,7 +24732,7 @@
 	}
 
 /***/ },
-/* 241 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24731,7 +24749,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Infamy = __webpack_require__(242);
+	var _Infamy = __webpack_require__(243);
 
 	var _Infamy2 = _interopRequireDefault(_Infamy);
 
@@ -24810,7 +24828,7 @@
 	exports.default = InfamyTree;
 
 /***/ },
-/* 242 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24825,7 +24843,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _InfamyStatuses = __webpack_require__(243);
+	var _InfamyStatuses = __webpack_require__(244);
 
 	var statuses = _interopRequireWildcard(_InfamyStatuses);
 
@@ -24989,7 +25007,7 @@
 	exports.default = Infamy;
 
 /***/ },
-/* 243 */
+/* 244 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25003,7 +25021,7 @@
 	var STATUS_DISABLE = exports.STATUS_DISABLE = 'STATUS_DISABLE';
 
 /***/ },
-/* 244 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25136,7 +25154,7 @@
 	exports.default = (0, _reactRedux.connect)(select)(InfamySide);
 
 /***/ },
-/* 245 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25148,15 +25166,15 @@
 
 	var _redux = __webpack_require__(191);
 
-	var _reduxThunk = __webpack_require__(246);
+	var _reduxThunk = __webpack_require__(247);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reduxLogger = __webpack_require__(247);
+	var _reduxLogger = __webpack_require__(248);
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
-	var _reducers = __webpack_require__(248);
+	var _reducers = __webpack_require__(249);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -25164,7 +25182,7 @@
 
 	var app = _interopRequireWildcard(_app);
 
-	var _hashMiddleware = __webpack_require__(272);
+	var _hashMiddleware = __webpack_require__(273);
 
 	var _hashMiddleware2 = _interopRequireDefault(_hashMiddleware);
 
@@ -25188,7 +25206,7 @@
 	}
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25207,7 +25225,7 @@
 	module.exports = thunkMiddleware;
 
 /***/ },
-/* 247 */
+/* 248 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -25440,7 +25458,7 @@
 	module.exports = createLogger;
 
 /***/ },
-/* 248 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25451,27 +25469,27 @@
 
 	var _redux = __webpack_require__(191);
 
-	var _other = __webpack_require__(249);
+	var _other = __webpack_require__(250);
 
 	var _other2 = _interopRequireDefault(_other);
 
-	var _handleLangs = __webpack_require__(250);
+	var _handleLangs = __webpack_require__(251);
 
 	var _handleLangs2 = _interopRequireDefault(_handleLangs);
 
-	var _handleSkills = __webpack_require__(251);
+	var _handleSkills = __webpack_require__(252);
 
 	var _handleSkills2 = _interopRequireDefault(_handleSkills);
 
-	var _handlePerks = __webpack_require__(260);
+	var _handlePerks = __webpack_require__(261);
 
 	var _handlePerks2 = _interopRequireDefault(_handlePerks);
 
-	var _handleInfamyTree = __webpack_require__(266);
+	var _handleInfamyTree = __webpack_require__(267);
 
 	var _handleInfamyTree2 = _interopRequireDefault(_handleInfamyTree);
 
-	var _handleDisplay = __webpack_require__(271);
+	var _handleDisplay = __webpack_require__(272);
 
 	var _handleDisplay2 = _interopRequireDefault(_handleDisplay);
 
@@ -25487,7 +25505,7 @@
 	});
 
 /***/ },
-/* 249 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25501,11 +25519,11 @@
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _IconDrawer = __webpack_require__(216);
+	var _IconDrawer = __webpack_require__(217);
 
 	var _IconDrawer2 = _interopRequireDefault(_IconDrawer);
 
-	var _ImageSpriteDrawer = __webpack_require__(218);
+	var _ImageSpriteDrawer = __webpack_require__(219);
 
 	var _ImageSpriteDrawer2 = _interopRequireDefault(_ImageSpriteDrawer);
 
@@ -25544,7 +25562,7 @@
 	}
 
 /***/ },
-/* 250 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25600,7 +25618,7 @@
 	}
 
 /***/ },
-/* 251 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25610,7 +25628,7 @@
 	});
 	exports.default = handleSkill;
 
-	var _SkillsHandler = __webpack_require__(252);
+	var _SkillsHandler = __webpack_require__(253);
 
 	var _SkillsHandler2 = _interopRequireDefault(_SkillsHandler);
 
@@ -25618,7 +25636,7 @@
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _Events = __webpack_require__(221);
+	var _Events = __webpack_require__(222);
 
 	var events = _interopRequireWildcard(_Events);
 
@@ -25751,7 +25769,7 @@
 	}
 
 /***/ },
-/* 252 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25760,7 +25778,7 @@
 	  value: true
 	});
 
-	var _SkillsHandler = __webpack_require__(253);
+	var _SkillsHandler = __webpack_require__(254);
 
 	var _SkillsHandler2 = _interopRequireDefault(_SkillsHandler);
 
@@ -25769,7 +25787,7 @@
 	exports.default = new _SkillsHandler2.default();
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25780,23 +25798,23 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _SkillStatuses = __webpack_require__(229);
+	var _SkillStatuses = __webpack_require__(230);
 
 	var statuses = _interopRequireWildcard(_SkillStatuses);
 
-	var _SkillsBuilder = __webpack_require__(254);
+	var _SkillsBuilder = __webpack_require__(255);
 
 	var _SkillsBuilder2 = _interopRequireDefault(_SkillsBuilder);
 
-	var _Tree = __webpack_require__(257);
+	var _Tree = __webpack_require__(258);
 
 	var _Tree2 = _interopRequireDefault(_Tree);
 
-	var _Tier = __webpack_require__(258);
+	var _Tier = __webpack_require__(259);
 
 	var _Tier2 = _interopRequireDefault(_Tier);
 
-	var _Skill = __webpack_require__(259);
+	var _Skill = __webpack_require__(260);
 
 	var _Skill2 = _interopRequireDefault(_Skill);
 
@@ -26203,7 +26221,7 @@
 	exports.default = SkillsHandler;
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26214,19 +26232,19 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _MasterTree = __webpack_require__(255);
+	var _MasterTree = __webpack_require__(256);
 
 	var _MasterTree2 = _interopRequireDefault(_MasterTree);
 
-	var _Tree = __webpack_require__(257);
+	var _Tree = __webpack_require__(258);
 
 	var _Tree2 = _interopRequireDefault(_Tree);
 
-	var _Tier = __webpack_require__(258);
+	var _Tier = __webpack_require__(259);
 
 	var _Tier2 = _interopRequireDefault(_Tier);
 
-	var _Skill = __webpack_require__(259);
+	var _Skill = __webpack_require__(260);
 
 	var _Skill2 = _interopRequireDefault(_Skill);
 
@@ -26499,7 +26517,7 @@
 	exports.default = SkillsBuilder;
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26510,7 +26528,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Model2 = __webpack_require__(256);
+	var _Model2 = __webpack_require__(257);
 
 	var _Model3 = _interopRequireDefault(_Model2);
 
@@ -26550,7 +26568,7 @@
 	exports.default = MasterTree;
 
 /***/ },
-/* 256 */
+/* 257 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26605,7 +26623,7 @@
 	exports.default = Model;
 
 /***/ },
-/* 257 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26616,7 +26634,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Model2 = __webpack_require__(256);
+	var _Model2 = __webpack_require__(257);
 
 	var _Model3 = _interopRequireDefault(_Model2);
 
@@ -26657,7 +26675,7 @@
 	exports.default = Tree;
 
 /***/ },
-/* 258 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26668,7 +26686,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Model2 = __webpack_require__(256);
+	var _Model2 = __webpack_require__(257);
 
 	var _Model3 = _interopRequireDefault(_Model2);
 
@@ -26716,7 +26734,7 @@
 	exports.default = Tier;
 
 /***/ },
-/* 259 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26727,11 +26745,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Model2 = __webpack_require__(256);
+	var _Model2 = __webpack_require__(257);
 
 	var _Model3 = _interopRequireDefault(_Model2);
 
-	var _SkillStatuses = __webpack_require__(229);
+	var _SkillStatuses = __webpack_require__(230);
 
 	var statuses = _interopRequireWildcard(_SkillStatuses);
 
@@ -26783,7 +26801,7 @@
 	exports.default = Skill;
 
 /***/ },
-/* 260 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26793,7 +26811,7 @@
 	});
 	exports.default = handlePerks;
 
-	var _PerksHandler = __webpack_require__(261);
+	var _PerksHandler = __webpack_require__(262);
 
 	var _PerksHandler2 = _interopRequireDefault(_PerksHandler);
 
@@ -26801,7 +26819,7 @@
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _Events = __webpack_require__(221);
+	var _Events = __webpack_require__(222);
 
 	var events = _interopRequireWildcard(_Events);
 
@@ -26937,7 +26955,7 @@
 	}
 
 /***/ },
-/* 261 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26946,7 +26964,7 @@
 	  value: true
 	});
 
-	var _PerksHandler = __webpack_require__(262);
+	var _PerksHandler = __webpack_require__(263);
 
 	var _PerksHandler2 = _interopRequireDefault(_PerksHandler);
 
@@ -26955,7 +26973,7 @@
 	exports.default = new _PerksHandler2.default();
 
 /***/ },
-/* 262 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26966,15 +26984,15 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _PerksBuilder = __webpack_require__(263);
+	var _PerksBuilder = __webpack_require__(264);
 
 	var _PerksBuilder2 = _interopRequireDefault(_PerksBuilder);
 
-	var _Perk = __webpack_require__(264);
+	var _Perk = __webpack_require__(265);
 
 	var _Perk2 = _interopRequireDefault(_Perk);
 
-	var _Deck = __webpack_require__(265);
+	var _Deck = __webpack_require__(266);
 
 	var _Deck2 = _interopRequireDefault(_Deck);
 
@@ -27138,7 +27156,7 @@
 	exports.default = PerksHandler;
 
 /***/ },
-/* 263 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27149,11 +27167,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Perk = __webpack_require__(264);
+	var _Perk = __webpack_require__(265);
 
 	var _Perk2 = _interopRequireDefault(_Perk);
 
-	var _Deck = __webpack_require__(265);
+	var _Deck = __webpack_require__(266);
 
 	var _Deck2 = _interopRequireDefault(_Deck);
 
@@ -27353,7 +27371,7 @@
 	exports.default = PerksBuilder;
 
 /***/ },
-/* 264 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27364,7 +27382,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Model2 = __webpack_require__(256);
+	var _Model2 = __webpack_require__(257);
 
 	var _Model3 = _interopRequireDefault(_Model2);
 
@@ -27404,7 +27422,7 @@
 	exports.default = Perk;
 
 /***/ },
-/* 265 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27415,7 +27433,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Model2 = __webpack_require__(256);
+	var _Model2 = __webpack_require__(257);
 
 	var _Model3 = _interopRequireDefault(_Model2);
 
@@ -27456,7 +27474,7 @@
 	exports.default = Deck;
 
 /***/ },
-/* 266 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27466,7 +27484,7 @@
 	});
 	exports.default = handleInfamyTree;
 
-	var _InfamyTreeHandler = __webpack_require__(267);
+	var _InfamyTreeHandler = __webpack_require__(268);
 
 	var _InfamyTreeHandler2 = _interopRequireDefault(_InfamyTreeHandler);
 
@@ -27474,7 +27492,7 @@
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _Events = __webpack_require__(221);
+	var _Events = __webpack_require__(222);
 
 	var events = _interopRequireWildcard(_Events);
 
@@ -27562,7 +27580,7 @@
 	}
 
 /***/ },
-/* 267 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27571,7 +27589,7 @@
 	  value: true
 	});
 
-	var _InfamyTreeHandler = __webpack_require__(268);
+	var _InfamyTreeHandler = __webpack_require__(269);
 
 	var _InfamyTreeHandler2 = _interopRequireDefault(_InfamyTreeHandler);
 
@@ -27580,7 +27598,7 @@
 	exports.default = new _InfamyTreeHandler2.default();
 
 /***/ },
-/* 268 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27593,15 +27611,15 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _InfamyStatuses = __webpack_require__(243);
+	var _InfamyStatuses = __webpack_require__(244);
 
 	var statuses = _interopRequireWildcard(_InfamyStatuses);
 
-	var _InfamyTreeBuilder = __webpack_require__(269);
+	var _InfamyTreeBuilder = __webpack_require__(270);
 
 	var _InfamyTreeBuilder2 = _interopRequireDefault(_InfamyTreeBuilder);
 
-	var _Infamy = __webpack_require__(270);
+	var _Infamy = __webpack_require__(271);
 
 	var _Infamy2 = _interopRequireDefault(_Infamy);
 
@@ -27848,7 +27866,7 @@
 	exports.default = InfamyTreeHandler;
 
 /***/ },
-/* 269 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27859,7 +27877,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Infamy = __webpack_require__(270);
+	var _Infamy = __webpack_require__(271);
 
 	var _Infamy2 = _interopRequireDefault(_Infamy);
 
@@ -27963,7 +27981,7 @@
 	exports.default = InfamyTreeBuilder;
 
 /***/ },
-/* 270 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27974,11 +27992,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Model2 = __webpack_require__(256);
+	var _Model2 = __webpack_require__(257);
 
 	var _Model3 = _interopRequireDefault(_Model2);
 
-	var _InfamyStatuses = __webpack_require__(243);
+	var _InfamyStatuses = __webpack_require__(244);
 
 	var statuses = _interopRequireWildcard(_InfamyStatuses);
 
@@ -28024,7 +28042,7 @@
 	exports.default = Infamy;
 
 /***/ },
-/* 271 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28053,7 +28071,7 @@
 	}
 
 /***/ },
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28062,7 +28080,7 @@
 	  value: true
 	});
 
-	var _HashStorage = __webpack_require__(273);
+	var _HashStorage = __webpack_require__(274);
 
 	var _HashStorage2 = _interopRequireDefault(_HashStorage);
 
@@ -28070,7 +28088,7 @@
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _Events = __webpack_require__(221);
+	var _Events = __webpack_require__(222);
 
 	var events = _interopRequireWildcard(_Events);
 
@@ -28157,7 +28175,7 @@
 	exports.default = middleware;
 
 /***/ },
-/* 273 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28166,7 +28184,7 @@
 	  value: true
 	});
 
-	var _HashStorage = __webpack_require__(274);
+	var _HashStorage = __webpack_require__(275);
 
 	var _HashStorage2 = _interopRequireDefault(_HashStorage);
 
@@ -28175,7 +28193,7 @@
 	exports.default = new _HashStorage2.default();
 
 /***/ },
-/* 274 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28186,7 +28204,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Storage2 = __webpack_require__(275);
+	var _Storage2 = __webpack_require__(276);
 
 	var _Storage3 = _interopRequireDefault(_Storage2);
 
@@ -28404,7 +28422,7 @@
 	exports.default = HashStorage;
 
 /***/ },
-/* 275 */
+/* 276 */
 /***/ function(module, exports) {
 
 	'use strict';

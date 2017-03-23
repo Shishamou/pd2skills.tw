@@ -1,6 +1,6 @@
 import * as types from '../constants/SkillAppActions';
 import IconDrawer from '../facades/IconDrawer';
-import ImageSpriteDrawer from '../public/ImageSpriteDrawer';
+import ImageSpriteDrawer from '../services/ImageSpriteDrawer';
 
 var initialState = {};
 

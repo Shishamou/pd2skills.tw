@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import Root from './containers/Root';
 
-import Localisation from './public/Localisation';
+import Localisation from './facades/Localisation';
 import configureStore from './configureStore';
 
 const element = document.getElementById('app');

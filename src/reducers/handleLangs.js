@@ -1,4 +1,4 @@
-import Localisation from '../public/Localisation';
+import Localisation from '../facades/Localisation';
 import * as types from '../constants/SkillAppActions';
 
 var initialState = {};
