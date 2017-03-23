@@ -56,11 +56,11 @@
 
 	var _Root2 = _interopRequireDefault(_Root);
 
-	var _Localisation = __webpack_require__(215);
+	var _Localisation = __webpack_require__(229);
 
 	var _Localisation2 = _interopRequireDefault(_Localisation);
 
-	var _configureStore = __webpack_require__(246);
+	var _configureStore = __webpack_require__(260);
 
 	var _configureStore2 = _interopRequireDefault(_configureStore);
 
@@ -254,14 +254,103 @@
 /***/ function(module, exports) {
 
 	// shim for using process in browser
-
 	var process = module.exports = {};
+
+	// cached from whatever global is present so that test runners that stub it
+	// don't break things.  But we need to wrap it in a try catch in case it is
+	// wrapped in strict mode code which doesn't define any globals.  It's inside a
+	// function because try/catches deoptimize in certain engines.
+
+	var cachedSetTimeout;
+	var cachedClearTimeout;
+
+	function defaultSetTimout() {
+	    throw new Error('setTimeout has not been defined');
+	}
+	function defaultClearTimeout () {
+	    throw new Error('clearTimeout has not been defined');
+	}
+	(function () {
+	    try {
+	        if (typeof setTimeout === 'function') {
+	            cachedSetTimeout = setTimeout;
+	        } else {
+	            cachedSetTimeout = defaultSetTimout;
+	        }
+	    } catch (e) {
+	        cachedSetTimeout = defaultSetTimout;
+	    }
+	    try {
+	        if (typeof clearTimeout === 'function') {
+	            cachedClearTimeout = clearTimeout;
+	        } else {
+	            cachedClearTimeout = defaultClearTimeout;
+	        }
+	    } catch (e) {
+	        cachedClearTimeout = defaultClearTimeout;
+	    }
+	} ())
+	function runTimeout(fun) {
+	    if (cachedSetTimeout === setTimeout) {
+	        //normal enviroments in sane situations
+	        return setTimeout(fun, 0);
+	    }
+	    // if setTimeout wasn't available but was latter defined
+	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+	        cachedSetTimeout = setTimeout;
+	        return setTimeout(fun, 0);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedSetTimeout(fun, 0);
+	    } catch(e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+	            return cachedSetTimeout.call(null, fun, 0);
+	        } catch(e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+	            return cachedSetTimeout.call(this, fun, 0);
+	        }
+	    }
+
+
+	}
+	function runClearTimeout(marker) {
+	    if (cachedClearTimeout === clearTimeout) {
+	        //normal enviroments in sane situations
+	        return clearTimeout(marker);
+	    }
+	    // if clearTimeout wasn't available but was latter defined
+	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+	        cachedClearTimeout = clearTimeout;
+	        return clearTimeout(marker);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedClearTimeout(marker);
+	    } catch (e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+	            return cachedClearTimeout.call(null, marker);
+	        } catch (e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+	            return cachedClearTimeout.call(this, marker);
+	        }
+	    }
+
+
+
+	}
 	var queue = [];
 	var draining = false;
 	var currentQueue;
 	var queueIndex = -1;
 
 	function cleanUpNextTick() {
+	    if (!draining || !currentQueue) {
+	        return;
+	    }
 	    draining = false;
 	    if (currentQueue.length) {
 	        queue = currentQueue.concat(queue);
@@ -277,7 +366,7 @@
 	    if (draining) {
 	        return;
 	    }
-	    var timeout = setTimeout(cleanUpNextTick);
+	    var timeout = runTimeout(cleanUpNextTick);
 	    draining = true;
 
 	    var len = queue.length;
@@ -294,7 +383,7 @@
 	    }
 	    currentQueue = null;
 	    draining = false;
-	    clearTimeout(timeout);
+	    runClearTimeout(timeout);
 	}
 
 	process.nextTick = function (fun) {
@@ -306,7 +395,7 @@
 	    }
 	    queue.push(new Item(fun, args));
 	    if (queue.length === 1 && !draining) {
-	        setTimeout(drainQueue, 0);
+	        runTimeout(drainQueue);
 	    }
 	};
 
@@ -19720,7 +19809,7 @@
 
 	var _reactRedux = __webpack_require__(184);
 
-	var _App = __webpack_require__(210);
+	var _App = __webpack_require__(224);
 
 	var _App2 = _interopRequireDefault(_App);
 
@@ -19738,7 +19827,7 @@
 	  function Root(prop) {
 	    _classCallCheck(this, Root);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Root).call(this, prop));
+	    return _possibleConstructorReturn(this, (Root.__proto__ || Object.getPrototypeOf(Root)).call(this, prop));
 	  }
 
 	  _createClass(Root, [{
@@ -19838,9 +19927,7 @@
 	  }
 
 	  Provider.prototype.render = function render() {
-	    var children = this.props.children;
-
-	    return _react.Children.only(children);
+	    return _react.Children.only(this.props.children);
 	  };
 
 	  return Provider;
@@ -19848,10 +19935,12 @@
 
 	exports["default"] = Provider;
 
+
 	if (process.env.NODE_ENV !== 'production') {
 	  Provider.prototype.componentWillReceiveProps = function (nextProps) {
 	    var store = this.store;
 	    var nextStore = nextProps.store;
+
 
 	    if (store !== nextStore) {
 	      warnAboutReceivingStore();
@@ -19905,8 +19994,9 @@
 	  }
 	  /* eslint-enable no-console */
 	  try {
-	    // This error was thrown as a convenience so that you can use this stack
-	    // to find the callsite that caused this warning to fire.
+	    // This error was thrown as a convenience so that if you enable
+	    // "break on all exceptions" in your console,
+	    // it would pause the execution at this line.
 	    throw new Error(message);
 	    /* eslint-disable no-empty */
 	  } catch (e) {}
@@ -19919,9 +20009,10 @@
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
+	exports.__esModule = true;
+
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	exports.__esModule = true;
 	exports["default"] = connect;
 
 	var _react = __webpack_require__(25);
@@ -19942,15 +20033,15 @@
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _isPlainObject = __webpack_require__(204);
+	var _isPlainObject = __webpack_require__(212);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _hoistNonReactStatics = __webpack_require__(208);
+	var _hoistNonReactStatics = __webpack_require__(222);
 
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-	var _invariant = __webpack_require__(209);
+	var _invariant = __webpack_require__(223);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -19990,12 +20081,12 @@
 	var nextVersion = 0;
 
 	function connect(mapStateToProps, mapDispatchToProps, mergeProps) {
-	  var options = arguments.length <= 3 || arguments[3] === undefined ? {} : arguments[3];
+	  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
 
 	  var shouldSubscribe = Boolean(mapStateToProps);
 	  var mapState = mapStateToProps || defaultMapStateToProps;
 
-	  var mapDispatch = undefined;
+	  var mapDispatch = void 0;
 	  if (typeof mapDispatchToProps === 'function') {
 	    mapDispatch = mapDispatchToProps;
 	  } else if (!mapDispatchToProps) {
@@ -20005,10 +20096,10 @@
 	  }
 
 	  var finalMergeProps = mergeProps || defaultMergeProps;
-	  var _options$pure = options.pure;
-	  var pure = _options$pure === undefined ? true : _options$pure;
-	  var _options$withRef = options.withRef;
-	  var withRef = _options$withRef === undefined ? false : _options$withRef;
+	  var _options$pure = options.pure,
+	      pure = _options$pure === undefined ? true : _options$pure,
+	      _options$withRef = options.withRef,
+	      withRef = _options$withRef === undefined ? false : _options$withRef;
 
 	  var checkMergedEquals = pure && finalMergeProps !== defaultMergeProps;
 
@@ -20227,11 +20318,12 @@
 	      };
 
 	      Connect.prototype.render = function render() {
-	        var haveOwnPropsChanged = this.haveOwnPropsChanged;
-	        var hasStoreStateChanged = this.hasStoreStateChanged;
-	        var haveStatePropsBeenPrecalculated = this.haveStatePropsBeenPrecalculated;
-	        var statePropsPrecalculationError = this.statePropsPrecalculationError;
-	        var renderedElement = this.renderedElement;
+	        var haveOwnPropsChanged = this.haveOwnPropsChanged,
+	            hasStoreStateChanged = this.hasStoreStateChanged,
+	            haveStatePropsBeenPrecalculated = this.haveStatePropsBeenPrecalculated,
+	            statePropsPrecalculationError = this.statePropsPrecalculationError,
+	            renderedElement = this.renderedElement;
+
 
 	        this.haveOwnPropsChanged = false;
 	        this.hasStoreStateChanged = false;
@@ -20373,27 +20465,27 @@
 
 	var _createStore2 = _interopRequireDefault(_createStore);
 
-	var _combineReducers = __webpack_require__(199);
+	var _combineReducers = __webpack_require__(207);
 
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 
-	var _bindActionCreators = __webpack_require__(201);
+	var _bindActionCreators = __webpack_require__(209);
 
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 
-	var _applyMiddleware = __webpack_require__(202);
+	var _applyMiddleware = __webpack_require__(210);
 
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 
-	var _compose = __webpack_require__(203);
+	var _compose = __webpack_require__(211);
 
 	var _compose2 = _interopRequireDefault(_compose);
 
-	var _warning = __webpack_require__(200);
+	var _warning = __webpack_require__(208);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 	/*
 	* This is a dummy function to check if the function name has been altered by minification.
@@ -20402,14 +20494,14 @@
 	function isCrushed() {}
 
 	if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed') {
-	  (0, _warning2["default"])('You are currently using minified code outside of NODE_ENV === \'production\'. ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) ' + 'to ensure you have the correct code for your production build.');
+	  (0, _warning2['default'])('You are currently using minified code outside of NODE_ENV === \'production\'. ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) ' + 'to ensure you have the correct code for your production build.');
 	}
 
-	exports.createStore = _createStore2["default"];
-	exports.combineReducers = _combineReducers2["default"];
-	exports.bindActionCreators = _bindActionCreators2["default"];
-	exports.applyMiddleware = _applyMiddleware2["default"];
-	exports.compose = _compose2["default"];
+	exports.createStore = _createStore2['default'];
+	exports.combineReducers = _combineReducers2['default'];
+	exports.bindActionCreators = _bindActionCreators2['default'];
+	exports.applyMiddleware = _applyMiddleware2['default'];
+	exports.compose = _compose2['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28)))
 
 /***/ },
@@ -20420,17 +20512,17 @@
 
 	exports.__esModule = true;
 	exports.ActionTypes = undefined;
-	exports["default"] = createStore;
+	exports['default'] = createStore;
 
 	var _isPlainObject = __webpack_require__(193);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _symbolObservable = __webpack_require__(197);
+	var _symbolObservable = __webpack_require__(203);
 
 	var _symbolObservable2 = _interopRequireDefault(_symbolObservable);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 	/**
 	 * These are private action types reserved by Redux.
@@ -20453,7 +20545,7 @@
 	 * @param {Function} reducer A function that returns the next state tree, given
 	 * the current state tree and the action to handle.
 	 *
-	 * @param {any} [initialState] The initial state. You may optionally specify it
+	 * @param {any} [preloadedState] The initial state. You may optionally specify it
 	 * to hydrate the state from the server in universal apps, or to restore a
 	 * previously serialized user session.
 	 * If you use `combineReducers` to produce the root reducer function, this must be
@@ -20467,12 +20559,12 @@
 	 * @returns {Store} A Redux store that lets you read the state, dispatch actions
 	 * and subscribe to changes.
 	 */
-	function createStore(reducer, initialState, enhancer) {
+	function createStore(reducer, preloadedState, enhancer) {
 	  var _ref2;
 
-	  if (typeof initialState === 'function' && typeof enhancer === 'undefined') {
-	    enhancer = initialState;
-	    initialState = undefined;
+	  if (typeof preloadedState === 'function' && typeof enhancer === 'undefined') {
+	    enhancer = preloadedState;
+	    preloadedState = undefined;
 	  }
 
 	  if (typeof enhancer !== 'undefined') {
@@ -20480,7 +20572,7 @@
 	      throw new Error('Expected the enhancer to be a function.');
 	    }
 
-	    return enhancer(createStore)(reducer, initialState);
+	    return enhancer(createStore)(reducer, preloadedState);
 	  }
 
 	  if (typeof reducer !== 'function') {
@@ -20488,7 +20580,7 @@
 	  }
 
 	  var currentReducer = reducer;
-	  var currentState = initialState;
+	  var currentState = preloadedState;
 	  var currentListeners = [];
 	  var nextListeners = currentListeners;
 	  var isDispatching = false;
@@ -20580,7 +20672,7 @@
 	   * return something else (for example, a Promise you can await).
 	   */
 	  function dispatch(action) {
-	    if (!(0, _isPlainObject2["default"])(action)) {
+	    if (!(0, _isPlainObject2['default'])(action)) {
 	      throw new Error('Actions must be plain objects. ' + 'Use custom middleware for async actions.');
 	    }
 
@@ -20645,7 +20737,6 @@
 	       * be used to unsubscribe the observable from the store, and prevent further
 	       * emission of values from the observable.
 	       */
-
 	      subscribe: function subscribe(observer) {
 	        if (typeof observer !== 'object') {
 	          throw new TypeError('Expected the observer to be an object.');
@@ -20661,7 +20752,7 @@
 	        var unsubscribe = outerSubscribe(observeState);
 	        return { unsubscribe: unsubscribe };
 	      }
-	    }, _ref[_symbolObservable2["default"]] = function () {
+	    }, _ref[_symbolObservable2['default']] = function () {
 	      return this;
 	    }, _ref;
 	  }
@@ -20676,38 +20767,32 @@
 	    subscribe: subscribe,
 	    getState: getState,
 	    replaceReducer: replaceReducer
-	  }, _ref2[_symbolObservable2["default"]] = observable, _ref2;
+	  }, _ref2[_symbolObservable2['default']] = observable, _ref2;
 	}
 
 /***/ },
 /* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getPrototype = __webpack_require__(194),
-	    isHostObject = __webpack_require__(195),
-	    isObjectLike = __webpack_require__(196);
+	var baseGetTag = __webpack_require__(194),
+	    getPrototype = __webpack_require__(200),
+	    isObjectLike = __webpack_require__(202);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
 
 	/** Used for built-in method references. */
-	var objectProto = Object.prototype;
+	var funcProto = Function.prototype,
+	    objectProto = Object.prototype;
 
 	/** Used to resolve the decompiled source of functions. */
-	var funcToString = Function.prototype.toString;
+	var funcToString = funcProto.toString;
 
 	/** Used to check objects for own properties. */
 	var hasOwnProperty = objectProto.hasOwnProperty;
 
 	/** Used to infer the `Object` constructor. */
 	var objectCtorString = funcToString.call(Object);
-
-	/**
-	 * Used to resolve the
-	 * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objectToString = objectProto.toString;
 
 	/**
 	 * Checks if `value` is a plain object, that is, an object created by the
@@ -20718,8 +20803,7 @@
 	 * @since 0.8.0
 	 * @category Lang
 	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a plain object,
-	 *  else `false`.
+	 * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
 	 * @example
 	 *
 	 * function Foo() {
@@ -20739,8 +20823,7 @@
 	 * // => true
 	 */
 	function isPlainObject(value) {
-	  if (!isObjectLike(value) ||
-	      objectToString.call(value) != objectTag || isHostObject(value)) {
+	  if (!isObjectLike(value) || baseGetTag(value) != objectTag) {
 	    return false;
 	  }
 	  var proto = getPrototype(value);
@@ -20748,8 +20831,8 @@
 	    return true;
 	  }
 	  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
-	  return (typeof Ctor == 'function' &&
-	    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
+	  return typeof Ctor == 'function' && Ctor instanceof Ctor &&
+	    funcToString.call(Ctor) == objectCtorString;
 	}
 
 	module.exports = isPlainObject;
@@ -20757,53 +20840,191 @@
 
 /***/ },
 /* 194 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	/* Built-in method references for those with the same name as other `lodash` methods. */
-	var nativeGetPrototype = Object.getPrototypeOf;
+	var Symbol = __webpack_require__(195),
+	    getRawTag = __webpack_require__(198),
+	    objectToString = __webpack_require__(199);
+
+	/** `Object#toString` result references. */
+	var nullTag = '[object Null]',
+	    undefinedTag = '[object Undefined]';
+
+	/** Built-in value references. */
+	var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
 
 	/**
-	 * Gets the `[[Prototype]]` of `value`.
+	 * The base implementation of `getTag` without fallbacks for buggy environments.
 	 *
 	 * @private
 	 * @param {*} value The value to query.
-	 * @returns {null|Object} Returns the `[[Prototype]]`.
+	 * @returns {string} Returns the `toStringTag`.
 	 */
-	function getPrototype(value) {
-	  return nativeGetPrototype(Object(value));
+	function baseGetTag(value) {
+	  if (value == null) {
+	    return value === undefined ? undefinedTag : nullTag;
+	  }
+	  return (symToStringTag && symToStringTag in Object(value))
+	    ? getRawTag(value)
+	    : objectToString(value);
 	}
+
+	module.exports = baseGetTag;
+
+
+/***/ },
+/* 195 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var root = __webpack_require__(196);
+
+	/** Built-in value references. */
+	var Symbol = root.Symbol;
+
+	module.exports = Symbol;
+
+
+/***/ },
+/* 196 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var freeGlobal = __webpack_require__(197);
+
+	/** Detect free variable `self`. */
+	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+	/** Used as a reference to the global object. */
+	var root = freeGlobal || freeSelf || Function('return this')();
+
+	module.exports = root;
+
+
+/***/ },
+/* 197 */
+/***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
+	var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+
+	module.exports = freeGlobal;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 198 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Symbol = __webpack_require__(195);
+
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var nativeObjectToString = objectProto.toString;
+
+	/** Built-in value references. */
+	var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+
+	/**
+	 * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @returns {string} Returns the raw `toStringTag`.
+	 */
+	function getRawTag(value) {
+	  var isOwn = hasOwnProperty.call(value, symToStringTag),
+	      tag = value[symToStringTag];
+
+	  try {
+	    value[symToStringTag] = undefined;
+	    var unmasked = true;
+	  } catch (e) {}
+
+	  var result = nativeObjectToString.call(value);
+	  if (unmasked) {
+	    if (isOwn) {
+	      value[symToStringTag] = tag;
+	    } else {
+	      delete value[symToStringTag];
+	    }
+	  }
+	  return result;
+	}
+
+	module.exports = getRawTag;
+
+
+/***/ },
+/* 199 */
+/***/ function(module, exports) {
+
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var nativeObjectToString = objectProto.toString;
+
+	/**
+	 * Converts `value` to a string using `Object.prototype.toString`.
+	 *
+	 * @private
+	 * @param {*} value The value to convert.
+	 * @returns {string} Returns the converted string.
+	 */
+	function objectToString(value) {
+	  return nativeObjectToString.call(value);
+	}
+
+	module.exports = objectToString;
+
+
+/***/ },
+/* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var overArg = __webpack_require__(201);
+
+	/** Built-in value references. */
+	var getPrototype = overArg(Object.getPrototypeOf, Object);
 
 	module.exports = getPrototype;
 
 
 /***/ },
-/* 195 */
+/* 201 */
 /***/ function(module, exports) {
 
 	/**
-	 * Checks if `value` is a host object in IE < 9.
+	 * Creates a unary function that invokes `func` with its argument transformed.
 	 *
 	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+	 * @param {Function} func The function to wrap.
+	 * @param {Function} transform The argument transform.
+	 * @returns {Function} Returns the new function.
 	 */
-	function isHostObject(value) {
-	  // Many host objects are `Object` objects that can coerce to strings
-	  // despite having improperly defined `toString` methods.
-	  var result = false;
-	  if (value != null && typeof value.toString != 'function') {
-	    try {
-	      result = !!(value + '');
-	    } catch (e) {}
-	  }
-	  return result;
+	function overArg(func, transform) {
+	  return function(arg) {
+	    return func(transform(arg));
+	  };
 	}
 
-	module.exports = isHostObject;
+	module.exports = overArg;
 
 
 /***/ },
-/* 196 */
+/* 202 */
 /***/ function(module, exports) {
 
 	/**
@@ -20831,43 +21052,90 @@
 	 * // => false
 	 */
 	function isObjectLike(value) {
-	  return !!value && typeof value == 'object';
+	  return value != null && typeof value == 'object';
 	}
 
 	module.exports = isObjectLike;
 
 
 /***/ },
-/* 197 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {/* global window */
-	'use strict';
+	module.exports = __webpack_require__(204);
 
-	module.exports = __webpack_require__(198)(global || window || this);
-
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 198 */
+/* 204 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _ponyfill = __webpack_require__(206);
+
+	var _ponyfill2 = _interopRequireDefault(_ponyfill);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var root; /* global window */
+
+
+	if (typeof self !== 'undefined') {
+	  root = self;
+	} else if (typeof window !== 'undefined') {
+	  root = window;
+	} else if (typeof global !== 'undefined') {
+	  root = global;
+	} else if (true) {
+	  root = module;
+	} else {
+	  root = Function('return this')();
+	}
+
+	var result = (0, _ponyfill2['default'])(root);
+	exports['default'] = result;
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(205)(module)))
+
+/***/ },
+/* 205 */
+/***/ function(module, exports) {
+
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+
+
+/***/ },
+/* 206 */
 /***/ function(module, exports) {
 
 	'use strict';
 
-	module.exports = function symbolObservablePonyfill(root) {
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports['default'] = symbolObservablePonyfill;
+	function symbolObservablePonyfill(root) {
 		var result;
-		var Symbol = root.Symbol;
+		var _Symbol = root.Symbol;
 
-		if (typeof Symbol === 'function') {
-			if (Symbol.observable) {
-				result = Symbol.observable;
+		if (typeof _Symbol === 'function') {
+			if (_Symbol.observable) {
+				result = _Symbol.observable;
 			} else {
-				if (typeof Symbol.for === 'function') {
-					result = Symbol.for('observable');
-				} else {
-					result = Symbol('observable');
-				}
-				Symbol.observable = result;
+				result = _Symbol('observable');
+				_Symbol.observable = result;
 			}
 		} else {
 			result = '@@observable';
@@ -20876,15 +21144,14 @@
 		return result;
 	};
 
-
 /***/ },
-/* 199 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	exports.__esModule = true;
-	exports["default"] = combineReducers;
+	exports['default'] = combineReducers;
 
 	var _createStore = __webpack_require__(192);
 
@@ -20892,11 +21159,11 @@
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _warning = __webpack_require__(200);
+	var _warning = __webpack_require__(208);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 	function getUndefinedStateErrorMessage(key, action) {
 	  var actionType = action && action.type;
@@ -20905,20 +21172,24 @@
 	  return 'Given action ' + actionName + ', reducer "' + key + '" returned undefined. ' + 'To ignore an action, you must explicitly return the previous state.';
 	}
 
-	function getUnexpectedStateShapeWarningMessage(inputState, reducers, action) {
+	function getUnexpectedStateShapeWarningMessage(inputState, reducers, action, unexpectedKeyCache) {
 	  var reducerKeys = Object.keys(reducers);
-	  var argumentName = action && action.type === _createStore.ActionTypes.INIT ? 'initialState argument passed to createStore' : 'previous state received by the reducer';
+	  var argumentName = action && action.type === _createStore.ActionTypes.INIT ? 'preloadedState argument passed to createStore' : 'previous state received by the reducer';
 
 	  if (reducerKeys.length === 0) {
 	    return 'Store does not have a valid reducer. Make sure the argument passed ' + 'to combineReducers is an object whose values are reducers.';
 	  }
 
-	  if (!(0, _isPlainObject2["default"])(inputState)) {
+	  if (!(0, _isPlainObject2['default'])(inputState)) {
 	    return 'The ' + argumentName + ' has unexpected type of "' + {}.toString.call(inputState).match(/\s([a-z|A-Z]+)/)[1] + '". Expected argument to be an object with the following ' + ('keys: "' + reducerKeys.join('", "') + '"');
 	  }
 
 	  var unexpectedKeys = Object.keys(inputState).filter(function (key) {
-	    return !reducers.hasOwnProperty(key);
+	    return !reducers.hasOwnProperty(key) && !unexpectedKeyCache[key];
+	  });
+
+	  unexpectedKeys.forEach(function (key) {
+	    unexpectedKeyCache[key] = true;
 	  });
 
 	  if (unexpectedKeys.length > 0) {
@@ -20963,11 +21234,22 @@
 	  var finalReducers = {};
 	  for (var i = 0; i < reducerKeys.length; i++) {
 	    var key = reducerKeys[i];
+
+	    if (process.env.NODE_ENV !== 'production') {
+	      if (typeof reducers[key] === 'undefined') {
+	        (0, _warning2['default'])('No reducer provided for key "' + key + '"');
+	      }
+	    }
+
 	    if (typeof reducers[key] === 'function') {
 	      finalReducers[key] = reducers[key];
 	    }
 	  }
 	  var finalReducerKeys = Object.keys(finalReducers);
+
+	  if (process.env.NODE_ENV !== 'production') {
+	    var unexpectedKeyCache = {};
+	  }
 
 	  var sanityError;
 	  try {
@@ -20985,9 +21267,9 @@
 	    }
 
 	    if (process.env.NODE_ENV !== 'production') {
-	      var warningMessage = getUnexpectedStateShapeWarningMessage(state, finalReducers, action);
+	      var warningMessage = getUnexpectedStateShapeWarningMessage(state, finalReducers, action, unexpectedKeyCache);
 	      if (warningMessage) {
-	        (0, _warning2["default"])(warningMessage);
+	        (0, _warning2['default'])(warningMessage);
 	      }
 	    }
 
@@ -21011,13 +21293,13 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28)))
 
 /***/ },
-/* 200 */
+/* 208 */
 /***/ function(module, exports) {
 
 	'use strict';
 
 	exports.__esModule = true;
-	exports["default"] = warning;
+	exports['default'] = warning;
 	/**
 	 * Prints a warning in the console if it exists.
 	 *
@@ -21031,8 +21313,9 @@
 	  }
 	  /* eslint-enable no-console */
 	  try {
-	    // This error was thrown as a convenience so that you can use this stack
-	    // to find the callsite that caused this warning to fire.
+	    // This error was thrown as a convenience so that if you enable
+	    // "break on all exceptions" in your console,
+	    // it would pause the execution at this line.
 	    throw new Error(message);
 	    /* eslint-disable no-empty */
 	  } catch (e) {}
@@ -21040,13 +21323,13 @@
 	}
 
 /***/ },
-/* 201 */
+/* 209 */
 /***/ function(module, exports) {
 
 	'use strict';
 
 	exports.__esModule = true;
-	exports["default"] = bindActionCreators;
+	exports['default'] = bindActionCreators;
 	function bindActionCreator(actionCreator, dispatch) {
 	  return function () {
 	    return dispatch(actionCreator.apply(undefined, arguments));
@@ -21096,7 +21379,7 @@
 	}
 
 /***/ },
-/* 202 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21105,13 +21388,13 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	exports["default"] = applyMiddleware;
+	exports['default'] = applyMiddleware;
 
-	var _compose = __webpack_require__(203);
+	var _compose = __webpack_require__(211);
 
 	var _compose2 = _interopRequireDefault(_compose);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 	/**
 	 * Creates a store enhancer that applies middleware to the dispatch method
@@ -21135,9 +21418,9 @@
 	  }
 
 	  return function (createStore) {
-	    return function (reducer, initialState, enhancer) {
-	      var store = createStore(reducer, initialState, enhancer);
-	      var _dispatch;
+	    return function (reducer, preloadedState, enhancer) {
+	      var store = createStore(reducer, preloadedState, enhancer);
+	      var _dispatch = store.dispatch;
 	      var chain = [];
 
 	      var middlewareAPI = {
@@ -21149,7 +21432,7 @@
 	      chain = middlewares.map(function (middleware) {
 	        return middleware(middlewareAPI);
 	      });
-	      _dispatch = _compose2["default"].apply(undefined, chain)(store.dispatch);
+	      _dispatch = _compose2['default'].apply(undefined, chain)(store.dispatch);
 
 	      return _extends({}, store, {
 	        dispatch: _dispatch
@@ -21159,7 +21442,7 @@
 	}
 
 /***/ },
-/* 203 */
+/* 211 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -21186,52 +21469,44 @@
 	    return function (arg) {
 	      return arg;
 	    };
-	  } else {
-	    var _ret = function () {
-	      var last = funcs[funcs.length - 1];
-	      var rest = funcs.slice(0, -1);
-	      return {
-	        v: function v() {
-	          return rest.reduceRight(function (composed, f) {
-	            return f(composed);
-	          }, last.apply(undefined, arguments));
-	        }
-	      };
-	    }();
-
-	    if (typeof _ret === "object") return _ret.v;
 	  }
+
+	  if (funcs.length === 1) {
+	    return funcs[0];
+	  }
+
+	  var last = funcs[funcs.length - 1];
+	  var rest = funcs.slice(0, -1);
+	  return function () {
+	    return rest.reduceRight(function (composed, f) {
+	      return f(composed);
+	    }, last.apply(undefined, arguments));
+	  };
 	}
 
 /***/ },
-/* 204 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getPrototype = __webpack_require__(205),
-	    isHostObject = __webpack_require__(206),
-	    isObjectLike = __webpack_require__(207);
+	var baseGetTag = __webpack_require__(213),
+	    getPrototype = __webpack_require__(219),
+	    isObjectLike = __webpack_require__(221);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
 
 	/** Used for built-in method references. */
-	var objectProto = Object.prototype;
+	var funcProto = Function.prototype,
+	    objectProto = Object.prototype;
 
 	/** Used to resolve the decompiled source of functions. */
-	var funcToString = Function.prototype.toString;
+	var funcToString = funcProto.toString;
 
 	/** Used to check objects for own properties. */
 	var hasOwnProperty = objectProto.hasOwnProperty;
 
 	/** Used to infer the `Object` constructor. */
 	var objectCtorString = funcToString.call(Object);
-
-	/**
-	 * Used to resolve the
-	 * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objectToString = objectProto.toString;
 
 	/**
 	 * Checks if `value` is a plain object, that is, an object created by the
@@ -21242,8 +21517,7 @@
 	 * @since 0.8.0
 	 * @category Lang
 	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a plain object,
-	 *  else `false`.
+	 * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
 	 * @example
 	 *
 	 * function Foo() {
@@ -21263,8 +21537,7 @@
 	 * // => true
 	 */
 	function isPlainObject(value) {
-	  if (!isObjectLike(value) ||
-	      objectToString.call(value) != objectTag || isHostObject(value)) {
+	  if (!isObjectLike(value) || baseGetTag(value) != objectTag) {
 	    return false;
 	  }
 	  var proto = getPrototype(value);
@@ -21272,62 +21545,200 @@
 	    return true;
 	  }
 	  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
-	  return (typeof Ctor == 'function' &&
-	    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
+	  return typeof Ctor == 'function' && Ctor instanceof Ctor &&
+	    funcToString.call(Ctor) == objectCtorString;
 	}
 
 	module.exports = isPlainObject;
 
 
 /***/ },
-/* 205 */
-/***/ function(module, exports) {
+/* 213 */
+/***/ function(module, exports, __webpack_require__) {
 
-	/* Built-in method references for those with the same name as other `lodash` methods. */
-	var nativeGetPrototype = Object.getPrototypeOf;
+	var Symbol = __webpack_require__(214),
+	    getRawTag = __webpack_require__(217),
+	    objectToString = __webpack_require__(218);
+
+	/** `Object#toString` result references. */
+	var nullTag = '[object Null]',
+	    undefinedTag = '[object Undefined]';
+
+	/** Built-in value references. */
+	var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
 
 	/**
-	 * Gets the `[[Prototype]]` of `value`.
+	 * The base implementation of `getTag` without fallbacks for buggy environments.
 	 *
 	 * @private
 	 * @param {*} value The value to query.
-	 * @returns {null|Object} Returns the `[[Prototype]]`.
+	 * @returns {string} Returns the `toStringTag`.
 	 */
-	function getPrototype(value) {
-	  return nativeGetPrototype(Object(value));
+	function baseGetTag(value) {
+	  if (value == null) {
+	    return value === undefined ? undefinedTag : nullTag;
+	  }
+	  return (symToStringTag && symToStringTag in Object(value))
+	    ? getRawTag(value)
+	    : objectToString(value);
 	}
+
+	module.exports = baseGetTag;
+
+
+/***/ },
+/* 214 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var root = __webpack_require__(215);
+
+	/** Built-in value references. */
+	var Symbol = root.Symbol;
+
+	module.exports = Symbol;
+
+
+/***/ },
+/* 215 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var freeGlobal = __webpack_require__(216);
+
+	/** Detect free variable `self`. */
+	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+	/** Used as a reference to the global object. */
+	var root = freeGlobal || freeSelf || Function('return this')();
+
+	module.exports = root;
+
+
+/***/ },
+/* 216 */
+/***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
+	var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+
+	module.exports = freeGlobal;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 217 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Symbol = __webpack_require__(214);
+
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var nativeObjectToString = objectProto.toString;
+
+	/** Built-in value references. */
+	var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+
+	/**
+	 * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @returns {string} Returns the raw `toStringTag`.
+	 */
+	function getRawTag(value) {
+	  var isOwn = hasOwnProperty.call(value, symToStringTag),
+	      tag = value[symToStringTag];
+
+	  try {
+	    value[symToStringTag] = undefined;
+	    var unmasked = true;
+	  } catch (e) {}
+
+	  var result = nativeObjectToString.call(value);
+	  if (unmasked) {
+	    if (isOwn) {
+	      value[symToStringTag] = tag;
+	    } else {
+	      delete value[symToStringTag];
+	    }
+	  }
+	  return result;
+	}
+
+	module.exports = getRawTag;
+
+
+/***/ },
+/* 218 */
+/***/ function(module, exports) {
+
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var nativeObjectToString = objectProto.toString;
+
+	/**
+	 * Converts `value` to a string using `Object.prototype.toString`.
+	 *
+	 * @private
+	 * @param {*} value The value to convert.
+	 * @returns {string} Returns the converted string.
+	 */
+	function objectToString(value) {
+	  return nativeObjectToString.call(value);
+	}
+
+	module.exports = objectToString;
+
+
+/***/ },
+/* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var overArg = __webpack_require__(220);
+
+	/** Built-in value references. */
+	var getPrototype = overArg(Object.getPrototypeOf, Object);
 
 	module.exports = getPrototype;
 
 
 /***/ },
-/* 206 */
+/* 220 */
 /***/ function(module, exports) {
 
 	/**
-	 * Checks if `value` is a host object in IE < 9.
+	 * Creates a unary function that invokes `func` with its argument transformed.
 	 *
 	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+	 * @param {Function} func The function to wrap.
+	 * @param {Function} transform The argument transform.
+	 * @returns {Function} Returns the new function.
 	 */
-	function isHostObject(value) {
-	  // Many host objects are `Object` objects that can coerce to strings
-	  // despite having improperly defined `toString` methods.
-	  var result = false;
-	  if (value != null && typeof value.toString != 'function') {
-	    try {
-	      result = !!(value + '');
-	    } catch (e) {}
-	  }
-	  return result;
+	function overArg(func, transform) {
+	  return function(arg) {
+	    return func(transform(arg));
+	  };
 	}
 
-	module.exports = isHostObject;
+	module.exports = overArg;
 
 
 /***/ },
-/* 207 */
+/* 221 */
 /***/ function(module, exports) {
 
 	/**
@@ -21355,14 +21766,14 @@
 	 * // => false
 	 */
 	function isObjectLike(value) {
-	  return !!value && typeof value == 'object';
+	  return value != null && typeof value == 'object';
 	}
 
 	module.exports = isObjectLike;
 
 
 /***/ },
-/* 208 */
+/* 222 */
 /***/ function(module, exports) {
 
 	/**
@@ -21391,14 +21802,24 @@
 	    arity: true
 	};
 
-	module.exports = function hoistNonReactStatics(targetComponent, sourceComponent) {
-	    var keys = Object.getOwnPropertyNames(sourceComponent);
-	    for (var i=0; i<keys.length; ++i) {
-	        if (!REACT_STATICS[keys[i]] && !KNOWN_STATICS[keys[i]]) {
-	            try {
-	                targetComponent[keys[i]] = sourceComponent[keys[i]];
-	            } catch (error) {
+	var isGetOwnPropertySymbolsAvailable = typeof Object.getOwnPropertySymbols === 'function';
 
+	module.exports = function hoistNonReactStatics(targetComponent, sourceComponent, customStatics) {
+	    if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
+	        var keys = Object.getOwnPropertyNames(sourceComponent);
+
+	        /* istanbul ignore else */
+	        if (isGetOwnPropertySymbolsAvailable) {
+	            keys = keys.concat(Object.getOwnPropertySymbols(sourceComponent));
+	        }
+
+	        for (var i = 0; i < keys.length; ++i) {
+	            if (!REACT_STATICS[keys[i]] && !KNOWN_STATICS[keys[i]] && (!customStatics || !customStatics[keys[i]])) {
+	                try {
+	                    targetComponent[keys[i]] = sourceComponent[keys[i]];
+	                } catch (error) {
+
+	                }
 	            }
 	        }
 	    }
@@ -21408,7 +21829,7 @@
 
 
 /***/ },
-/* 209 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -21466,7 +21887,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28)))
 
 /***/ },
-/* 210 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21483,27 +21904,27 @@
 
 	var _reactRedux = __webpack_require__(184);
 
-	var _app = __webpack_require__(211);
+	var _app = __webpack_require__(225);
 
 	var actions = _interopRequireWildcard(_app);
 
-	var _Localisation = __webpack_require__(215);
+	var _Localisation = __webpack_require__(229);
 
 	var _Localisation2 = _interopRequireDefault(_Localisation);
 
-	var _IconDrawer = __webpack_require__(217);
+	var _IconDrawer = __webpack_require__(231);
 
 	var _IconDrawer2 = _interopRequireDefault(_IconDrawer);
 
-	var _Skills = __webpack_require__(220);
+	var _Skills = __webpack_require__(234);
 
 	var _Skills2 = _interopRequireDefault(_Skills);
 
-	var _PerkDecks = __webpack_require__(232);
+	var _PerkDecks = __webpack_require__(246);
 
 	var _PerkDecks2 = _interopRequireDefault(_PerkDecks);
 
-	var _Infamy = __webpack_require__(240);
+	var _Infamy = __webpack_require__(254);
 
 	var _Infamy2 = _interopRequireDefault(_Infamy);
 
@@ -21523,7 +21944,7 @@
 	  function App(prop) {
 	    _classCallCheck(this, App);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, prop));
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, prop));
 
 	    _this.locale = _this.locale.bind(_this);
 	    _this.localeText = _this.localeText.bind(_this);
@@ -21580,9 +22001,9 @@
 	  }, {
 	    key: 'renderMain',
 	    value: function renderMain(display) {
-	      var locale = this.locale;
-	      var localeText = this.localeText;
-	      var drawIcon = this.drawIcon;
+	      var locale = this.locale,
+	          localeText = this.localeText,
+	          drawIcon = this.drawIcon;
 
 	      var func = {
 	        locale: locale, localeText: localeText, drawIcon: drawIcon
@@ -21601,7 +22022,7 @@
 	  }, {
 	    key: 'locale',
 	    value: function locale(key) {
-	      var injects = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+	      var injects = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
 	      var text = _Localisation2.default.localize(key);
 	      text = text.replace(/\$(\w+);?/g, function (match, key) {
@@ -21654,7 +22075,7 @@
 	exports.default = (0, _reactRedux.connect)(select)(App);
 
 /***/ },
-/* 211 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21668,11 +22089,11 @@
 	exports.initializeSuccess = initializeSuccess;
 	exports.initializeError = initializeError;
 
-	var _isomorphicFetch = __webpack_require__(212);
+	var _isomorphicFetch = __webpack_require__(226);
 
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 
-	var _SkillAppActions = __webpack_require__(214);
+	var _SkillAppActions = __webpack_require__(228);
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
@@ -21708,19 +22129,19 @@
 	}
 
 /***/ },
-/* 212 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// the whatwg-fetch polyfill installs the fetch() function
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(213);
+	__webpack_require__(227);
 	module.exports = self.fetch.bind(self);
 
 
 /***/ },
-/* 213 */
+/* 227 */
 /***/ function(module, exports) {
 
 	(function(self) {
@@ -22115,7 +22536,7 @@
 
 
 /***/ },
-/* 214 */
+/* 228 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22150,7 +22571,7 @@
 	var SWITCH_MAIN_TAB = exports.SWITCH_MAIN_TAB = 'SWITCH_MAIN_TAB';
 
 /***/ },
-/* 215 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22159,7 +22580,7 @@
 	  value: true
 	});
 
-	var _Localisation = __webpack_require__(216);
+	var _Localisation = __webpack_require__(230);
 
 	var _Localisation2 = _interopRequireDefault(_Localisation);
 
@@ -22168,7 +22589,7 @@
 	exports.default = new Localisation();
 
 /***/ },
-/* 216 */
+/* 230 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22239,7 +22660,7 @@
 	exports.default = Localisation;
 
 /***/ },
-/* 217 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22248,7 +22669,7 @@
 	  value: true
 	});
 
-	var _IconDrawer = __webpack_require__(218);
+	var _IconDrawer = __webpack_require__(232);
 
 	var _IconDrawer2 = _interopRequireDefault(_IconDrawer);
 
@@ -22257,7 +22678,7 @@
 	exports.default = new _IconDrawer2.default();
 
 /***/ },
-/* 218 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22268,7 +22689,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _ImageSpriteDrawer = __webpack_require__(219);
+	var _ImageSpriteDrawer = __webpack_require__(233);
 
 	var _ImageSpriteDrawer2 = _interopRequireDefault(_ImageSpriteDrawer);
 
@@ -22297,7 +22718,7 @@
 	    value: function registerSprite(sprite, frameNames) {
 	      var _this = this;
 
-	      var prefix = arguments.length <= 2 || arguments[2] === undefined ? '' : arguments[2];
+	      var prefix = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
 	      if (!(sprite instanceof _ImageSpriteDrawer2.default)) throw 'Arg1 must instance of ImageSpriteDrawer.';
 	      if (!Array.isArray(frameNames)) throw 'Arg2 must be an array.';
@@ -22310,7 +22731,7 @@
 	  }, {
 	    key: 'draw',
 	    value: function draw(iconName, canvas) {
-	      var color = arguments.length <= 2 || arguments[2] === undefined ? 'normal' : arguments[2];
+	      var color = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'normal';
 
 	      if (typeof this.iconIndexes[iconName] === 'undefined') throw 'Cannot find icon named ' + iconName;
 
@@ -22334,7 +22755,7 @@
 	exports.default = IconDrawer;
 
 /***/ },
-/* 219 */
+/* 233 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22349,7 +22770,7 @@
 
 	var ImageSpriteDrawer = function () {
 	  function ImageSpriteDrawer(src) {
-	    var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+	    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
 	    _classCallCheck(this, ImageSpriteDrawer);
 
@@ -22424,7 +22845,7 @@
 	  }, {
 	    key: '_doDraw',
 	    value: function _doDraw(canvas, x, y) {
-	      var color = arguments.length <= 3 || arguments[3] === undefined ? 'black' : arguments[3];
+	      var color = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'black';
 
 	      x = Math.max(0, Math.min(x, this.frames[0]));
 	      y = Math.max(0, Math.min(y, this.frames[1]));
@@ -22481,7 +22902,7 @@
 	exports.default = ImageSpriteDrawer;
 
 /***/ },
-/* 220 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22500,19 +22921,19 @@
 
 	var _reactRedux = __webpack_require__(184);
 
-	var _skills = __webpack_require__(221);
+	var _skills = __webpack_require__(235);
 
 	var actions = _interopRequireWildcard(_skills);
 
-	var _SkillsTabs = __webpack_require__(223);
+	var _SkillsTabs = __webpack_require__(237);
 
 	var _SkillsTabs2 = _interopRequireDefault(_SkillsTabs);
 
-	var _SkillsMain = __webpack_require__(224);
+	var _SkillsMain = __webpack_require__(238);
 
 	var _SkillsMain2 = _interopRequireDefault(_SkillsMain);
 
-	var _SkillsSide = __webpack_require__(231);
+	var _SkillsSide = __webpack_require__(245);
 
 	var _SkillsSide2 = _interopRequireDefault(_SkillsSide);
 
@@ -22532,7 +22953,7 @@
 	  function Skills(prop) {
 	    _classCallCheck(this, Skills);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Skills).call(this, prop));
+	    var _this = _possibleConstructorReturn(this, (Skills.__proto__ || Object.getPrototypeOf(Skills)).call(this, prop));
 
 	    _this.reflowCanvas = _this.reflowCanvas.bind(_this);
 	    return _this;
@@ -22541,9 +22962,9 @@
 	  _createClass(Skills, [{
 	    key: 'reflowCanvas',
 	    value: function reflowCanvas(canvas, datas) {
-	      var skill = datas.skill;
-	      var tier = datas.tier;
-	      var hover = datas.hover;
+	      var skill = datas.skill,
+	          tier = datas.tier,
+	          hover = datas.hover;
 
 
 	      var color = function (skill, tier) {
@@ -22563,14 +22984,14 @@
 	      var _this2 = this;
 
 	      var dispatch = this.props.dispatch;
-	      var _props = this.props;
-	      var trees = _props.trees;
-	      var currectTree = _props.currectTree;
-	      var availablePoints = _props.availablePoints;
-	      var display = _props.display;
-	      var _props2 = this.props;
-	      var locale = _props2.locale;
-	      var localeText = _props2.localeText;
+	      var _props = this.props,
+	          trees = _props.trees,
+	          currectTree = _props.currectTree,
+	          availablePoints = _props.availablePoints,
+	          display = _props.display;
+	      var _props2 = this.props,
+	          locale = _props2.locale,
+	          localeText = _props2.localeText;
 
 
 	      var app = {
@@ -22631,7 +23052,7 @@
 	exports.default = (0, _reactRedux.connect)(select)(Skills);
 
 /***/ },
-/* 221 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22646,11 +23067,11 @@
 	exports.activeSkillTree = activeSkillTree;
 	exports.respecSkillTree = respecSkillTree;
 
-	var _SkillAppActions = __webpack_require__(214);
+	var _SkillAppActions = __webpack_require__(228);
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _Events = __webpack_require__(222);
+	var _Events = __webpack_require__(236);
 
 	var events = _interopRequireWildcard(_Events);
 
@@ -22681,7 +23102,7 @@
 	}
 
 /***/ },
-/* 222 */
+/* 236 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22697,7 +23118,7 @@
 	var REMOVE = exports.REMOVE = 'REMOVE';
 
 /***/ },
-/* 223 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22726,7 +23147,7 @@
 	  function SkillsTabs() {
 	    _classCallCheck(this, SkillsTabs);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SkillsTabs).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (SkillsTabs.__proto__ || Object.getPrototypeOf(SkillsTabs)).apply(this, arguments));
 	  }
 
 	  _createClass(SkillsTabs, [{
@@ -22749,11 +23170,11 @@
 	  }, {
 	    key: "renderTabs",
 	    value: function renderTabs() {
-	      var _props = this.props;
-	      var locale = _props.locale;
-	      var masterTrees = _props.masterTrees;
-	      var activedTree = _props.activedTree;
-	      var _onClick = _props.onClick;
+	      var _props = this.props,
+	          locale = _props.locale,
+	          masterTrees = _props.masterTrees,
+	          activedTree = _props.activedTree,
+	          _onClick = _props.onClick;
 
 
 	      return masterTrees.map(function (tree, index) {
@@ -22788,7 +23209,7 @@
 	exports.default = SkillsTabs;
 
 /***/ },
-/* 224 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22805,7 +23226,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Tree = __webpack_require__(225);
+	var _Tree = __webpack_require__(239);
 
 	var _Tree2 = _interopRequireDefault(_Tree);
 
@@ -22823,7 +23244,7 @@
 	  function SkillsMain(props) {
 	    _classCallCheck(this, SkillsMain);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SkillsMain).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (SkillsMain.__proto__ || Object.getPrototypeOf(SkillsMain)).call(this, props));
 
 	    _this.handleRespec = _this.handleRespec.bind(_this);
 	    return _this;
@@ -22902,7 +23323,7 @@
 	exports.default = SkillsMain;
 
 /***/ },
-/* 225 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22919,7 +23340,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Subtree = __webpack_require__(226);
+	var _Subtree = __webpack_require__(240);
 
 	var _Subtree2 = _interopRequireDefault(_Subtree);
 
@@ -22937,15 +23358,15 @@
 	  function Tree() {
 	    _classCallCheck(this, Tree);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Tree).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Tree.__proto__ || Object.getPrototypeOf(Tree)).apply(this, arguments));
 	  }
 
 	  _createClass(Tree, [{
 	    key: 'render',
 	    value: function render() {
-	      var _props = this.props;
-	      var locale = _props.locale;
-	      var localeText = _props.localeText;
+	      var _props = this.props,
+	          locale = _props.locale,
+	          localeText = _props.localeText;
 
 
 	      return _react2.default.createElement(
@@ -22963,9 +23384,9 @@
 	    value: function renderSubtrees() {
 	      var _this2 = this;
 
-	      var _props2 = this.props;
-	      var tree = _props2.tree;
-	      var getTree = _props2.getTree;
+	      var _props2 = this.props,
+	          tree = _props2.tree,
+	          getTree = _props2.getTree;
 
 
 	      return tree.subtrees.map(function (subtreeId, index) {
@@ -22986,7 +23407,7 @@
 	exports.default = Tree;
 
 /***/ },
-/* 226 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23003,7 +23424,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Tier = __webpack_require__(227);
+	var _Tier = __webpack_require__(241);
 
 	var _Tier2 = _interopRequireDefault(_Tier);
 
@@ -23021,15 +23442,15 @@
 	  function Subtree() {
 	    _classCallCheck(this, Subtree);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Subtree).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Subtree.__proto__ || Object.getPrototypeOf(Subtree)).apply(this, arguments));
 	  }
 
 	  _createClass(Subtree, [{
 	    key: 'render',
 	    value: function render() {
-	      var _props = this.props;
-	      var locale = _props.locale;
-	      var tree = _props.tree;
+	      var _props = this.props,
+	          locale = _props.locale,
+	          tree = _props.tree;
 
 
 	      return _react2.default.createElement(
@@ -23055,9 +23476,9 @@
 	  }, {
 	    key: 'renderTiers',
 	    value: function renderTiers() {
-	      var _props2 = this.props;
-	      var tree = _props2.tree;
-	      var getTier = _props2.getTier;
+	      var _props2 = this.props,
+	          tree = _props2.tree,
+	          getTier = _props2.getTier;
 
 
 	      var tiers = tree.tiers.slice().reverse();
@@ -23085,7 +23506,7 @@
 	exports.default = Subtree;
 
 /***/ },
-/* 227 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23102,7 +23523,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Skill = __webpack_require__(228);
+	var _Skill = __webpack_require__(242);
 
 	var _Skill2 = _interopRequireDefault(_Skill);
 
@@ -23120,15 +23541,15 @@
 	  function Tier() {
 	    _classCallCheck(this, Tier);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Tier).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Tier.__proto__ || Object.getPrototypeOf(Tier)).apply(this, arguments));
 	  }
 
 	  _createClass(Tier, [{
 	    key: 'render',
 	    value: function render() {
-	      var _props = this.props;
-	      var tier = _props.tier;
-	      var tierRank = _props.tierRank;
+	      var _props = this.props,
+	          tier = _props.tier,
+	          tierRank = _props.tierRank;
 
 
 	      var currectUnlockRequire = tier.currectUnlockRequire;
@@ -23147,9 +23568,9 @@
 	  }, {
 	    key: 'getClassName',
 	    value: function getClassName() {
-	      var _props2 = this.props;
-	      var tree = _props2.tree;
-	      var tier = _props2.tier;
+	      var _props2 = this.props,
+	          tree = _props2.tree,
+	          tier = _props2.tier;
 
 
 	      var className = ['tier'];
@@ -23161,9 +23582,9 @@
 	  }, {
 	    key: 'renderSkills',
 	    value: function renderSkills() {
-	      var _props3 = this.props;
-	      var tier = _props3.tier;
-	      var getSkill = _props3.getSkill;
+	      var _props3 = this.props,
+	          tier = _props3.tier,
+	          getSkill = _props3.getSkill;
 
 	      return tier.skills.map(function (skillId, index) {
 	        var skill = getSkill(skillId);
@@ -23188,7 +23609,7 @@
 	exports.default = Tier;
 
 /***/ },
-/* 228 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23205,7 +23626,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SkillText = __webpack_require__(229);
+	var _SkillText = __webpack_require__(243);
 
 	var _SkillText2 = _interopRequireDefault(_SkillText);
 
@@ -23223,7 +23644,7 @@
 	  function Skill(props) {
 	    _classCallCheck(this, Skill);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Skill).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Skill.__proto__ || Object.getPrototypeOf(Skill)).call(this, props));
 
 	    _this.hover = false;
 	    return _this;
@@ -23237,9 +23658,9 @@
 	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
-	      var _props = this.props;
-	      var skill = _props.skill;
-	      var tier = _props.tier;
+	      var _props = this.props,
+	          skill = _props.skill,
+	          tier = _props.tier;
 
 	      this.props.reflowCanvas(this.refs.canvas, {
 	        hover: this.hover, skill: skill, tier: tier
@@ -23334,7 +23755,7 @@
 	exports.default = Skill;
 
 /***/ },
-/* 229 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23349,7 +23770,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SkillStatuses = __webpack_require__(230);
+	var _SkillStatuses = __webpack_require__(244);
 
 	var statuses = _interopRequireWildcard(_SkillStatuses);
 
@@ -23369,19 +23790,19 @@
 	  function SkillText() {
 	    _classCallCheck(this, SkillText);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SkillText).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (SkillText.__proto__ || Object.getPrototypeOf(SkillText)).apply(this, arguments));
 	  }
 
 	  _createClass(SkillText, [{
 	    key: 'render',
 	    value: function render() {
-	      var _props = this.props;
-	      var skill = _props.skill;
-	      var tier = _props.tier;
-	      var tree = _props.tree;
-	      var _props2 = this.props;
-	      var locale = _props2.locale;
-	      var localeText = _props2.localeText;
+	      var _props = this.props,
+	          skill = _props.skill,
+	          tier = _props.tier,
+	          tree = _props.tree;
+	      var _props2 = this.props,
+	          locale = _props2.locale,
+	          localeText = _props2.localeText;
 
 
 	      var parseCost = function parseCost(cost) {
@@ -23396,7 +23817,7 @@
 	            _react2.default.createElement(
 	              'p',
 	              null,
-	              '必要'
+	              '\u5FC5\u8981'
 	            )
 	          );
 	        case statuses.STATUS_ACED:
@@ -23463,7 +23884,7 @@
 	  }, {
 	    key: 'parsePointsText',
 	    value: function parsePointsText(points) {
-	      var name = arguments.length <= 1 || arguments[1] === undefined ? 'st_menu_point' : arguments[1];
+	      var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'st_menu_point';
 	      var locale = this.props.locale;
 
 
@@ -23489,7 +23910,7 @@
 	exports.default = SkillText;
 
 /***/ },
-/* 230 */
+/* 244 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23505,7 +23926,7 @@
 	var STATUS_FOCUSED = exports.STATUS_FOCUSED = 'STATUS_FOCUSED';
 
 /***/ },
-/* 231 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23536,7 +23957,7 @@
 	  function SkillsSide() {
 	    _classCallCheck(this, SkillsSide);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SkillsSide).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (SkillsSide.__proto__ || Object.getPrototypeOf(SkillsSide)).apply(this, arguments));
 	  }
 
 	  _createClass(SkillsSide, [{
@@ -23552,9 +23973,9 @@
 	    key: 'renderContent',
 	    value: function renderContent() {
 	      if (!this.props.skill) return;
-	      var _props = this.props;
-	      var localeText = _props.localeText;
-	      var skill = _props.skill;
+	      var _props = this.props,
+	          localeText = _props.localeText,
+	          skill = _props.skill;
 
 
 	      return _react2.default.createElement(
@@ -23574,9 +23995,9 @@
 	    key: 'pointsToUnlockTier',
 	    value: function pointsToUnlockTier() {
 	      if (!this.props.tierNeeded) return '';
-	      var _props2 = this.props;
-	      var localeText = _props2.localeText;
-	      var tier = _props2.tier;
+	      var _props2 = this.props,
+	          localeText = _props2.localeText,
+	          tier = _props2.tier;
 
 
 	      var needed = this.props.tierNeeded;
@@ -23604,11 +24025,11 @@
 	  }, {
 	    key: 'desc',
 	    value: function desc() {
-	      var _props3 = this.props;
-	      var locale = _props3.locale;
-	      var localeText = _props3.localeText;
-	      var skill = _props3.skill;
-	      var tier = _props3.tier;
+	      var _props3 = this.props,
+	          locale = _props3.locale,
+	          localeText = _props3.localeText,
+	          skill = _props3.skill,
+	          tier = _props3.tier;
 
 
 	      var handleCostText = function handleCostText(cost) {
@@ -23648,10 +24069,10 @@
 	};
 
 	function select(state) {
-	  var _state$skills = state.skills;
-	  var display = _state$skills.display;
-	  var skills = _state$skills.skills;
-	  var tiers = _state$skills.tiers;
+	  var _state$skills = state.skills,
+	      display = _state$skills.display,
+	      skills = _state$skills.skills,
+	      tiers = _state$skills.tiers;
 
 	  if (typeof display !== 'number') return {};
 
@@ -23680,7 +24101,7 @@
 	exports.default = (0, _reactRedux.connect)(select)(SkillsSide);
 
 /***/ },
-/* 232 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23699,19 +24120,19 @@
 
 	var _reactRedux = __webpack_require__(184);
 
-	var _perks = __webpack_require__(233);
+	var _perks = __webpack_require__(247);
 
 	var actions = _interopRequireWildcard(_perks);
 
-	var _PerkDecksTabs = __webpack_require__(234);
+	var _PerkDecksTabs = __webpack_require__(248);
 
 	var _PerkDecksTabs2 = _interopRequireDefault(_PerkDecksTabs);
 
-	var _PerkDecksMain = __webpack_require__(235);
+	var _PerkDecksMain = __webpack_require__(249);
 
 	var _PerkDecksMain2 = _interopRequireDefault(_PerkDecksMain);
 
-	var _PerkDecksSide = __webpack_require__(239);
+	var _PerkDecksSide = __webpack_require__(253);
 
 	var _PerkDecksSide2 = _interopRequireDefault(_PerkDecksSide);
 
@@ -23731,7 +24152,7 @@
 	  function PerkDecks(props) {
 	    _classCallCheck(this, PerkDecks);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PerkDecks).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (PerkDecks.__proto__ || Object.getPrototypeOf(PerkDecks)).call(this, props));
 
 	    _this.reflowCanvas = _this.reflowCanvas.bind(_this);
 	    return _this;
@@ -23740,9 +24161,9 @@
 	  _createClass(PerkDecks, [{
 	    key: 'reflowCanvas',
 	    value: function reflowCanvas(canvas, datas) {
-	      var hover = datas.hover;
-	      var deck = datas.deck;
-	      var isOwned = datas.isOwned;
+	      var hover = datas.hover,
+	          deck = datas.deck,
+	          isOwned = datas.isOwned;
 
 
 	      var color = isOwned ? 'black' : 'normal';
@@ -23817,7 +24238,7 @@
 	exports.default = (0, _reactRedux.connect)(select)(PerkDecks);
 
 /***/ },
-/* 233 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23834,11 +24255,11 @@
 	exports.switchPerks = switchPerks;
 	exports.respecPerk = respecPerk;
 
-	var _SkillAppActions = __webpack_require__(214);
+	var _SkillAppActions = __webpack_require__(228);
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _Events = __webpack_require__(222);
+	var _Events = __webpack_require__(236);
 
 	var events = _interopRequireWildcard(_Events);
 
@@ -23877,7 +24298,7 @@
 	}
 
 /***/ },
-/* 234 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23906,7 +24327,7 @@
 	  function PerkDecksTabs(props) {
 	    _classCallCheck(this, PerkDecksTabs);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PerkDecksTabs).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (PerkDecksTabs.__proto__ || Object.getPrototypeOf(PerkDecksTabs)).call(this, props));
 
 	    _this.actived = props.activedPerk;
 	    return _this;
@@ -23955,10 +24376,10 @@
 	    value: function render() {
 	      var _this2 = this;
 
-	      var _props = this.props;
-	      var locale = _props.locale;
-	      var perks = _props.perks;
-	      var activedPerk = _props.activedPerk;
+	      var _props = this.props,
+	          locale = _props.locale,
+	          perks = _props.perks,
+	          activedPerk = _props.activedPerk;
 
 
 	      return _react2.default.createElement(
@@ -24005,7 +24426,7 @@
 	exports.default = PerkDecksTabs;
 
 /***/ },
-/* 235 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24020,7 +24441,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Perks = __webpack_require__(236);
+	var _Perks = __webpack_require__(250);
 
 	var _Perks2 = _interopRequireDefault(_Perks);
 
@@ -24038,7 +24459,7 @@
 	  function PerkDecksMain(props) {
 	    _classCallCheck(this, PerkDecksMain);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PerkDecksMain).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (PerkDecksMain.__proto__ || Object.getPrototypeOf(PerkDecksMain)).call(this, props));
 
 	    _this.handleRespec = _this.handleRespec.bind(_this);
 	    return _this;
@@ -24088,10 +24509,10 @@
 	  }, {
 	    key: 'renderTotalPoints',
 	    value: function renderTotalPoints() {
-	      var _props = this.props;
-	      var locale = _props.locale;
-	      var localeText = _props.localeText;
-	      var spentPoints = _props.spentPoints;
+	      var _props = this.props,
+	          locale = _props.locale,
+	          localeText = _props.localeText,
+	          spentPoints = _props.spentPoints;
 
 
 	      return locale('menu_st_spent_xp_perk_total') + spentPoints;
@@ -24111,7 +24532,7 @@
 	exports.default = PerkDecksMain;
 
 /***/ },
-/* 236 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24132,7 +24553,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Perk = __webpack_require__(237);
+	var _Perk = __webpack_require__(251);
 
 	var _Perk2 = _interopRequireDefault(_Perk);
 
@@ -24150,7 +24571,7 @@
 	  function Perks(props) {
 	    _classCallCheck(this, Perks);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Perks).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Perks.__proto__ || Object.getPrototypeOf(Perks)).call(this, props));
 
 	    _this.actived = props.activedPerk;
 	    return _this;
@@ -24199,9 +24620,9 @@
 	    value: function render() {
 	      var _this2 = this;
 
-	      var _props = this.props;
-	      var perks = _props.perks;
-	      var activedPerk = _props.activedPerk;
+	      var _props = this.props,
+	          perks = _props.perks,
+	          activedPerk = _props.activedPerk;
 
 
 	      return _react2.default.createElement(
@@ -24230,7 +24651,7 @@
 	exports.default = Perks;
 
 /***/ },
-/* 237 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24247,7 +24668,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Deck = __webpack_require__(238);
+	var _Deck = __webpack_require__(252);
 
 	var _Deck2 = _interopRequireDefault(_Deck);
 
@@ -24265,7 +24686,7 @@
 	  function Perk() {
 	    _classCallCheck(this, Perk);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Perk).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Perk.__proto__ || Object.getPrototypeOf(Perk)).apply(this, arguments));
 	  }
 
 	  _createClass(Perk, [{
@@ -24273,13 +24694,13 @@
 	    value: function render() {
 	      var _this2 = this;
 
-	      var _props = this.props;
-	      var perk = _props.perk;
-	      var getDeck = _props.getDeck;
-	      var _props2 = this.props;
-	      var handlePerkClick = _props2.handlePerkClick;
-	      var handlePerkDouble = _props2.handlePerkDouble;
-	      var handlePerkRemove = _props2.handlePerkRemove;
+	      var _props = this.props,
+	          perk = _props.perk,
+	          getDeck = _props.getDeck;
+	      var _props2 = this.props,
+	          handlePerkClick = _props2.handlePerkClick,
+	          handlePerkDouble = _props2.handlePerkDouble,
+	          handlePerkRemove = _props2.handlePerkRemove;
 
 
 	      return _react2.default.createElement(
@@ -24317,10 +24738,10 @@
 	  }, {
 	    key: 'getHeader',
 	    value: function getHeader() {
-	      var _props3 = this.props;
-	      var locale = _props3.locale;
-	      var localeText = _props3.localeText;
-	      var perk = _props3.perk;
+	      var _props3 = this.props,
+	          locale = _props3.locale,
+	          localeText = _props3.localeText,
+	          perk = _props3.perk;
 
 
 	      var header = locale('menu_st_spec_' + perk.name);
@@ -24329,9 +24750,9 @@
 	  }, {
 	    key: 'getClassName',
 	    value: function getClassName() {
-	      var _props4 = this.props;
-	      var perk = _props4.perk;
-	      var actived = _props4.actived;
+	      var _props4 = this.props,
+	          perk = _props4.perk,
+	          actived = _props4.actived;
 
 
 	      var className = ['perk'];
@@ -24359,7 +24780,7 @@
 	exports.default = Perk;
 
 /***/ },
-/* 238 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24388,7 +24809,7 @@
 	  function Deck(props) {
 	    _classCallCheck(this, Deck);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Deck).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Deck.__proto__ || Object.getPrototypeOf(Deck)).call(this, props));
 
 	    _this.hover = false;
 	    return _this;
@@ -24402,9 +24823,9 @@
 	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
-	      var _props = this.props;
-	      var deck = _props.deck;
-	      var isOwned = _props.isOwned;
+	      var _props = this.props,
+	          deck = _props.deck,
+	          isOwned = _props.isOwned;
 
 	      this.props.reflowCanvas(this.refs.canvas, {
 	        hover: this.hover, deck: deck, isOwned: isOwned
@@ -24415,12 +24836,12 @@
 	    value: function render() {
 	      var _this2 = this;
 
-	      var _props2 = this.props;
-	      var locale = _props2.locale;
-	      var localeText = _props2.localeText;
-	      var _props3 = this.props;
-	      var deck = _props3.deck;
-	      var isOwned = _props3.isOwned;
+	      var _props2 = this.props,
+	          locale = _props2.locale,
+	          localeText = _props2.localeText;
+	      var _props3 = this.props,
+	          deck = _props3.deck,
+	          isOwned = _props3.isOwned;
 
 
 	      var className = ['deck'];
@@ -24466,7 +24887,7 @@
 	exports.default = Deck;
 
 /***/ },
-/* 239 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24495,7 +24916,7 @@
 	  function PerkDecksSide() {
 	    _classCallCheck(this, PerkDecksSide);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(PerkDecksSide).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (PerkDecksSide.__proto__ || Object.getPrototypeOf(PerkDecksSide)).apply(this, arguments));
 	  }
 
 	  _createClass(PerkDecksSide, [{
@@ -24510,9 +24931,9 @@
 	  }, {
 	    key: "renderContent",
 	    value: function renderContent() {
-	      var _props = this.props;
-	      var locale = _props.locale;
-	      var localeText = _props.localeText;
+	      var _props = this.props,
+	          locale = _props.locale,
+	          localeText = _props.localeText;
 
 
 	      var deck = this.props.display;
@@ -24548,7 +24969,7 @@
 	exports.default = PerkDecksSide;
 
 /***/ },
-/* 240 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24567,15 +24988,15 @@
 
 	var _reactRedux = __webpack_require__(184);
 
-	var _infamy = __webpack_require__(241);
+	var _infamy = __webpack_require__(255);
 
 	var actions = _interopRequireWildcard(_infamy);
 
-	var _InfamyTree = __webpack_require__(242);
+	var _InfamyTree = __webpack_require__(256);
 
 	var _InfamyTree2 = _interopRequireDefault(_InfamyTree);
 
-	var _InfamySide = __webpack_require__(245);
+	var _InfamySide = __webpack_require__(259);
 
 	var _InfamySide2 = _interopRequireDefault(_InfamySide);
 
@@ -24595,7 +25016,7 @@
 	  function Infamy(prop) {
 	    _classCallCheck(this, Infamy);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Infamy).call(this, prop));
+	    var _this = _possibleConstructorReturn(this, (Infamy.__proto__ || Object.getPrototypeOf(Infamy)).call(this, prop));
 
 	    _this.getInfamy = _this.getInfamy.bind(_this);
 	    _this.getPosInfamy = _this.getPosInfamy.bind(_this);
@@ -24616,8 +25037,8 @@
 	  }, {
 	    key: 'reflowCanvas',
 	    value: function reflowCanvas(canvas, datas) {
-	      var infamy = datas.infamy;
-	      var hover = datas.hover;
+	      var infamy = datas.infamy,
+	          hover = datas.hover;
 
 
 	      var color = function (infamy, hover) {
@@ -24632,12 +25053,12 @@
 	    key: 'render',
 	    value: function render() {
 	      var dispatch = this.props.dispatch;
-	      var _props = this.props;
-	      var infamyTable = _props.infamyTable;
-	      var availablePoints = _props.availablePoints;
-	      var _props2 = this.props;
-	      var locale = _props2.locale;
-	      var localeText = _props2.localeText;
+	      var _props = this.props,
+	          infamyTable = _props.infamyTable,
+	          availablePoints = _props.availablePoints;
+	      var _props2 = this.props,
+	          locale = _props2.locale,
+	          localeText = _props2.localeText;
 
 
 	      var app = {
@@ -24692,7 +25113,7 @@
 	exports.default = (0, _reactRedux.connect)(select)(Infamy);
 
 /***/ },
-/* 241 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24705,11 +25126,11 @@
 	exports.handleInfamyEnter = handleInfamyEnter;
 	exports.handleInfamyLeave = handleInfamyLeave;
 
-	var _SkillAppActions = __webpack_require__(214);
+	var _SkillAppActions = __webpack_require__(228);
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _Events = __webpack_require__(222);
+	var _Events = __webpack_require__(236);
 
 	var events = _interopRequireWildcard(_Events);
 
@@ -24732,7 +25153,7 @@
 	}
 
 /***/ },
-/* 242 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24749,7 +25170,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Infamy = __webpack_require__(243);
+	var _Infamy = __webpack_require__(257);
 
 	var _Infamy2 = _interopRequireDefault(_Infamy);
 
@@ -24767,7 +25188,7 @@
 	  function InfamyTree() {
 	    _classCallCheck(this, InfamyTree);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(InfamyTree).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (InfamyTree.__proto__ || Object.getPrototypeOf(InfamyTree)).apply(this, arguments));
 	  }
 
 	  _createClass(InfamyTree, [{
@@ -24775,12 +25196,12 @@
 	    value: function render() {
 	      var _this2 = this;
 
-	      var _props = this.props;
-	      var table = _props.table;
-	      var getInfamy = _props.getInfamy;
-	      var _props2 = this.props;
-	      var locale = _props2.locale;
-	      var localeText = _props2.localeText;
+	      var _props = this.props,
+	          table = _props.table,
+	          getInfamy = _props.getInfamy;
+	      var _props2 = this.props,
+	          locale = _props2.locale,
+	          localeText = _props2.localeText;
 
 
 	      var available = locale('st_menu_infamy_available_points', { points: this.props.available });
@@ -24828,7 +25249,7 @@
 	exports.default = InfamyTree;
 
 /***/ },
-/* 243 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24843,7 +25264,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _InfamyStatuses = __webpack_require__(244);
+	var _InfamyStatuses = __webpack_require__(258);
 
 	var statuses = _interopRequireWildcard(_InfamyStatuses);
 
@@ -24863,7 +25284,7 @@
 	  function Infamy(props) {
 	    _classCallCheck(this, Infamy);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Infamy).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Infamy.__proto__ || Object.getPrototypeOf(Infamy)).call(this, props));
 
 	    _this.handleInfamyClick = _this.handleInfamyClick.bind(_this);
 	    _this.handleInfamyRemove = _this.handleInfamyRemove.bind(_this);
@@ -24877,9 +25298,9 @@
 	  _createClass(Infamy, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      var _props = this.props;
-	      var reflowCanvas = _props.reflowCanvas;
-	      var infamy = _props.infamy;
+	      var _props = this.props,
+	          reflowCanvas = _props.reflowCanvas,
+	          infamy = _props.infamy;
 
 	      this.props.reflowCanvas(this.refs.canvas, {
 	        hover: this.hover,
@@ -24889,9 +25310,9 @@
 	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
-	      var _props2 = this.props;
-	      var reflowCanvas = _props2.reflowCanvas;
-	      var infamy = _props2.infamy;
+	      var _props2 = this.props,
+	          reflowCanvas = _props2.reflowCanvas,
+	          infamy = _props2.infamy;
 
 	      this.props.reflowCanvas(this.refs.canvas, {
 	        hover: this.hover,
@@ -24972,9 +25393,9 @@
 	    key: 'text',
 	    value: function text() {
 	      var infamy = this.props.infamy;
-	      var _props3 = this.props;
-	      var locale = _props3.locale;
-	      var localeText = _props3.localeText;
+	      var _props3 = this.props,
+	          locale = _props3.locale,
+	          localeText = _props3.localeText;
 
 
 	      switch (infamy.status) {
@@ -25007,7 +25428,7 @@
 	exports.default = Infamy;
 
 /***/ },
-/* 244 */
+/* 258 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25021,7 +25442,7 @@
 	var STATUS_DISABLE = exports.STATUS_DISABLE = 'STATUS_DISABLE';
 
 /***/ },
-/* 245 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25052,7 +25473,7 @@
 	  function InfamySide() {
 	    _classCallCheck(this, InfamySide);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(InfamySide).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (InfamySide.__proto__ || Object.getPrototypeOf(InfamySide)).apply(this, arguments));
 	  }
 
 	  _createClass(InfamySide, [{
@@ -25068,9 +25489,9 @@
 	    key: 'renderContent',
 	    value: function renderContent() {
 	      if (!this.props.infamy) return;
-	      var _props = this.props;
-	      var localeText = _props.localeText;
-	      var infamy = _props.infamy;
+	      var _props = this.props,
+	          localeText = _props.localeText,
+	          infamy = _props.infamy;
 
 
 	      return _react2.default.createElement(
@@ -25089,18 +25510,18 @@
 	  }, {
 	    key: 'desc',
 	    value: function desc() {
-	      var _props2 = this.props;
-	      var localeText = _props2.localeText;
-	      var infamy = _props2.infamy;
+	      var _props2 = this.props,
+	          localeText = _props2.localeText,
+	          infamy = _props2.infamy;
 
 	      return localeText('menu_infamy_desc_' + infamy.name, infamy.datas || {});
 	    }
 	  }, {
 	    key: 'pointsToUnlock',
 	    value: function pointsToUnlock() {
-	      var _props3 = this.props;
-	      var localeText = _props3.localeText;
-	      var infamy = _props3.infamy;
+	      var _props3 = this.props,
+	          localeText = _props3.localeText,
+	          infamy = _props3.infamy;
 
 	      if (infamy.unlocked) return;
 
@@ -25111,9 +25532,9 @@
 	  }, {
 	    key: 'disabled',
 	    value: function disabled() {
-	      var _props4 = this.props;
-	      var localeText = _props4.localeText;
-	      var infamy = _props4.infamy;
+	      var _props4 = this.props,
+	          localeText = _props4.localeText,
+	          infamy = _props4.infamy;
 
 	      if (!infamy.disable) return;
 
@@ -25139,9 +25560,9 @@
 	};
 
 	function select(state) {
-	  var _state$infamy = state.infamy;
-	  var display = _state$infamy.display;
-	  var infamyList = _state$infamy.infamyList;
+	  var _state$infamy = state.infamy,
+	      display = _state$infamy.display,
+	      infamyList = _state$infamy.infamyList;
 
 	  if (typeof display !== 'number') return {};
 
@@ -25154,7 +25575,7 @@
 	exports.default = (0, _reactRedux.connect)(select)(InfamySide);
 
 /***/ },
-/* 246 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25166,23 +25587,23 @@
 
 	var _redux = __webpack_require__(191);
 
-	var _reduxThunk = __webpack_require__(247);
+	var _reduxThunk = __webpack_require__(261);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reduxLogger = __webpack_require__(248);
+	var _reduxLogger = __webpack_require__(262);
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
-	var _reducers = __webpack_require__(249);
+	var _reducers = __webpack_require__(268);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _app = __webpack_require__(211);
+	var _app = __webpack_require__(225);
 
 	var app = _interopRequireWildcard(_app);
 
-	var _hashMiddleware = __webpack_require__(273);
+	var _hashMiddleware = __webpack_require__(292);
 
 	var _hashMiddleware2 = _interopRequireDefault(_hashMiddleware);
 
@@ -25194,8 +25615,6 @@
 	  var loggerMiddleware = (0, _reduxLogger2.default)();
 
 	  var middlewares = [_reduxThunk2.default, _hashMiddleware2.default];
-
-	  // loggerMiddleware
 	  var createStoreWithMiddleware = _redux.applyMiddleware.apply(undefined, middlewares)(_redux.createStore);
 
 	  var store = createStoreWithMiddleware(_reducers2.default);
@@ -25206,7 +25625,7 @@
 	}
 
 /***/ },
-/* 247 */
+/* 261 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25225,98 +25644,870 @@
 	module.exports = thunkMiddleware;
 
 /***/ },
-/* 248 */
-/***/ function(module, exports) {
+/* 262 */
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.logger = exports.defaults = undefined;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _core = __webpack_require__(263);
+
+	var _helpers = __webpack_require__(264);
+
+	var _defaults = __webpack_require__(267);
+
+	var _defaults2 = _interopRequireDefault(_defaults);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * Creates logger with following options
+	 *
+	 * @namespace
+	 * @param {object} options - options for logger
+	 * @param {string | function | object} options.level - console[level]
+	 * @param {boolean} options.duration - print duration of each action?
+	 * @param {boolean} options.timestamp - print timestamp with each action?
+	 * @param {object} options.colors - custom colors
+	 * @param {object} options.logger - implementation of the `console` API
+	 * @param {boolean} options.logErrors - should errors in action execution be caught, logged, and re-thrown?
+	 * @param {boolean} options.collapsed - is group collapsed?
+	 * @param {boolean} options.predicate - condition which resolves logger behavior
+	 * @param {function} options.stateTransformer - transform state before print
+	 * @param {function} options.actionTransformer - transform action before print
+	 * @param {function} options.errorTransformer - transform error before print
+	 *
+	 * @returns {function} logger middleware
+	 */
+	function createLogger() {
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+	  var loggerOptions = _extends({}, _defaults2.default, options);
+
+	  var logger = loggerOptions.logger,
+	      transformer = loggerOptions.transformer,
+	      stateTransformer = loggerOptions.stateTransformer,
+	      errorTransformer = loggerOptions.errorTransformer,
+	      predicate = loggerOptions.predicate,
+	      logErrors = loggerOptions.logErrors,
+	      diffPredicate = loggerOptions.diffPredicate;
+
+	  // Return if 'console' object is not defined
+
+	  if (typeof logger === 'undefined') {
+	    return function () {
+	      return function (next) {
+	        return function (action) {
+	          return next(action);
+	        };
+	      };
+	    };
+	  }
+
+	  if (transformer) {
+	    console.error('Option \'transformer\' is deprecated, use \'stateTransformer\' instead!'); // eslint-disable-line no-console
+	  }
+
+	  // Detect if 'createLogger' was passed directly to 'applyMiddleware'.
+	  if (options.getState && options.dispatch) {
+	    // eslint-disable-next-line no-console
+	    console.error('[redux-logger] redux-logger not installed. Make sure to pass logger instance as middleware:\n\n// Logger with default options\nimport { logger } from \'redux-logger\'\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n\n\n// Or you can create your own logger with custom options http://bit.ly/redux-logger-options\nimport createLogger from \'redux-logger\'\n\nconst logger = createLogger({\n  // ...options\n});\n\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n');
+
+	    return function () {
+	      return function (next) {
+	        return function (action) {
+	          return next(action);
+	        };
+	      };
+	    };
+	  }
+
+	  var logBuffer = [];
+
+	  return function (_ref) {
+	    var getState = _ref.getState;
+	    return function (next) {
+	      return function (action) {
+	        // Exit early if predicate function returns 'false'
+	        if (typeof predicate === 'function' && !predicate(getState, action)) {
+	          return next(action);
+	        }
+
+	        var logEntry = {};
+	        logBuffer.push(logEntry);
+
+	        logEntry.started = _helpers.timer.now();
+	        logEntry.startedTime = new Date();
+	        logEntry.prevState = stateTransformer(getState());
+	        logEntry.action = action;
+
+	        var returnedValue = void 0;
+	        if (logErrors) {
+	          try {
+	            returnedValue = next(action);
+	          } catch (e) {
+	            logEntry.error = errorTransformer(e);
+	          }
+	        } else {
+	          returnedValue = next(action);
+	        }
+
+	        logEntry.took = _helpers.timer.now() - logEntry.started;
+	        logEntry.nextState = stateTransformer(getState());
+
+	        var diff = loggerOptions.diff && typeof diffPredicate === 'function' ? diffPredicate(getState, action) : loggerOptions.diff;
+
+	        (0, _core.printBuffer)(logBuffer, _extends({}, loggerOptions, { diff: diff }));
+	        logBuffer.length = 0;
+
+	        if (logEntry.error) throw logEntry.error;
+	        return returnedValue;
+	      };
+	    };
+	  };
+	}
+
+	var defaultLogger = createLogger();
+
+	exports.defaults = _defaults2.default;
+	exports.logger = defaultLogger;
+	exports.default = createLogger;
+	module.exports = exports['default'];
+
+
+/***/ },
+/* 263 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	exports.printBuffer = printBuffer;
+
+	var _helpers = __webpack_require__(264);
+
+	var _diff = __webpack_require__(265);
+
+	var _diff2 = _interopRequireDefault(_diff);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
-
-	var repeat = function repeat(str, times) {
-	  return new Array(times + 1).join(str);
-	};
-	var pad = function pad(num, maxLength) {
-	  return repeat("0", maxLength - num.toString().length) + num;
-	};
-	var formatTime = function formatTime(time) {
-	  return "@ " + pad(time.getHours(), 2) + ":" + pad(time.getMinutes(), 2) + ":" + pad(time.getSeconds(), 2) + "." + pad(time.getMilliseconds(), 3);
-	};
-
-	// Use the new performance api to get better precision if available
-	var timer = typeof performance !== "undefined" && typeof performance.now === "function" ? performance : Date;
-
 	/**
-	 * parse the level option of createLogger
+	 * Get log level string based on supplied params
 	 *
-	 * @property {string | function | object} level - console[level]
-	 * @property {object} action
-	 * @property {array} payload
-	 * @property {string} type
+	 * @param {string | function | object} level - console[level]
+	 * @param {object} action - selected action
+	 * @param {array} payload - selected payload
+	 * @param {string} type - log entry type
+	 *
+	 * @returns {string} level
 	 */
-
 	function getLogLevel(level, action, payload, type) {
-	  switch (typeof level === "undefined" ? "undefined" : _typeof(level)) {
-	    case "object":
-	      return typeof level[type] === "function" ? level[type].apply(level, _toConsumableArray(payload)) : level[type];
-	    case "function":
+	  switch (typeof level === 'undefined' ? 'undefined' : _typeof(level)) {
+	    case 'object':
+	      return typeof level[type] === 'function' ? level[type].apply(level, _toConsumableArray(payload)) : level[type];
+	    case 'function':
 	      return level(action);
 	    default:
 	      return level;
 	  }
 	}
 
-	/**
-	 * Creates logger with followed options
-	 *
-	 * @namespace
-	 * @property {object} options - options for logger
-	 * @property {string | function | object} options.level - console[level]
-	 * @property {boolean} options.duration - print duration of each action?
-	 * @property {boolean} options.timestamp - print timestamp with each action?
-	 * @property {object} options.colors - custom colors
-	 * @property {object} options.logger - implementation of the `console` API
-	 * @property {boolean} options.logErrors - should errors in action execution be caught, logged, and re-thrown?
-	 * @property {boolean} options.collapsed - is group collapsed?
-	 * @property {boolean} options.predicate - condition which resolves logger behavior
-	 * @property {function} options.stateTransformer - transform state before print
-	 * @property {function} options.actionTransformer - transform action before print
-	 * @property {function} options.errorTransformer - transform error before print
-	 */
+	function defaultTitleFormatter(options) {
+	  var timestamp = options.timestamp,
+	      duration = options.duration;
 
-	function createLogger() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-	  var _options$level = options.level;
-	  var level = _options$level === undefined ? "log" : _options$level;
-	  var _options$logger = options.logger;
-	  var logger = _options$logger === undefined ? console : _options$logger;
-	  var _options$logErrors = options.logErrors;
-	  var logErrors = _options$logErrors === undefined ? true : _options$logErrors;
-	  var collapsed = options.collapsed;
-	  var predicate = options.predicate;
-	  var _options$duration = options.duration;
-	  var duration = _options$duration === undefined ? false : _options$duration;
-	  var _options$timestamp = options.timestamp;
-	  var timestamp = _options$timestamp === undefined ? true : _options$timestamp;
-	  var transformer = options.transformer;
-	  var _options$stateTransfo = options.stateTransformer;
-	  var // deprecated
-	  stateTransformer = _options$stateTransfo === undefined ? function (state) {
+
+	  return function (action, time, took) {
+	    var parts = ['action'];
+
+	    parts.push('%c' + String(action.type));
+	    if (timestamp) parts.push('%c@ ' + time);
+	    if (duration) parts.push('%c(in ' + took.toFixed(2) + ' ms)');
+
+	    return parts.join(' ');
+	  };
+	}
+
+	function printBuffer(buffer, options) {
+	  var logger = options.logger,
+	      actionTransformer = options.actionTransformer,
+	      _options$titleFormatt = options.titleFormatter,
+	      titleFormatter = _options$titleFormatt === undefined ? defaultTitleFormatter(options) : _options$titleFormatt,
+	      collapsed = options.collapsed,
+	      colors = options.colors,
+	      level = options.level,
+	      diff = options.diff;
+
+
+	  buffer.forEach(function (logEntry, key) {
+	    var started = logEntry.started,
+	        startedTime = logEntry.startedTime,
+	        action = logEntry.action,
+	        prevState = logEntry.prevState,
+	        error = logEntry.error;
+	    var took = logEntry.took,
+	        nextState = logEntry.nextState;
+
+	    var nextEntry = buffer[key + 1];
+
+	    if (nextEntry) {
+	      nextState = nextEntry.prevState;
+	      took = nextEntry.started - started;
+	    }
+
+	    // Message
+	    var formattedAction = actionTransformer(action);
+	    var isCollapsed = typeof collapsed === 'function' ? collapsed(function () {
+	      return nextState;
+	    }, action, logEntry) : collapsed;
+
+	    var formattedTime = (0, _helpers.formatTime)(startedTime);
+	    var titleCSS = colors.title ? 'color: ' + colors.title(formattedAction) + ';' : '';
+	    var headerCSS = ['color: gray; font-weight: lighter;'];
+	    headerCSS.push(titleCSS);
+	    if (options.timestamp) headerCSS.push('color: gray; font-weight: lighter;');
+	    if (options.duration) headerCSS.push('color: gray; font-weight: lighter;');
+	    var title = titleFormatter(formattedAction, formattedTime, took);
+
+	    // Render
+	    try {
+	      if (isCollapsed) {
+	        if (colors.title) logger.groupCollapsed.apply(logger, ['%c ' + title].concat(headerCSS));else logger.groupCollapsed(title);
+	      } else {
+	        if (colors.title) logger.group.apply(logger, ['%c ' + title].concat(headerCSS));else logger.group(title);
+	      }
+	    } catch (e) {
+	      logger.log(title);
+	    }
+
+	    var prevStateLevel = getLogLevel(level, formattedAction, [prevState], 'prevState');
+	    var actionLevel = getLogLevel(level, formattedAction, [formattedAction], 'action');
+	    var errorLevel = getLogLevel(level, formattedAction, [error, prevState], 'error');
+	    var nextStateLevel = getLogLevel(level, formattedAction, [nextState], 'nextState');
+
+	    if (prevStateLevel) {
+	      if (colors.prevState) logger[prevStateLevel]('%c prev state', 'color: ' + colors.prevState(prevState) + '; font-weight: bold', prevState);else logger[prevStateLevel]('prev state', prevState);
+	    }
+
+	    if (actionLevel) {
+	      if (colors.action) logger[actionLevel]('%c action    ', 'color: ' + colors.action(formattedAction) + '; font-weight: bold', formattedAction);else logger[actionLevel]('action    ', formattedAction);
+	    }
+
+	    if (error && errorLevel) {
+	      if (colors.error) logger[errorLevel]('%c error     ', 'color: ' + colors.error(error, prevState) + '; font-weight: bold;', error);else logger[errorLevel]('error     ', error);
+	    }
+
+	    if (nextStateLevel) {
+	      if (colors.nextState) logger[nextStateLevel]('%c next state', 'color: ' + colors.nextState(nextState) + '; font-weight: bold', nextState);else logger[nextStateLevel]('next state', nextState);
+	    }
+
+	    if (diff) {
+	      (0, _diff2.default)(prevState, nextState, logger, isCollapsed);
+	    }
+
+	    try {
+	      logger.groupEnd();
+	    } catch (e) {
+	      logger.log('\u2014\u2014 log end \u2014\u2014');
+	    }
+	  });
+	}
+
+/***/ },
+/* 264 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var repeat = exports.repeat = function repeat(str, times) {
+	  return new Array(times + 1).join(str);
+	};
+
+	var pad = exports.pad = function pad(num, maxLength) {
+	  return repeat("0", maxLength - num.toString().length) + num;
+	};
+
+	var formatTime = exports.formatTime = function formatTime(time) {
+	  return pad(time.getHours(), 2) + ":" + pad(time.getMinutes(), 2) + ":" + pad(time.getSeconds(), 2) + "." + pad(time.getMilliseconds(), 3);
+	};
+
+	// Use performance API if it's available in order to get better precision
+	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
+
+/***/ },
+/* 265 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = diffLogger;
+
+	var _deepDiff = __webpack_require__(266);
+
+	var _deepDiff2 = _interopRequireDefault(_deepDiff);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	// https://github.com/flitbit/diff#differences
+	var dictionary = {
+	  'E': {
+	    color: '#2196F3',
+	    text: 'CHANGED:'
+	  },
+	  'N': {
+	    color: '#4CAF50',
+	    text: 'ADDED:'
+	  },
+	  'D': {
+	    color: '#F44336',
+	    text: 'DELETED:'
+	  },
+	  'A': {
+	    color: '#2196F3',
+	    text: 'ARRAY:'
+	  }
+	};
+
+	function style(kind) {
+	  return 'color: ' + dictionary[kind].color + '; font-weight: bold';
+	}
+
+	function render(diff) {
+	  var kind = diff.kind,
+	      path = diff.path,
+	      lhs = diff.lhs,
+	      rhs = diff.rhs,
+	      index = diff.index,
+	      item = diff.item;
+
+
+	  switch (kind) {
+	    case 'E':
+	      return [path.join('.'), lhs, '\u2192', rhs];
+	    case 'N':
+	      return [path.join('.'), rhs];
+	    case 'D':
+	      return [path.join('.')];
+	    case 'A':
+	      return [path.join('.') + '[' + index + ']', item];
+	    default:
+	      return [];
+	  }
+	}
+
+	function diffLogger(prevState, newState, logger, isCollapsed) {
+	  var diff = (0, _deepDiff2.default)(prevState, newState);
+
+	  try {
+	    if (isCollapsed) {
+	      logger.groupCollapsed('diff');
+	    } else {
+	      logger.group('diff');
+	    }
+	  } catch (e) {
+	    logger.log('diff');
+	  }
+
+	  if (diff) {
+	    diff.forEach(function (elem) {
+	      var kind = elem.kind;
+
+	      var output = render(elem);
+
+	      logger.log.apply(logger, ['%c ' + dictionary[kind].text, style(kind)].concat(_toConsumableArray(output)));
+	    });
+	  } else {
+	    logger.log('\u2014\u2014 no diff \u2014\u2014');
+	  }
+
+	  try {
+	    logger.groupEnd();
+	  } catch (e) {
+	    logger.log('\u2014\u2014 diff end \u2014\u2014 ');
+	  }
+	}
+	module.exports = exports['default'];
+
+/***/ },
+/* 266 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*!
+	 * deep-diff.
+	 * Licensed under the MIT License.
+	 */
+	;(function(root, factory) {
+	  'use strict';
+	  if (true) {
+	    // AMD. Register as an anonymous module.
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+	      return factory();
+	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports === 'object') {
+	    // Node. Does not work with strict CommonJS, but
+	    // only CommonJS-like environments that support module.exports,
+	    // like Node.
+	    module.exports = factory();
+	  } else {
+	    // Browser globals (root is window)
+	    root.DeepDiff = factory();
+	  }
+	}(this, function(undefined) {
+	  'use strict';
+
+	  var $scope, conflict, conflictResolution = [];
+	  if (typeof global === 'object' && global) {
+	    $scope = global;
+	  } else if (typeof window !== 'undefined') {
+	    $scope = window;
+	  } else {
+	    $scope = {};
+	  }
+	  conflict = $scope.DeepDiff;
+	  if (conflict) {
+	    conflictResolution.push(
+	      function() {
+	        if ('undefined' !== typeof conflict && $scope.DeepDiff === accumulateDiff) {
+	          $scope.DeepDiff = conflict;
+	          conflict = undefined;
+	        }
+	      });
+	  }
+
+	  // nodejs compatible on server side and in the browser.
+	  function inherits(ctor, superCtor) {
+	    ctor.super_ = superCtor;
+	    ctor.prototype = Object.create(superCtor.prototype, {
+	      constructor: {
+	        value: ctor,
+	        enumerable: false,
+	        writable: true,
+	        configurable: true
+	      }
+	    });
+	  }
+
+	  function Diff(kind, path) {
+	    Object.defineProperty(this, 'kind', {
+	      value: kind,
+	      enumerable: true
+	    });
+	    if (path && path.length) {
+	      Object.defineProperty(this, 'path', {
+	        value: path,
+	        enumerable: true
+	      });
+	    }
+	  }
+
+	  function DiffEdit(path, origin, value) {
+	    DiffEdit.super_.call(this, 'E', path);
+	    Object.defineProperty(this, 'lhs', {
+	      value: origin,
+	      enumerable: true
+	    });
+	    Object.defineProperty(this, 'rhs', {
+	      value: value,
+	      enumerable: true
+	    });
+	  }
+	  inherits(DiffEdit, Diff);
+
+	  function DiffNew(path, value) {
+	    DiffNew.super_.call(this, 'N', path);
+	    Object.defineProperty(this, 'rhs', {
+	      value: value,
+	      enumerable: true
+	    });
+	  }
+	  inherits(DiffNew, Diff);
+
+	  function DiffDeleted(path, value) {
+	    DiffDeleted.super_.call(this, 'D', path);
+	    Object.defineProperty(this, 'lhs', {
+	      value: value,
+	      enumerable: true
+	    });
+	  }
+	  inherits(DiffDeleted, Diff);
+
+	  function DiffArray(path, index, item) {
+	    DiffArray.super_.call(this, 'A', path);
+	    Object.defineProperty(this, 'index', {
+	      value: index,
+	      enumerable: true
+	    });
+	    Object.defineProperty(this, 'item', {
+	      value: item,
+	      enumerable: true
+	    });
+	  }
+	  inherits(DiffArray, Diff);
+
+	  function arrayRemove(arr, from, to) {
+	    var rest = arr.slice((to || from) + 1 || arr.length);
+	    arr.length = from < 0 ? arr.length + from : from;
+	    arr.push.apply(arr, rest);
+	    return arr;
+	  }
+
+	  function realTypeOf(subject) {
+	    var type = typeof subject;
+	    if (type !== 'object') {
+	      return type;
+	    }
+
+	    if (subject === Math) {
+	      return 'math';
+	    } else if (subject === null) {
+	      return 'null';
+	    } else if (Array.isArray(subject)) {
+	      return 'array';
+	    } else if (Object.prototype.toString.call(subject) === '[object Date]') {
+	      return 'date';
+	    } else if (typeof subject.toString !== 'undefined' && /^\/.*\//.test(subject.toString())) {
+	      return 'regexp';
+	    }
+	    return 'object';
+	  }
+
+	  function deepDiff(lhs, rhs, changes, prefilter, path, key, stack) {
+	    path = path || [];
+	    var currentPath = path.slice(0);
+	    if (typeof key !== 'undefined') {
+	      if (prefilter) {
+	        if (typeof(prefilter) === 'function' && prefilter(currentPath, key)) { return; }
+	        else if (typeof(prefilter) === 'object') {
+	          if (prefilter.prefilter && prefilter.prefilter(currentPath, key)) { return; }
+	          if (prefilter.normalize) {
+	            var alt = prefilter.normalize(currentPath, key, lhs, rhs);
+	            if (alt) {
+	              lhs = alt[0];
+	              rhs = alt[1];
+	            }
+	          }
+	        }
+	      }
+	      currentPath.push(key);
+	    }
+
+	    // Use string comparison for regexes
+	    if (realTypeOf(lhs) === 'regexp' && realTypeOf(rhs) === 'regexp') {
+	      lhs = lhs.toString();
+	      rhs = rhs.toString();
+	    }
+
+	    var ltype = typeof lhs;
+	    var rtype = typeof rhs;
+	    if (ltype === 'undefined') {
+	      if (rtype !== 'undefined') {
+	        changes(new DiffNew(currentPath, rhs));
+	      }
+	    } else if (rtype === 'undefined') {
+	      changes(new DiffDeleted(currentPath, lhs));
+	    } else if (realTypeOf(lhs) !== realTypeOf(rhs)) {
+	      changes(new DiffEdit(currentPath, lhs, rhs));
+	    } else if (Object.prototype.toString.call(lhs) === '[object Date]' && Object.prototype.toString.call(rhs) === '[object Date]' && ((lhs - rhs) !== 0)) {
+	      changes(new DiffEdit(currentPath, lhs, rhs));
+	    } else if (ltype === 'object' && lhs !== null && rhs !== null) {
+	      stack = stack || [];
+	      if (stack.indexOf(lhs) < 0) {
+	        stack.push(lhs);
+	        if (Array.isArray(lhs)) {
+	          var i, len = lhs.length;
+	          for (i = 0; i < lhs.length; i++) {
+	            if (i >= rhs.length) {
+	              changes(new DiffArray(currentPath, i, new DiffDeleted(undefined, lhs[i])));
+	            } else {
+	              deepDiff(lhs[i], rhs[i], changes, prefilter, currentPath, i, stack);
+	            }
+	          }
+	          while (i < rhs.length) {
+	            changes(new DiffArray(currentPath, i, new DiffNew(undefined, rhs[i++])));
+	          }
+	        } else {
+	          var akeys = Object.keys(lhs);
+	          var pkeys = Object.keys(rhs);
+	          akeys.forEach(function(k, i) {
+	            var other = pkeys.indexOf(k);
+	            if (other >= 0) {
+	              deepDiff(lhs[k], rhs[k], changes, prefilter, currentPath, k, stack);
+	              pkeys = arrayRemove(pkeys, other);
+	            } else {
+	              deepDiff(lhs[k], undefined, changes, prefilter, currentPath, k, stack);
+	            }
+	          });
+	          pkeys.forEach(function(k) {
+	            deepDiff(undefined, rhs[k], changes, prefilter, currentPath, k, stack);
+	          });
+	        }
+	        stack.length = stack.length - 1;
+	      }
+	    } else if (lhs !== rhs) {
+	      if (!(ltype === 'number' && isNaN(lhs) && isNaN(rhs))) {
+	        changes(new DiffEdit(currentPath, lhs, rhs));
+	      }
+	    }
+	  }
+
+	  function accumulateDiff(lhs, rhs, prefilter, accum) {
+	    accum = accum || [];
+	    deepDiff(lhs, rhs,
+	      function(diff) {
+	        if (diff) {
+	          accum.push(diff);
+	        }
+	      },
+	      prefilter);
+	    return (accum.length) ? accum : undefined;
+	  }
+
+	  function applyArrayChange(arr, index, change) {
+	    if (change.path && change.path.length) {
+	      var it = arr[index],
+	          i, u = change.path.length - 1;
+	      for (i = 0; i < u; i++) {
+	        it = it[change.path[i]];
+	      }
+	      switch (change.kind) {
+	        case 'A':
+	          applyArrayChange(it[change.path[i]], change.index, change.item);
+	          break;
+	        case 'D':
+	          delete it[change.path[i]];
+	          break;
+	        case 'E':
+	        case 'N':
+	          it[change.path[i]] = change.rhs;
+	          break;
+	      }
+	    } else {
+	      switch (change.kind) {
+	        case 'A':
+	          applyArrayChange(arr[index], change.index, change.item);
+	          break;
+	        case 'D':
+	          arr = arrayRemove(arr, index);
+	          break;
+	        case 'E':
+	        case 'N':
+	          arr[index] = change.rhs;
+	          break;
+	      }
+	    }
+	    return arr;
+	  }
+
+	  function applyChange(target, source, change) {
+	    if (target && source && change && change.kind) {
+	      var it = target,
+	          i = -1,
+	          last = change.path ? change.path.length - 1 : 0;
+	      while (++i < last) {
+	        if (typeof it[change.path[i]] === 'undefined') {
+	          it[change.path[i]] = (typeof change.path[i] === 'number') ? [] : {};
+	        }
+	        it = it[change.path[i]];
+	      }
+	      switch (change.kind) {
+	        case 'A':
+	          applyArrayChange(change.path ? it[change.path[i]] : it, change.index, change.item);
+	          break;
+	        case 'D':
+	          delete it[change.path[i]];
+	          break;
+	        case 'E':
+	        case 'N':
+	          it[change.path[i]] = change.rhs;
+	          break;
+	      }
+	    }
+	  }
+
+	  function revertArrayChange(arr, index, change) {
+	    if (change.path && change.path.length) {
+	      // the structure of the object at the index has changed...
+	      var it = arr[index],
+	          i, u = change.path.length - 1;
+	      for (i = 0; i < u; i++) {
+	        it = it[change.path[i]];
+	      }
+	      switch (change.kind) {
+	        case 'A':
+	          revertArrayChange(it[change.path[i]], change.index, change.item);
+	          break;
+	        case 'D':
+	          it[change.path[i]] = change.lhs;
+	          break;
+	        case 'E':
+	          it[change.path[i]] = change.lhs;
+	          break;
+	        case 'N':
+	          delete it[change.path[i]];
+	          break;
+	      }
+	    } else {
+	      // the array item is different...
+	      switch (change.kind) {
+	        case 'A':
+	          revertArrayChange(arr[index], change.index, change.item);
+	          break;
+	        case 'D':
+	          arr[index] = change.lhs;
+	          break;
+	        case 'E':
+	          arr[index] = change.lhs;
+	          break;
+	        case 'N':
+	          arr = arrayRemove(arr, index);
+	          break;
+	      }
+	    }
+	    return arr;
+	  }
+
+	  function revertChange(target, source, change) {
+	    if (target && source && change && change.kind) {
+	      var it = target,
+	          i, u;
+	      u = change.path.length - 1;
+	      for (i = 0; i < u; i++) {
+	        if (typeof it[change.path[i]] === 'undefined') {
+	          it[change.path[i]] = {};
+	        }
+	        it = it[change.path[i]];
+	      }
+	      switch (change.kind) {
+	        case 'A':
+	          // Array was modified...
+	          // it will be an array...
+	          revertArrayChange(it[change.path[i]], change.index, change.item);
+	          break;
+	        case 'D':
+	          // Item was deleted...
+	          it[change.path[i]] = change.lhs;
+	          break;
+	        case 'E':
+	          // Item was edited...
+	          it[change.path[i]] = change.lhs;
+	          break;
+	        case 'N':
+	          // Item is new...
+	          delete it[change.path[i]];
+	          break;
+	      }
+	    }
+	  }
+
+	  function applyDiff(target, source, filter) {
+	    if (target && source) {
+	      var onChange = function(change) {
+	        if (!filter || filter(target, source, change)) {
+	          applyChange(target, source, change);
+	        }
+	      };
+	      deepDiff(target, source, onChange);
+	    }
+	  }
+
+	  Object.defineProperties(accumulateDiff, {
+
+	    diff: {
+	      value: accumulateDiff,
+	      enumerable: true
+	    },
+	    observableDiff: {
+	      value: deepDiff,
+	      enumerable: true
+	    },
+	    applyDiff: {
+	      value: applyDiff,
+	      enumerable: true
+	    },
+	    applyChange: {
+	      value: applyChange,
+	      enumerable: true
+	    },
+	    revertChange: {
+	      value: revertChange,
+	      enumerable: true
+	    },
+	    isConflict: {
+	      value: function() {
+	        return 'undefined' !== typeof conflict;
+	      },
+	      enumerable: true
+	    },
+	    noConflict: {
+	      value: function() {
+	        if (conflictResolution) {
+	          conflictResolution.forEach(function(it) {
+	            it();
+	          });
+	          conflictResolution = null;
+	        }
+	        return accumulateDiff;
+	      },
+	      enumerable: true
+	    }
+	  });
+
+	  return accumulateDiff;
+	}));
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 267 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = {
+	  level: "log",
+	  logger: console,
+	  logErrors: true,
+	  collapsed: undefined,
+	  predicate: undefined,
+	  duration: false,
+	  timestamp: true,
+	  stateTransformer: function stateTransformer(state) {
 	    return state;
-	  } : _options$stateTransfo;
-	  var _options$actionTransf = options.actionTransformer;
-	  var actionTransformer = _options$actionTransf === undefined ? function (actn) {
-	    return actn;
-	  } : _options$actionTransf;
-	  var _options$errorTransfo = options.errorTransformer;
-	  var errorTransformer = _options$errorTransfo === undefined ? function (error) {
+	  },
+	  actionTransformer: function actionTransformer(action) {
+	    return action;
+	  },
+	  errorTransformer: function errorTransformer(error) {
 	    return error;
-	  } : _options$errorTransfo;
-	  var _options$colors = options.colors;
-	  var colors = _options$colors === undefined ? {
+	  },
+	  colors: {
 	    title: function title() {
-	      return "#000000";
+	      return "inherit";
 	    },
 	    prevState: function prevState() {
 	      return "#9E9E9E";
@@ -25330,135 +26521,17 @@
 	    error: function error() {
 	      return "#F20404";
 	    }
-	  } : _options$colors;
+	  },
+	  diff: false,
+	  diffPredicate: undefined,
 
-	  // exit if console undefined
-
-	  if (typeof logger === "undefined") {
-	    return function () {
-	      return function (next) {
-	        return function (action) {
-	          return next(action);
-	        };
-	      };
-	    };
-	  }
-
-	  if (transformer) {
-	    console.error("Option 'transformer' is deprecated, use stateTransformer instead");
-	  }
-
-	  var logBuffer = [];
-	  function printBuffer() {
-	    logBuffer.forEach(function (logEntry, key) {
-	      var started = logEntry.started;
-	      var startedTime = logEntry.startedTime;
-	      var action = logEntry.action;
-	      var prevState = logEntry.prevState;
-	      var error = logEntry.error;
-	      var took = logEntry.took;
-	      var nextState = logEntry.nextState;
-
-	      var nextEntry = logBuffer[key + 1];
-	      if (nextEntry) {
-	        nextState = nextEntry.prevState;
-	        took = nextEntry.started - started;
-	      }
-	      // message
-	      var formattedAction = actionTransformer(action);
-	      var isCollapsed = typeof collapsed === "function" ? collapsed(function () {
-	        return nextState;
-	      }, action) : collapsed;
-
-	      var formattedTime = formatTime(startedTime);
-	      var titleCSS = colors.title ? "color: " + colors.title(formattedAction) + ";" : null;
-	      var title = "action " + (timestamp ? formattedTime : "") + " " + formattedAction.type + " " + (duration ? "(in " + took.toFixed(2) + " ms)" : "");
-
-	      // render
-	      try {
-	        if (isCollapsed) {
-	          if (colors.title) logger.groupCollapsed("%c " + title, titleCSS);else logger.groupCollapsed(title);
-	        } else {
-	          if (colors.title) logger.group("%c " + title, titleCSS);else logger.group(title);
-	        }
-	      } catch (e) {
-	        logger.log(title);
-	      }
-
-	      var prevStateLevel = getLogLevel(level, formattedAction, [prevState], "prevState");
-	      var actionLevel = getLogLevel(level, formattedAction, [formattedAction], "action");
-	      var errorLevel = getLogLevel(level, formattedAction, [error, prevState], "error");
-	      var nextStateLevel = getLogLevel(level, formattedAction, [nextState], "nextState");
-
-	      if (prevStateLevel) {
-	        if (colors.prevState) logger[prevStateLevel]("%c prev state", "color: " + colors.prevState(prevState) + "; font-weight: bold", prevState);else logger[prevStateLevel]("prev state", prevState);
-	      }
-
-	      if (actionLevel) {
-	        if (colors.action) logger[actionLevel]("%c action", "color: " + colors.action(formattedAction) + "; font-weight: bold", formattedAction);else logger[actionLevel]("action", formattedAction);
-	      }
-
-	      if (error && errorLevel) {
-	        if (colors.error) logger[errorLevel]("%c error", "color: " + colors.error(error, prevState) + "; font-weight: bold", error);else logger[errorLevel]("error", error);
-	      }
-
-	      if (nextStateLevel) {
-	        if (colors.nextState) logger[nextStateLevel]("%c next state", "color: " + colors.nextState(nextState) + "; font-weight: bold", nextState);else logger[nextStateLevel]("next state", nextState);
-	      }
-
-	      try {
-	        logger.groupEnd();
-	      } catch (e) {
-	        logger.log("—— log end ——");
-	      }
-	    });
-	    logBuffer.length = 0;
-	  }
-
-	  return function (_ref) {
-	    var getState = _ref.getState;
-	    return function (next) {
-	      return function (action) {
-	        // exit early if predicate function returns false
-	        if (typeof predicate === "function" && !predicate(getState, action)) {
-	          return next(action);
-	        }
-
-	        var logEntry = {};
-	        logBuffer.push(logEntry);
-
-	        logEntry.started = timer.now();
-	        logEntry.startedTime = new Date();
-	        logEntry.prevState = stateTransformer(getState());
-	        logEntry.action = action;
-
-	        var returnedValue = undefined;
-	        if (logErrors) {
-	          try {
-	            returnedValue = next(action);
-	          } catch (e) {
-	            logEntry.error = errorTransformer(e);
-	          }
-	        } else {
-	          returnedValue = next(action);
-	        }
-
-	        logEntry.took = timer.now() - logEntry.started;
-	        logEntry.nextState = stateTransformer(getState());
-
-	        printBuffer();
-
-	        if (logEntry.error) throw logEntry.error;
-	        return returnedValue;
-	      };
-	    };
-	  };
-	}
-
-	module.exports = createLogger;
+	  // Deprecated options
+	  transformer: undefined
+	};
+	module.exports = exports["default"];
 
 /***/ },
-/* 249 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25469,27 +26542,27 @@
 
 	var _redux = __webpack_require__(191);
 
-	var _other = __webpack_require__(250);
+	var _other = __webpack_require__(269);
 
 	var _other2 = _interopRequireDefault(_other);
 
-	var _handleLangs = __webpack_require__(251);
+	var _handleLangs = __webpack_require__(270);
 
 	var _handleLangs2 = _interopRequireDefault(_handleLangs);
 
-	var _handleSkills = __webpack_require__(252);
+	var _handleSkills = __webpack_require__(271);
 
 	var _handleSkills2 = _interopRequireDefault(_handleSkills);
 
-	var _handlePerks = __webpack_require__(261);
+	var _handlePerks = __webpack_require__(280);
 
 	var _handlePerks2 = _interopRequireDefault(_handlePerks);
 
-	var _handleInfamyTree = __webpack_require__(267);
+	var _handleInfamyTree = __webpack_require__(286);
 
 	var _handleInfamyTree2 = _interopRequireDefault(_handleInfamyTree);
 
-	var _handleDisplay = __webpack_require__(272);
+	var _handleDisplay = __webpack_require__(291);
 
 	var _handleDisplay2 = _interopRequireDefault(_handleDisplay);
 
@@ -25505,7 +26578,7 @@
 	});
 
 /***/ },
-/* 250 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25515,15 +26588,15 @@
 	});
 	exports.default = other;
 
-	var _SkillAppActions = __webpack_require__(214);
+	var _SkillAppActions = __webpack_require__(228);
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _IconDrawer = __webpack_require__(217);
+	var _IconDrawer = __webpack_require__(231);
 
 	var _IconDrawer2 = _interopRequireDefault(_IconDrawer);
 
-	var _ImageSpriteDrawer = __webpack_require__(219);
+	var _ImageSpriteDrawer = __webpack_require__(233);
 
 	var _ImageSpriteDrawer2 = _interopRequireDefault(_ImageSpriteDrawer);
 
@@ -25534,7 +26607,7 @@
 	var initialState = {};
 
 	function other() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	  var action = arguments[1];
 
 	  switch (action.type) {
@@ -25562,7 +26635,7 @@
 	}
 
 /***/ },
-/* 251 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25572,11 +26645,11 @@
 	});
 	exports.default = handleLangs;
 
-	var _Localisation = __webpack_require__(215);
+	var _Localisation = __webpack_require__(229);
 
 	var _Localisation2 = _interopRequireDefault(_Localisation);
 
-	var _SkillAppActions = __webpack_require__(214);
+	var _SkillAppActions = __webpack_require__(228);
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
@@ -25587,7 +26660,7 @@
 	var initialState = {};
 
 	function handleLangs() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	  var action = arguments[1];
 
 	  switch (action.type) {
@@ -25604,7 +26677,7 @@
 	 * 載入語系檔
 	 */
 	function loadLangs() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	  var action = arguments[1];
 
 	  var response = action.response.localization;
@@ -25618,7 +26691,7 @@
 	}
 
 /***/ },
-/* 252 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25628,15 +26701,15 @@
 	});
 	exports.default = handleSkill;
 
-	var _SkillsHandler = __webpack_require__(253);
+	var _SkillsHandler = __webpack_require__(272);
 
 	var _SkillsHandler2 = _interopRequireDefault(_SkillsHandler);
 
-	var _SkillAppActions = __webpack_require__(214);
+	var _SkillAppActions = __webpack_require__(228);
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _Events = __webpack_require__(222);
+	var _Events = __webpack_require__(236);
 
 	var events = _interopRequireWildcard(_Events);
 
@@ -25657,7 +26730,7 @@
 	};
 
 	function handleSkill() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	  var action = arguments[1];
 
 	  switch (action.type) {
@@ -25700,7 +26773,7 @@
 	 * 載入技能
 	 */
 	function loadSkills() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
 
 	  var response = action.response['skills-new'];
@@ -25717,7 +26790,7 @@
 	 * 處理事件
 	 */
 	function handleSkillEvent() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
 
 	  var skill = _SkillsHandler2.default.getSkill(action.id);
@@ -25769,7 +26842,7 @@
 	}
 
 /***/ },
-/* 253 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25778,7 +26851,7 @@
 	  value: true
 	});
 
-	var _SkillsHandler = __webpack_require__(254);
+	var _SkillsHandler = __webpack_require__(273);
 
 	var _SkillsHandler2 = _interopRequireDefault(_SkillsHandler);
 
@@ -25787,7 +26860,7 @@
 	exports.default = new _SkillsHandler2.default();
 
 /***/ },
-/* 254 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25798,23 +26871,23 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _SkillStatuses = __webpack_require__(230);
+	var _SkillStatuses = __webpack_require__(244);
 
 	var statuses = _interopRequireWildcard(_SkillStatuses);
 
-	var _SkillsBuilder = __webpack_require__(255);
+	var _SkillsBuilder = __webpack_require__(274);
 
 	var _SkillsBuilder2 = _interopRequireDefault(_SkillsBuilder);
 
-	var _Tree = __webpack_require__(258);
+	var _Tree = __webpack_require__(277);
 
 	var _Tree2 = _interopRequireDefault(_Tree);
 
-	var _Tier = __webpack_require__(259);
+	var _Tier = __webpack_require__(278);
 
 	var _Tier2 = _interopRequireDefault(_Tier);
 
-	var _Skill = __webpack_require__(260);
+	var _Skill = __webpack_require__(279);
 
 	var _Skill2 = _interopRequireDefault(_Skill);
 
@@ -25826,7 +26899,7 @@
 
 	var SkillsHandler = function () {
 	  function SkillsHandler() {
-	    var store = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var store = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	    _classCallCheck(this, SkillsHandler);
 
@@ -25898,7 +26971,7 @@
 	  }, {
 	    key: 'respecSkillTrees',
 	    value: function respecSkillTrees() {
-	      var targetId = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
+	      var targetId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
 	      this.store.skills.forEach(function (skill) {
 	        if (targetId === null || skill.treeId == targetId) {
@@ -25973,7 +27046,7 @@
 	  }, {
 	    key: 'refreshSkillTrees',
 	    value: function refreshSkillTrees() {
-	      var targetId = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
+	      var targetId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
 	      var temp = 0;
 	      for (var t = 10; t > 0; t--) {
@@ -26016,7 +27089,7 @@
 	    value: function _updateTreeTiersAndCountSpendPoints() {
 	      var _this4 = this;
 
-	      var targetId = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
+	      var targetId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
 	      var spendPoints = this.store.trees.map(function (tree) {
 	        return targetId === null || tree.id == targetId ? _this4._updateTreeTiers(tree) : tree.spendPoints;
@@ -26086,7 +27159,7 @@
 	    value: function _updateTreeSkills() {
 	      var _this7 = this;
 
-	      var targetId = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
+	      var targetId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
 	      this.store.trees.forEach(function (tree) {
 	        (targetId === null || tree.id == targetId) && _this7._doUpdateTreeSkills(tree);
@@ -26221,7 +27294,7 @@
 	exports.default = SkillsHandler;
 
 /***/ },
-/* 255 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26232,19 +27305,19 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _MasterTree = __webpack_require__(256);
+	var _MasterTree = __webpack_require__(275);
 
 	var _MasterTree2 = _interopRequireDefault(_MasterTree);
 
-	var _Tree = __webpack_require__(258);
+	var _Tree = __webpack_require__(277);
 
 	var _Tree2 = _interopRequireDefault(_Tree);
 
-	var _Tier = __webpack_require__(259);
+	var _Tier = __webpack_require__(278);
 
 	var _Tier2 = _interopRequireDefault(_Tier);
 
-	var _Skill = __webpack_require__(260);
+	var _Skill = __webpack_require__(279);
 
 	var _Skill2 = _interopRequireDefault(_Skill);
 
@@ -26254,7 +27327,7 @@
 
 	var SkillsBuilder = function () {
 	  function SkillsBuilder() {
-	    var store = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var store = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	    _classCallCheck(this, SkillsBuilder);
 
@@ -26517,7 +27590,7 @@
 	exports.default = SkillsBuilder;
 
 /***/ },
-/* 256 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26528,7 +27601,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Model2 = __webpack_require__(257);
+	var _Model2 = __webpack_require__(276);
 
 	var _Model3 = _interopRequireDefault(_Model2);
 
@@ -26546,7 +27619,7 @@
 	  function MasterTree() {
 	    _classCallCheck(this, MasterTree);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(MasterTree).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (MasterTree.__proto__ || Object.getPrototypeOf(MasterTree)).apply(this, arguments));
 	  }
 
 	  _createClass(MasterTree, [{
@@ -26568,7 +27641,7 @@
 	exports.default = MasterTree;
 
 /***/ },
-/* 257 */
+/* 276 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26589,7 +27662,7 @@
 	  function Model() {
 	    var _this = this;
 
-	    var props = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	    _classCallCheck(this, Model);
 
@@ -26623,7 +27696,7 @@
 	exports.default = Model;
 
 /***/ },
-/* 258 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26634,7 +27707,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Model2 = __webpack_require__(257);
+	var _Model2 = __webpack_require__(276);
 
 	var _Model3 = _interopRequireDefault(_Model2);
 
@@ -26652,7 +27725,7 @@
 	  function Tree() {
 	    _classCallCheck(this, Tree);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Tree).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Tree.__proto__ || Object.getPrototypeOf(Tree)).apply(this, arguments));
 	  }
 
 	  _createClass(Tree, [{
@@ -26675,7 +27748,7 @@
 	exports.default = Tree;
 
 /***/ },
-/* 259 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26686,7 +27759,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Model2 = __webpack_require__(257);
+	var _Model2 = __webpack_require__(276);
 
 	var _Model3 = _interopRequireDefault(_Model2);
 
@@ -26704,7 +27777,7 @@
 	  function Tier() {
 	    _classCallCheck(this, Tier);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Tier).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Tier.__proto__ || Object.getPrototypeOf(Tier)).apply(this, arguments));
 	  }
 
 	  _createClass(Tier, [{
@@ -26734,7 +27807,7 @@
 	exports.default = Tier;
 
 /***/ },
-/* 260 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26745,11 +27818,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Model2 = __webpack_require__(257);
+	var _Model2 = __webpack_require__(276);
 
 	var _Model3 = _interopRequireDefault(_Model2);
 
-	var _SkillStatuses = __webpack_require__(230);
+	var _SkillStatuses = __webpack_require__(244);
 
 	var statuses = _interopRequireWildcard(_SkillStatuses);
 
@@ -26769,7 +27842,7 @@
 	  function Skill() {
 	    _classCallCheck(this, Skill);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Skill).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Skill.__proto__ || Object.getPrototypeOf(Skill)).apply(this, arguments));
 	  }
 
 	  _createClass(Skill, [{
@@ -26801,7 +27874,7 @@
 	exports.default = Skill;
 
 /***/ },
-/* 261 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26811,15 +27884,15 @@
 	});
 	exports.default = handlePerks;
 
-	var _PerksHandler = __webpack_require__(262);
+	var _PerksHandler = __webpack_require__(281);
 
 	var _PerksHandler2 = _interopRequireDefault(_PerksHandler);
 
-	var _SkillAppActions = __webpack_require__(214);
+	var _SkillAppActions = __webpack_require__(228);
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _Events = __webpack_require__(222);
+	var _Events = __webpack_require__(236);
 
 	var events = _interopRequireWildcard(_Events);
 
@@ -26833,7 +27906,7 @@
 	}, _PerksHandler2.default.store);
 
 	function handlePerks() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	  var action = arguments[1];
 
 	  switch (action.type) {
@@ -26876,7 +27949,7 @@
 	 * 載入天賦
 	 */
 	function loadPerks() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
 
 	  var response = action.response.perks;
@@ -26893,7 +27966,7 @@
 	 * 處理天賦事件
 	 */
 	function handlePerkEvent() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
 
 	  var perk = action.id;
@@ -26924,7 +27997,7 @@
 	 * 處理牌組事件
 	 */
 	function handleDeckEvent() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
 
 	  var deckId = action.id;
@@ -26955,7 +28028,7 @@
 	}
 
 /***/ },
-/* 262 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26964,7 +28037,7 @@
 	  value: true
 	});
 
-	var _PerksHandler = __webpack_require__(263);
+	var _PerksHandler = __webpack_require__(282);
 
 	var _PerksHandler2 = _interopRequireDefault(_PerksHandler);
 
@@ -26973,7 +28046,7 @@
 	exports.default = new _PerksHandler2.default();
 
 /***/ },
-/* 263 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26984,15 +28057,15 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _PerksBuilder = __webpack_require__(264);
+	var _PerksBuilder = __webpack_require__(283);
 
 	var _PerksBuilder2 = _interopRequireDefault(_PerksBuilder);
 
-	var _Perk = __webpack_require__(265);
+	var _Perk = __webpack_require__(284);
 
 	var _Perk2 = _interopRequireDefault(_Perk);
 
-	var _Deck = __webpack_require__(266);
+	var _Deck = __webpack_require__(285);
 
 	var _Deck2 = _interopRequireDefault(_Deck);
 
@@ -27002,7 +28075,7 @@
 
 	var PerksHandler = function () {
 	  function PerksHandler() {
-	    var store = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var store = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	    _classCallCheck(this, PerksHandler);
 
@@ -27051,7 +28124,7 @@
 	  }, {
 	    key: 'respec',
 	    value: function respec() {
-	      var target = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
+	      var target = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
 	      this.store.perks.forEach(function (perk) {
 	        if (target === null || perk.id == target) {
@@ -27156,7 +28229,7 @@
 	exports.default = PerksHandler;
 
 /***/ },
-/* 264 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27167,11 +28240,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Perk = __webpack_require__(265);
+	var _Perk = __webpack_require__(284);
 
 	var _Perk2 = _interopRequireDefault(_Perk);
 
-	var _Deck = __webpack_require__(266);
+	var _Deck = __webpack_require__(285);
 
 	var _Deck2 = _interopRequireDefault(_Deck);
 
@@ -27181,7 +28254,7 @@
 
 	var PerksBuilder = function () {
 	  function PerksBuilder() {
-	    var store = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var store = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	    _classCallCheck(this, PerksBuilder);
 
@@ -27371,7 +28444,7 @@
 	exports.default = PerksBuilder;
 
 /***/ },
-/* 265 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27382,7 +28455,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Model2 = __webpack_require__(257);
+	var _Model2 = __webpack_require__(276);
 
 	var _Model3 = _interopRequireDefault(_Model2);
 
@@ -27400,7 +28473,7 @@
 	  function Perk() {
 	    _classCallCheck(this, Perk);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Perk).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Perk.__proto__ || Object.getPrototypeOf(Perk)).apply(this, arguments));
 	  }
 
 	  _createClass(Perk, [{
@@ -27422,7 +28495,7 @@
 	exports.default = Perk;
 
 /***/ },
-/* 266 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27433,7 +28506,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Model2 = __webpack_require__(257);
+	var _Model2 = __webpack_require__(276);
 
 	var _Model3 = _interopRequireDefault(_Model2);
 
@@ -27451,7 +28524,7 @@
 	  function Deck() {
 	    _classCallCheck(this, Deck);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Deck).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Deck.__proto__ || Object.getPrototypeOf(Deck)).apply(this, arguments));
 	  }
 
 	  _createClass(Deck, [{
@@ -27474,7 +28547,7 @@
 	exports.default = Deck;
 
 /***/ },
-/* 267 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27484,15 +28557,15 @@
 	});
 	exports.default = handleInfamyTree;
 
-	var _InfamyTreeHandler = __webpack_require__(268);
+	var _InfamyTreeHandler = __webpack_require__(287);
 
 	var _InfamyTreeHandler2 = _interopRequireDefault(_InfamyTreeHandler);
 
-	var _SkillAppActions = __webpack_require__(214);
+	var _SkillAppActions = __webpack_require__(228);
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _Events = __webpack_require__(222);
+	var _Events = __webpack_require__(236);
 
 	var events = _interopRequireWildcard(_Events);
 
@@ -27505,7 +28578,7 @@
 	}, _InfamyTreeHandler2.default.store);
 
 	function handleInfamyTree() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	  var action = arguments[1];
 
 	  switch (action.type) {
@@ -27532,7 +28605,7 @@
 	 * 載入惡名
 	 */
 	function loadInfamyTree() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
 
 	  var response = action.response.infamy;
@@ -27549,7 +28622,7 @@
 	 * 處理事件
 	 */
 	function handleInfamyEvent() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
 
 	  var infamy = _InfamyTreeHandler2.default.getInfamy(action.id);
@@ -27580,7 +28653,7 @@
 	}
 
 /***/ },
-/* 268 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27589,7 +28662,7 @@
 	  value: true
 	});
 
-	var _InfamyTreeHandler = __webpack_require__(269);
+	var _InfamyTreeHandler = __webpack_require__(288);
 
 	var _InfamyTreeHandler2 = _interopRequireDefault(_InfamyTreeHandler);
 
@@ -27598,7 +28671,7 @@
 	exports.default = new _InfamyTreeHandler2.default();
 
 /***/ },
-/* 269 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27611,15 +28684,15 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _InfamyStatuses = __webpack_require__(244);
+	var _InfamyStatuses = __webpack_require__(258);
 
 	var statuses = _interopRequireWildcard(_InfamyStatuses);
 
-	var _InfamyTreeBuilder = __webpack_require__(270);
+	var _InfamyTreeBuilder = __webpack_require__(289);
 
 	var _InfamyTreeBuilder2 = _interopRequireDefault(_InfamyTreeBuilder);
 
-	var _Infamy = __webpack_require__(271);
+	var _Infamy = __webpack_require__(290);
 
 	var _Infamy2 = _interopRequireDefault(_Infamy);
 
@@ -27631,7 +28704,7 @@
 
 	var InfamyTreeHandler = function () {
 	  function InfamyTreeHandler() {
-	    var store = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var store = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	    _classCallCheck(this, InfamyTreeHandler);
 
@@ -27799,11 +28872,9 @@
 
 	      var infamy = this.getPos(row, col);
 
-	      var _tableCenter = _slicedToArray(this.tableCenter, 2);
-
-	      var centerX = _tableCenter[0];
-	      var centerY = _tableCenter[1];
-
+	      var _tableCenter = _slicedToArray(this.tableCenter, 2),
+	          centerX = _tableCenter[0],
+	          centerY = _tableCenter[1];
 
 	      var checkX = function checkX() {
 	        return col === centerX ? true : _this.getPos(row, col + (col < centerX ? 1 : -1)).owned;
@@ -27866,7 +28937,7 @@
 	exports.default = InfamyTreeHandler;
 
 /***/ },
-/* 270 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27877,7 +28948,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Infamy = __webpack_require__(271);
+	var _Infamy = __webpack_require__(290);
 
 	var _Infamy2 = _interopRequireDefault(_Infamy);
 
@@ -27887,7 +28958,7 @@
 
 	var InfamyTreeBuilder = function () {
 	  function InfamyTreeBuilder() {
-	    var store = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var store = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	    _classCallCheck(this, InfamyTreeBuilder);
 
@@ -27916,8 +28987,8 @@
 
 	      this.initialStore();
 
-	      var infamy = datas.infamy;
-	      var tree = datas.tree;
+	      var infamy = datas.infamy,
+	          tree = datas.tree;
 
 	      var infamyList = infamy,
 	          infamyIndex = {};
@@ -27981,7 +29052,7 @@
 	exports.default = InfamyTreeBuilder;
 
 /***/ },
-/* 271 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27992,11 +29063,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Model2 = __webpack_require__(257);
+	var _Model2 = __webpack_require__(276);
 
 	var _Model3 = _interopRequireDefault(_Model2);
 
-	var _InfamyStatuses = __webpack_require__(244);
+	var _InfamyStatuses = __webpack_require__(258);
 
 	var statuses = _interopRequireWildcard(_InfamyStatuses);
 
@@ -28016,7 +29087,7 @@
 	  function Infamy() {
 	    _classCallCheck(this, Infamy);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Infamy).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Infamy.__proto__ || Object.getPrototypeOf(Infamy)).apply(this, arguments));
 	  }
 
 	  _createClass(Infamy, [{
@@ -28042,7 +29113,7 @@
 	exports.default = Infamy;
 
 /***/ },
-/* 272 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28052,14 +29123,14 @@
 	});
 	exports.default = handleDisplay;
 
-	var _SkillAppActions = __webpack_require__(214);
+	var _SkillAppActions = __webpack_require__(228);
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function handleDisplay() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 	  var action = arguments[1];
 
 	  switch (action.type) {
@@ -28071,7 +29142,7 @@
 	}
 
 /***/ },
-/* 273 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28080,15 +29151,15 @@
 	  value: true
 	});
 
-	var _HashStorage = __webpack_require__(274);
+	var _HashStorage = __webpack_require__(293);
 
 	var _HashStorage2 = _interopRequireDefault(_HashStorage);
 
-	var _SkillAppActions = __webpack_require__(214);
+	var _SkillAppActions = __webpack_require__(228);
 
 	var types = _interopRequireWildcard(_SkillAppActions);
 
-	var _Events = __webpack_require__(222);
+	var _Events = __webpack_require__(236);
 
 	var events = _interopRequireWildcard(_Events);
 
@@ -28096,7 +29167,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_HashStorage2.default.load(function () {
+	var storage = new _HashStorage2.default();
+	storage.load(function () {
 	  return location.hash.replace('#/', '');
 	});
 
@@ -28121,16 +29193,16 @@
 	            return result;
 	          }
 	        case types.RESPEC_SKILL_TREE:
-	          _HashStorage2.default.saveSkills(state.skills);
+	          storage.saveSkills(state.skills);
 	          break;
 
 	        case types.HANDLE_PERK_EVENT:
 	        case types.HANDLE_DECK_EVENT:
-	          _HashStorage2.default.savePerks(state.perks);
+	          storage.savePerks(state.perks);
 	          break;
 
 	        case types.HANDLE_INFAMY_EVENT:
-	          _HashStorage2.default.saveInfamy(state.infamy);
+	          storage.saveInfamy(state.infamy);
 	          break;
 
 	        case types.INITIALIZE_SUCCESS:
@@ -28141,7 +29213,7 @@
 	          return result;
 	      }
 
-	      _HashStorage2.default.save(function (hash) {
+	      storage.save(function (hash) {
 	        return location.hash = '/' + hash;
 	      });
 	      return result;
@@ -28156,15 +29228,15 @@
 	  var response = action.response;
 
 	  if (response.infamy) {
-	    _HashStorage2.default.loadInfamy(state.infamy);
+	    storage.loadInfamy(state.infamy);
 	  }
 
 	  if (response.skills) {
-	    _HashStorage2.default.loadSkills(state.skills);
+	    storage.loadSkills(state.skills);
 	  }
 
 	  if (response.perks) {
-	    _HashStorage2.default.loadPerks(state.perks);
+	    storage.loadPerks(state.perks);
 	  }
 
 	  refresh(types.REFRESH_INFAMYTREE);
@@ -28175,25 +29247,7 @@
 	exports.default = middleware;
 
 /***/ },
-/* 274 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _HashStorage = __webpack_require__(275);
-
-	var _HashStorage2 = _interopRequireDefault(_HashStorage);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = new _HashStorage2.default();
-
-/***/ },
-/* 275 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28204,7 +29258,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Storage2 = __webpack_require__(276);
+	var _Storage2 = __webpack_require__(294);
 
 	var _Storage3 = _interopRequireDefault(_Storage2);
 
@@ -28222,7 +29276,7 @@
 	  function HashStorage() {
 	    _classCallCheck(this, HashStorage);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(HashStorage).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (HashStorage.__proto__ || Object.getPrototypeOf(HashStorage)).call(this));
 	  }
 
 	  _createClass(HashStorage, [{
@@ -28422,7 +29476,7 @@
 	exports.default = HashStorage;
 
 /***/ },
-/* 276 */
+/* 294 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28500,8 +29554,8 @@
 	      if (!storage) return;
 	      storage = storage.concat();
 
-	      var tiers = state.tiers;
-	      var skills = state.skills;
+	      var tiers = state.tiers,
+	          skills = state.skills;
 
 	      tree.tiers.forEach(function (tier) {
 	        tier = tiers[tier];
@@ -28539,8 +29593,8 @@
 	  }, {
 	    key: 'treeToStrage',
 	    value: function treeToStrage(tree, state) {
-	      var tiers = state.tiers;
-	      var skills = state.skills;
+	      var tiers = state.tiers,
+	          skills = state.skills;
 
 
 	      var storage = [];

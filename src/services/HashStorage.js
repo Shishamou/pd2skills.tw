@@ -1,7 +1,10 @@
 import Storage from './Storage';
 
 export default class HashStorage extends Storage {
-
+  constructor() {
+    super();
+  }
+  
   load(callable) {
     var hash = callable();
     var parts = hash.split(':');
