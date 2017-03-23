@@ -9,15 +9,15 @@ const store = configureStore();
 
 export default class Root extends Component
 {
-    constructor(prop) {
-        super(prop);
-    }
+  constructor(prop) {
+    super(prop);
+  }
 
-    render() {
-        return (
-            <Provider store={store}>
-                <App />
-            </Provider>
-        );
-    }
+  render() {
+    return (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
+  }
 }

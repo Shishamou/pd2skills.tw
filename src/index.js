@@ -6,6 +6,6 @@ import Localisation from './public/Localisation';
 Localisation.setLocale('tc');
 
 render(
-    <Root />,
-    document.getElementById('app')
+  <Root />,
+  document.getElementById('app')
 );

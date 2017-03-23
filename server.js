@@ -15,5 +15,5 @@ app.use(express.static(__dirname + '/build'));
 
 // start
 app.listen(port, function() {
-    console.log('ready on port ' + port);
+  console.log('ready on port ' + port);
 });
