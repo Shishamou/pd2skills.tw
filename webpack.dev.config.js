@@ -6,7 +6,7 @@ var publicPath = '/assets';
 module.exports = {
   entry: {
     script: './src/index.js',
-    assets: './assets.js'
+    assets: './assets/index.js'
   },
   output: {
     path: __dirname + '/public',
