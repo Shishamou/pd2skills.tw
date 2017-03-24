@@ -1,3 +1,3 @@
-import InfamyTreeHandler from '../services/Localisation';
+import Localisation from '../services/Localisation';
 
 export default new Localisation;
