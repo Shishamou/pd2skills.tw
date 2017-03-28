@@ -1,12 +1,12 @@
 {
-    "trees": [
-        {
-            "name": "mastermind",
-            "subtrees": [
-                "mastermind_1",
-                "mastermind_2",
-                "mastermind_3"
-            ]
-        }
-    ]
+  "trees": [
+    {
+      "name": "mastermind",
+      "subtrees": [
+        "mastermind_1",
+        "mastermind_2",
+        "mastermind_3"
+      ]
+    }
+  ]
 }

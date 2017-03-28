@@ -1,70 +1,70 @@
 {
-    "subtrees": [
-        {
-            "name": "mastermind_2",
-            "skills": [
-                "mastermind_2_1",
-                "mastermind_2_2",
-                "mastermind_2_3",
-                "mastermind_2_4",
-                "mastermind_2_5",
-                "mastermind_2_6"
-            ]
-        }
-    ],
-    "skills": [
-        {
-            "name": "mastermind_2_1",
-            "icon": "cable_guy",
-            "datas": {
-                "multibasic": "75%",
-                "multipro": "4"
-            }
-        },
-        {
-            "name": "mastermind_2_2",
-            "icon": "triathlete",
-            "datas": {
-                "multibasic": "150%",
-                "multibasic2": "50%",
-                "multibasic3": "50%"
-            }
-        },
-        {
-            "name": "mastermind_2_3",
-            "icon": "joker",
-            "datas": {
-                "multipro": "55%",
-                "multipro2": "45%",
-                "multipro3": "65%"
-            }
-        },
-        {
-            "name": "mastermind_2_4",
-            "icon": "stockholm_syndrome",
-            "datas": {
-                "multipro": "X%"
-            }
-        },
-        {
-            "name": "mastermind_2_5",
-            "icon": "control_freak",
-            "datas": {
-                "multibasic": "10%",
-                "multibasic2": "40%",
-                "multipro": "30%",
-                "multipro2": "60%"
-            }
-        },
-        {
-            "name": "mastermind_2_6",
-            "icon": "black_marketeer",
-            "datas": {
-                "multibasic2": "5",
-                "multibasic": "1.5%",
-                "multipro2": "5",
-                "multipro": "4.5%"
-            }
-        }
-    ]
+  "subtrees": [
+    {
+      "name": "mastermind_2",
+      "skills": [
+        "mastermind_2_1",
+        "mastermind_2_2",
+        "mastermind_2_3",
+        "mastermind_2_4",
+        "mastermind_2_5",
+        "mastermind_2_6"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "mastermind_2_1",
+      "icon": "cable_guy",
+      "datas": {
+        "multibasic": "75%",
+        "multipro": "4"
+      }
+    },
+    {
+      "name": "mastermind_2_2",
+      "icon": "triathlete",
+      "datas": {
+        "multibasic": "150%",
+        "multibasic2": "50%",
+        "multibasic3": "50%"
+      }
+    },
+    {
+      "name": "mastermind_2_3",
+      "icon": "joker",
+      "datas": {
+        "multipro": "55%",
+        "multipro2": "45%",
+        "multipro3": "65%"
+      }
+    },
+    {
+      "name": "mastermind_2_4",
+      "icon": "stockholm_syndrome",
+      "datas": {
+        "multipro": "X%"
+      }
+    },
+    {
+      "name": "mastermind_2_5",
+      "icon": "control_freak",
+      "datas": {
+        "multibasic": "10%",
+        "multibasic2": "40%",
+        "multipro": "30%",
+        "multipro2": "60%"
+      }
+    },
+    {
+      "name": "mastermind_2_6",
+      "icon": "black_marketeer",
+      "datas": {
+        "multibasic2": "5",
+        "multibasic": "1.5%",
+        "multipro2": "5",
+        "multipro": "4.5%"
+      }
+    }
+  ]
 }

@@ -1,52 +1,52 @@
 {
-    "decks": [
-        {
-            "name": "deck4_1",
-            "datas": {
-                "multiperk": "5%"
-            }
-        },
-        {
-            "name": "deck4_3",
-            "datas": {
-                "multiperk": "15%"
-            }
-        },
-        {
-            "name": "deck4_5",
-            "datas": {
-                "multiperk": "10%"
-            }
-        },
-        {
-            "name": "deck4_7",
-            "datas": {
-                "multiperk": "10%"
-            }
-        },
-        {
-            "name": "deck4_9",
-            "datas": {
-                "multiperk": "25%",
-                "multiperk2": "80%",
-                "multiperk3": "10%"
-            }
-        }
-    ],
-    "perks": [
-        {
-            "name": 4,
-            "decks": [
-                "deck4_1",
-                "deck1_2",
-                "deck4_3",
-                "deck1_4",
-                "deck4_5",
-                "deck1_6",
-                "deck4_7",
-                "deck1_8",
-                "deck4_9"
-            ]
-        }
-    ]
+  "decks": [
+    {
+      "name": "deck4_1",
+      "datas": {
+        "multiperk": "5%"
+      }
+    },
+    {
+      "name": "deck4_3",
+      "datas": {
+        "multiperk": "15%"
+      }
+    },
+    {
+      "name": "deck4_5",
+      "datas": {
+        "multiperk": "10%"
+      }
+    },
+    {
+      "name": "deck4_7",
+      "datas": {
+        "multiperk": "10%"
+      }
+    },
+    {
+      "name": "deck4_9",
+      "datas": {
+        "multiperk": "25%",
+        "multiperk2": "80%",
+        "multiperk3": "10%"
+      }
+    }
+  ],
+  "perks": [
+    {
+      "name": 4,
+      "decks": [
+        "deck4_1",
+        "deck1_2",
+        "deck4_3",
+        "deck1_4",
+        "deck4_5",
+        "deck1_6",
+        "deck4_7",
+        "deck1_8",
+        "deck4_9"
+      ]
+    }
+  ]
 }

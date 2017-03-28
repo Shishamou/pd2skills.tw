@@ -1,65 +1,65 @@
 {
-    "subtrees": [
-        {
-            "name": "enforcer_1",
-            "skills": [
-                "enforcer_1_1",
-                "enforcer_1_2",
-                "enforcer_1_3",
-                "enforcer_1_4",
-                "enforcer_1_5",
-                "enforcer_1_6"
-            ]
-        }
-    ],
-    "skills": [
-        {
-            "name": "enforcer_1_1",
-            "icon": "underdog",
-            "datas": {
-                "multibasic": "10%",
-                "multipro": "10%"
-            }
-        },
-        {
-            "name": "enforcer_1_2",
-            "icon": "shotgun_cqb",
-            "datas": {
-                "multibasic": "25%",
-                "multipro": "25%",
-                "multipro2": "125%"
-            }
-        },
-        {
-            "name": "enforcer_1_3",
-            "icon": "shotgun_impact",
-            "datas": {
-                "multibasic": "8",
-                "multipro": "35%"
-            }
-        },
-        {
-            "name": "enforcer_1_4",
-            "icon": "sharpshooter",
-            "datas": {
-                "multibasic": "40%",
-                "multipro": "35%"
-            }
-        },
-        {
-            "name": "enforcer_1_5",
-            "icon": "from_the_hip",
-            "datas": {
-                "multipro": "35%"
-            }
-        },
-        {
-            "name": "enforcer_1_6",
-            "icon": "overkill",
-            "datas": {
-                "multibasic2": "10",
-                "multibasic": "75%"
-            }
-        }
-    ]
+  "subtrees": [
+    {
+      "name": "enforcer_1",
+      "skills": [
+        "enforcer_1_1",
+        "enforcer_1_2",
+        "enforcer_1_3",
+        "enforcer_1_4",
+        "enforcer_1_5",
+        "enforcer_1_6"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "enforcer_1_1",
+      "icon": "underdog",
+      "datas": {
+        "multibasic": "10%",
+        "multipro": "10%"
+      }
+    },
+    {
+      "name": "enforcer_1_2",
+      "icon": "shotgun_cqb",
+      "datas": {
+        "multibasic": "25%",
+        "multipro": "25%",
+        "multipro2": "125%"
+      }
+    },
+    {
+      "name": "enforcer_1_3",
+      "icon": "shotgun_impact",
+      "datas": {
+        "multibasic": "8",
+        "multipro": "35%"
+      }
+    },
+    {
+      "name": "enforcer_1_4",
+      "icon": "sharpshooter",
+      "datas": {
+        "multibasic": "40%",
+        "multipro": "35%"
+      }
+    },
+    {
+      "name": "enforcer_1_5",
+      "icon": "from_the_hip",
+      "datas": {
+        "multipro": "35%"
+      }
+    },
+    {
+      "name": "enforcer_1_6",
+      "icon": "overkill",
+      "datas": {
+        "multibasic2": "10",
+        "multibasic": "75%"
+      }
+    }
+  ]
 }

@@ -1,78 +1,78 @@
 {
-    "subtrees": [
-        {
-            "name": "ghost_2",
-            "skills": [
-                "ghost_2_1",
-                "ghost_2_2",
-                "ghost_2_3",
-                "ghost_2_4",
-                "ghost_2_5",
-                "ghost_2_6"
-            ]
-        }
-    ],
-    "skills": [
-        {
-            "name": "ghost_2_1",
-            "icon": "alpha_dog",
-            "datas": {
-                "multibasic": "25%",
-                "multibasic2": "25%",
-                "multipro": "25%",
-                "multipro2": "15%"
-            }
-        },
-        {
-            "name": "ghost_2_2",
-            "icon": "freedom_call",
-            "datas": {
-                "multibasic": "10%",
-                "multibasic2": "20%",
-                "multipro": "75%"
-            }
-        },
-        {
-            "name": "ghost_2_3",
-            "icon": "hidden_blade",
-            "datas": {
-                "multibasic": "2",
-                "multipro": "4"
-            }
-        },
-        {
-            "name": "ghost_2_4",
-            "icon": "jail_diet",
-            "datas": {
-                "multibasic": "35",
-                "multibasic2": "3",
-                "multibasic3": "1%",
-                "multibasic4": "10%",
-                "multipro": "1",
-                "multipro2": "1%",
-                "multipro3": "10%"
-            }
-        },
-        {
-            "name": "ghost_2_5",
-            "icon": "insulation",
-            "datas": {
-                "multibasic": "30%",
-                "multipro": "2"
-            }
-        },
-        {
-            "name": "ghost_2_6",
-            "icon": "backstab",
-            "datas": {
-                "multibasic": "35",
-                "multibasic2": "3",
-                "multibasic3": "3%",
-                "multibasic4": "30%",
-                "multipro": "1",
-                "multipro2": "3%",
-                "multipro3": "30%"
-            }
-        }
-    ]
+  "subtrees": [
+    {
+      "name": "ghost_2",
+      "skills": [
+        "ghost_2_1",
+        "ghost_2_2",
+        "ghost_2_3",
+        "ghost_2_4",
+        "ghost_2_5",
+        "ghost_2_6"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "ghost_2_1",
+      "icon": "alpha_dog",
+      "datas": {
+        "multibasic": "25%",
+        "multibasic2": "25%",
+        "multipro": "25%",
+        "multipro2": "15%"
+      }
+    },
+    {
+      "name": "ghost_2_2",
+      "icon": "freedom_call",
+      "datas": {
+        "multibasic": "10%",
+        "multibasic2": "20%",
+        "multipro": "75%"
+      }
+    },
+    {
+      "name": "ghost_2_3",
+      "icon": "hidden_blade",
+      "datas": {
+        "multibasic": "2",
+        "multipro": "4"
+      }
+    },
+    {
+      "name": "ghost_2_4",
+      "icon": "jail_diet",
+      "datas": {
+        "multibasic": "35",
+        "multibasic2": "3",
+        "multibasic3": "1%",
+        "multibasic4": "10%",
+        "multipro": "1",
+        "multipro2": "1%",
+        "multipro3": "10%"
+      }
+    },
+    {
+      "name": "ghost_2_5",
+      "icon": "insulation",
+      "datas": {
+        "multibasic": "30%",
+        "multipro": "2"
+      }
+    },
+    {
+      "name": "ghost_2_6",
+      "icon": "backstab",
+      "datas": {
+        "multibasic": "35",
+        "multibasic2": "3",
+        "multibasic3": "3%",
+        "multibasic4": "30%",
+        "multipro": "1",
+        "multipro2": "3%",
+        "multipro3": "30%"
+      }
+    }
+  ]
 }

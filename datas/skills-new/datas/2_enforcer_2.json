@@ -1,60 +1,60 @@
 {
-    "subtrees": [
-        {
-            "name": "enforcer_2",
-            "skills": [
-                "enforcer_2_1",
-                "enforcer_2_2",
-                "enforcer_2_3",
-                "enforcer_2_4",
-                "enforcer_2_5",
-                "enforcer_2_6"
-            ]
-        }
-    ],
-    "skills": [
-        {
-            "name": "enforcer_2_1",
-            "icon": "oppressor",
-            "datas": {
-                "multibasic": "75%",
-                "multipro": "75%"
-            }
-        },
-        {
-            "name": "enforcer_2_2",
-            "icon": "show_of_force",
-            "datas": {
-                "multipro": "15%"
-            }
-        },
-        {
-            "name": "enforcer_2_3",
-            "icon": "pack_mule",
-            "datas": {
-                "multibasic": "50%"
-            }
-        },
-        {
-            "name": "enforcer_2_4",
-            "icon": "iron_man",
-            "datas": {
-                "multibasic": "25%",
-                "multipro": "35%"
-            }
-        },
-        {
-            "name": "enforcer_2_5",
-            "icon": "prison_wife",
-            "datas": {
-                "multibasic": "10",
-                "multibasic2": "2",
-                "multipro": "20"
-            }
-        },
-        {
-            "name": "enforcer_2_6",
-            "icon": "juggernaut"
-        }
-    ]
+  "subtrees": [
+    {
+      "name": "enforcer_2",
+      "skills": [
+        "enforcer_2_1",
+        "enforcer_2_2",
+        "enforcer_2_3",
+        "enforcer_2_4",
+        "enforcer_2_5",
+        "enforcer_2_6"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "enforcer_2_1",
+      "icon": "oppressor",
+      "datas": {
+        "multibasic": "75%",
+        "multipro": "75%"
+      }
+    },
+    {
+      "name": "enforcer_2_2",
+      "icon": "show_of_force",
+      "datas": {
+        "multipro": "15%"
+      }
+    },
+    {
+      "name": "enforcer_2_3",
+      "icon": "pack_mule",
+      "datas": {
+        "multibasic": "50%"
+      }
+    },
+    {
+      "name": "enforcer_2_4",
+      "icon": "iron_man",
+      "datas": {
+        "multibasic": "25%",
+        "multipro": "35%"
+      }
+    },
+    {
+      "name": "enforcer_2_5",
+      "icon": "prison_wife",
+      "datas": {
+        "multibasic": "10",
+        "multibasic2": "2",
+        "multipro": "20"
+      }
+    },
+    {
+      "name": "enforcer_2_6",
+      "icon": "juggernaut"
+    }
+  ]
 }

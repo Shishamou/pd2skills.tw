@@ -1,65 +1,65 @@
 {
-    "tiersInformation": [
-        {
-            "tier" : 0,
-            "tier_unlock_require"         : 0,
-            "tier_unlock_require_reduced" : 0,
-            "skill_point_basic"           : 1,
-            "skill_cost_basic"            : 500
-        },
-        {
-            "tier" : 1,
-            "tier_unlock_require"         : 1,
-            "tier_unlock_require_reduced" : 1,
-            "skill_point_basic"           : 1,
-            "skill_point_ace"             : 3,
-            "skill_cost_basic"            : 4500,
-            "skill_cost_ace"              : 12500
-        },
-        {
-            "tier" : 2,
-            "tier_unlock_require"         : 5,
-            "tier_unlock_require_reduced" : 5,
-            "skill_point_basic"           : 1,
-            "skill_point_ace"             : 3,
-            "skill_cost_basic"            : 23500,
-            "skill_cost_ace"              : 69500
-        },
-        {
-            "tier" : 3,
-            "tier_unlock_require"         : 10,
-            "tier_unlock_require_reduced" : 9,
-            "skill_point_basic"           : 1,
-            "skill_point_ace"             : 3,
-            "skill_cost_basic"            : 44500,
-            "skill_cost_ace"              : 132500
-        },
-        {
-            "tier" : 4,
-            "tier_unlock_require"         : 20,
-            "tier_unlock_require_reduced" : 18,
-            "skill_point_basic"           : 4,
-            "skill_point_ace"             : 8,
-            "skill_cost_basic"            : 264500,
-            "skill_cost_ace"              : 528500
-        },
-        {
-            "tier" : 5,
-            "tier_unlock_require"         : 30,
-            "tier_unlock_require_reduced" : 27,
-            "skill_point_basic"           : 4,
-            "skill_point_ace"             : 8,
-            "skill_cost_basic"            : 356500,
-            "skill_cost_ace"              : 712500
-        },
-        {
-            "tier" : 6,
-            "tier_unlock_require"         : 40,
-            "tier_unlock_require_reduced" : 36,
-            "skill_point_basic"           : 4,
-            "skill_point_ace"             : 8,
-            "skill_cost_basic"            : 452500,
-            "skill_cost_ace"              : 904500
-        }
-    ]
+  "tiersInformation": [
+    {
+      "tier" : 0,
+      "tier_unlock_require"         : 0,
+      "tier_unlock_require_reduced" : 0,
+      "skill_point_basic"           : 1,
+      "skill_cost_basic"            : 500
+    },
+    {
+      "tier" : 1,
+      "tier_unlock_require"         : 1,
+      "tier_unlock_require_reduced" : 1,
+      "skill_point_basic"           : 1,
+      "skill_point_ace"             : 3,
+      "skill_cost_basic"            : 4500,
+      "skill_cost_ace"              : 12500
+    },
+    {
+      "tier" : 2,
+      "tier_unlock_require"         : 5,
+      "tier_unlock_require_reduced" : 5,
+      "skill_point_basic"           : 1,
+      "skill_point_ace"             : 3,
+      "skill_cost_basic"            : 23500,
+      "skill_cost_ace"              : 69500
+    },
+    {
+      "tier" : 3,
+      "tier_unlock_require"         : 10,
+      "tier_unlock_require_reduced" : 9,
+      "skill_point_basic"           : 1,
+      "skill_point_ace"             : 3,
+      "skill_cost_basic"            : 44500,
+      "skill_cost_ace"              : 132500
+    },
+    {
+      "tier" : 4,
+      "tier_unlock_require"         : 20,
+      "tier_unlock_require_reduced" : 18,
+      "skill_point_basic"           : 4,
+      "skill_point_ace"             : 8,
+      "skill_cost_basic"            : 264500,
+      "skill_cost_ace"              : 528500
+    },
+    {
+      "tier" : 5,
+      "tier_unlock_require"         : 30,
+      "tier_unlock_require_reduced" : 27,
+      "skill_point_basic"           : 4,
+      "skill_point_ace"             : 8,
+      "skill_cost_basic"            : 356500,
+      "skill_cost_ace"              : 712500
+    },
+    {
+      "tier" : 6,
+      "tier_unlock_require"         : 40,
+      "tier_unlock_require_reduced" : 36,
+      "skill_point_basic"           : 4,
+      "skill_point_ace"             : 8,
+      "skill_cost_basic"            : 452500,
+      "skill_cost_ace"              : 904500
+    }
+  ]
 }

@@ -1,138 +1,138 @@
 {
-    "trees": [
+  "trees": [
+    {
+      "name": "enforcer",
+      "skills": [
         {
-            "name": "enforcer",
-            "skills": [
-                {
-                    "name": "enforcer",
-                    "datas": []
-                },
-                {
-                    "name": "oppressor",
-                    "datas": {
-                        "multibasic": "25%",
-                        "multipro": "50%"
-                    }
-                },
-                {
-                    "name": "ammo_reservoir",
-                    "datas": {
-                        "multibasic": "5",
-                        "multipro": "10"
-                    }
-                },
-                {
-                    "name": "pack_mule",
-                    "datas": {
-                        "multibasic": "50%",
-                        "multipro": "50%"
-                    }
-                },
-                {
-                    "name": "show_of_force",
-                    "datas": {
-                        "multipro": "15%"
-                    }
-                },
-                {
-                    "name": "underdog",
-                    "datas": {
-                        "multibasic": "15%",
-                        "multipro": "15%"
-                    }
-                },
-                {
-                    "name": "steroids",
-                    "datas": {
-                        "multibasic": "50%",
-                        "multipro": "50%"
-                    }
-                },
-                {
-                    "name": "shotgun_impact",
-                    "datas": {
-                        "multibasic": "4",
-                        "multipro": "35%"
-                    }
-                },
-                {
-                    "name": "shades",
-                    "datas": {
-                        "multibasic": "25%",
-                        "multipro": "50%"
-                    }
-                },
-                {
-                    "name": "tough_guy",
-                    "datas": {
-                        "multibasic": "50%",
-                        "multipro": "25%"
-                    }
-                },
-                {
-                    "name": "shotgun_cqb",
-                    "datas": {
-                        "multibasic": "50%",
-                        "multipro": "125%"
-                    }
-                },
-                {
-                    "name": "ammo_2x",
-                    "datas": {
-                        "multibasic": "2",
-                        "multipro": "200%"
-                    }
-                },
-                {
-                    "name": "wolverine",
-                    "datas": {
-                        "multibasic": "25%",
-                        "multibasic2": "250%",
-                        "multipro": "25%",
-                        "multipro2": "100%"
-                    }
-                },
-                {
-                    "name": "from_the_hip",
-                    "datas": {
-                        "multibasic": "4",
-                        "multipro": "4"
-                    }
-                },
-                {
-                    "name": "bandoliers",
-                    "datas": {
-                        "multibasic": "25%",
-                        "multipro": "175%"
-                    }
-                },
-                {
-                    "name": "portable_saw",
-                    "datas": {
-                        "multipro": "1"
-                    }
-                },
-                {
-                    "name": "overkill",
-                    "datas": {
-                        "multibasic": "75%",
-                        "multibasic2": "5"
-                    }
-                },
-                {
-                    "name": "juggernaut",
-                    "datas": []
-                },
-                {
-                    "name": "carbon_blade",
-                    "required": "portable_saw",
-                    "datas": {
-                        "multibasic": "20%",
-                        "multipro": "50%",
-                        "multipro2": "20%"
-                    }
-                }
-            ]
+          "name": "enforcer",
+          "datas": []
+        },
+        {
+          "name": "oppressor",
+          "datas": {
+            "multibasic": "25%",
+            "multipro": "50%"
+          }
+        },
+        {
+          "name": "ammo_reservoir",
+          "datas": {
+            "multibasic": "5",
+            "multipro": "10"
+          }
+        },
+        {
+          "name": "pack_mule",
+          "datas": {
+            "multibasic": "50%",
+            "multipro": "50%"
+          }
+        },
+        {
+          "name": "show_of_force",
+          "datas": {
+            "multipro": "15%"
+          }
+        },
+        {
+          "name": "underdog",
+          "datas": {
+            "multibasic": "15%",
+            "multipro": "15%"
+          }
+        },
+        {
+          "name": "steroids",
+          "datas": {
+            "multibasic": "50%",
+            "multipro": "50%"
+          }
+        },
+        {
+          "name": "shotgun_impact",
+          "datas": {
+            "multibasic": "4",
+            "multipro": "35%"
+          }
+        },
+        {
+          "name": "shades",
+          "datas": {
+            "multibasic": "25%",
+            "multipro": "50%"
+          }
+        },
+        {
+          "name": "tough_guy",
+          "datas": {
+            "multibasic": "50%",
+            "multipro": "25%"
+          }
+        },
+        {
+          "name": "shotgun_cqb",
+          "datas": {
+            "multibasic": "50%",
+            "multipro": "125%"
+          }
+        },
+        {
+          "name": "ammo_2x",
+          "datas": {
+            "multibasic": "2",
+            "multipro": "200%"
+          }
+        },
+        {
+          "name": "wolverine",
+          "datas": {
+            "multibasic": "25%",
+            "multibasic2": "250%",
+            "multipro": "25%",
+            "multipro2": "100%"
+          }
+        },
+        {
+          "name": "from_the_hip",
+          "datas": {
+            "multibasic": "4",
+            "multipro": "4"
+          }
+        },
+        {
+          "name": "bandoliers",
+          "datas": {
+            "multibasic": "25%",
+            "multipro": "175%"
+          }
+        },
+        {
+          "name": "portable_saw",
+          "datas": {
+            "multipro": "1"
+          }
+        },
+        {
+          "name": "overkill",
+          "datas": {
+            "multibasic": "75%",
+            "multibasic2": "5"
+          }
+        },
+        {
+          "name": "juggernaut",
+          "datas": []
+        },
+        {
+          "name": "carbon_blade",
+          "required": "portable_saw",
+          "datas": {
+            "multibasic": "20%",
+            "multipro": "50%",
+            "multipro2": "20%"
+          }
         }
-    ]
+      ]
+    }
+  ]
 }

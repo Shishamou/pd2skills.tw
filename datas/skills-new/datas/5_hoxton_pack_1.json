@@ -1,70 +1,70 @@
 {
-    "subtrees": [
-        {
-            "name": "hoxton_pack_1",
-            "skills": [
-                "hoxton_pack_1_1",
-                "hoxton_pack_1_2",
-                "hoxton_pack_1_3",
-                "hoxton_pack_1_4",
-                "hoxton_pack_1_5",
-                "hoxton_pack_1_6"
-            ]
-        }
-    ],
-    "skills": [
-        {
-            "name": "hoxton_pack_1_1",
-            "icon": "gun_fighter",
-            "datas": {
-                "multibasic": "80%",
-                "multipro": "10%"
-            }
-        },
-        {
-            "name": "hoxton_pack_1_2",
-            "icon": "equilibrium",
-            "datas": {
-                "multibasic": "15",
-                "multipro": "100%"
-            }
-        },
-        {
-            "name": "hoxton_pack_1_3",
-            "icon": "equilibrium",
-            "datas": {
-                "multibasic": "10%",
-                "multibasic2": "10",
-                "multibasic3": "4",
-                "multipro": "50%"
-            }
-        },
-        {
-            "name": "hoxton_pack_1_4",
-            "icon": "trigger_happy",
-            "datas": {
-                "multibasic": "5",
-                "multipro": "10"
-            }
-        },
-        {
-            "name": "hoxton_pack_1_5",
-            "icon": "akimbo_skill",
-            "datas": {
-                "multibasic": "24",
-                "multipro": "8",
-                "multipro2": "50%"
-            }
-        },
-        {
-            "name": "hoxton_pack_1_6",
-            "icon": "trigger_happy",
-            "datas": {
-                "multibasic": "10%",
-                "multibasic2": "6",
-                "multibasic3": "4",
-                "multipro": "20"
-            }
-        }
-    ]
+  "subtrees": [
+    {
+      "name": "hoxton_pack_1",
+      "skills": [
+        "hoxton_pack_1_1",
+        "hoxton_pack_1_2",
+        "hoxton_pack_1_3",
+        "hoxton_pack_1_4",
+        "hoxton_pack_1_5",
+        "hoxton_pack_1_6"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "hoxton_pack_1_1",
+      "icon": "gun_fighter",
+      "datas": {
+        "multibasic": "80%",
+        "multipro": "10%"
+      }
+    },
+    {
+      "name": "hoxton_pack_1_2",
+      "icon": "equilibrium",
+      "datas": {
+        "multibasic": "15",
+        "multipro": "100%"
+      }
+    },
+    {
+      "name": "hoxton_pack_1_3",
+      "icon": "equilibrium",
+      "datas": {
+        "multibasic": "10%",
+        "multibasic2": "10",
+        "multibasic3": "4",
+        "multipro": "50%"
+      }
+    },
+    {
+      "name": "hoxton_pack_1_4",
+      "icon": "trigger_happy",
+      "datas": {
+        "multibasic": "5",
+        "multipro": "10"
+      }
+    },
+    {
+      "name": "hoxton_pack_1_5",
+      "icon": "akimbo_skill",
+      "datas": {
+        "multibasic": "24",
+        "multipro": "8",
+        "multipro2": "50%"
+      }
+    },
+    {
+      "name": "hoxton_pack_1_6",
+      "icon": "trigger_happy",
+      "datas": {
+        "multibasic": "10%",
+        "multibasic2": "6",
+        "multibasic3": "4",
+        "multipro": "20"
+      }
+    }
+  ]
 }

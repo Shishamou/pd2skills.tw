@@ -1,12 +1,12 @@
 {
-    "trees": [
-        {
-            "name": "enforcer",
-            "subtrees": [
-                "enforcer_1",
-                "enforcer_2",
-                "enforcer_3"
-            ]
-        }
-    ]
+  "trees": [
+    {
+      "name": "enforcer",
+      "subtrees": [
+        "enforcer_1",
+        "enforcer_2",
+        "enforcer_3"
+      ]
+    }
+  ]
 }

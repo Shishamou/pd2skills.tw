@@ -2,19 +2,19 @@ var fs = require('fs');
 var naturalSort = require('javascript-natural-sort');
 
 module.exports = (function(base) {
-    var files = fs.readdirSync(base);
-    files = files.sort(naturalSort);
+  var files = fs.readdirSync(base);
+  files = files.sort(naturalSort);
 
-    return files.reduce(function(container, filename, index) {
-        if (filename.match(/^(\w+)\.json$/)) {
-            var full = base + '/' + filename;
+  return files.reduce(function(container, filename, index) {
+    if (filename.match(/^(\w+)\.json$/)) {
+      var full = base + '/' + filename;
 
-            var content = fs.readFileSync(full, 'utf8');
-            content = JSON.parse(content);
+      var content = fs.readFileSync(full, 'utf8');
+      content = JSON.parse(content);
 
-            container.push(content);
-        }
+      container.push(content);
+    }
 
-        return container;
-    }, []);
+    return container;
+  }, []);
 })(__dirname + '/datas');
