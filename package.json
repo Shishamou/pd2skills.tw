@@ -5,12 +5,12 @@
   "description": "Payday 2 Skill Tree Simulator",
   "scripts": {
     "dev": "webpack -w --config webpack.dev.config.js",
-    "dev-server": "webpack-dev-server --devtool eval --progress --colors --inline --hot --content-base public --config webpack.dev.config.js --port 8000",
-    "testing": "webpack-dev-server --devtool eval --progress --colors --inline --hot --content-base public --config webpack.testing.config.js --port 8088",
+    "dev-server": "webpack-dev-server --devtool eval --progress --colors --inline --hot --content-base docs --config webpack.dev.config.js --port 8000",
+    "testing": "webpack-dev-server --devtool eval --progress --colors --inline --hot --content-base docs --config webpack.testing.config.js --port 8088",
     "server": "node server/server.js",
     "deploy": "NODE_ENV=production webpack -p",
     "test": "mocha --compilers js:babel-core/register",
-    "packing-datas": "node datas/main.js datas public/json/datas.json 1"
+    "packing-datas": "node datas/main.js datas docs/json/datas.json 1"
   },
   "dependencies": {
     "babel-core": "^6.3.26",

@@ -9,7 +9,7 @@ module.exports = {
     assets: './assets/index.js'
   },
   output: {
-    path: __dirname + '/public',
+    path: __dirname + '/docs',
     filename: '[name].js',
     publicPath: ''
   },
