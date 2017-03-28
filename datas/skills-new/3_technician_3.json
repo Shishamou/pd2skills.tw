@@ -1,0 +1,66 @@
+{
+  "subtrees": [
+    {
+      "name": "technician_3",
+      "skills": [
+        "technician_3_1",
+        "technician_3_2",
+        "technician_3_3",
+        "technician_3_4",
+        "technician_3_5",
+        "technician_3_6"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "technician_3_1",
+      "icon": "sharpshooter",
+      "datas": {
+        "multibasic": "8"
+      }
+    },
+    {
+      "name": "technician_3_2",
+      "icon": "martial_arts",
+      "datas": {
+        "multibasic": "25%",
+        "multipro": "50%"
+      }
+    },
+    {
+      "name": "technician_3_3",
+      "icon": "leadership",
+      "datas": {
+        "multibasic": "8",
+        "multipro": "12"
+      }
+    },
+    {
+      "name": "technician_3_4",
+      "icon": "awareness",
+      "datas": {
+        "multipro": "X",
+        "multipro2": "60%",
+        "multipro3": "1%",
+        "multipro4": "20",
+        "multipro5": "20%"
+      }
+    },
+    {
+      "name": "technician_3_5",
+      "icon": "mag_plus",
+      "datas": {
+        "multibasic": "15"
+      }
+    },
+    {
+      "name": "technician_3_6",
+      "icon": "thick_skin",
+      "datas": {
+        "multibasic": "15%",
+        "multipro": "50%"
+      }
+    }
+  ]
+}

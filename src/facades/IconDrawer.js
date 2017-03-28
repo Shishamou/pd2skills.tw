@@ -1,3 +1,3 @@
-import IconDrawer from '../public/IconDrawer';
+import IconDrawer from '../services/IconDrawer';
 
 export default new IconDrawer;

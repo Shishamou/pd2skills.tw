@@ -1,0 +1,20 @@
+{
+  "icon": [
+    {
+      "src": "res/infamy.png",
+      "prefix": "infamy_",
+      "options": {
+        "size": 128
+      },
+      "names": [
+        "root",
+        "technician",
+        "mastermind",
+        "enforcer",
+        "ghost",
+        "xp",
+        "mask"
+      ]
+    }
+  ]
+}

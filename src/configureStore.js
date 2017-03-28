@@ -6,23 +6,19 @@ import rootReducer from './reducers';
 import * as app from './actions/app';
 import hashMiddleware from './hashMiddleware';
 
+export default function configureStore(source) {
+  const loggerMiddleware = createLogger();
 
+  var middlewares = [
+    thunkMiddleware,
+    hashMiddleware,
+    // loggerMiddleware
+  ];
+  const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
-const loggerMiddleware = createLogger();
+  const store = createStoreWithMiddleware(rootReducer);
 
-export default function configureStore(initialState = {}) {
-    const loggerMiddleware = createLogger();
+  store.dispatch(app.initialize(source));
 
-    var middlewares = [
-        thunkMiddleware,
-        hashMiddleware,
-        // loggerMiddleware
-    ];
-    const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
-
-    const store = createStoreWithMiddleware(rootReducer);
-
-    store.dispatch(app.initialize('json/datas.json'));
-
-    return store;
+  return store;
 }

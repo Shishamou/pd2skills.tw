@@ -1,3 +1,3 @@
-import InfamyTreeHandler from '../public/InfamyTreeHandler';
+import InfamyTreeHandler from '../services/InfamyTreeHandler';
 
 export default new InfamyTreeHandler;

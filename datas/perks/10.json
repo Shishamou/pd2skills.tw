@@ -1,0 +1,54 @@
+{
+  "decks": [
+    {
+      "name": "deck10_1",
+      "datas": {
+        "multiperk": "8",
+        "multiperk2": "12",
+        "multiperk3": "4"
+      }
+    },
+    {
+      "name": "deck10_3",
+      "datas": {
+        "multiperk": "50%",
+        "multiperk2": "5"
+      }
+    },
+    {
+      "name": "deck10_5",
+      "datas": {
+        "multiperk": "100%"
+      }
+    },
+    {
+      "name": "deck10_7",
+      "datas": {
+        "multiperk": "4"
+      }
+    },
+    {
+      "name": "deck10_9",
+      "datas": {
+        "multiperk": "4",
+        "multiperk2": "10%"
+      }
+    }
+  ],
+  "perks": [
+    {
+      "name": 10,
+      "decks": [
+        "deck10_1",
+        "deck1_2",
+        "deck10_3",
+        "deck1_4",
+        "deck10_5",
+        "deck1_6",
+        "deck10_7",
+        "deck1_8",
+        "deck10_9"
+      ]
+    }
+  ]
+}

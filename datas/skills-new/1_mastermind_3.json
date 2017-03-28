@@ -1,0 +1,70 @@
+{
+  "subtrees": [
+    {
+      "name": "mastermind_3",
+      "skills": [
+        "mastermind_3_1",
+        "mastermind_3_2",
+        "mastermind_3_3",
+        "mastermind_3_4",
+        "mastermind_3_5",
+        "mastermind_3_6"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "mastermind_3_1",
+      "icon": "sharpshooter",
+      "datas": {
+        "multibasic": "8",
+        "multipro": "8"
+      }
+    },
+    {
+      "name": "mastermind_3_2",
+      "icon": "rifleman",
+      "datas": {
+        "multibasic": "1",
+        "multipro": "25%"
+      }
+    },
+    {
+      "name": "mastermind_3_3",
+      "icon": "from_the_hip",
+      "datas": {
+        "multibasic": "8",
+        "multipro": "20%"
+      }
+    },
+    {
+      "name": "mastermind_3_4",
+      "icon": "tactician",
+      "datas": {
+        "multibasic": "15%",
+        "multipro": "Y",
+        "multipro2": "X %"
+      }
+    },
+    {
+      "name": "mastermind_3_5",
+      "icon": "kilmer",
+      "datas": {
+        "multibasic": "30%",
+        "multibasic2": "2",
+        "multipro": "50%",
+        "multipro2": "2"
+      }
+    },
+    {
+      "name": "mastermind_3_6",
+      "icon": "prison_wife",
+      "datas": {
+        "multibasic": "6",
+        "multibasic2": "1",
+        "multipro": "3",
+        "multipro2": "1"
+      }
+    }
+  ]
+}

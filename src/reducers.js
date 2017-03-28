@@ -8,10 +8,10 @@ import handleInfamyTree from './reducers/handleInfamyTree';
 import handleDisplay from './reducers/handleDisplay';
 
 export default combineReducers({
-    other: other,
-    display: handleDisplay,
-    langs: handleLangs,
-    infamy: handleInfamyTree,
-    skills: handleSkills,
-    perks: handlePerks
+  other: other,
+  display: handleDisplay,
+  langs: handleLangs,
+  infamy: handleInfamyTree,
+  skills: handleSkills,
+  perks: handlePerks
 });

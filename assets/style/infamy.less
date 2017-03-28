@@ -1,0 +1,379 @@
+.infamy() {
+	/* =========================================================================
+	* = Initial
+	* =======================================================================*/
+
+	// @infamy-icon-size : 150px;
+	// @infamy-block-width : 230px;
+	// @infamy-block-height : 166px;
+	// @infamy-font-size: 20px;
+	//
+	// @infamy-around-x: 40px;
+	// @infamy-around-y: 8px;
+
+	/* =========================================================================
+	 * = Section
+	 * =======================================================================*/
+
+	.section.sections-infamy {
+		@section-main-width: @infamy-block-width * 5;
+		@section-main-height: @infamy-block-height * 5;
+
+		@section-box-width: @section-main-width;
+		@section-box-height: @section-main-height;
+
+		.section-main {
+			width: @section-main-width;
+			height: @section-main-height;
+		}
+
+		.section-aside {
+			width: ~"calc(100% - @{section-main-width})";
+			min-height: @section-main-height;
+		}
+	}
+
+	/* =========================================================================
+	 * = infamytree
+	 * =======================================================================*/
+
+	.infamytree {
+		font-size: @infamy-font-size;
+
+		.infamytree-row {
+			&:after {
+				.clear-float;
+			}
+
+			.infamy {
+				float: left;
+			}
+		}
+
+		.infamytree-control {
+			text-align: center;
+
+			.infamytree-control-available {
+				line-height: 1.6;
+				font-size: 1.2em;
+			}
+		}
+	}
+
+	/* =========================================================================
+	 * = Line
+	 * =======================================================================*/
+
+	@line-width: 36px;
+	.line-base() {
+		position: absolute;
+		z-index: -1;
+		top: 50%;
+		width: @infamy-block-width;
+		height: @line-width;
+		margin-top: -(@line-width / 2);
+		background: url('../images/infamy-line.png') repeat-x center;
+		background-size: 100%;
+		transform-origin: left;
+	}
+
+	.line-horizontal() {
+		width: @infamy-block-width;
+		height: @line-width;
+		right: -50%;
+	}
+
+	.line-vertical() {
+		width: @infamy-block-height;
+		height: @line-width;
+		left: 50%;
+	}
+
+	.infamy-line-top {
+		.line-base;
+		.line-vertical;
+		.transform(rotate(270deg));
+	}
+
+	.infamy-line-left {
+		.line-base;
+		.line-horizontal;
+		.transform(rotate(180deg));
+	}
+
+	.infamy-line-right {
+		.line-base;
+		.line-horizontal;
+		.transform(rotate(0deg));
+	}
+
+	.infamy-line-bottom {
+		.line-base;
+		.line-vertical;
+		.transform(rotate(90deg));
+	}
+
+	.infamytree-rows .infamytree-row {
+		&:first-child {
+			.infamy-line-top {
+				display: none;
+			}
+		}
+
+		&:last-child {
+			.infamy-line-bottom {
+				display: none;
+			}
+		}
+
+		.infamy:first-child {
+			.infamy-line-left {
+				display: none;
+			}
+		}
+
+		.infamy:last-child {
+			.infamy-line-right {
+				display: none;
+			}
+		}
+	}
+
+	.infamy {
+		.infamy-line {
+			opacity: 0.03;
+		}
+
+		&.status-unlocked {
+			.infamy-line {
+				opacity: 0.2;
+			}
+		}
+
+		&.status-owned {
+			.infamy-line {
+				opacity: 1;
+			}
+		}
+	}
+
+
+	/* =========================================================================
+	 * = Infamy
+	 * =======================================================================*/
+
+	.infamy {
+		display: block;
+		position: relative;
+		width: @infamy-block-width;
+		height: @infamy-block-height;
+		cursor: pointer;
+
+		/* =====================================================================
+		 * = Icon
+		 * ===================================================================*/
+
+		.infamy-icon {
+			@time: 0.2s;
+			@size: @infamy-icon-size;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			z-index: 10;
+			width: @size;
+			height: @size;
+			margin-top: -@size / 2;
+			margin-left: -@size / 2;
+			.transition(transform @time);
+			.transform(scale(0.5));
+
+			canvas {
+				width: 100%;
+				height: 100%;
+			}
+		}
+
+		& {
+			.infamy-icon {
+				opacity: 0.5;
+				.transform(scale(0.6));
+			}
+
+			&:hover .infamy-icon {
+				.transform(scale(0.7));
+			}
+		}
+
+		&.status-unlocked,
+		&.status-owned {
+			.infamy-icon {
+				.transform(scale(0.9));
+			}
+
+			&:hover .infamy-icon {
+				.transform(scale(1));
+			}
+		}
+
+		&.status-unlocked {
+			.infamy-icon {
+				opacity: 0.9;
+			}
+		}
+
+		&.status-owned {
+			.infamy-icon {
+				opacity: 1;
+			}
+		}
+
+		&.status-disabled::after {
+			@size: @infamy-font-size * 1.5;
+			.pseudo-block;
+			top: 50%;
+			left: 50%;
+			z-index: 10;
+			width: @size;
+			height: @size;
+			margin-top: -@size / 2;
+			margin-left: -@size / 2;
+			background: url('../images/dlc.png') no-repeat center;
+			background-size: 100%;
+			z-index: 1;
+		}
+
+		/* =====================================================================
+		 * = Icon halo
+		 * ===================================================================*/
+
+
+		.icon-pseudo-pos(@size) {
+			.pseudo-block-base;
+			@pos: @size / 4;
+			top: -@pos;
+			left: -@pos;
+			right: -@pos;
+			bottom: -@pos;
+		}
+
+		&.status-owned {
+			.infamy-icon::before {
+				.icon-pseudo-pos(@infamy-icon-size * 1.4);
+				.halo(@infamy-icon-size * 1.4);
+				z-index: -1000;
+			}
+
+			.infamy-icon::after {
+				.icon-pseudo-pos(@infamy-icon-size * 1.4);
+				.halo2(@infamy-icon-size * 1.4);
+				z-index: -1000;
+			}
+		}
+
+		/* =====================================================================
+		 * = Text
+		 * ===================================================================*/
+
+		.infamy-text {
+			display: none;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			color: @color-normal;
+			text-align: center;
+			text-transform: uppercase;
+			line-height: 1.4;
+			font-size: @infamy-font-size;
+		}
+
+		&:hover .infamy-text {
+			display: block;
+		}
+
+		&.status-disabled {
+			.infamy-text {
+				color: @color-alert;
+			}
+		}
+
+		/* =====================================================================
+		 * = Remove
+		 * ===================================================================*/
+
+		.infamy-remove {
+			.icon-remove(@font-normal * 1.5);
+			display: none;
+			z-index: 100;
+		}
+
+		&.status-owned:hover {
+			.infamy-remove {
+				display: block;
+			}
+		}
+	}
+}
+
+/* =============================================================================
+ * = 超耗資源的動畫效果
+ * ===========================================================================*/
+@holo-animation-speed: 5s;
+.halo(@size: 100) {
+	background: url('../images/halo.png') no-repeat center;
+	background-size: @size;
+	animation: halo @holo-animation-speed infinite linear;
+
+	@-webkit-keyframes halo {
+		0% {
+			-webkit-transform: rotate(0deg) scale(1);
+		}
+		50% {
+			-webkit-transform: rotate(180deg) scale(0.9);
+		}
+		100% {
+			-webkit-transform: rotate(360deg) scale(1);
+		}
+	}
+
+	@keyframes halo {
+		0% {
+			transform: rotate(0deg) scale(1);
+		}
+		50% {
+			transform: rotate(180deg) scale(0.8);
+		}
+		100% {
+			transform: rotate(360deg) scale(1);
+		}
+	}
+}
+
+.halo2(@size: 100) {
+	background: url('../images/halo2.png') no-repeat center;
+	background-size: @size;
+	animation: halo2 @holo-animation-speed infinite linear;
+
+	@-webkit-keyframes halo2 {
+		0% {
+			-webkit-transform: rotate(360deg) scale(1.1);
+		}
+		50% {
+			-webkit-transform: rotate(180deg) scale(1);
+		}
+		100% {
+			-webkit-transform: rotate(0deg) scale(1.1);
+		}
+	}
+
+	@keyframes halo2 {
+		0% {
+			transform: rotate(360deg) scale(1.2);
+		}
+		50% {
+			transform: rotate(180deg) scale(1);
+		}
+		100% {
+			transform: rotate(0deg) scale(1.2);
+		}
+	}
+}

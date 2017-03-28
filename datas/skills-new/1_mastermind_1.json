@@ -1,0 +1,72 @@
+{
+  "subtrees": [
+    {
+      "name": "mastermind_1",
+      "skills": [
+        "mastermind_1_1",
+        "mastermind_1_2",
+        "mastermind_1_3",
+        "mastermind_1_4",
+        "mastermind_1_5",
+        "mastermind_1_6"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "mastermind_1_1",
+      "icon": "combat_medic",
+      "datas": {
+        "multibasic": "10",
+        "multibasic2": "25%",
+        "multipro": "30%"
+      }
+    },
+    {
+      "name": "mastermind_1_2",
+      "icon": "tea_time",
+      "datas": {
+        "multibasic": "50%",
+        "multipro2": "10",
+        "multipro": "20%"
+      }
+    },
+    {
+      "name": "mastermind_1_3",
+      "icon": "fast_learner",
+      "datas": {
+        "multibasic2": "5",
+        "multibasic": "30%",
+        "multipro": "20%"
+      }
+    },
+    {
+      "name": "mastermind_1_4",
+      "icon": "tea_cookies",
+      "datas": {
+        "multibasic": "7",
+        "multipro": "3",
+        "multipro2": "15",
+        "multipro3": "70%"
+      }
+    },
+    {
+      "name": "mastermind_1_5",
+      "icon": "medic_2x",
+      "datas": {
+        "multibasic": "2",
+        "multipro": "4"
+      }
+    },
+    {
+      "name": "mastermind_1_6",
+      "icon": "inspire",
+      "datas": {
+        "multibasic": "50%",
+        "multibasic2": "20%",
+        "multibasic3": "30",
+        "multipro": "75%"
+      }
+    }
+  ]
+}

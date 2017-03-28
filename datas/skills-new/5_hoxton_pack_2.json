@@ -1,0 +1,68 @@
+{
+  "subtrees": [
+    {
+      "name": "hoxton_pack_2",
+      "skills": [
+        "hoxton_pack_2_1",
+        "hoxton_pack_2_2",
+        "hoxton_pack_2_3",
+        "hoxton_pack_2_4",
+        "hoxton_pack_2_5",
+        "hoxton_pack_2_6"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "hoxton_pack_2_1",
+      "icon": "nine_lives",
+      "datas": {
+        "multibasic": "50%",
+        "multipro": "1"
+      }
+    },
+    {
+      "name": "hoxton_pack_2_2",
+      "icon": "cat_burglar",
+      "datas": {
+        "multibasic": "80%",
+        "multibasic2": "10",
+        "multipro": "30%",
+        "multipro2": "10"
+      }
+    },
+    {
+      "name": "hoxton_pack_2_3",
+      "icon": "inspire",
+      "datas": {
+        "multibasic": "30%",
+        "multibasic2": "10",
+        "multipro": "15%"
+      }
+    },
+    {
+      "name": "hoxton_pack_2_4",
+      "icon": "perseverance",
+      "datas": {
+        "multibasic": "3",
+        "multibasic2": "60%",
+        "multipro": "6"
+      }
+    },
+    {
+      "name": "hoxton_pack_2_5",
+      "icon": "nine_lives",
+      "datas": {
+        "multibasic": "25%",
+        "multipro": "50%"
+      }
+    },
+    {
+      "name": "hoxton_pack_2_6",
+      "icon": "pistol_messiah",
+      "datas": {
+        "multibasic": "1"
+      }
+    }
+  ]
+}

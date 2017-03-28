@@ -1,0 +1,66 @@
+{
+  "subtrees": [
+    {
+      "name": "ghost_1",
+      "skills": [
+        "ghost_1_1",
+        "ghost_1_2",
+        "ghost_1_3",
+        "ghost_1_4",
+        "ghost_1_5",
+        "ghost_1_6"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "ghost_1_1",
+      "icon": "jail_workout",
+      "datas": {
+        "multibasic": "10",
+        "multibasic2": "3.5",
+        "multipro": "30%"
+      }
+    },
+    {
+      "name": "ghost_1_2",
+      "icon": "thug_life",
+      "datas": {
+        "multibasic": "75%",
+        "multipro": "1",
+        "multipro2": "1"
+      }
+    },
+    {
+      "name": "ghost_1_3",
+      "icon": "chameleon",
+      "datas": {
+        "multibasic": "25%",
+        "multipro": "20"
+      }
+    },
+    {
+      "name": "ghost_1_4",
+      "icon": "second_chances",
+      "datas": {
+        "multibasic": "2",
+        "multipro": "50%"
+      }
+    },
+    {
+      "name": "ghost_1_5",
+      "icon": "ghost",
+      "datas": {
+        "multibasic": "25%"
+      }
+    },
+    {
+      "name": "ghost_1_6",
+      "icon": "ecm_booster",
+      "datas": {
+        "multibasic": "2",
+        "multipro": "25%"
+      }
+    }
+  ]
+}
