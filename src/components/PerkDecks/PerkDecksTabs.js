@@ -20,7 +20,6 @@ class PerkDecksTabs extends Component
     var node = this.refs[`perk_${activedPerk}`];
     if ( ! node) return;
 
-    console.log(node);
     if (this.shouldScrollTo(node)) {
       node.scrollIntoView({behavior: "auto"});
     }
