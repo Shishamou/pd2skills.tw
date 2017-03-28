@@ -1,7 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 
-var publicPath = '/assets';
+var publicPath = 'assets';
 
 module.exports = {
   entry: {
