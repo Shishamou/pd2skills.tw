@@ -18,7 +18,7 @@ export default function other(state = initialState, action) {
  * 載入 icon
  */
 function loadIcon(action) {
-  var datas = action.response.icon;
+  var datas = action.response.icon.icon;
 
   if (typeof datas === 'undefined') {
     return state;

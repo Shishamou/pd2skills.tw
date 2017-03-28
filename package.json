@@ -9,7 +9,8 @@
     "testing": "webpack-dev-server --devtool eval --progress --colors --inline --hot --content-base public --config webpack.testing.config.js --port 8088",
     "server": "node server/server.js",
     "deploy": "NODE_ENV=production webpack -p",
-    "test": "mocha --compilers js:babel-core/register"
+    "test": "mocha --compilers js:babel-core/register",
+    "packing-datas": "node datas/main.js datas public/json/datas.json 1"
   },
   "dependencies": {
     "babel-core": "^6.3.26",
